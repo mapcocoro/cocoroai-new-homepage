@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ココロAI - あなたの毎日に、優しいAIの魔法を。</title>
     
+    <!-- 主要なファビコン設定 -->
+    <!-- 1. ICO形式 (古いブラウザや特定のコンテキスト向け) -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <!-- 2. 標準的なデスクトップブラウザ向けPNGアイコン (32x32px) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <!-- 3. iOSホーム画面アイコン (Apple Touch Icon - 180x180pxが推奨サイズ) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <!-- 4. Android Chromeホーム画面アイコン (192x192pxがよく使われる) -->
+    <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
+    <!-- 5. ウェブアプリマニフェスト (Android向けPWAやアイコンの自動認識に重要) -->
+    <link rel="manifest" href="images/site.webmanifest">
+    
+    <!-- その他のメタタグ (テーマカラーなど、manifest.jsonの内容と重複する場合あり) -->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -23,10 +39,6 @@
     <header class="sticky top-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <!-- ロゴ画像 -->
-            <!-- 補足: お客様がVS Codeなどでこのコードを利用する際は、ウェブサイトのルートディレクトリに -->
-            <!-- 「images」フォルダを作成し、その中に「ロゴcocoroAI .png」を -->
-            <!-- 「cocoroai_logo.png」という名前で保存してください。 -->
-            <!-- （例: プロジェクトフォルダ/images/cocoroai_logo.png） -->
             <a href="#" class="flex items-center">
                  <img src="images/cocoroai_logo.png" alt="ココロAI ロゴ" class="h-12 w-auto">
             </a>
@@ -305,6 +317,7 @@
     </script>
 </body>
 </html>
+
 
 
 
