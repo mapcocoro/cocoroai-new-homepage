@@ -6,15 +6,10 @@
     <title>ココロAI - あなたの毎日に、優しいAIの魔法を。</title>
     
     <!-- 主要なファビコン設定 -->
-    <!-- 1. ICO形式 (古いブラウザや特定のコンテキスト向け) -->
     <link rel="shortcut icon" href="images/favicon.ico">
-    <!-- 2. 標準的なデスクトップブラウザ向けPNGアイコン (32x32px) -->
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <!-- 3. iOSホーム画面アイコン (Apple Touch Icon - 180x180pxが推奨サイズ) -->
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <!-- 4. Android Chromeホーム画面アイコン (192x192pxがよく使われる) -->
     <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
-    <!-- 5. ウェブアプリマニフェスト (Android向けPWAやアイコンの自動認識に重要) -->
     <link rel="manifest" href="images/site.webmanifest">
     
     <!-- その他のメタタグ (テーマカラーなど、manifest.jsonの内容と重複する場合あり) -->
@@ -45,6 +40,7 @@
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#about" class="text-gray-600 hover:text-cyan-600 transition-colors">私たちについて</a>
                 <a href="#services" class="text-gray-600 hover:text-cyan-600 transition-colors">サービス</a>
+                <a href="#works" class="text-gray-600 hover:text-cyan-600 transition-colors">実績</a>
                 <a href="#news" class="text-gray-600 hover:text-cyan-600 transition-colors">ニュース</a>
                 <a href="#company" class="text-gray-600 hover:text-cyan-600 transition-colors">会社概要</a>
                 <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg">お問い合わせ</a>
@@ -59,6 +55,7 @@
         <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
             <a href="#about" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">私たちについて</a>
             <a href="#services" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">サービス</a>
+            <a href="#works" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">実績</a>
             <a href="#news" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">ニュース</a>
             <a href="#company" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">会社概要</a>
             <a href="#contact" class="block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 text-center mt-2">お問い合わせ</a>
@@ -195,12 +192,44 @@
             </div>
         </section>
 
+        <!-- Works/Case Studies Section -->
+        <section id="works" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-2 fade-in-up">実績 / Works</h2>
+                    <p class="text-gray-600 fade-in-up delay-100">ココロAIが手掛けてきたプロジェクトの一部をご紹介します。</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1: 漢字防ギャラリーサイト -->
+                    <div class="bg-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up delay-200">
+                        <div class="bg-blue-100 p-4 rounded-full mb-4">
+                            <!-- 漢字防ギャラリーサイトのロゴ画像 -->
+                            <img src="images/kanjinbou_logo.png" alt="漢字防ギャラリーサイト ロゴ" class="h-8 w-auto">
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">漢字防ギャラリーサイト</h3>
+                        <p class="text-gray-600 flex-grow">小規模ながらも、特定のニーズに応えるウェブギャラリーサイトを開発しました。シンプルながらも使いやすさを追求し、コンテンツの魅力を最大限に引き出すデザインを実現しています。</p>
+                        <a href="https://cocoroai.github.io/kanjinbou-gallery/" target="_blank" class="mt-4 text-cyan-600 font-semibold hover:underline">サイトを見る &rarr;</a>
+                    </div>
+                    
+                    <!-- 他の実績があればここに追加 -->
+                    <!-- <div class="bg-gray-50 p-8 rounded-2xl shadow-lg ...">...</div> -->
+
+                </div>
+            </div>
+        </section>
+
         <!-- News/Announcements Section -->
         <section id="news" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6 max-w-4xl">
                 <h2 class="text-center text-3xl font-bold mb-10 fade-in-up">ニュース / お知らせ</h2>
                 <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10 fade-in-up delay-100">
                     <ul class="space-y-4">
+                        <li class="border-b border-gray-200 pb-4">
+                            <a href="https://cocoroai.github.io/kanjinbou-gallery/" target="_blank" class="block hover:opacity-80 transition-opacity">
+                                <time datetime="2025-07-05" class="text-sm text-gray-500">2025.07.05</time>
+                                <p class="text-gray-800 font-medium md:text-lg">「閑人房ギャラリーサイト」を実績として公開しました。</p>
+                            </a>
+                        </li>
                         <li class="border-b border-gray-200 pb-4">
                             <a href="https://bihadaconcierge.cocoroai.co.jp" target="_blank" class="block hover:opacity-80 transition-opacity">
                                 <time datetime="2025-06-21" class="text-sm text-gray-500">2025.06.21</time>
@@ -210,7 +239,7 @@
                         <li class="border-b border-gray-200 pb-4">
                             <a href="https://bento.cocoroai.co.jp" target="_blank" class="block hover:opacity-80 transition-opacity">
                                 <time datetime="2025-06-20" class="text-sm text-gray-500">2025.06.20</time>
-                                <p class="text-gray-800 font-medium md:text-lg">「Bento Planner」がバージョンアップ！毎日のお弁当作りが楽しくなる気分で選べる献立がさらに充実！作りたいおかずのイメージから美味しいレシピをご紹介します！</p>
+                                <p class="text-gray-800 font-medium md:text-lg">「Bento Planner」がバージョンアップ！毎日のお弁当作りが楽しくなる気分で選べる献立がさらに充実！食べたいおかずのイメージから美味しいレシピをご紹介します！</p>
                             </a>
                         </li>
                         <li class="border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
@@ -254,7 +283,7 @@
                          <hr>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
                             <p class="font-semibold text-gray-500">事業内容</p>
-                            <p class="md:col-span-2">AIサービス企画・開発、YouTubeコンテンツ制作支援、<br>ホームページ制作・運用支援、<br>アイデアを形にするオーダーメイドのWebサイト・アプリ開発 etc.</p>
+                            <p class="md:col-span-2">AIサービス企画・開発、<br>YouTubeコンテンツ制作支援、<br>ホームページ制作・運用支援、<br>そしてお客様のアイデアを形にするオーダーメイドのWebサイト・アプリ開発 etc.</p>
                         </div>
                     </div>
                 </div>
@@ -320,6 +349,7 @@
     </script>
 </body>
 </html>
+
 
 
 
