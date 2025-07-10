@@ -1,0 +1,3664 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Beauty Salon Luna">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#e8b4cb">
+    <link rel="apple-touch-icon" href="https://placehold.co/180x180/e8b4cb/ffffff?text=L">
+    <link rel="manifest" href="data:application/json,{&quot;name&quot;:&quot;Beauty Salon Luna&quot;,&quot;short_name&quot;:&quot;Luna&quot;,&quot;start_url&quot;:&quot;.&quot;,&quot;display&quot;:&quot;standalone&quot;,&quot;background_color&quot;:&quot;#ffffff&quot;,&quot;theme_color&quot;:&quot;#e8b4cb&quot;,&quot;icons&quot;:[{&quot;src&quot;:&quot;https://placehold.co/192x192/e8b4cb/ffffff?text=L&quot;,&quot;sizes&quot;:&quot;192x192&quot;,&quot;type&quot;:&quot;image/png&quot;}]}">
+    <title>Beauty Salon Luna - 美容サロン (Updated)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+            line-height: 1.5;
+            color: #1d1d1f;
+            background-color: #f2f2f7;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ヘッダー */
+        header {
+            position: relative;
+            padding: 80px 0;
+            text-align: center;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                min-height: 400px;
+                padding: 40px 0;
+            }
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-content h1 {
+            font-size: 14px;
+            color: #1d1d1f;
+            margin-bottom: 2px;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+        }
+
+        .hero-content p {
+            font-size: 8px;
+            color: #8e8e93;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #e8b4cb 0%, #d4a574 100%);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: -0.4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        /* セクション共通 */
+        .section {
+            padding: 12px 0;
+        }
+
+        .section-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #1d1d1f;
+            text-align: center;
+            margin-bottom: 8px;
+            position: relative;
+            letter-spacing: -0.3px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(135deg, #e8b4cb 0%, #d4a574 100%);
+        }
+
+        /* サービス紹介 */
+        .services {
+            background-color: #faf8f5;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .service-icon {
+            background: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: -35px auto 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card h3 {
+            color: #d4a574;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* サービスタブ */
+        .service-tabs {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 15px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .tab-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 12px;
+            background: white;
+            border: 1px solid #f0f0f0;
+            border-radius: 15px;
+            color: #666;
+            font-size: 9px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: 80px;
+            justify-content: center;
+        }
+
+        .tab-btn:hover {
+            border-color: #e8b4cb;
+            color: #e8b4cb;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #e8b4cb 0%, #d4a574 100%);
+            border-color: #d4a574;
+            color: white;
+        }
+
+        .tab-btn svg {
+            flex-shrink: 0;
+        }
+
+        /* サービスカテゴリー */
+        .service-content-area {
+            margin-top: 20px;
+        }
+
+        .service-category {
+            display: none;
+        }
+
+        .service-category.active {
+            display: block;
+        }
+
+        .category-header {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .category-info {
+            padding: 12px;
+            text-align: center;
+        }
+
+        .category-info h3 {
+            color: #d4a574;
+            font-size: 10px;
+            margin-bottom: 4px;
+        }
+
+        .category-info p {
+            color: #666;
+            font-size: 7px;
+        }
+
+        /* サービスアイテム */
+        .service-items {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .service-item {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .item-header {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #f3e8ff 100%);
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .item-title {
+            flex: 1;
+            font-weight: 600;
+            color: #333;
+            font-size: 10px;
+        }
+
+        .item-price {
+            color: #e8b4cb;
+            font-weight: 700;
+            font-size: 10px;
+            margin-right: 8px;
+        }
+
+        .toggle-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #e8b4cb 0%, #d4a574 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-item.expanded .toggle-icon {
+            transform: rotate(45deg);
+        }
+
+        .item-detail {
+            padding: 0 12px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .service-item.expanded .item-detail {
+            padding: 12px;
+            max-height: 200px;
+        }
+
+        .item-detail p {
+            margin-bottom: 6px;
+            color: #666;
+            line-height: 1.4;
+            font-size: 9px;
+        }
+
+        .item-detail p:last-of-type {
+            margin-bottom: 0;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .reserve-button {
+            background: linear-gradient(135deg, #8b5fbf 0%, #9c6bc7 100%);
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 9px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .reserve-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(139, 95, 191, 0.3);
+        }
+
+        .item-detail strong {
+            color: #d4a574;
+        }
+
+        /* サロンの特徴 - コンパクト表示 */
+        .features-compact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .feature-compact-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .feature-compact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-compact-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            gap: 8px;
+        }
+
+        .feature-compact-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e8b4cb;
+            flex-shrink: 0;
+        }
+
+        .feature-compact-content {
+            flex: 1;
+        }
+
+        .feature-compact-content h4 {
+            color: #333;
+            font-size: 10px;
+            font-weight: 600;
+            margin: 0 0 2px 0;
+        }
+
+        .feature-compact-content p {
+            color: #666;
+            font-size: 8px;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .feature-expand-icon {
+            color: #d4a574;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-compact-card:hover .feature-expand-icon {
+            transform: translateX(3px);
+        }
+
+        /* モーダル */
+        .feature-detail-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .feature-detail-modal.hidden {
+            display: none;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            max-width: 320px;
+            width: 90%;
+            max-height: 60vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #f2f2f7;
+            border: none;
+            border-radius: 15px;
+            width: 30px;
+            height: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: #e8b4cb;
+            color: white;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding-top: 8px;
+        }
+
+        .modal-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e8b4cb 0%, #d4a574 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .modal-header h3 {
+            color: #1d1d1f;
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.3px;
+        }
+
+        .modal-body p {
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            font-size: 10px;
+        }
+
+        .modal-benefits h4 {
+            color: #d4a574;
+            font-size: 11px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .modal-benefits ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .modal-benefits li {
+            color: #666;
+            padding: 4px 0 4px 18px;
+            position: relative;
+            line-height: 1.3;
+            font-size: 9px;
+        }
+
+        .modal-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #e8b4cb;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        .feature-item {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover .feature-icon-circle {
+            transform: scale(1.1);
+        }
+
+        .feature-content {
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            color: #d4a574;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .feature-item p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* スタッフ紹介 */
+        .staff {
+            background-color: #f2f2f7;
+            padding: 20px 0;
+        }
+
+        .staff-compact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .staff-compact-card {
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .staff-compact-card:active {
+            transform: scale(0.98);
+            background: #f8f8f8;
+        }
+
+        .staff-compact-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .staff-compact-photo {
+            width: 35px;
+            height: 35px;
+            border-radius: 18px;
+            object-fit: cover;
+            border: 1px solid #f0f0f0;
+        }
+
+        .staff-compact-info {
+            flex: 1;
+        }
+
+        .staff-compact-name {
+            font-size: 11px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin: 0 0 1px 0;
+            letter-spacing: -0.3px;
+        }
+
+        .staff-compact-title {
+            font-size: 9px;
+            color: #8e8e93;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .staff-expand-icon {
+            color: #c7c7cc;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .staff-detail {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #f0f0f0;
+            display: none;
+        }
+
+        .staff-detail.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .staff-detail p {
+            color: #48484a;
+            font-size: 9px;
+            line-height: 1.3;
+            margin: 0;
+            letter-spacing: -0.1px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 成功メッセージ */
+        .success-message-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .success-message {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            max-width: 280px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .success-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #e8b4cb 0%, #d4a574 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0 auto 10px;
+            animation: bounceIn 0.6s ease;
+        }
+
+        .success-message h3 {
+            color: #1d1d1f;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
+        }
+
+        .success-message p {
+            color: #48484a;
+            font-size: 9px;
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .success-note {
+            color: #8e8e93 !important;
+            font-size: 8px !important;
+            margin-top: 8px;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* サロンギャラリー */
+        .salon-gallery {
+            background-color: white;
+            padding: 30px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 20px 16px 16px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* 料金表 */
+        .pricing-table {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        .pricing-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .pricing-table th {
+            background: linear-gradient(135deg, #e8b4cb 0%, #d4a574 100%);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 10px;
+        }
+
+        .pricing-table td {
+            padding: 12px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 10px;
+        }
+
+        .pricing-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pricing-table .price {
+            font-weight: 600;
+            color: #d4a574;
+            text-align: right;
+            font-size: 10px;
+        }
+
+        /* お客様の声 */
+        .testimonials {
+            background-color: #faf8f5;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            font-size: 1.5rem;
+            color: #e8b4cb;
+            opacity: 0.3;
+        }
+
+        .testimonial-card p {
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            font-size: 9px;
+            padding-left: 20px;
+        }
+
+        .testimonial-card .customer {
+            color: #d4a574;
+            font-weight: 600;
+            text-align: right;
+            font-size: 8px;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: linear-gradient(135deg, #e8b4cb 0%, #d4a574 100%);
+            color: white;
+            padding: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 10px;
+        }
+
+        .faq-answer {
+            padding: 12px;
+            color: #666;
+            line-height: 1.4;
+            font-size: 9px;
+        }
+
+        /* アクセス */
+        .access {
+            background-color: #faf8f5;
+        }
+
+        .access-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .access-info {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .access-info h3 {
+            color: #d4a574;
+            margin-bottom: 10px;
+            font-size: 0.8rem;
+        }
+
+        .access-info p {
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            font-size: 0.7rem;
+        }
+
+        .map-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .map-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* コンタクトフォーム */
+        .contact-form {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 3px;
+            color: #d4a574;
+            font-weight: 600;
+            font-size: 9px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #f0f0f0;
+            border-radius: 6px;
+            font-size: 9px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #e8b4cb;
+        }
+
+        .form-group textarea {
+            height: 60px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #8b5fbf 0%, #9c6bc7 100%);
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(139, 95, 191, 0.3);
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139, 95, 191, 0.4);
+            background: linear-gradient(135deg, #9c6bc7 0%, #ad7dd1 100%);
+        }
+
+        /* 予約システム */
+        .booking-system {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 15px;
+        }
+
+        .booking-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            position: relative;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 0 4px;
+            gap: 2px;
+        }
+
+        .booking-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #f0f0f0;
+            z-index: 1;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 4px 2px;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            min-width: 0;
+            white-space: nowrap;
+        }
+
+        .step-number {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            color: #8e8e93;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 10px;
+            margin-bottom: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-number {
+            background: linear-gradient(135deg, #e8b4cb 0%, #d4a574 100%);
+            color: white;
+        }
+
+        .step-text {
+            font-size: 8px;
+            color: #8e8e93;
+            text-align: center;
+            font-weight: 500;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .step.active .step-text {
+            color: #d4a574;
+            font-weight: 600;
+        }
+
+        .booking-step {
+            min-height: 300px;
+        }
+
+        .booking-step.hidden {
+            display: none;
+        }
+
+        .booking-step h3 {
+            color: #1d1d1f;
+            margin-bottom: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: -0.2px;
+        }
+
+        /* メニュー選択 - Bento Planner風 */
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 6px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            min-height: 35px;
+        }
+
+        .menu-item:active {
+            transform: scale(0.98);
+            background: #f8f8f8;
+        }
+
+        .menu-item.selected {
+            border-color: #8b5fbf;
+            background: #f8f6ff;
+        }
+
+        .menu-icon {
+            width: 20px;
+            height: 20px;
+            background: #f2f2f7;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            flex-shrink: 0;
+        }
+
+        .menu-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .menu-item h4 {
+            color: #1d1d1f;
+            margin: 0 0 1px 0;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        .menu-description {
+            color: #8e8e93;
+            font-size: 9px;
+            line-height: 1.2;
+            margin: 0 0 2px 0;
+        }
+
+        .menu-price-section {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .menu-price {
+            color: #1d1d1f;
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .menu-duration {
+            color: #8e8e93;
+            font-size: 7px;
+            background: #f2f2f7;
+            padding: 1px 3px;
+            border-radius: 3px;
+        }
+
+        .menu-meta {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 2px;
+        }
+
+        .menu-time-icon, .menu-price-icon {
+            width: 8px;
+            height: 8px;
+            color: #8e8e93;
+        }
+
+        .menu-time {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .menu-price {
+            color: #e8b4cb;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* 日時選択 */
+        .datetime-selection {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .calendar-section h4,
+        .time-section h4 {
+            color: #d4a574;
+            margin-bottom: 10px;
+            font-size: 10px;
+        }
+
+        .calendar {
+            background: #faf8f5;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .calendar-nav {
+            background: #f2f2f7;
+            border: none;
+            font-size: 10px;
+            color: #8e8e93;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-nav:hover {
+            background: #8b5fbf;
+            color: white;
+        }
+
+        .calendar-month {
+            font-size: 10px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #f5f5f5;
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 1px;
+        }
+
+        #calendarDays {
+            display: contents;
+        }
+
+        .calendar-day-header {
+            padding: 6px 4px;
+            text-align: center;
+            font-size: 9px;
+            color: #8e8e93;
+            font-weight: 600;
+            background: white;
+        }
+
+        .calendar-day {
+            padding: 8px 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+            border: none;
+            font-size: 11px;
+            font-weight: 500;
+            color: #1d1d1f;
+            min-height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-day:hover:not(.disabled) {
+            background: #f8f6ff;
+            color: #8b5fbf;
+        }
+
+        .calendar-day.selected {
+            background: linear-gradient(135deg, #8b5fbf 0%, #9c6bc7 100%);
+            color: white;
+            font-weight: 600;
+        }
+
+        .calendar-day.disabled {
+            color: #d1d1d6;
+            cursor: not-allowed;
+            background: #fafafa;
+        }
+
+        .calendar-day.other-month {
+            color: #d1d1d6;
+            background: #fafafa;
+        }
+
+        .time-slots {
+            background: #f8f8f8;
+            border-radius: 6px;
+            padding: 6px;
+            max-height: 200px;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 3px;
+        }
+
+        .time-slot {
+            background: white;
+            padding: 4px 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+            font-size: 8px;
+            font-weight: 500;
+            color: #1d1d1f;
+            min-height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .time-slot:hover {
+            border-color: #8b5fbf;
+            background: #f8f6ff;
+            color: #8b5fbf;
+            transform: translateY(-1px);
+        }
+
+        .time-slot.selected {
+            background: linear-gradient(135deg, #8b5fbf 0%, #9c6bc7 100%);
+            color: white;
+            border-color: #8b5fbf;
+            font-weight: 600;
+        }
+
+        .time-slot.disabled {
+            background: #fafafa;
+            color: #d1d1d6;
+            cursor: not-allowed;
+            border-color: #f0f0f0;
+        }
+
+        .select-date-first {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            font-size: 9px;
+        }
+
+        /* お客様情報 */
+        .customer-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* 予約確認 */
+        .booking-summary {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #faf8f5;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .summary-section {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .summary-section:last-child {
+            border-bottom: none;
+        }
+
+        .summary-section h4 {
+            color: #d4a574;
+            margin-bottom: 8px;
+            font-size: 10px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 0;
+        }
+
+        .summary-total {
+            text-align: center;
+            font-size: 11px;
+            color: #d4a574;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e8b4cb;
+        }
+
+        /* ナビゲーションボタン */
+        .booking-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .nav-button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 80px;
+        }
+
+        .prev-button {
+            background: #f8f8f8;
+            color: #8e8e93;
+            border: 1px solid #e0e0e0;
+        }
+
+        .prev-button:hover {
+            background: #f0f0f0;
+        }
+
+        .next-button {
+            background: linear-gradient(135deg, #8b5fbf 0%, #9c6bc7 100%);
+            color: white;
+            box-shadow: 0 2px 10px rgba(139, 95, 191, 0.2);
+        }
+
+        .next-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 95, 191, 0.3);
+            background: linear-gradient(135deg, #9c6bc7 0%, #ad7dd1 100%);
+        }
+
+        .nav-button.hidden {
+            display: none;
+        }
+
+        /* フローティングナビゲーション */
+        .floating-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.08);
+            border-top: 1px solid #f0f0f0;
+            z-index: 1000;
+            padding: 8px 0 calc(20px + env(safe-area-inset-bottom));
+            display: none;
+        }
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 100%;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #8e8e93;
+            padding: 4px 3px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            min-width: 40px;
+            flex: 1;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: #8b5fbf;
+        }
+
+        .nav-item svg {
+            margin-bottom: 2px;
+            width: 14px;
+            height: 18px;
+        }
+
+        .nav-item span {
+            font-size: 8px;
+            font-weight: 500;
+            letter-spacing: -0.2px;
+        }
+
+        /* 予約ボタンを大きく */
+        .nav-item.booking-btn {
+            background: linear-gradient(135deg, #8b5fbf 0%, #9c6bc7 100%);
+            color: white;
+            border-radius: 10px;
+            margin: 0 4px;
+            border-radius: 20px;
+            padding: 8px 10px;
+            box-shadow: 0 2px 10px rgba(232, 180, 203, 0.3);
+        }
+
+        .nav-item.booking-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(232, 180, 203, 0.4);
+        }
+
+        /* フッター */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0 60px;
+        }
+
+        footer p {
+            margin-bottom: 4px;
+            font-size: 7px;
+        }
+
+        /* 予約システム レスポンシブ */
+        @media (max-width: 768px) {
+            .booking-system {
+                padding: 15px 10px;
+            }
+
+            .booking-steps {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .step {
+                flex: 1;
+                min-width: 120px;
+            }
+
+            .step-text {
+                font-size: 7px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .datetime-selection {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .calendar-grid {
+                gap: 1px;
+            }
+
+            .calendar-day {
+                padding: 4px 2px;
+                font-size: 9px;
+            }
+
+            .booking-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-button {
+                order: 2;
+            }
+
+            .prev-button {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .booking-steps {
+                justify-content: center;
+            }
+
+            .step {
+                min-width: 80px;
+            }
+
+            .step-number {
+                width: 20px;
+                height: 20px;
+                font-size: 8px;
+            }
+
+            .step-text {
+                font-size: 6px;
+            }
+
+            .menu-item {
+                padding: 8px;
+            }
+
+            .calendar {
+                padding: 8px;
+            }
+
+            .time-slots {
+                padding: 6px;
+            }
+
+            .booking-summary {
+                padding: 10px;
+            }
+        }
+
+        /* レスポンシブデザイン */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 12px;
+            }
+
+            .hero-content {
+                padding: 16px 12px;
+            }
+
+            .hero-content h1 {
+                font-size: 12px;
+                line-height: 1.2;
+            }
+
+            .hero-content p {
+                font-size: 7px;
+                line-height: 1.2;
+                margin-bottom: 4px;
+            }
+
+            .logo {
+                max-width: 150px;
+                margin-bottom: 15px;
+            }
+
+            .section-title {
+                font-size: 9px;
+                font-weight: 700;
+                margin-bottom: 4px;
+            }
+
+            .section {
+                padding: 8px 0;
+            }
+
+            .services-grid,
+            .features-grid,
+            .staff-compact-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .access-content {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-table {
+                margin: 10px -10px;
+                border-radius: 8px;
+            }
+            
+            .pricing-table th,
+            .pricing-table td {
+                padding: 8px 4px;
+                font-size: 8px;
+            }
+            
+            .pricing-table th {
+                font-size: 9px;
+            }
+            
+            .pricing-table .price {
+                font-size: 9px;
+                font-weight: 700;
+            }
+            
+            .pricing-table table {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .contact-form {
+                padding: 15px 10px;
+            }
+
+            /* フローティングナビを表示 */
+            .floating-nav {
+                display: block;
+            }
+            
+            /* フローティングナビのための余白 */
+            body {
+                padding-bottom: 80px;
+            }
+
+            /* タップしやすいボタンサイズ */
+            .cta-button,
+            .nav-button,
+            .submit-button {
+                min-height: 30px;
+                padding: 8px 12px;
+                font-size: 9px;
+            }
+
+            .time-slot {
+                min-height: 24px;
+                padding: 6px;
+                font-size: 8px;
+            }
+
+            .calendar-day {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .menu-item {
+                min-height: 120px;
+                padding: 20px 15px;
+            }
+            
+            /* 予約確認画面の文字サイズを小さく */
+            .summary-section h4 {
+                font-size: 8px;
+            }
+            
+            .summary-item {
+                font-size: 9px;
+            }
+            
+            .summary-total {
+                font-size: 9px;
+            }
+            
+            .booking-step h3 {
+                font-size: 9px;
+                margin-bottom: 6px;
+            }
+            
+            .booking-summary {
+                padding: 8px;
+            }
+            
+            /* 予約内容確認の大きな見出し */
+            .booking-step h2 {
+                font-size: 12px;
+                margin-bottom: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 20px;
+                line-height: 1.2;
+            }
+
+            .hero-content p {
+                font-size: 13px;
+                margin-bottom: 16px;
+            }
+
+            .logo {
+                max-width: 120px;
+                margin-bottom: 12px;
+            }
+
+            .section-title {
+                font-size: 18px;
+                font-weight: 700;
+                margin-bottom: 12px;
+            }
+
+            .booking-step h3 {
+                font-size: 14px;
+                margin-bottom: 16px;
+            }
+
+            .step-number {
+                width: 24px;
+                height: 24px;
+                font-size: 11px;
+            }
+
+            .step-text {
+                font-size: 8px;
+                line-height: 1.1;
+            }
+
+            .booking-steps {
+                margin-bottom: 16px;
+                padding: 0 4px;
+            }
+
+            .step {
+                padding: 4px 1px;
+                min-width: 60px;
+            }
+
+            .hero-content {
+                padding: 20px 15px;
+            }
+
+            .section {
+                padding: 30px 0;
+            }
+
+            .service-card,
+            .staff-compact-card,
+            .testimonial-card {
+                margin-bottom: 20px;
+            }
+
+            .service-content {
+                padding: 20px;
+            }
+            
+            .staff-compact-card {
+                padding: 16px;
+            }
+
+            .feature-item {
+                padding: 30px 20px;
+            }
+
+            /* 予約システムのモバイル最適化 */
+            .booking-system {
+                padding: 12px;
+                margin-top: 12px;
+            }
+
+            .booking-steps {
+                margin-bottom: 12px;
+                padding: 0 4px;
+            }
+
+            .step {
+                padding: 4px 1px;
+                flex: 1;
+                min-width: 50px;
+            }
+
+            .step-number {
+                width: 18px;
+                height: 18px;
+                font-size: 9px;
+                margin-bottom: 2px;
+            }
+
+            .step-text {
+                font-size: 7px;
+                line-height: 1.1;
+            }
+
+            .booking-step h3 {
+                font-size: 11px;
+                margin-bottom: 8px;
+            }
+
+            .menu-item {
+                padding: 8px;
+                gap: 6px;
+                min-height: 40px;
+            }
+
+            .menu-icon {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+
+            .menu-item h4 {
+                font-size: 10px;
+            }
+
+            .menu-description {
+                font-size: 8px;
+            }
+
+            .menu-price {
+                font-size: 9px;
+            }
+
+            .menu-duration {
+                font-size: 7px;
+            }
+
+            .menu-meta {
+                gap: 2px;
+            }
+
+            .menu-time-icon {
+                width: 6px;
+                height: 6px;
+            }
+
+            .booking-step h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Script moved to end of body for better loading performance and to avoid DOMContentLoaded issues -->
+    <!-- ヘッダー／ファーストビュー -->
+    <header>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&h=600&fit=crop" alt="サロン内観" class="hero-bg">
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200&h=80&fit=crop&q=80" alt="Beauty Salon Luna" class="logo">
+                <h1>Beauty Salon Luna</h1>
+                <p>あなたの美しさを引き出す、心地よい空間でのひとときを</p>
+                <a href="#contact" class="cta-button">ご予約はこちら</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- サービス紹介 -->
+    <section class="section services">
+        <div class="container">
+            <h2 class="section-title">サービス紹介</h2>
+            
+            <!-- サービスカテゴリータブ -->
+            <div class="service-tabs">
+                <button class="tab-btn active" data-category="facial" onclick="showServiceCategory('facial')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2Z"/>
+                    </svg>
+                    フェイシャル
+                </button>
+                <button class="tab-btn" data-category="nail" onclick="showServiceCategory('nail')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L13.09 8.26L19 7L18.74 13.09L24 14.18L18.26 15.91L19 22L13.09 21.74L12 28L10.91 21.74L5 22L5.26 15.91L0 14.18L5.74 13.09L5 7L10.91 8.26L12 2Z"/>
+                    </svg>
+                    ネイル
+                </button>
+                <button class="tab-btn" data-category="body" onclick="showServiceCategory('body')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z"/>
+                    </svg>
+                    ボディ
+                </button>
+                <button class="tab-btn" data-category="special" onclick="showServiceCategory('special')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L13.09 8.26L19 7L18.74 13.09L24 14.18L18.26 15.91L19 22L13.09 21.74L12 28L10.91 21.74L5 22L5.26 15.91L0 14.18L5.74 13.09L5 7L10.91 8.26L12 2Z"/>
+                    </svg>
+                    スペシャル
+                </button>
+            </div>
+
+            <!-- サービス詳細コンテンツ -->
+            <div class="service-content-area">
+                <!-- フェイシャルカテゴリー -->
+                <div class="service-category active" id="facial-category">
+                    <div class="category-header">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&h=300&fit=crop" alt="フェイシャルエステ" class="category-image">
+                        <div class="category-info">
+                            <h3>フェイシャルエステ</h3>
+                            <p>お肌の悩みに合わせた最適な施術で、美しく輝く肌へ</p>
+                        </div>
+                    </div>
+                    <div class="service-items">
+                        <div class="service-item" onclick="toggleServiceDetail(this)">
+                            <div class="item-header">
+                                <span class="item-title">ベーシックフェイシャル</span>
+                                <span class="item-price">¥8,000</span>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-detail">
+                                <p><strong>施術時間:</strong> 60分</p>
+                                <p><strong>内容:</strong> クレンジング、角質ケア、マッサージ、パック、保湿</p>
+                                <p>お肌の基本的なケアを丁寧に行い、透明感のある美しい肌へ導きます。初回の方におすすめです。</p>
+                                <button class="reserve-button" onclick="startBookingFromMenu('ベーシックフェイシャル', 8000, 60)">このメニューで予約</button>
+                            </div>
+                        </div>
+                        <div class="service-item" onclick="toggleServiceDetail(this)">
+                            <div class="item-header">
+                                <span class="item-title">アンチエイジングケア</span>
+                                <span class="item-price">¥12,000</span>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-detail">
+                                <p><strong>施術時間:</strong> 90分</p>
+                                <p><strong>内容:</strong> 美容機器使用、リフトアップマッサージ、美容液導入</p>
+                                <p>年齢とともに気になるたるみやシワに特化した集中ケア。ハリと弾力のある若々しい肌を取り戻します。</p>
+                                <button class="reserve-button" onclick="startBookingFromMenu('アンチエイジングケア', 12000, 90)">このメニューで予約</button>
+                            </div>
+                        </div>
+                        <div class="service-item" onclick="toggleServiceDetail(this)">
+                            <div class="item-header">
+                                <span class="item-title">美白・毛穴ケア</span>
+                                <span class="item-price">¥10,000</span>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-detail">
+                                <p><strong>施術時間:</strong> 75分</p>
+                                <p><strong>内容:</strong> ピーリング、イオン導入、毛穴吸引、美白パック</p>
+                                <p>気になるシミや毛穴の黒ずみを徹底ケア。透明感あふれる美しい肌を目指します。</p>
+                                <button class="reserve-button" onclick="startBookingFromMenu('美白・毛穴ケア', 10000, 75)">このメニューで予約</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ネイルカテゴリー -->
+                <div class="service-category" id="nail-category">
+                    <div class="category-header">
+                        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=300&fit=crop" alt="ネイルケア" class="category-image">
+                        <div class="category-info">
+                            <h3>ネイルケア</h3>
+                            <p>美しい指先で女性らしさを演出</p>
+                        </div>
+                    </div>
+                    <div class="service-items">
+                        <div class="service-item" onclick="toggleServiceDetail(this)">
+                            <div class="item-header">
+                                <span class="item-title">ベーシックネイル</span>
+                                <span class="item-price">¥4,500</span>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-detail">
+                                <p><strong>施術時間:</strong> 60分</p>
+                                <p><strong>内容:</strong> ケア、ワンカラー、トップコート</p>
+                                <p>シンプルで上品な仕上がり。オフィスでも使えるナチュラルな美しさ。</p>
+                                <button class="reserve-button" onclick="startBookingFromMenu('ベーシックネイル', 4500, 60)">このメニューで予約</button>
+                            </div>
+                        </div>
+                        <div class="service-item" onclick="toggleServiceDetail(this)">
+                            <div class="item-header">
+                                <span class="item-title">ジェルネイル</span>
+                                <span class="item-price">¥6,500</span>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-detail">
+                                <p><strong>施術時間:</strong> 90分</p>
+                                <p><strong>内容:</strong> ハンドケア、ジェル施術、簡単アート</p>
+                                <p>長持ちするジェルネイルで、美しい指先を長期間キープ。</p>
+                                <button class="reserve-button" onclick="startBookingFromMenu('ジェルネイル', 6500, 90)">このメニューで予約</button>
+                            </div>
+                        </div>
+                        <div class="service-item" onclick="toggleServiceDetail(this)">
+                            <div class="item-header">
+                                <span class="item-title">アートネイル</span>
+                                <span class="item-price">¥9,000</span>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-detail">
+                                <p><strong>施術時間:</strong> 120分</p>
+                                <p><strong>内容:</strong> デザインアート、ストーン、グラデーション</p>
+                                <p>季節やイベントに合わせたオリジナルデザイン。あなただけの特別なネイル。</p>
+                                <button class="reserve-button" onclick="startBookingFromMenu('アートネイル', 9000, 120)">このメニューで予約</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ボディカテゴリー -->
+                <div class="service-category" id="body-category">
+                    <div class="category-header">
+                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&h=300&fit=crop&crop=center" alt="ボディケア" class="category-image">
+                        <div class="category-info">
+                            <h3>ボディトリートメント</h3>
+                            <p>心身の疲れを癒し、美しいボディラインへ</p>
+                        </div>
+                    </div>
+                    <div class="service-items">
+                        <div class="service-item" onclick="toggleServiceDetail(this)">
+                            <div class="item-header">
+                                <span class="item-title">リラクゼーションマッサージ</span>
+                                <span class="item-price">¥8,000</span>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-detail">
+                                <p><strong>施術時間:</strong> 60分</p>
+                                <p><strong>内容:</strong> アロマオイルマッサージ、リンパケア</p>
+                                <p>日頃の疲れとストレスを解放。心地よいアロマの香りで深いリラクゼーション。</p>
+                                <button class="reserve-button" onclick="startBookingFromMenu('リラクゼーションマッサージ', 8000, 60)">このメニューで予約</button>
+                            </div>
+                        </div>
+                        <div class="service-item" onclick="toggleServiceDetail(this)">
+                            <div class="item-header">
+                                <span class="item-title">ボディシェイプ</span>
+                                <span class="item-price">¥12,000</span>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-detail">
+                                <p><strong>施術時間:</strong> 90分</p>
+                                <p><strong>内容:</strong> セルライトケア、引き締めマッサージ、ボディパック</p>
+                                <p>気になる部分を集中ケア。理想のボディラインを目指します。</p>
+                                <button class="reserve-button" onclick="startBookingFromMenu('ボディシェイプ', 12000, 90)">このメニューで予約</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- スペシャルカテゴリー -->
+                <div class="service-category" id="special-category">
+                    <div class="category-header">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=300&fit=crop" alt="スペシャルメニュー" class="category-image">
+                        <div class="category-info">
+                            <h3>スペシャルメニュー</h3>
+                            <p>特別な日のための贅沢なひととき</p>
+                        </div>
+                    </div>
+                    <div class="service-items">
+                        <div class="service-item" onclick="toggleServiceDetail(this)">
+                            <div class="item-header">
+                                <span class="item-title">ブライダルコース</span>
+                                <span class="item-price">¥25,000</span>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-detail">
+                                <p><strong>施術時間:</strong> 180分</p>
+                                <p><strong>内容:</strong> フェイシャル、ボディ、ネイル、メイク</p>
+                                <p>人生最高の日のために。トータルビューティーで最高の輝きを演出します。</p>
+                                <button class="reserve-button" onclick="startBookingFromMenu('ブライダルコース', 25000, 180)">このメニューで予約</button>
+                            </div>
+                        </div>
+                        <div class="service-item" onclick="toggleServiceDetail(this)">
+                            <div class="item-header">
+                                <span class="item-title">季節限定コース</span>
+                                <span class="item-price">¥15,000</span>
+                                <span class="toggle-icon">+</span>
+                            </div>
+                            <div class="item-detail">
+                                <p><strong>施術時間:</strong> 120分</p>
+                                <p><strong>内容:</strong> 季節の美容成分使用、限定トリートメント</p>
+                                <p>その時期だけの特別なケア。季節の変わり目のお肌を美しく整えます。</p>
+                                <button class="reserve-button" onclick="startBookingFromMenu('季節限定コース', 15000, 120)">このメニューで予約</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- サロンの特徴 -->
+    <section class="section features">
+        <div class="container">
+            <h2 class="section-title">サロンの特徴</h2>
+            
+            <!-- 特徴カード表示 -->
+            <div class="features-compact-grid">
+                <div class="feature-compact-card" onclick="toggleFeatureDetail(this, 'private')">
+                    <div class="feature-compact-header">
+                        <div class="feature-compact-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L13.09 8.26L19 7L18.74 13.09L24 14.18L18.26 15.91L19 22L13.09 21.74L12 28L10.91 21.74L5 22L5.26 15.91L0 14.18L5.74 13.09L5 7L10.91 8.26L12 2Z"/>
+                            </svg>
+                        </div>
+                        <div class="feature-compact-content">
+                            <h4>プライベート空間</h4>
+                            <p>完全予約制の個室</p>
+                        </div>
+                        <div class="feature-expand-icon">›</div>
+                    </div>
+                </div>
+
+                <div class="feature-compact-card" onclick="toggleFeatureDetail(this, 'professional')">
+                    <div class="feature-compact-header">
+                        <div class="feature-compact-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z"/>
+                            </svg>
+                        </div>
+                        <div class="feature-compact-content">
+                            <h4>プロの技術</h4>
+                            <p>経験豊富なスタッフ</p>
+                        </div>
+                        <div class="feature-expand-icon">›</div>
+                    </div>
+                </div>
+
+                <div class="feature-compact-card" onclick="toggleFeatureDetail(this, 'quality')">
+                    <div class="feature-compact-header">
+                        <div class="feature-compact-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM7 12C6.45 12 6 11.55 6 11C6 10.45 6.45 10 7 10C7.55 10 8 10.45 8 11C8 11.55 7.55 12 7 12ZM12 18C10.34 18 8.93 17.16 8.26 15.9L9.64 15.28C10.07 16.11 10.97 16.67 12 16.67C13.03 16.67 13.93 16.11 14.36 15.28L15.74 15.9C15.07 17.16 13.66 18 12 18ZM17 12C16.45 12 16 11.55 16 11C16 10.45 16.45 10 17 10C17.55 10 18 10.45 18 11C18 11.55 17.55 12 17 12Z"/>
+                            </svg>
+                        </div>
+                        <div class="feature-compact-content">
+                            <h4>高品質製品</h4>
+                            <p>厳選されたオーガニック</p>
+                        </div>
+                        <div class="feature-expand-icon">›</div>
+                    </div>
+                </div>
+
+                <div class="feature-compact-card" onclick="toggleFeatureDetail(this, 'relaxation')">
+                    <div class="feature-compact-header">
+                        <div class="feature-compact-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM7 12C6.45 12 6 11.55 6 11C6 10.45 6.45 10 7 10C7.55 10 8 10.45 8 11C8 11.55 7.55 12 7 12ZM12 18C10.34 18 8.93 17.16 8.26 15.9L9.64 15.28C10.07 16.11 10.97 16.67 12 16.67C13.03 16.67 13.93 16.11 14.36 15.28L15.74 15.9C15.07 17.16 13.66 18 12 18ZM17 12C16.45 12 16 11.55 16 11C16 10.45 16.45 10 17 10C17.55 10 18 10.45 18 11C18 11.55 17.55 12 17 12Z"/>
+                            </svg>
+                        </div>
+                        <div class="feature-compact-content">
+                            <h4>癒しの時間</h4>
+                            <p>心身のリラクゼーション</p>
+                        </div>
+                        <div class="feature-expand-icon">›</div>
+                    </div>
+                </div>
+
+                <div class="feature-compact-card" onclick="toggleFeatureDetail(this, 'custom')">
+                    <div class="feature-compact-header">
+                        <div class="feature-compact-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2L13.09 8.26L19 7L18.74 13.09L24 14.18L18.26 15.91L19 22L13.09 21.74L12 28L10.91 21.74L5 22L5.26 15.91L0 14.18L5.74 13.09L5 7L10.91 8.26L12 2Z"/>
+                            </svg>
+                        </div>
+                        <div class="feature-compact-content">
+                            <h4>オーダーメイド</h4>
+                            <p>あなただけの施術プラン</p>
+                        </div>
+                        <div class="feature-expand-icon">›</div>
+                    </div>
+                </div>
+
+                <div class="feature-compact-card" onclick="toggleFeatureDetail(this, 'hygiene')">
+                    <div class="feature-compact-header">
+                        <div class="feature-compact-icon">
+                            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z"/>
+                            </svg>
+                        </div>
+                        <div class="feature-compact-content">
+                            <h4>衛生管理</h4>
+                            <p>安心・安全な環境</p>
+                        </div>
+                        <div class="feature-expand-icon">›</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 詳細モーダル -->
+            <div class="feature-detail-modal hidden" id="featureModal">
+                <div class="modal-overlay" onclick="closeFeatureDetail()"></div>
+                <div class="modal-content">
+                    <button class="modal-close" onclick="closeFeatureDetail()">✕</button>
+                    <div class="modal-header">
+                        <div class="modal-icon" id="modalIcon"></div>
+                        <h3 id="modalTitle">特徴タイトル</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p id="modalDescription">詳細説明がここに表示されます。</p>
+                        <div class="modal-benefits">
+                            <h4>こんな方におすすめ</h4>
+                            <ul id="modalBenefits">
+                                <li>リスト項目</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- スタッフ紹介 -->
+    <section class="section staff">
+        <div class="container">
+            <h2 class="section-title">スタッフ</h2>
+            <div class="staff-compact-grid">
+                <div class="staff-compact-card" onclick="toggleStaffDetail(this)">
+                    <div class="staff-compact-header">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&crop=face" alt="佐藤美咲" class="staff-compact-photo">
+                        <div class="staff-compact-info">
+                            <h3 class="staff-compact-name">佐藤 美咲</h3>
+                            <p class="staff-compact-title">オーナー・エステティシャン</p>
+                        </div>
+                        <div class="staff-expand-icon">›</div>
+                    </div>
+                    <div class="staff-detail">
+                        <p>10年以上の経験を活かし、お客様の美しさを引き出すお手伝いをさせていただいております。お気軽にご相談ください。</p>
+                    </div>
+                </div>
+                <div class="staff-compact-card" onclick="toggleStaffDetail(this)">
+                    <div class="staff-compact-header">
+                        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=100&h=100&fit=crop&crop=face" alt="田中愛子" class="staff-compact-photo">
+                        <div class="staff-compact-info">
+                            <h3 class="staff-compact-name">田中 愛子</h3>
+                            <p class="staff-compact-title">ネイリスト</p>
+                        </div>
+                        <div class="staff-expand-icon">›</div>
+                    </div>
+                    <div class="staff-detail">
+                        <p>トレンドを取り入れたデザインから、お客様のライフスタイルに合わせたネイルアートまで、幅広くご提案いたします。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- サロンギャラリー -->
+    <section class="section salon-gallery">
+        <div class="container">
+            <h2 class="section-title">サロンの雰囲気</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&h=450&fit=crop" alt="サロン内観1" class="gallery-image">
+                    <div class="gallery-caption">落ち着いた空間でリラックス</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&h=450&fit=crop" alt="施術室" class="gallery-image">
+                    <div class="gallery-caption">プライベート個室完備</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&h=450&fit=crop" alt="ネイルコーナー" class="gallery-image">
+                    <div class="gallery-caption">充実のネイル設備</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=450&fit=crop" alt="待合室" class="gallery-image">
+                    <div class="gallery-caption">くつろぎの待合スペース</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- メニューと料金 -->
+    <section class="section pricing">
+        <div class="container">
+            <h2 class="section-title">メニューと料金</h2>
+            <div class="pricing-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>メニュー</th>
+                            <th>時間</th>
+                            <th>料金</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ベーシックフェイシャル</td>
+                            <td>60分</td>
+                            <td class="price">¥8,000</td>
+                        </tr>
+                        <tr>
+                            <td>アンチエイジングケア</td>
+                            <td>90分</td>
+                            <td class="price">¥12,000</td>
+                        </tr>
+                        <tr>
+                            <td>美白・毛穴ケア</td>
+                            <td>75分</td>
+                            <td class="price">¥10,000</td>
+                        </tr>
+                        <tr>
+                            <td>ベーシックネイル</td>
+                            <td>60分</td>
+                            <td class="price">¥4,500</td>
+                        </tr>
+                        <tr>
+                            <td>ジェルネイル</td>
+                            <td>90分</td>
+                            <td class="price">¥6,500</td>
+                        </tr>
+                        <tr>
+                            <td>アートネイル</td>
+                            <td>120分</td>
+                            <td class="price">¥9,000</td>
+                        </tr>
+                        <tr>
+                            <td>リラクゼーションマッサージ</td>
+                            <td>60分</td>
+                            <td class="price">¥8,000</td>
+                        </tr>
+                        <tr>
+                            <td>ボディシェイプ</td>
+                            <td>90分</td>
+                            <td class="price">¥12,000</td>
+                        </tr>
+                        <tr>
+                            <td>ブライダルコース</td>
+                            <td>180分</td>
+                            <td class="price">¥25,000</td>
+                        </tr>
+                        <tr>
+                            <td>季節限定コース</td>
+                            <td>120分</td>
+                            <td class="price">¥15,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- お客様の声 -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">お客様の声</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>いつも丁寧な施術で、お肌の調子がとても良くなりました。スタッフの方々も親切で、リラックスして過ごせる素敵なサロンです。</p>
+                    <div class="customer">M.K様（30代）</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>ネイルのデザインが豊富で、毎回新しいデザインを楽しめます。持ちも良く、お値段もリーズナブルなので定期的に通っています。</p>
+                    <div class="customer">A.S様（20代）</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>結婚式前にブライダルコースを利用しました。当日は多くの方に褒めていただき、本当に満足しています。ありがとうございました。</p>
+                    <div class="customer">Y.T様（20代）</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- よくある質問 -->
+    <section class="section faq">
+        <div class="container">
+            <h2 class="section-title">よくある質問</h2>
+            <div class="faq-item">
+                <div class="faq-question">予約はどのように取れますか？</div>
+                <div class="faq-answer">お電話またはWEBサイトのお問い合わせフォームからご予約いただけます。初回の方は、カウンセリングのお時間もいただきますので、お時間に余裕をもってご予約ください。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">支払い方法は何がありますか？</div>
+                <div class="faq-answer">現金、クレジットカード（VISA、MasterCard、JCB）、電子マネー、QRコード決済に対応しております。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">キャンセルはできますか？</div>
+                <div class="faq-answer">ご予約の変更・キャンセルは、前日までにご連絡ください。当日キャンセルの場合は、キャンセル料が発生する場合がございます。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- アクセス -->
+    <section class="section access">
+        <div class="container">
+            <h2 class="section-title">アクセス</h2>
+            <div class="access-content">
+                <div class="access-info">
+                    <h3>Beauty Salon Luna</h3>
+                    <p><strong>住所:</strong> 〒100-0001<br>東京都千代田区千代田1-1-1 美容ビル2F</p>
+                    <p><strong>電話:</strong> 03-1234-5678</p>
+                    <p><strong>営業時間:</strong> 10:00～19:00</p>
+                    <p><strong>定休日:</strong> 毎週月曜日</p>
+                    <p><strong>アクセス:</strong> JR山手線「東京駅」徒歩5分<br>地下鉄丸ノ内線「東京駅」徒歩3分</p>
+                </div>
+                <div class="map-container">
+                    <img src="https://placehold.co/600x300/f8f4f0/d4a574?text=Salon+Location+Map" alt="サロン地図" class="map-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 予約システム -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">ご予約・お問い合わせ</h2>
+            
+            <!-- 予約フォーム -->
+            <div class="booking-system">
+                <div class="booking-steps">
+                    <div class="step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-text">メニュー</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-text">日時</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-text">情報入力</span>
+                    </div>
+                    <div class="step" data-step="4">
+                        <span class="step-number">4</span>
+                        <span class="step-text">確認</span>
+                    </div>
+                </div>
+
+                <!-- ステップ1: メニュー選択 -->
+                <div class="booking-step" id="step1">
+                    <h3>メニューを選択してください</h3>
+                    <div class="menu-grid">
+                        <div class="menu-item" data-menu="facial-basic" data-duration="60" data-price="8000">
+                            <div class="menu-icon">💆‍♀️</div>
+                            <div class="menu-content">
+                                <h4>ベーシックフェイシャル</h4>
+                                <p class="menu-description">毛穴ケア・保湿・リラクゼーション</p>
+                                <div class="menu-meta">
+                                    <svg class="menu-time-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 13H7V11H11V7H13V13Z"/>
+                                    </svg>
+                                    <span class="menu-duration">60分</span>
+                                    <span class="menu-price">¥8,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-menu="facial-anti-aging" data-duration="90" data-price="12000">
+                            <div class="menu-icon">✨</div>
+                            <div class="menu-content">
+                                <h4>アンチエイジングケア</h4>
+                                <p class="menu-description">シワ・たるみ・美白ケア</p>
+                                <div class="menu-meta">
+                                    <svg class="menu-time-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 13H7V11H11V7H13V13Z"/>
+                                    </svg>
+                                    <span class="menu-duration">90分</span>
+                                    <span class="menu-price">¥12,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-menu="nail-gel" data-duration="90" data-price="6500">
+                            <div class="menu-icon">💅</div>
+                            <div class="menu-content">
+                                <h4>ジェルネイル</h4>
+                                <p class="menu-description">カラーネイル・ケア込み</p>
+                                <div class="menu-meta">
+                                    <svg class="menu-time-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 13H7V11H11V7H13V13Z"/>
+                                    </svg>
+                                    <span class="menu-duration">90分</span>
+                                    <span class="menu-price">¥6,500</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-menu="nail-art" data-duration="120" data-price="9000">
+                            <div class="menu-icon">🎨</div>
+                            <div class="menu-content">
+                                <h4>アートネイル</h4>
+                                <p class="menu-description">オリジナルデザイン・パーツ使用</p>
+                                <div class="menu-meta">
+                                    <svg class="menu-time-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 13H7V11H11V7H13V13Z"/>
+                                    </svg>
+                                    <span class="menu-duration">120分</span>
+                                    <span class="menu-price">¥9,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-menu="body-treatment" data-duration="60" data-price="10000">
+                            <div class="menu-icon">🌸</div>
+                            <div class="menu-content">
+                                <h4>リラクゼーションマッサージ</h4>
+                                <p class="menu-description">全身リンパ・アロマオイル</p>
+                                <div class="menu-meta">
+                                    <svg class="menu-time-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 12 22 12 2ZM13 13H7V11H11V7H13V13Z"/>
+                                    </svg>
+                                    <span class="menu-duration">60分</span>
+                                    <span class="menu-price">¥8,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-menu="whitening" data-duration="75" data-price="10000">
+                            <div class="menu-icon">✨</div>
+                            <div class="menu-content">
+                                <h4>美白・毛穴ケア</h4>
+                                <p class="menu-description">ピーリング・イオン導入・毛穴吸引</p>
+                                <div class="menu-meta">
+                                    <svg class="menu-time-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 13H7V11H11V7H13V13Z"/>
+                                    </svg>
+                                    <span class="menu-duration">75分</span>
+                                    <span class="menu-price">¥10,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-menu="basic-nail" data-duration="60" data-price="4500">
+                            <div class="menu-icon">💅</div>
+                            <div class="menu-content">
+                                <h4>ベーシックネイル</h4>
+                                <p class="menu-description">ケア・ワンカラー・トップコート</p>
+                                <div class="menu-meta">
+                                    <svg class="menu-time-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 13H7V11H11V7H13V13Z"/>
+                                    </svg>
+                                    <span class="menu-duration">60分</span>
+                                    <span class="menu-price">¥4,500</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-menu="body-shape" data-duration="90" data-price="12000">
+                            <div class="menu-icon">🌸</div>
+                            <div class="menu-content">
+                                <h4>ボディシェイプ</h4>
+                                <p class="menu-description">セルライトケア・引き締めマッサージ</p>
+                                <div class="menu-meta">
+                                    <svg class="menu-time-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 13H7V11H11V7H13V13Z"/>
+                                    </svg>
+                                    <span class="menu-duration">90分</span>
+                                    <span class="menu-price">¥12,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-menu="bridal" data-duration="180" data-price="25000">
+                            <div class="menu-icon">👰</div>
+                            <div class="menu-content">
+                                <h4>ブライダルコース</h4>
+                                <p class="menu-description">フェイシャル＋ボディ＋ネイル</p>
+                                <div class="menu-meta">
+                                    <svg class="menu-time-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 13H7V11H11V7H13V13Z"/>
+                                    </svg>
+                                    <span class="menu-duration">180分</span>
+                                    <span class="menu-price">¥25,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-item" data-menu="seasonal" data-duration="120" data-price="15000">
+                            <div class="menu-icon">🌿</div>
+                            <div class="menu-content">
+                                <h4>季節限定コース</h4>
+                                <p class="menu-description">季節の美容成分使用・限定トリートメント</p>
+                                <div class="menu-meta">
+                                    <svg class="menu-time-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 13H7V11H11V7H13V13Z"/>
+                                    </svg>
+                                    <span class="menu-duration">120分</span>
+                                    <span class="menu-price">¥15,000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ステップ2: 日時選択 -->
+                <div class="booking-step hidden" id="step2">
+                    <h3>日時を選択してください</h3>
+                    <div class="datetime-selection">
+                        <div class="calendar-section">
+                            <h4>日付を選択</h4>
+                            <div class="calendar">
+                                <div class="calendar-header">
+                                    <button type="button" class="calendar-nav" id="prevMonth">‹</button>
+                                    <div class="calendar-month" id="currentMonth">2024年 7月</div>
+                                    <button type="button" class="calendar-nav" id="nextMonth">›</button>
+                                </div>
+                                <div class="calendar-grid">
+                                    <div class="calendar-day-header">日</div>
+                                    <div class="calendar-day-header">月</div>
+                                    <div class="calendar-day-header">火</div>
+                                    <div class="calendar-day-header">水</div>
+                                    <div class="calendar-day-header">木</div>
+                                    <div class="calendar-day-header">金</div>
+                                    <div class="calendar-day-header">土</div>
+                                    <div id="calendarDays"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="time-section">
+                            <h4>時間を選択</h4>
+                            <div class="time-slots" id="timeSlots">
+                                <p class="select-date-first">まず日付を選択してください</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ステップ3: お客様情報 -->
+                <div class="booking-step hidden" id="step3">
+                    <h3>お客様情報を入力してください</h3>
+                    <div class="customer-form">
+                        <div class="form-group">
+                            <label for="customerName">お名前 *</label>
+                            <input type="text" id="customerName" name="customerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerEmail">メールアドレス *</label>
+                            <input type="email" id="customerEmail" name="customerEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerPhone">電話番号 *</label>
+                            <input type="tel" id="customerPhone" name="customerPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerMessage">ご要望・ご質問</label>
+                            <textarea id="customerMessage" name="customerMessage" placeholder="アレルギーやご要望がございましたらお書きください。"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ステップ4: 予約確認 -->
+                <div class="booking-step hidden" id="step4">
+                    <h3>予約内容をご確認ください</h3>
+                    <div class="booking-summary">
+                        <div class="summary-section">
+                            <h4>選択メニュー</h4>
+                            <div class="summary-item">
+                                <span id="summaryMenu">-</span>
+                                <span id="summaryPrice">-</span>
+                            </div>
+                        </div>
+                        <div class="summary-section">
+                            <h4>予約日時</h4>
+                            <div class="summary-item">
+                                <span id="summaryDateTime">-</span>
+                                <span id="summaryDuration">-</span>
+                            </div>
+                        </div>
+                        <div class="summary-section">
+                            <h4>お客様情報</h4>
+                            <div class="summary-item">
+                                <span id="summaryCustomer">-</span>
+                            </div>
+                        </div>
+                        <div class="summary-total">
+                            <strong>合計金額: <span id="summaryTotal">¥0</span></strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ナビゲーションボタン -->
+                <div class="booking-navigation">
+                    <button type="button" class="nav-button prev-button hidden" id="prevButton">戻る</button>
+                    <button type="button" class="nav-button next-button" id="nextButton">次へ</button>
+                    <button type="button" class="nav-button submit-button hidden" id="submitButton">空席確認・予約する</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Beauty Salon Luna. All rights reserved.</p>
+            <p>〒100-0001 東京都千代田区千代田1-1-1 美容ビル2F | TEL: 03-1234-5678</p>
+        </div>
+    </footer>
+
+    <!-- フローティングナビゲーション -->
+    <nav class="floating-nav">
+        <div class="nav-items">
+            <a href="#" class="nav-item" onclick="showSection('services', event)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L13.09 8.26L19 7L18.74 13.09L24 14.18L18.26 15.91L19 22L13.09 21.74L12 28L10.91 21.74L5 22L5.26 15.91L0 14.18L5.74 13.09L5 7L10.91 8.26L12 2Z"/>
+                </svg>
+                <span>サービス</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showSection('staff', event)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z"/>
+                </svg>
+                <span>スタッフ</span>
+            </a>
+            <a href="#contact" class="nav-item booking-btn" onclick="showSection('contact', event)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V8H19V19ZM7 10H17V12H7V10ZM7 14H14V16H7V14Z"/>
+                </svg>
+                <span>予約</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showSection('pricing', event)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13.5 6L15.5 8L11.5 12L15.5 16L13.5 18L7.5 12L13.5 6Z"/>
+                </svg>
+                <span>料金</span>
+            </a>
+            <a href="tel:03-1234-5678" class="nav-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6.62 10.79C8.06 13.62 10.38 15.94 13.21 17.38L15.41 15.18C15.69 14.9 16.08 14.82 16.43 14.93C17.55 15.3 18.75 15.5 20 15.5C20.55 15.5 21 15.95 21 16.5V20C21 20.55 20.55 21 20 21C10.61 21 3 13.39 3 4C3 3.45 3.45 3 4 3H7.5C8.05 3 8.5 3.45 8.5 4C8.5 5.25 8.7 6.45 9.07 7.57C9.18 7.92 9.1 8.31 8.82 8.59L6.62 10.79Z"/>
+                </svg>
+                <span>電話</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // スムーススクロール機能
+        function scrollToSection(sectionId, event) {
+            if (event) {
+                event.preventDefault();
+            }
+            const element = document.querySelector('.' + sectionId) || document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // アクティブナビゲーション
+        function updateActiveNav() {
+            const sections = ['services', 'features', 'staff', 'pricing', 'testimonials', 'contact'];
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            let current = '';
+            sections.forEach(section => {
+                const element = document.querySelector('.' + section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= 100) {
+                        current = section;
+                    }
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('onclick') && item.getAttribute('onclick').includes(current)) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // スクロールイベント
+        // window.addEventListener('scroll', updateActiveNav); // タブ式なので無効化
+        
+        // PWA対応のサービスワーカー登録 (removed due to data: URL security issues)
+        // if ('serviceWorker' in navigator) {
+        //     window.addEventListener('load', function() {
+        //         navigator.serviceWorker.register('data:application/javascript,console.log("SW registered")');
+        //     });
+        // }
+        
+        // タブ式セクション切り替え
+        function showSection(sectionId, event) {
+            if (event) {
+                event.preventDefault();
+            }
+            
+            // Hide all sections
+            const sections = ['services', 'features', 'staff', 'salon-gallery', 'pricing', 'testimonials', 'faq', 'access', 'contact'];
+            sections.forEach(section => {
+                const element = document.querySelector('.' + section);
+                if (element) {
+                    element.style.display = 'none';
+                }
+            });
+            
+            // Show selected section
+            const element = document.querySelector('.' + sectionId) || document.getElementById(sectionId);
+            if (element) {
+                element.style.display = 'block';
+                // セクション上部にスクロール
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
+            }
+            
+            // Update active navigation
+            updateActiveNavForTabs(sectionId);
+        }
+        
+        function updateActiveNavForTabs(activeSection) {
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                const onclick = item.getAttribute('onclick');
+                if (onclick && onclick.includes(activeSection)) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // サービスカテゴリー切り替え
+        function showServiceCategory(categoryId) {
+            // タブの切り替え
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-category="${categoryId}"]`).classList.add('active');
+
+            // コンテンツの切り替え
+            document.querySelectorAll('.service-category').forEach(category => {
+                category.classList.remove('active');
+            });
+            document.getElementById(`${categoryId}-category`).classList.add('active');
+
+            // 展開されている詳細を閉じる
+            document.querySelectorAll('.service-item.expanded').forEach(item => {
+                item.classList.remove('expanded');
+            });
+        }
+
+        // サービス詳細の展開/折りたたみ
+        function toggleServiceDetail(element) {
+            const isExpanded = element.classList.contains('expanded');
+            
+            // 同じカテゴリー内の他の展開を閉じる
+            const parent = element.closest('.service-category');
+            parent.querySelectorAll('.service-item.expanded').forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('expanded');
+                }
+            });
+
+            // クリックされた要素の展開/折りたたみ
+            element.classList.toggle('expanded');
+
+            // アニメーション効果
+            if (!isExpanded) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest'
+                });
+            }
+        }
+
+        // 特徴詳細データ
+        const featureDetails = {
+            private: {
+                title: 'プライベート空間',
+                icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.09 8.26L19 7L18.74 13.09L24 14.18L18.26 15.91L19 22L13.09 21.74L12 28L10.91 21.74L5 22L5.26 15.91L0 14.18L5.74 13.09L5 7L10.91 8.26L12 2Z"/></svg>',
+                description: '完全予約制の個室で、他のお客様と顔を合わせることなく、リラックスしてお過ごしいただけます。プライベートな空間で、ゆったりとした特別な時間をお楽しみください。',
+                benefits: [
+                    '他のお客様の目を気にせずリラックス',
+                    '施術中の会話も周りを気にせず自由に',
+                    '完全予約制で待ち時間なし',
+                    'プライベートな相談も安心'
+                ]
+            },
+            professional: {
+                title: 'プロの技術',
+                icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z"/></svg>',
+                description: '経験豊富な有資格者のスタッフが、お客様一人ひとりのお悩みに寄り添い、最適な施術をご提案いたします。継続的な技術向上に努め、常に最高のサービスを提供します。',
+                benefits: [
+                    '豊富な経験を持つ有資格スタッフ',
+                    '丁寧なカウンセリングで最適なプランを提案',
+                    '最新技術の習得と技術向上',
+                    'お客様のお悩みに合わせたオーダーメイド施術'
+                ]
+            },
+            quality: {
+                title: '高品質製品',
+                icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM7 12C6.45 12 6 11.55 6 11C6 10.45 6.45 10 7 10C7.55 10 8 10.45 8 11C8 11.55 7.55 12 7 12Z"/></svg>',
+                description: 'お客様のお肌に直接触れるものだからこそ、厳選されたオーガニック製品や最新の美容成分を配合した化粧品のみを使用しています。安心・安全にこだわった高品質な製品です。',
+                benefits: [
+                    'オーガニック・自然由来成分使用',
+                    '敏感肌の方も安心の低刺激処方',
+                    '最新の美容成分を配合',
+                    '厳格な品質管理をクリアした製品のみ'
+                ]
+            },
+            relaxation: {
+                title: '癒しの時間',
+                icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z"/></svg>',
+                description: '心地よいアロマの香りと癒しの音楽に包まれた空間で、日常の疲れとストレスから解放されてください。心身ともにリフレッシュできる、特別なひとときをお過ごしいただけます。',
+                benefits: [
+                    '心地よいアロマの香りでリラックス',
+                    '癒しの音楽で心を落ち着かせる',
+                    '日常の疲れとストレスを解放',
+                    '心身ともにリフレッシュできる空間'
+                ]
+            },
+            custom: {
+                title: 'オーダーメイド',
+                icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.09 8.26L19 7L18.74 13.09L24 14.18L18.26 15.91L19 22L13.09 21.74L12 28L10.91 21.74L5 22L5.26 15.91L0 14.18L5.74 13.09L5 7L10.91 8.26L12 2Z"/></svg>',
+                description: 'お客様のライフスタイル、ご要望、お肌の状態に合わせて、完全にカスタマイズされた施術プランをご提案いたします。あなただけの美しさを引き出すお手伝いをします。',
+                benefits: [
+                    'お客様の要望に100%対応',
+                    'ライフスタイルに合わせたプラン',
+                    '肌質・体質に合わせた施術',
+                    '定期的なプランの見直しとアップデート'
+                ]
+            },
+            hygiene: {
+                title: '衛生管理',
+                icon: '<svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z"/></svg>',
+                description: '徹底した衛生管理のもと、安心・安全な環境でサービスを提供しています。器具の消毒・滅菌、清潔な施術環境の維持により、お客様に安心してご利用いただけます。',
+                benefits: [
+                    '器具の徹底的な消毒・滅菌',
+                    '清潔な施術環境の維持',
+                    '定期的な環境チェックと改善',
+                    '安心・安全なサービス提供'
+                ]
+            }
+        };
+
+        // 特徴詳細モーダル表示
+        function toggleFeatureDetail(element, featureId) {
+            const modal = document.getElementById('featureModal');
+            const feature = featureDetails[featureId];
+            
+            if (!feature) return;
+
+            // モーダル内容を更新
+            document.getElementById('modalIcon').innerHTML = feature.icon;
+            document.getElementById('modalTitle').textContent = feature.title;
+            document.getElementById('modalDescription').textContent = feature.description;
+            
+            const benefitsList = document.getElementById('modalBenefits');
+            benefitsList.innerHTML = feature.benefits.map(benefit => `<li>${benefit}</li>`).join('');
+
+            // モーダル表示
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 特徴詳細モーダル閉じる
+        function closeFeatureDetail() {
+            const modal = document.getElementById('featureModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Escapeキーでモーダルを閉じる
+        function toggleStaffDetail(element) {
+            const detail = element.querySelector('.staff-detail');
+            const icon = element.querySelector('.staff-expand-icon');
+            
+            if (detail.classList.contains('show')) {
+                detail.classList.remove('show');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                detail.classList.add('show');
+                icon.style.transform = 'rotate(90deg)';
+            }
+        }
+
+        function submitBooking() {
+            // フォームデータを取得
+            const formData = {
+                menu: selectedMenu,
+                date: selectedDate,
+                time: selectedTime,
+                name: document.getElementById('customerName').value,
+                email: document.getElementById('customerEmail').value,
+                phone: document.getElementById('customerPhone').value,
+                message: document.getElementById('customerMessage').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // 入力チェック
+            if (!formData.name || !formData.email || !formData.phone) {
+                alert('必須項目を入力してください。');
+                return;
+            }
+
+            // ローカルストレージに保存（デモ用）
+            const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+            bookings.push(formData);
+            localStorage.setItem('bookings', JSON.stringify(bookings));
+
+            // メール送信（デモ用 - 実際のアプリでは mailto: を使用）
+            const emailBody = `
+新しい予約がありました：
+
+【メニュー】${formData.menu}
+【日時】${formData.date} ${formData.time}
+【お客様名】${formData.name}
+【メールアドレス】${formData.email}
+【電話番号】${formData.phone}
+【ご要望・ご質問】${formData.message}
+
+※このメールは自動送信されています。
+            `.trim();
+
+            const mailtoUrl = `mailto:salon@example.com?subject=【予約申込】${formData.name}様&body=${encodeURIComponent(emailBody)}`;
+            
+            // 成功メッセージを表示
+            showSuccessMessage();
+            
+            // 少し待ってからメールアプリを開く
+            setTimeout(() => {
+                window.location.href = mailtoUrl;
+            }, 2000);
+        }
+
+        function showSuccessMessage() {
+            // 成功メッセージのHTMLを作成
+            const successHTML = `
+                <div class="success-message-overlay">
+                    <div class="success-message">
+                        <div class="success-icon">✓</div>
+                        <h3>予約申込を受け付けました</h3>
+                        <p>メールアプリが開きます。<br>送信を完了してください。</p>
+                        <p class="success-note">※デモ版では実際の予約は完了しません</p>
+                    </div>
+                </div>
+            `;
+            
+            // ページに追加
+            document.body.insertAdjacentHTML('beforeend', successHTML);
+            
+            // 3秒後に自動で閉じる
+            setTimeout(() => {
+                const overlay = document.querySelector('.success-message-overlay');
+                if (overlay) {
+                    overlay.remove();
+                }
+            }, 3000);
+        }
+
+        // デモ用: 保存された予約を確認する関数
+        function viewStoredBookings() {
+            const bookings = JSON.parse(localStorage.getItem('bookings') || '[]');
+            if (bookings.length === 0) {
+                console.log('まだ予約データがありません。');
+                return;
+            }
+            
+            console.log('=== 保存されている予約データ ===');
+            bookings.forEach((booking, index) => {
+                console.log(`\n予約 ${index + 1}:`);
+                console.log(`メニュー: ${booking.menu}`);
+                console.log(`日時: ${booking.date} ${booking.time}`);
+                console.log(`お客様名: ${booking.name}`);
+                console.log(`メール: ${booking.email}`);
+                console.log(`電話: ${booking.phone}`);
+                console.log(`要望: ${booking.message}`);
+                console.log(`登録日時: ${booking.timestamp}`);
+            });
+            console.log('\n※コンソールでviewStoredBookings()を実行すると確認できます');
+        }
+
+        // デモ用: ローカルストレージをクリア
+        function clearStoredBookings() {
+            localStorage.removeItem('bookings');
+            console.log('予約データをクリアしました。');
+        }
+
+        // メニュー詳細から予約を開始する関数
+        function startBookingFromMenu(menuName, price, duration) {
+            // 予約セクションまでスクロール
+            showSection('contact');
+            
+            // 少し待ってから予約システムを表示
+            setTimeout(() => {
+                // メニューを自動選択
+                const menuItem = document.querySelector(`[data-menu*="${menuName.toLowerCase()}"]`);
+                if (menuItem) {
+                    selectMenu(menuItem);
+                } else {
+                    // 手動で選択状態を設定
+                    selectedMenu = `${menuName} (¥${price.toLocaleString()}, ${duration}分)`;
+                }
+                
+                // ステップ2（日時選択）に進む
+                nextBookingStep();
+            }, 500);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeFeatureDetail();
+            }
+        });
+
+        // デモ用の説明をコンソールに出力
+        console.log('=== Beauty Salon Luna デモ版 ===');
+        console.log('利用可能な関数:');
+        console.log('- viewStoredBookings(): 保存された予約データを表示');
+        console.log('- clearStoredBookings(): 予約データをクリア');
+    </script>
+
+    <!-- 予約システムのJavaScript (moved from head for better loading performance) -->
+    <script>
+        // 予約システムのJavaScript
+        let currentStep = 1;
+        let selectedMenu = null;
+        let selectedDate = null;
+        let selectedTime = null;
+        let today = new Date();
+        let currentMonth = today.getMonth(); // 現在の月 (0-indexed)
+        let currentYear = today.getFullYear(); // 現在の年
+
+        // メニューデータ
+        const menuData = {
+            'facial-basic': { name: 'ベーシックフェイシャル', duration: 60, price: 8000 },
+            'facial-anti-aging': { name: 'アンチエイジングケア', duration: 90, price: 12000 },
+            'nail-gel': { name: 'ジェルネイル', duration: 90, price: 6500 },
+            'nail-art': { name: 'アートネイル', duration: 120, price: 9000 },
+            'body-treatment': { name: 'リラクゼーションマッサージ', duration: 60, price: 8000 },
+            'whitening': { name: '美白・毛穴ケア', duration: 75, price: 10000 },
+            'basic-nail': { name: 'ベーシックネイル', duration: 60, price: 4500 },
+            'body-shape': { name: 'ボディシェイプ', duration: 90, price: 12000 },
+            'bridal': { name: 'ブライダルコース', duration: 180, price: 25000 },
+            'seasonal': { name: '季節限定コース', duration: 120, price: 15000 }
+        };
+
+        // 営業時間設定
+        const businessHours = {
+            start: 10,
+            end: 19,
+            closedDays: [1] // 月曜日休み (0=日曜日)
+        };
+
+        function initializeBookingSystem() {
+            console.log('Initializing booking system...');
+            
+            // 初期ステップを1に設定
+            currentStep = 1;
+            showStep(1);
+
+            // メニュー選択イベント
+            const menuItems = document.querySelectorAll('.menu-item');
+            console.log('Found menu items:', menuItems.length);
+            menuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    selectMenu(this);
+                });
+            });
+
+            // ナビゲーションボタン
+            const nextBtn = document.getElementById('nextButton');
+            const prevBtn = document.getElementById('prevButton');
+            const submitBtn = document.getElementById('submitButton');
+            
+            console.log('Buttons found:', {nextBtn, prevBtn, submitBtn});
+            
+            if (nextBtn) nextBtn.addEventListener('click', nextStep);
+            if (prevBtn) prevBtn.addEventListener('click', prevStep);
+            if (submitBtn) submitBtn.addEventListener('click', submitBooking);
+
+            // カレンダーナビゲーション
+            const prevMonth = document.getElementById('prevMonth');
+            const nextMonth = document.getElementById('nextMonth');
+            
+            if (prevMonth) prevMonth.addEventListener('click', () => changeMonth(-1));
+            if (nextMonth) nextMonth.addEventListener('click', () => changeMonth(1));
+
+            // カレンダー初期表示
+            updateCalendar();
+        }
+
+        function selectMenu(menuElement) {
+            console.log('selectMenu called', menuElement);
+            // 既存の選択をクリア
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+
+            // 新しい選択を設定
+            menuElement.classList.add('selected');
+            selectedMenu = menuElement.dataset.menu;
+            console.log('selectedMenu:', selectedMenu);
+        }
+
+        function nextStep() {
+            console.log('nextStep called, currentStep:', currentStep, 'selectedMenu:', selectedMenu);
+            if (currentStep === 1) {
+                if (!selectedMenu) {
+                    alert('メニューを選択してください。');
+                    return;
+                }
+                currentStep = 2;
+                showStep(2);
+            } else if (currentStep === 2) {
+                if (!selectedDate || !selectedTime) {
+                    alert('日時を選択してください。');
+                    return;
+                }
+                currentStep = 3;
+                showStep(3);
+            } else if (currentStep === 3) {
+                if (!validateCustomerInfo()) {
+                    return;
+                }
+                currentStep = 4;
+                showStep(4);
+                updateBookingSummary();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        }
+
+        function showStep(stepNumber) {
+            console.log('showStep called with:', stepNumber);
+            
+            // ステップ表示を更新
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            const activeStep = document.querySelector(`[data-step="${stepNumber}"]`);
+            if (activeStep) {
+                activeStep.classList.add('active');
+                console.log('Active step updated:', stepNumber);
+            } else {
+                console.error('Step element not found:', stepNumber);
+            }
+
+            // ステップコンテンツを表示
+            document.querySelectorAll('.booking-step').forEach(step => {
+                step.classList.add('hidden');
+            });
+            const currentStepElement = document.getElementById(`step${stepNumber}`);
+            if (currentStepElement) {
+                currentStepElement.classList.remove('hidden');
+                console.log('Step content shown:', stepNumber);
+            } else {
+                console.error('Step content element not found:', stepNumber);
+            }
+
+            // ボタンの表示を更新
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            const submitButton = document.getElementById('submitButton');
+
+            if (prevButton) prevButton.classList.toggle('hidden', stepNumber === 1);
+            if (nextButton) nextButton.classList.toggle('hidden', stepNumber === 4);
+            if (submitButton) submitButton.classList.toggle('hidden', stepNumber !== 4);
+            
+            console.log('Button visibility updated for step:', stepNumber);
+        }
+
+        function changeMonth(direction) {
+            currentMonth += direction;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            updateCalendar();
+        }
+
+        function updateCalendar() {
+            const monthNames = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+            document.getElementById('currentMonth').textContent = `${currentYear}年 ${monthNames[currentMonth]}`;
+
+            const firstDay = new Date(currentYear, currentMonth, 1);
+            const firstDayOfWeek = firstDay.getDay(); // 0=日曜日, 1=月曜日, ...
+            
+            const calendarDays = document.getElementById('calendarDays');
+            calendarDays.innerHTML = '';
+
+            // 前月の日付で埋める
+            const prevMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+            const prevYear = currentMonth === 0 ? currentYear - 1 : currentYear;
+            const lastDayOfPrevMonth = new Date(prevYear, prevMonth + 1, 0).getDate();
+            
+            for (let i = firstDayOfWeek - 1; i >= 0; i--) {
+                const dayElement = document.createElement('div');
+                dayElement.classList.add('calendar-day', 'other-month');
+                dayElement.textContent = lastDayOfPrevMonth - i;
+                calendarDays.appendChild(dayElement);
+            }
+
+            // 今月の日付
+            const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            for (let day = 1; day <= lastDayOfMonth; day++) {
+                const currentDate = new Date(currentYear, currentMonth, day);
+                const dayElement = document.createElement('div');
+                dayElement.classList.add('calendar-day');
+                dayElement.textContent = day;
+
+                // 過去の日付または定休日は無効化
+                if (currentDate < today) {
+                    dayElement.classList.add('disabled');
+                } else if (businessHours.closedDays.includes(currentDate.getDay())) {
+                    dayElement.classList.add('disabled');
+                } else {
+                    // 有効な日付のみクリック可能にする
+                    dayElement.style.cursor = 'pointer';
+                    dayElement.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        selectDate(currentDate, e);
+                    });
+                }
+
+                calendarDays.appendChild(dayElement);
+            }
+
+            // 次月の日付で残りを埋める
+            const totalCells = 42; // 6週間 × 7日
+            const remainingCells = totalCells - firstDayOfWeek - lastDayOfMonth;
+            
+            for (let day = 1; day <= remainingCells; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.classList.add('calendar-day', 'other-month');
+                dayElement.textContent = day;
+                calendarDays.appendChild(dayElement);
+            }
+            
+            console.log('Calendar updated for:', currentYear, monthNames[currentMonth], 'First day of week:', firstDayOfWeek);
+        }
+
+        function selectDate(date, event) {
+            if (date < new Date().setHours(0, 0, 0, 0) || businessHours.closedDays.includes(date.getDay())) {
+                return;
+            }
+
+            selectedDate = date;
+            selectedTime = null;
+
+            // カレンダーの選択状態を更新
+            document.querySelectorAll('.calendar-day').forEach(day => {
+                day.classList.remove('selected');
+            });
+            event.target.classList.add('selected');
+
+            // 時間スロットを生成
+            generateTimeSlots(date);
+        }
+
+        function generateTimeSlots(date) {
+            const timeSlotsContainer = document.getElementById('timeSlots');
+            timeSlotsContainer.innerHTML = '';
+
+            if (!selectedMenu) {
+                // メニューが選択されていない場合、デフォルトで60分として表示
+                const duration = 60;
+                generateTimeSlotsWithDuration(date, duration, timeSlotsContainer);
+                return;
+            }
+
+            const menuInfo = menuData[selectedMenu];
+            
+            // メニュー情報が見つからない場合はデフォルト
+            if (!menuInfo) {
+                console.warn('Menu info not found for:', selectedMenu);
+                const duration = 60;
+                generateTimeSlotsWithDuration(date, duration, timeSlotsContainer);
+                return;
+            }
+
+            const duration = menuInfo.duration;
+            generateTimeSlotsWithDuration(date, duration, timeSlotsContainer);
+        }
+
+        function generateTimeSlotsWithDuration(date, duration, container) {
+            for (let hour = businessHours.start; hour < businessHours.end; hour++) {
+                for (let minute = 0; minute < 60; minute += 30) {
+                    const startTime = new Date(date);
+                    startTime.setHours(hour, minute, 0, 0);
+
+                    const endTime = new Date(startTime);
+                    endTime.setMinutes(endTime.getMinutes() + duration);
+
+                    if (endTime.getHours() >= businessHours.end) {
+                        break;
+                    }
+
+                    const timeSlot = document.createElement('button');
+                    timeSlot.type = 'button'; // Prevent form submission
+                    timeSlot.classList.add('time-slot');
+                    timeSlot.textContent = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')} - ${endTime.getHours().toString().padStart(2, '0')}:${endTime.getMinutes().toString().padStart(2, '0')}`;
+                    timeSlot.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        selectTime(startTime, timeSlot);
+                    });
+
+                    container.appendChild(timeSlot);
+                }
+            }
+        }
+
+        function selectTime(time, element) {
+            if (!time || !element) {
+                console.error('Invalid time or element provided to selectTime');
+                return;
+            }
+
+            selectedTime = time;
+
+            // 時間スロットの選択状態を更新
+            document.querySelectorAll('.time-slot').forEach(slot => {
+                slot.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            
+            console.log('Time selected:', time);
+        }
+
+        function validateCustomerInfo() {
+            const name = document.getElementById('customerName').value.trim();
+            const email = document.getElementById('customerEmail').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+
+            if (!name || !email || !phone) {
+                alert('必須項目をすべて入力してください。');
+                return false;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('有効なメールアドレスを入力してください。');
+                return false;
+            }
+
+            return true;
+        }
+
+        function updateBookingSummary() {
+            const menuInfo = menuData[selectedMenu];
+            
+            if (!menuInfo) {
+                console.error('Menu info not found for summary:', selectedMenu);
+                return;
+            }
+
+            const customerName = document.getElementById('customerName').value;
+            const customerEmail = document.getElementById('customerEmail').value;
+            const customerPhone = document.getElementById('customerPhone').value;
+
+            document.getElementById('summaryMenu').textContent = menuInfo.name;
+            document.getElementById('summaryPrice').textContent = `¥${menuInfo.price.toLocaleString()}`;
+            document.getElementById('summaryDateTime').textContent = `${selectedDate.getFullYear()}年${selectedDate.getMonth() + 1}月${selectedDate.getDate()}日 ${selectedTime.getHours().toString().padStart(2, '0')}:${selectedTime.getMinutes().toString().padStart(2, '0')}`;
+            document.getElementById('summaryDuration').textContent = `${menuInfo.duration}分`;
+            document.getElementById('summaryCustomer').textContent = `${customerName} (${customerEmail})`;
+            document.getElementById('summaryTotal').textContent = `¥${menuInfo.price.toLocaleString()}`;
+        }
+
+        function submitBooking() {
+            alert('予約が完了しました！確認メールをお送りいたします。');
+            
+            // 実際の実装では、ここでサーバーにデータを送信します
+            console.log('予約データ:', {
+                menu: selectedMenu,
+                date: selectedDate,
+                time: selectedTime,
+                customer: {
+                    name: document.getElementById('customerName').value,
+                    email: document.getElementById('customerEmail').value,
+                    phone: document.getElementById('customerPhone').value,
+                    message: document.getElementById('customerMessage').value
+                }
+            });
+
+            // フォームをリセット
+            resetBookingForm();
+        }
+
+        function resetBookingForm() {
+            currentStep = 1;
+            selectedMenu = null;
+            selectedDate = null;
+            selectedTime = null;
+            
+            showStep(1);
+            
+            // フォームをクリア
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerEmail').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('customerMessage').value = '';
+        }
+
+        // 初期化 - DOMContentLoaded wrapper removed, called directly
+        initializeBookingSystem();
+        
+        // 初期状態でサービスセクションを表示
+        setTimeout(() => {
+            showSection('services');
+        }, 100);
+    </script>
+</body>
+</html>

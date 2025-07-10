@@ -5,35 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ココロAI - あなたの毎日に、優しいAIの魔法を。</title>
     
-    <!-- 主要なファビコン設定 -->
     <link rel="shortcut icon" href="images/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
     <link rel="manifest" href="images/site.webmanifest">
     
-    <!-- その他のメタタグ (テーマカラーなど、manifest.jsonの内容と重複する場合あり) -->
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Zen Old Mincho for headings, Noto Sans JP for body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Old+Mincho:wght@700&display=swap" rel="stylesheet">
     
-    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* 最初はアニメーション対象を非表示にする */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        /* is-visibleクラスが付与されたら表示する */
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 
 </head>
 <body class="text-gray-800">
 
-    <!-- Header -->
     <header class="sticky top-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <!-- ロゴ画像 -->
             <a href="#" class="flex items-center">
                  <img src="images/cocoroai_logo.png" alt="ココロAI ロゴ" class="h-12 w-auto">
             </a>
@@ -41,6 +48,7 @@
                 <a href="#about" class="text-gray-600 hover:text-cyan-600 transition-colors">私たちについて</a>
                 <a href="#services" class="text-gray-600 hover:text-cyan-600 transition-colors">サービス</a>
                 <a href="#works" class="text-gray-600 hover:text-cyan-600 transition-colors">実績</a>
+                <a href="#template-sites" class="text-gray-600 hover:text-cyan-600 transition-colors">サンプルサイト</a>
                 <a href="#news" class="text-gray-600 hover:text-cyan-600 transition-colors">ニュース</a>
                 <a href="#company" class="text-gray-600 hover:text-cyan-600 transition-colors">会社概要</a>
                 <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg">お問い合わせ</a>
@@ -51,43 +59,40 @@
                 </svg>
             </button>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
             <a href="#about" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">私たちについて</a>
             <a href="#services" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">サービス</a>
             <a href="#works" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">実績</a>
+            <a href="#template-sites" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">テンプレートサイト</a>
             <a href="#news" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">ニュース</a>
             <a href="#company" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">会社概要</a>
             <a href="#contact" class="block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 text-center mt-2">お問い合わせ</a>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
         <section class="relative text-center py-20 md:py-32 bg-white overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-full bg-grid-gray-100/50 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
             <div class="container mx-auto px-6 relative z-10">
-                <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4 leading-tight fade-in-up">
+                <h1 class="text-3xl md:text-6xl font-bold text-gray-800 mb-4 leading-tight fade-in-up">
                     あなたの毎日に、<br class="md:hidden">優しいAIの<span class="text-gradient">魔法</span>を。
                 </h1>
-                <p class="text-2xl md:text-3xl font-semibold text-gradient mb-6 fade-in-up delay-50">
+                <p class="text-xl md:text-3xl font-semibold text-gradient mb-6 fade-in-up">
                     あなたの「想い」を、確かな「カタチ」に
                 </p>
-                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 fade-in-up delay-100">
+                <p class="text-base md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 fade-in-up">
                     ココロAIは、最先端のAI技術と「心」を繋ぎ、<br>あなたの日常をより豊かで、健やかで、楽しいものに変えるお手伝いをします。
                 </p>
-                <a href="#services" class="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 fade-in-up delay-200">
+                <a href="#services" class="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 fade-in-up">
                     サービスを見る
                 </a>
             </div>
         </section>
 
-        <!-- About Us Section -->
         <section id="about" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold mb-8 fade-in-up">テクノロジーは、もっと人の心に寄り添える。</h2>
-                <div class="max-w-4xl mx-auto text-left md:text-center text-gray-700 leading-relaxed space-y-6 fade-in-up delay-200">
+                <div class="max-w-4xl mx-auto text-left md:text-center text-gray-700 leading-relaxed space-y-6 fade-in-up">
                     <p>
                         私たちは、テクノロジーが人の感情や心の状態にも寄り添える時代を目指しています。AIは単なる自動化や効率化のツールではなく、日常の中で人の「こころ」に作用する、新しい価値の担い手であると考えています。
                     </p>
@@ -104,157 +109,187 @@
             </div>
         </section>
 
-        <!-- Services Section -->
         <section id="services" class="py-20">
             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
+                <div class="text-center mb-10">
                     <h2 class="text-3xl font-bold mb-2 fade-in-up">私たちのサービス</h2>
-                    <p class="text-gray-600 fade-in-up delay-100">あなたの毎日をサポートする、多彩なAIサービス</p>
+                    <p class="text-gray-600 fade-in-up">あなたの毎日をサポートする、多彩なAIサービス</p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Service Card 1: Bento Planner -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up delay-200">
-                        <div class="bg-rose-100 p-4 rounded-full mb-4">
-                            <img src="images/bento_planner_icon.png" alt="Bento Planner Icon" class="h-8 w-auto">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
+                        <div class="bg-rose-100 p-3 rounded-full mb-3">
+                            <img src="images/bento_planner_icon.png" alt="Bento Planner Icon" class="h-8 md:h-9 w-auto">
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Bento Planner</h3>
-                        <p class="text-gray-600 flex-grow">毎日の献立作りをAIがサポート。栄養バランスも彩りも考えたお弁当プランナーです。</p>
-                        <a href="https://bento.cocoroai.co.jp" target="_blank" class="mt-4 text-cyan-600 font-semibold hover:underline">詳しく見る &rarr;</a>
+                        <h3 class="text-base md:text-lg font-bold mb-2">Bento Planner</h3>
+                        <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">毎日の献立作りをAIがサポート。栄養バランスも彩りも考えたお弁当プランナーです。</p>
+                        <a href="https://bento.cocoroai.co.jp" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">詳しく見る &rarr;</a>
                     </div>
                     
-                    <!-- Service Card 2: 美肌コンシェルジュ -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up delay-400">
-                        <div class="bg-pink-100 p-4 rounded-full mb-4">
-                            <img src="images/bihada_icon.png" alt="美肌コンシェルジュ Icon" class="h-8 w-auto">
+                    <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
+                        <div class="bg-pink-100 p-3 rounded-full mb-3">
+                            <img src="images/bihada_icon.png" alt="美肌コンシェルジュ Icon" class="h-8 md:h-9 w-auto">
                         </div>
-                        <h3 class="text-xl font-bold mb-2">美肌コンシェルジュ</h3>
-                        <p class="text-gray-600 flex-grow">AIがあなたの肌質を分析し、最適なスキンケア方法をアドバイス。さらに、お客様の肌状態やご希望に応じて美容医療の提案も行います。</p>
-                        <a href="https://bihadaconcierge.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 font-semibold hover:underline">詳しく見る &rarr;</a>
+                        <h3 class="text-base md:text-lg font-bold mb-2">美肌コンシェルジュ</h3>
+                        <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">AIがあなたの肌質を分析し、最適なスキンケア方法や美容医療を提案します。</p>
+                        <a href="https://bihadaconcierge.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">詳しく見る &rarr;</a>
                     </div>
 
-                    <!-- Service Card 3: 癒しのクモちゃん -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up delay-200">
-                        <div class="bg-yellow-100 p-4 rounded-full mb-4">
-                            <img src="images/kumochan_icon.png" alt="癒しのクモちゃん Icon" class="h-8 w-auto">
+                    <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
+                        <div class="bg-yellow-100 p-3 rounded-full mb-3">
+                            <img src="images/kumochan_icon.png" alt="癒しのクモちゃん Icon" class="h-8 md:h-9 w-auto">
                         </div>
-                        <h3 class="text-xl font-bold mb-2">癒しのクモちゃん</h3>
-                        <p class="text-gray-600 flex-grow">忙しい毎日に寄り添う癒やしアプリ。タップするたび、クモちゃんが心温まるメッセージを紡ぎ出し、深い安らぎと前向きな気持ちを届けます。</p>
-                         <a href="https://apps.apple.com/us/app/%E7%99%92%E3%81%97%E3%81%AE%E3%82%AF%E3%83%A2%E3%81%AE%E3%81%A1%E3%82%83%E3%82%93/id6746834418?platform=iphone" target="_blank" class="mt-4 text-cyan-600 font-semibold hover:underline">App Storeで見る &rarr;</a>
+                        <h3 class="text-base md:text-lg font-bold mb-2">癒しのクモちゃん</h3>
+                        <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">忙しい毎日に寄り添う癒やしアプリ。タップで心温まるメッセージを紡ぎ出します。</p>
+                         <a href="https://apps.apple.com/us/app/%E7%99%92%E3%81%97%E3%81%AE%E3%82%AF%E3%83%A2%E3%81%AE%E3%81%A1%E3%82%83%E3%82%93/id6746834418?platform=iphone" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">App Store &rarr;</a>
                     </div>
                     
-                    <!-- Service Card 4: 癒しの白衣ちゃん -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up delay-300">
-                        <div class="bg-blue-100 p-4 rounded-full mb-4">
-                            <img src="images/nursechan_icon.png" alt="癒しの白衣ちゃん Icon" class="h-8 w-auto">
+                    <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
+                        <div class="bg-blue-100 p-3 rounded-full mb-3">
+                            <img src="images/nursechan_icon.png" alt="癒しの白衣ちゃん Icon" class="h-8 md:h-9 w-auto">
                         </div>
-                        <h3 class="text-xl font-bold mb-2">癒しの白衣ちゃん<br><span class="text-base font-normal">for 医療従事者の方</span></h3>
-                        <p class="text-gray-600 flex-grow">白衣の天使があなたを優しくサポート。疲れた心に安らぎのひとときを。</p>
-                        <a href="https://iyashinurse.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 font-semibold hover:underline">詳しく見る &rarr;</a>
+                        <h3 class="text-base md:text-lg font-bold mb-2">癒しの白衣ちゃん</h3>
+                        <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">医療従事者の方へ。白衣の天使があなたを優しくサポート。疲れた心に安らぎを。</p>
+                        <a href="https://iyashinurse.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">詳しく見る &rarr;</a>
                     </div>
 
-                    <!-- Service Card 5: 癒しの三角コーンちゃん -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up delay-200">
-                        <div class="bg-orange-100 p-4 rounded-full mb-4">
-                            <img src="images/traffic_cone_icon.png" alt="癒しの三角コーンちゃん Icon" class="h-8 w-auto">
+                    <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
+                        <div class="bg-orange-100 p-3 rounded-full mb-3">
+                            <img src="images/traffic_cone_icon.png" alt="癒しの三角コーンちゃん Icon" class="h-8 md:h-9 w-auto">
                         </div>
-                        <h3 class="text-xl font-bold mb-2">癒しの三角コーンちゃん<br><span class="text-base font-normal">for 現場でお仕事される方</span></h3>
-                        <p class="text-gray-600 flex-grow">現場で働く方々の心に寄り添い、日々の疲れを癒やすAIアプリです。</p>
-                        <a href="https://genba.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 font-semibold hover:underline">詳しく見る &rarr;</a>
+                        <h3 class="text-base md:text-lg font-bold mb-2">癒しの三角コーン</h3>
+                        <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">現場で働く方々の心に寄り添い、日々の疲れを癒やすAIアプリです。</p>
+                        <a href="https://genba.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">詳しく見る &rarr;</a>
                     </div>
 
-                    <!-- Service Card 6: 癒しのチョークちゃん -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up delay-300">
-                        <div class="bg-gray-200 p-4 rounded-full mb-4">
-                            <img src="images/chalk_icon.png" alt="癒しのチョークちゃん Icon" class="h-8 w-auto">
+                    <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
+                        <div class="bg-gray-200 p-3 rounded-full mb-3">
+                            <img src="images/chalk_icon.png" alt="癒しのチョークちゃん Icon" class="h-8 md:h-9 w-auto">
                         </div>
-                        <h3 class="text-xl font-bold mb-2">癒しのチョークちゃん<br><span class="text-base font-normal">for 学校の先生</span></h3>
-                        <p class="text-gray-600 flex-grow">学校の先生方をサポート。チョークのメッセージが教壇に立つあなたの心を癒やします。</p>
-                        <a href="https://iyashiteacher.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 font-semibold hover:underline">詳しく見る &rarr;</a>
+                        <h3 class="text-base md:text-lg font-bold mb-2">癒しのチョーク</h3>
+                        <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">学校の先生方をサポート。チョークのメッセージが教壇に立つ心を癒やします。</p>
+                        <a href="https://iyashiteacher.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">詳しく見る &rarr;</a>
                     </div>
 
-                    <!-- Service Card 7: 毎日のアファメーション -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up delay-400">
-                        <div class="bg-emerald-100 p-4 rounded-full mb-4">
-                            <img src="images/affirmation_icon.png" alt="毎日のアファメーション Icon" class="h-8 w-auto">
+                    <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
+                        <div class="bg-emerald-100 p-3 rounded-full mb-3">
+                            <img src="images/affirmation_icon.png" alt="毎日のアファメーション Icon" class="h-8 md:h-9 w-auto">
                         </div>
-                        <h3 class="text-xl font-bold mb-2">毎日のアファメーション</h3>
-                        <p class="text-gray-600 flex-grow">AIがあなたにぴったりの言葉を届けます。自己肯定感を高め、理想の自分へ。</p>
-                        <a href="https://affirmation.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 font-semibold hover:underline">詳しく見る &rarr;</a>
+                        <h3 class="text-base md:text-lg font-bold mb-2">毎日のアファメーション</h3>
+                        <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">AIがあなたにぴったりの言葉を届けます。自己肯定感を高め、理想の自分へ。</p>
+                        <a href="https://affirmation.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">詳しく見る &rarr;</a>
                     </div>
                     
-                    <!-- Service Card 8: 占い -->
-                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up delay-300">
-                        <div class="bg-purple-100 p-4 rounded-full mb-4">
-                            <img src="images/fortune_icon.png" alt="ココロAI 占い Icon" class="h-8 w-auto">
+                    <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
+                        <div class="bg-purple-100 p-3 rounded-full mb-3">
+                            <img src="images/fortune_icon.png" alt="ココロAI 占い Icon" class="h-8 md:h-9 w-auto">
                         </div>
-                        <h3 class="text-xl font-bold mb-2">ココロAI 占い</h3>
-                        <p class="text-gray-600 flex-grow">あなたの運勢をAIが占います。毎日をポジティブに過ごすためのヒントをどうぞ。</p>
-                        <a href="https://fortune.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 font-semibold hover:underline">詳しく見る &rarr;</a>
+                        <h3 class="text-base md:text-lg font-bold mb-2">ココロAI 占い</h3>
+                        <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">あなたの運勢をAIが占います。毎日をポジティブに過ごすためのヒントをどうぞ。</p>
+                        <a href="https://fortune.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">詳しく見る &rarr;</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Works/Case Studies Section -->
         <section id="works" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl font-bold mb-2 fade-in-up">実績 / Works</h2>
-                    <p class="text-gray-600 fade-in-up delay-100">ココロAIが手掛けてきたプロジェクトの一部をご紹介します。</p>
+                    <p class="text-gray-600 fade-in-up">ココロAIが手掛けてきたプロジェクトの一部をご紹介します。</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project Card 1: 漢字防ギャラリーサイト -->
-                    <div class="bg-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up delay-200">
+                    <div class="bg-gray-50 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
                         <div class="bg-blue-100 p-4 rounded-full mb-4">
-                            <!-- 漢字防ギャラリーサイトのロゴ画像 -->
-                            <img src="images/kanjinbou_logo.png" alt="漢字防ギャラリーサイト ロゴ" class="h-8 w-auto">
+                            <img src="images/kanjinbou_logo.png" alt="閑人房ギャラリーサイト ロゴ" class="h-8 w-auto">
                         </div>
                         <h3 class="text-xl font-bold mb-2">閑人房様ギャラリーサイト</h3>
                         <p class="text-gray-600 flex-grow">小規模ながらも、特定のニーズに応えるウェブギャラリーサイトを開発しました。シンプルながらも使いやすさを追求し、コンテンツの魅力を最大限に引き出すデザインを実現しています。</p>
                         <a href="https://cocoroai.github.io/kanjinbou-gallery/" target="_blank" class="mt-4 text-cyan-600 font-semibold hover:underline">サイトを見る &rarr;</a>
                     </div>
-                    
-                    <!-- 他の実績があればここに追加 -->
-                    <!-- <div class="bg-gray-50 p-8 rounded-2xl shadow-lg ...">...</div> -->
-
                 </div>
             </div>
         </section>
 
-        <!-- News/Announcements Section -->
+        <section id="template-sites" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-2 fade-in-up">サンプルサイト</h2>
+                    <p class="text-gray-600 fade-in-up">すぐに導入可能な、業界特化型のサンプルサイトです。お客様のビジネスに合わせて、他の業種にも柔軟に展開・カスタマイズ可能です。</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="md:order-1 text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 fade-in-up">
+                            サンプルサイトのご紹介
+                        </h3>
+                        <p class="text-lg text-gray-700 mb-4 fade-in-up">
+                            お客様のビジネスに合わせた、オーダーメイドのWebサイトやアプリ開発のイメージを具体的に掴んでいただくためのサンプルです。
+                        </p>
+                        <p class="text-lg text-gray-700 mb-4 fade-in-up">
+                            この美容室向けテンプレートは、モバイルに最適化されたデザインと、直感的なカレンダー予約システムが特徴です。
+                        </p>
+                        <p class="text-lg text-gray-700 mb-6 fade-in-up">
+                            サロンの魅力を最大限に引き出し、お客様が簡単にメニュー選択から日時予約まで完結できる実用的なサイトを、**他の様々な業種（飲食店、クリニック、教室など）にも柔軟に展開・カスタマイズ可能**です。
+                        </p>
+                        <a href="#contact" class="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition duration-300 hover:scale-105 fade-in-up">
+                            カスタマイズのご相談はこちら
+                        </a>
+                    </div>
+                    
+                    <div class="md:order-2 flex justify-center fade-in-up">
+                        <div class="mobile-frame">
+                            <iframe
+                                id="sample-site-iframe"
+                                data-src="samples/beauty-salon-template.html"
+                                class="w-full h-full border-none rounded-2xl"
+                                scrolling="auto">
+                            </iframe>
+                            <div class="home-button-mock"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <section id="news" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6 max-w-4xl">
-                <h2 class="text-center text-3xl font-bold mb-10 fade-in-up">ニュース / お知らせ</h2>
-                <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10 fade-in-up delay-100">
+                <h2 class="text-3xl font-bold mb-10 fade-in-up">ニュース / お知らせ</h2>
+                <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10 fade-in-up">
                     <ul class="space-y-4">
+                        <li class="border-b border-gray-200 pb-4">
+                            <a href="samples/beauty-salon-template.html" target="_blank" class="block hover:opacity-80 transition-opacity">
+                                <time datetime="2025-07-09" class="text-sm text-gray-500">2025.07.09</time>
+                                <p class="text-lg text-gray-800 font-medium">美容室向けサンプルサイトを公開しました。こちらは、他の業種にも柔軟に展開・カスタマイズ可能です。</p>
+                            </a>
+                        </li>
                         <li class="border-b border-gray-200 pb-4">
                             <a href="https://cocoroai.github.io/kanjinbou-gallery/" target="_blank" class="block hover:opacity-80 transition-opacity">
                                 <time datetime="2025-07-05" class="text-sm text-gray-500">2025.07.05</time>
-                                <p class="text-gray-800 font-medium md:text-lg">「閑人房様ギャラリーサイト」を実績として公開しました。</p>
+                                <p class="text-lg text-gray-800 font-medium">「閑人房様ギャラリーサイト」を実績として公開しました。</p>
                             </a>
                         </li>
                         <li class="border-b border-gray-200 pb-4">
                             <a href="https://bihadaconcierge.cocoroai.co.jp" target="_blank" class="block hover:opacity-80 transition-opacity">
                                 <time datetime="2025-06-21" class="text-sm text-gray-500">2025.06.21</time>
-                                <p class="text-gray-800 font-medium md:text-lg">「美肌コンシェルジュ」がバージョンアップ！相談機能充実で自分に合ったお手入れやおすすめ美容医療の提案まで、さらにパーソナルな美肌ケアをサポートします！</p>
+                                <p class="text-lg text-gray-800 font-medium">「美肌コンシェルジュ」がバージョンアップ！相談機能充実で自分に合ったお手入れやおすすめ美容医療の提案まで、さらにパーソナルな美肌ケアをサポートします！</p>
                             </a>
                         </li>
                         <li class="border-b border-gray-200 pb-4">
                             <a href="https://bento.cocoroai.co.jp" target="_blank" class="block hover:opacity-80 transition-opacity">
                                 <time datetime="2025-06-20" class="text-sm text-gray-500">2025.06.20</time>
-                                <p class="text-gray-800 font-medium md:text-lg">「Bento Planner」がバージョンアップ！毎日のお弁当作りが楽しくなる気分で選べる献立がさらに充実！食べたいおかずのイメージから美味しいレシピをご紹介します！</p>
+                                <p class="text-lg text-gray-800 font-medium">「Bento Planner」がバージョンアップ！毎日のお弁当作りが楽しくなる気分で選べる献立がさらに充実！食べたいおかずのイメージから美味しいレシピをご紹介します！</p>
                             </a>
                         </li>
                         <li class="border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
                             <a href="/" class="block hover:opacity-80 transition-opacity">
                                 <time datetime="2025-06-20" class="text-sm text-gray-500">2025.06.20</time>
-                                <p class="text-gray-800 font-medium md:text-lg">ココロAI合同会社のウェブサイトをリニューアルしました。</p>
+                                <p class="text-lg text-gray-800 font-medium">ココロAI合同会社のウェブサイトをリニューアルしました。</p>
                             </a>
                         </li>
                         <li class="border-b border-gray-200 pb-4 last:border-b-0 last:pb-0">
                             <a href="https://apps.apple.com/us/app/%E7%99%92%E3%81%97%E3%81%AE%E3%82%AF%E3%83%A2%E3%81%AE%E3%81%A1%E3%82%83%E3%82%93/id6746834418?platform=iphone" target="_blank" class="block hover:opacity-80 transition-opacity">
                                 <time datetime="2025-06-01" class="text-sm text-gray-500">2025.06.01</time>
-                                <p class="text-gray-800 font-medium md:text-lg">「癒しのクモちゃん」iOS版をリリースしました。</p>
+                                <p class="text-lg text-gray-800 font-medium">「癒しのクモちゃん」iOS版をリリースしました。</p>
                             </a>
                         </li>
                     </ul>
@@ -265,14 +300,13 @@
             </div>
         </section>
 
-         <!-- Company Section -->
-        <section id="company" class="py-20 bg-gray-50">
+         <section id="company" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6 max-w-4xl">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl font-bold mb-4 fade-in-up">会社概要</h2>
-                    <p class="text-lg text-gray-700 fade-in-up delay-100">AIのチカラで、毎日の暮らしとビジネスに“ココロの余裕”を届ける</p>
+                    <p class="text-lg text-gray-700 fade-in-up">AIのチカラで、毎日の暮らしとビジネスに“ココロの余裕”を届ける</p>
                 </div>
-                <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10 fade-in-up delay-200">
+                <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10 fade-in-up">
                     <div class="space-y-4">
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
                             <p class="font-semibold text-gray-500">会社名</p>
@@ -293,14 +327,13 @@
             </div>
         </section>
         
-        <!-- Contact Section -->
         <section id="contact" class="py-20 bg-white">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl font-bold mb-4 fade-in-up">お問い合わせ</h2>
-                <p class="text-gray-600 mb-8 max-w-2xl mx-auto fade-in-up delay-100">
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto fade-in-up">
                     サービスに関するご質問、協業のご相談など、お気軽にお問い合わせください。
                 </p>
-                <div class="max-w-3xl mx-auto fade-in-up delay-200">
+                <div class="max-w-3xl mx-auto fade-in-up">
                      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe03qOZPCHUF8qnQfY42Kx5Y-Axg1rbl7Q-6e1Er2zXe1bbng/viewform?embedded=true" width="100%" height="833" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
                 </div>
             </div>
@@ -308,7 +341,6 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -329,27 +361,55 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // Add fade-in-up animation on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in-up');
-                }
+        document.addEventListener('DOMContentLoaded', () => {
+            // モバイルメニューのトグル機能
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Intersection Observerのセットアップ
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // 要素が10%見えたらトリガー
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // 要素が画面内に入ったかチェック
+                    if (entry.isIntersecting) {
+                        // 1. アニメーション対象の処理
+                        if (entry.target.classList.contains('fade-in-up')) {
+                            entry.target.classList.add('is-visible');
+                            // アニメーション後は監視を解除しても良いが、今回はシンプルにするため継続
+                        }
+
+                        // 2. iframeの遅延読み込み処理
+                        if (entry.target.id === 'sample-site-iframe') {
+                            const iframe = entry.target;
+                            // まだ読み込まれていない場合のみ実行
+                            if (iframe.dataset.src && !iframe.src) {
+                                iframe.src = iframe.dataset.src;
+                                // 読み込んだら監視を停止
+                                observer.unobserve(iframe);
+                            }
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // 監視対象の要素を取得して監視を開始
+            const targets = document.querySelectorAll('.fade-in-up, #sample-site-iframe');
+            targets.forEach(target => {
+                observer.observe(target);
             });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in-up').forEach(el => {
-            observer.observe(el);
         });
-
     </script>
+
 </body>
 </html>
 
