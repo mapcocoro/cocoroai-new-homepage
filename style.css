@@ -1,63 +1,40 @@
-/* Custom font for a clean, modern look */
+/* 基本的なフォントと背景色の設定 */
 body {
-    font-family: 'Noto Sans JP', sans-serif; /* 本文のフォント */
+    font-family: 'Noto Sans JP', sans-serif;
     background-color: #FDFCFB; /* 少し温かみのある白 */
+    -webkit-font-smoothing: antialiased; /* iOSでの文字を滑らかにする設定 */
+    -moz-osx-font-smoothing: grayscale;
 }
+
 h1, h2 {
-    font-family: 'Zen Old Mincho', serif; /* ヒーローセクションおよびその他の見出しフォント */
+    font-family: 'Zen Old Mincho', serif; /* 見出し用のフォント */
 }
-/* ロゴ画像にテキストが含まれるため、別途テキストは不要です */
-/* .company-logo-text {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-} */
+
+/* テキストのグラデーション効果 */
 .text-gradient {
     background-image: linear-gradient(to right, #00A4C6, #00C6A9);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
-.fade-in-up {
-    animation: fadeInUp 1s ease-out forwards;
-    opacity: 0;
-    transform: translateY(20px);
-}
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* アニメーションの遅延 */
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
 
-/* サンプルサイト埋め込み用スタイル */
-.sample-section {
-  text-align: center;
-  padding: 50px 20px;
-  /* background: #f5f5f5; */ /* メインサイトの背景色と合わせるためコメントアウト */
-}
-
+/* サンプルサイトのスマホ風フレームのスタイル */
 .mobile-frame {
   display: inline-block;
-  width: 375px; /* スマホの幅 */
-  height: 667px; /* スマホの高さ */
-  border: 8px solid #000; /* フレームの太さ */
-  border-radius: 25px; /* 角の丸み */
-  padding: 15px 5px; /* 画面とフレームの間の余白 */
-  background: #000; /* フレームの色 */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* 影 */
-  margin: 20px auto; /* 中央寄せと上下の余白 */
+  width: 100%; /* 横幅は親要素に合わせる */
+  max-width: 375px; /* PCでの最大幅 */
+  height: 667px; /* 高さは固定 */
+  border: 8px solid #000;
+  border-radius: 25px;
+  padding: 15px 5px;
+  background: #000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  margin: 20px auto;
   position: relative;
-  /* レスポンシブ対応 */
-  max-width: 100%; /* 親要素の幅を超えないように */
-  box-sizing: content-box; /* paddingがwidthに含まれないように */
+  box-sizing: content-box;
 }
 
-/* 上部のノッチ（簡易的な表現） */
+/* スマホ風フレームの上部ノッチ */
 .mobile-frame::before {
   content: '';
   position: absolute;
@@ -74,35 +51,40 @@ h1, h2 {
   width: 100%;
   height: 100%;
   border: none;
-  border-radius: 15px; /* 画面の角の丸み */
-  background: white; /* iframeの背景色 */
+  border-radius: 15px;
+  background: white;
 }
 
-/* 簡易的なホームボタン風の丸 */
+/* スマホ風フレームのホームボタン */
 .mobile-frame .home-button-mock {
     position: absolute;
-    bottom: 2px; /* フレームのpaddingを考慮して調整 */
-    left: 50%; /* Tailwindのtranslate-x-1/2と組み合わせるため */
+    bottom: 2px;
+    left: 50%;
     transform: translateX(-50%);
-    width: 24px; /* ボタンのサイズ */
+    width: 24px;
     height: 24px;
-    background: #444; /* ボタンの色 */
-    border-radius: 50%; /* 真円に */
-    border: 1px solid #555; /* ボタンの枠線 */
+    background: #444;
+    border-radius: 50%;
+    border: 1px solid #555;
     box-shadow: inset 0 1px 2px rgba(255,255,255,0.1);
 }
 
 
-/* レスポンシブ対応 - 小さい画面でフレームサイズを調整 */
+/* === スマホ表示用の設定 (768px以下) === */
 @media (max-width: 768px) {
-  /* bodyのベースフォントサイズを調整 */
-  body {
-    font-size: 13px; /* PC版の約75%程度に縮小 */
+  /*
+   * htmlの基本フォントサイズを小さくすることで、
+   * rem単位を使用しているTailwindの文字サイズ全体が相対的に小さくなります。
+   * ここを調整するとサイト全体の文字サイズが変わります。
+   */
+  html {
+    font-size: 13px; /* 14pxから13pxへ変更 */
   }
 
+  /* 画面が小さい時のスマホ風フレームの調整 */
   .mobile-frame {
-    width: 320px; /* 小さめのスマホサイズに調整 */
-    height: 568px; /* 小さめのスマホサイズに調整 */
+    width: 320px;
+    height: 568px;
     padding: 10px 3px;
     border-radius: 20px;
   }
@@ -113,301 +95,6 @@ h1, h2 {
     width: 20px;
     height: 20px;
     bottom: 2px;
-  }
-
-  /* ヒーローセクションの文字サイズ調整 */
-  .hero-content h1 {
-    font-size: 2.0rem; /* 約26px */
-  }
-  .hero-content p {
-    font-size: 1.0rem; /* 約13px */
-  }
-  .hero-content .text-gradient {
-    font-size: 1.6rem; /* 約20.8px */
-  }
-
-
-  /* セクションタイトル調整 */
-  .section-title {
-    font-size: 1.6rem; /* 約20.8px */
-    margin-bottom: 0.8rem;
-  }
-  .section-title::after {
-    bottom: -0.6rem;
-  }
-
-  /* セクションのパディング調整 */
-  .section {
-    padding: 2.5rem 0;
-  }
-  .container {
-    padding: 0 0.8rem;
-  }
-}
-
-/* サービス紹介セクションの基本レイアウト（PC/タブレット） */
-.services-grid {
-    display: flex; /* Flexboxに変更 */
-    flex-wrap: nowrap; /* 折り返しを無効に - これが横スクロールの鍵 */
-    overflow-x: auto; /* 横スクロールを有効に */
-    -webkit-overflow-scrolling: touch; /* iOSでのスムーズなスクロール */
-    justify-content: flex-start; /* カードを左寄せに */
-    align-items: stretch; /* カードの高さを揃える */
-    gap: 15px; /* PC版のギャップ */
-    margin-top: 20px;
-    padding-bottom: 10px; /* スクロールバーのための余白 */
-}
-
-.service-card {
-    flex: 0 0 auto; /* カードの幅を固定し、拡大縮小しない */
-    width: 200px; /* PC版のカード幅を調整（小さめに） */
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    overflow: hidden;
-    padding: 15px; /* PC版のパディングを調整 */
-    text-align: center; /* 中央寄せ */
-    display: flex; /* カード内の要素をFlexboxで配置 */
-    flex-direction: column; /* 縦並び */
-    justify-content: space-between; /* コンテンツを上下に均等配置 */
-}
-
-.service-icon {
-    width: 55px; /* アイコンサイズを調整 */
-    height: 55px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: -25px auto 12px; /* マージン調整 */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 2;
-}
-
-.service-card h3 {
-    color: #d4a574;
-    margin-bottom: 8px; /* マージン調整 */
-    font-size: 1.05rem; /* フォントサイズ調整 */
-    line-height: 1.3; /* 行高調整 */
-}
-
-.service-card p {
-    color: #666;
-    line-height: 1.4; /* 行高調整 */
-    font-size: 0.8rem; /* フォントサイズ調整 */
-    display: -webkit-box; /* 複数行のテキストを省略 */
-    -webkit-line-clamp: 4; /* 4行で省略 */
-    line-clamp: 4; /* 標準プロパティを追加 */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-height: 5.6em; /* 4行分の最小高さ (line-height * line-clamp) */
-    margin-bottom: 10px; /* パラグラフ下マージン */
-}
-
-.service-card a { /* 詳しく見るボタンの調整 */
-    font-size: 0.65rem;
-    padding: 6px 10px;
-    margin-top: auto; /* 下部に寄せる */
-    display: inline-block; /* 中央寄せのため */
-}
-
-
-/* タブレット (mdブレークポイント) でのサービスセクションの調整 */
-@media (max-width: 1024px) {
-    .service-card {
-        width: 160px; /* カード幅をさらに調整 */
-        padding: 10px;
-    }
-    .service-icon {
-        width: 45px;
-        height: 45px;
-        margin: -20px auto 10px;
-    }
-    .service-card h3 {
-        font-size: 0.95rem;
-        margin-bottom: 6px;
-    }
-    .service-card p {
-        font-size: 0.7rem;
-        min-height: 4.9em; /* 高さ調整 (7 * 0.7em) */
-        -webkit-line-clamp: 5; /* 5行で省略 */
-        line-clamp: 5;
-    }
-    .service-card a {
-        font-size: 0.6rem;
-        padding: 5px 8px;
-        margin-top: 8px;
-    }
-}
-
-/* スマホ (smブレークポイント) でのサービスセクションの調整 */
-@media (max-width: 768px) {
-    /* About Usセクションのタイトル */
-    #about h2, #services h2, #works h2, #template-sites h2, #news h2, #company h2, #contact h2 { /* すべてのh2を対象に含める */
-        font-size: 1.4rem; /* 約18.2px */
-    }
-
-    /* ヒーローセクションの文字サイズ */
-    .hero-content h1 {
-        font-size: 1.8rem; /* 約23.4px */
-    }
-    .hero-content p {
-        font-size: 0.9rem; /* 約11.7px */
-    }
-    .hero-content .text-gradient {
-        font-size: 1.4rem; /* 約18.2px */
-    }
-
-    .service-card {
-        width: 130px; /* カードの固定幅を調整 */
-        padding: 8px;
-    }
-    .service-icon {
-        width: 38px;
-        height: 38px;
-        margin: -18px auto 6px;
-    }
-    .service-card h3 {
-        font-size: 0.8rem;
-        margin-bottom: 4px;
-    }
-    .service-card p {
-        font-size: 0.6rem;
-        min-height: 4.2em; /* 高さ調整 (7 * 0.6em) */
-        -webkit-line-clamp: 7; /* 7行で省略 */
-        line-clamp: 7;
-    }
-    .service-card a {
-        font-size: 0.55rem;
-        padding: 4px 6px;
-        margin-top: 5px;
-    }
-
-    /* その他のセクションの文字サイズ調整 */
-    .company-section p, .contact-section p, .news-section p { /* 全てのpタグを含む */
-        font-size: 0.8rem; /* 約10.4px */
-    }
-    .company-section .grid p {
-        font-size: 0.75rem; /* 約9.75px */
-    }
-    .news-section .text-lg { /* ニュース記事の文字サイズ */
-        font-size: 0.8rem; /* 約10.4px */
-    }
-    /* サンプルサイトセクションのテキスト調整 (より具体的に) */
-    #template-sites h3 {
-        font-size: 1.2rem; /* 約15.6px */
-    }
-    #template-sites p {
-        font-size: 0.8rem; /* 約10.4px */
-    }
-    #template-sites a {
-        font-size: 0.7rem;
-    }
-}
-
-/* さらに小さいスマホ (480px以下) */
-@media (max-width: 480px) {
-  /* bodyのベースフォントサイズをさらに調整 */
-  body {
-    font-size: 8px; /* さらに小さく (11pxから変更) */
-  }
-
-  .mobile-frame {
-    width: 240px; /* さらに小さいスマホサイズに調整 */
-    height: 420px;
-    padding: 5px 1px;
-    border-radius: 14px;
-  }
-  .mobile-frame iframe {
-    border-radius: 8px;
-  }
-  .mobile-frame .home-button-mock {
-    width: 14px;
-    height: 14px;
-    bottom: 0px;
-  }
-
-  /* ヒーローセクションの文字サイズ調整 */
-  .hero-content h1 {
-    font-size: 1.0rem; /* 約8px */
-  }
-  .hero-content p {
-    font-size: 0.55rem; /* 約4.4px */
-  }
-  .hero-content .text-gradient {
-    font-size: 0.8rem; /* 約6.4px */
-  }
-
-  /* セクションタイトル調整 */
-  .section-title {
-    font-size: 0.9rem; /* 約7.2px */
-    margin-bottom: 0.4rem;
-  }
-  .section-title::after {
-    bottom: -0.3rem;
-    width: 50px;
-    height: 1px;
-  }
-
-  /* セクションのパディング調整 */
-  .section {
-    padding: 1rem 0;
-  }
-  .container {
-    padding: 0 0.4rem;
-  }
-
-  /* サービス紹介カードの調整 */
-  .services-grid {
-    gap: 3px; /* ギャップをさらに小さく */
-    padding-bottom: 5px; /* スクロールバーのための余白 */
-  }
-  .service-card {
-    width: 85px; /* カードの固定幅をさらに小さく */
-    padding: 5px;
-  }
-  .service-icon {
-    width: 24px;
-    height: 24px;
-    margin: -12px auto 4px;
-  }
-  .service-card h3 {
-    font-size: 0.65rem;
-    margin-bottom: 2px;
-  }
-  .service-card p {
-    font-size: 0.5rem;
-    -webkit-line-clamp: 3; /* 3行で省略 */
-    line-clamp: 3; /* 標準プロパティを追加 */
-    min-height: 2.7em; /* 高さ調整 */
-  }
-  .service-card a {
-    font-size: 0.45rem;
-    padding: 2px 4px;
-  }
-
-  /* その他のセクションの文字サイズ調整 */
-  .company-section p, .contact-section p, .news-section p {
-    font-size: 0.6rem;
-  }
-  .company-section .grid p {
-    font-size: 0.55rem;
-  }
-  .news-section .text-lg { /* ニュース記事の文字サイズ */
-    font-size: 0.6rem;
-  }
-  /* サンプルサイトセクションのテキスト調整 */
-  #template-sites h3 {
-    font-size: 0.9rem; /* 約9px */
-  }
-  #template-sites p {
-    font-size: 0.55rem; /* 約5.5px */
-  }
-  #template-sites a {
-    font-size: 0.5rem;
   }
 }
 
