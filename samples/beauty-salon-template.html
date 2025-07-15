@@ -30,6 +30,223 @@
             touch-action: manipulation;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
+            font-size: 18px; /* PC用の基本フォントサイズ */
+        }
+
+        /* PC用の大きなフォントサイズ */
+        @media (min-width: 769px) {
+            body {
+                font-size: 18px;
+                padding-bottom: 100px; /* PC版でもフローティングナビのための余白 */
+            }
+            
+            h1 {
+                font-size: 2.5rem !important;
+            }
+            
+            h2 {
+                font-size: 2rem !important;
+            }
+            
+            h3 {
+                font-size: 1.5rem !important;
+            }
+            
+            h4 {
+                font-size: 1.2rem !important;
+            }
+            
+            p {
+                font-size: 16px !important;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem !important;
+            }
+            
+            .hero-content p {
+                font-size: 18px !important;
+            }
+            
+            .cta-button {
+                font-size: 18px !important;
+                padding: 20px 40px !important;
+            }
+            
+            .section-title {
+                font-size: 2rem !important;
+            }
+            
+            .service-item h3 {
+                font-size: 1.3rem !important;
+            }
+            
+            .service-item p {
+                font-size: 16px !important;
+            }
+            
+            .price {
+                font-size: 1.5rem !important;
+            }
+            
+            .staff-name {
+                font-size: 1.3rem !important;
+            }
+            
+            .staff-role {
+                font-size: 16px !important;
+            }
+            
+            .staff-description {
+                font-size: 16px !important;
+            }
+            
+            .contact-info {
+                font-size: 16px !important;
+            }
+            
+            .booking-form input,
+            .booking-form textarea,
+            .booking-form select,
+            .booking-form button {
+                font-size: 16px !important;
+            }
+            
+            .calendar-month {
+                font-size: 16px !important;
+            }
+            
+            .calendar-day {
+                font-size: 14px !important;
+            }
+            
+            .calendar-day-header {
+                font-size: 12px !important;
+            }
+            
+            .time-slot {
+                font-size: 14px !important;
+            }
+            
+            .feature-card h3 {
+                font-size: 1.3rem !important;
+            }
+            
+            .feature-card p {
+                font-size: 16px !important;
+            }
+            
+            .testimonial-text {
+                font-size: 16px !important;
+            }
+            
+            .testimonial-author {
+                font-size: 14px !important;
+            }
+            
+            .faq-question {
+                font-size: 16px !important;
+            }
+            
+            .faq-answer {
+                font-size: 16px !important;
+            }
+            
+            /* PC版でのナビゲーション調整 */
+            .floating-nav {
+                padding: 15px 0 calc(25px + env(safe-area-inset-bottom));
+            }
+            
+            .nav-item {
+                font-size: 14px !important;
+                padding: 8px 6px;
+            }
+            
+            .nav-item svg {
+                width: 20px;
+                height: 20px;
+                margin-bottom: 4px;
+            }
+            
+            .nav-item span {
+                font-size: 12px !important;
+            }
+            
+            .booking-btn {
+                background: linear-gradient(135deg, #8b5fbf 0%, #9c6bc7 100%);
+                color: white !important;
+                border-radius: 25px;
+                padding: 10px 8px !important;
+                margin: 0 5px;
+            }
+            
+            .booking-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(139, 95, 191, 0.3);
+            }
+            
+            /* メニュー選択画面の文字を大きく */
+            .menu-item {
+                padding: 12px !important;
+                min-height: 60px !important;
+            }
+            
+            .menu-item h4 {
+                font-size: 20px !important;
+                margin-bottom: 4px !important;
+            }
+            
+            .menu-description {
+                font-size: 15px !important;
+                margin-bottom: 6px !important;
+            }
+            
+            .menu-duration {
+                font-size: 16px !important;
+            }
+            
+            .menu-price {
+                font-size: 14px !important;
+                font-weight: 600 !important;
+            }
+            
+            .menu-icon {
+                width: 30px !important;
+                height: 30px !important;
+                font-size: 16px !important;
+            }
+            
+            .menu-meta {
+                gap: 8px !important;
+            }
+            
+            .menu-time-icon {
+                width: 16px !important;
+                height: 16px !important;
+            }
+            
+            /* 料金表の文字を大きく */
+            .pricing-table th {
+                font-size: 18px !important;
+                padding: 16px !important;
+            }
+            
+            .pricing-table td {
+                font-size: 16px !important;
+                padding: 16px !important;
+            }
+            
+            .pricing-table .price {
+                font-size: 16px !important;
+                font-weight: 700 !important;
+            }
+        }
+
+        /* スマホ用の元のフォントサイズを維持 */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
         }
 
         .container {
@@ -1565,7 +1782,7 @@
             border-top: 1px solid #f0f0f0;
             z-index: 1000;
             padding: 8px 0 calc(20px + env(safe-area-inset-bottom));
-            display: none;
+            display: block; /* PC版でも表示する */
         }
 
         .nav-items {
