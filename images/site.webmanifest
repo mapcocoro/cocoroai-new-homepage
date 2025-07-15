@@ -1,0 +1,21 @@
+{
+  "name": "ココロAI",
+  "short_name": "ココロAI",
+  "description": "あなたの毎日に、優しいAIの魔法を。",
+  "start_url": "/cocoroai-new-homepage/",
+  "display": "standalone",
+  "background_color": "#FDFCFB",
+  "theme_color": "#00A4C6",
+  "icons": [
+    {
+      "src": "images/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
