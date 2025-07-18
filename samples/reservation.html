@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ご予約・お問い合わせ - Beauty Salon Luna</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #e8e8e8;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 18px;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+            background-color: #ddd;
+            color: white;
+            font-weight: 500;
+        }
+
+        .step.active .step-number {
+            background-color: #a67c7c;
+        }
+
+        .step-line {
+            width: 20px;
+            height: 1px;
+            background-color: #ddd;
+            margin-top: 15px;
+        }
+
+        .form-container {
+            padding: 30px 20px;
+        }
+
+        .form-title {
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            color: #a67c7c;
+            margin-bottom: 8px;
+        }
+
+        .required {
+            color: #a67c7c;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: #fafafa;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #a67c7c;
+            background-color: white;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: #fafafa;
+            min-height: 120px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: #a67c7c;
+            background-color: white;
+        }
+
+        .placeholder-text {
+            color: #999;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .button-group {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back {
+            background-color: #f0f0f0;
+            color: #666;
+        }
+
+        .btn-back:hover {
+            background-color: #e0e0e0;
+        }
+
+        .btn-next {
+            background-color: #8e6aa0;
+            color: white;
+        }
+
+        .btn-next:hover {
+            background-color: #7a5a8a;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            border-top: 1px solid #ddd;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #999;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+
+        .nav-item.active {
+            color: #8e6aa0;
+        }
+
+        .nav-item.active .nav-icon {
+            background-color: #8e6aa0;
+        }
+
+        .selected-menu-info {
+            background-color: #f9f6f4;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #a67c7c;
+        }
+
+        .selected-menu-info h3 {
+            color: #a67c7c;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .selected-menu-info p {
+            color: #666;
+            font-size: 14px;
+            margin: 3px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ご予約・お問い合わせ</h1>
+            <div class="step-indicator">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <span>メニュー</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <span>日時</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step active">
+                    <div class="step-number">3</div>
+                    <span>情報入力</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <span>確認</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <div id="selectedMenuInfo" class="selected-menu-info"></div>
+            <h2 class="form-title">お客様情報を入力してください</h2>
+            
+            <form id="reservationForm">
+                <div class="form-group">
+                    <label class="form-label" for="name">お名前 <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="email">メールアドレス <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="phone">電話番号 <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="message">ご要望・ご質問</label>
+                    <textarea id="message" name="message" class="form-textarea" placeholder="アレルギーやご要望がございましたらお書きください。"></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" class="btn btn-back" onclick="history.back()">戻る</button>
+                    <button type="submit" class="btn btn-next">次へ</button>
+                </div>
+            </form>
+        </div>
+
+        <div style="height: 100px;"></div>
+    </div>
+
+    <div class="bottom-nav">
+        <a href="#" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>ホーム</span>
+        </a>
+        <a href="#" class="nav-item active">
+            <div class="nav-icon"></div>
+            <span>予約</span>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>メニュー</span>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>その他</span>
+        </a>
+    </div>
+
+    <script>
+        // Load selected menu info on page load
+        window.addEventListener('load', function() {
+            const selectedMenu = localStorage.getItem('selectedMenu');
+            if (selectedMenu) {
+                const menuData = JSON.parse(selectedMenu);
+                const menuInfoDiv = document.getElementById('selectedMenuInfo');
+                menuInfoDiv.innerHTML = `
+                    <h3>選択されたメニュー</h3>
+                    <p><strong>${menuData.name}</strong></p>
+                    <p>施術時間: ${menuData.duration}</p>
+                    <p>料金: ${menuData.price}</p>
+                `;
+            }
+        });
+
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (!name || !email || !phone) {
+                alert('必須項目を入力してください。');
+                return;
+            }
+            
+            alert('ご予約ありがとうございます。確認メールを送信いたします。');
+            
+            // Clear stored menu data
+            localStorage.removeItem('selectedMenu');
+        });
+    </script>
+</body>
+</html>

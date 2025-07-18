@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メニューと料金 - Beauty Salon Luna</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .header h1 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .menu-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .menu-table th {
+            background: linear-gradient(135deg, #d4b8a3, #c5a68f);
+            color: white;
+            padding: 15px 10px;
+            font-weight: 500;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .menu-table th:first-child {
+            text-align: left;
+            width: 50%;
+        }
+
+        .menu-table td {
+            padding: 15px 10px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .menu-table td:first-child {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-table td:first-child:hover {
+            background-color: #f9f9f9;
+        }
+
+        .menu-table td:nth-child(2) {
+            text-align: center;
+            color: #666;
+        }
+
+        .menu-table td:nth-child(3) {
+            text-align: center;
+            color: #d4a574;
+            font-weight: 500;
+        }
+
+        .menu-item {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            width: 100%;
+            padding: 0;
+        }
+
+        .menu-item:hover {
+            color: #d4a574;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #999;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            margin-top: 50px;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            border-top: 1px solid #ddd;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #999;
+            font-size: 12px;
+            text-decoration: none;
+            padding: 5px;
+        }
+
+        .nav-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .nav-item:nth-child(1) .nav-icon {
+            background-color: #f0f0f0;
+        }
+
+        .nav-item:nth-child(2) .nav-icon {
+            background-color: #f0f0f0;
+        }
+
+        .nav-item:nth-child(3) .nav-icon {
+            background-color: #8e6aa0;
+            color: white;
+        }
+
+        .nav-item:nth-child(4) .nav-icon {
+            background-color: #f0f0f0;
+        }
+
+        .nav-item:nth-child(5) .nav-icon {
+            background-color: #f0f0f0;
+        }
+
+        .nav-item:nth-child(3) {
+            color: #8e6aa0;
+        }
+
+        .menu-detail {
+            display: none;
+            background-color: #f9f6f4;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+
+        .menu-detail.active {
+            display: block;
+        }
+
+        .menu-detail h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-btn {
+            background: #c5a68f;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-info {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .menu-description {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .reserve-btn {
+            background: linear-gradient(135deg, #8e6aa0, #7a5a8a);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .reserve-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .add-btn {
+            background: #c5a68f;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>メニューと料金</h1>
+        </div>
+
+        <table class="menu-table">
+            <thead>
+                <tr>
+                    <th>メニュー</th>
+                    <th>時間</th>
+                    <th>料金</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="#" class="menu-item" onclick="showMenuDetail('basic')">ベーシックフェイシャル</a></td>
+                    <td>60分</td>
+                    <td>¥8,000</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="menu-item" onclick="showMenuDetail('antiaging')">アンチエイジングケア</a></td>
+                    <td>90分</td>
+                    <td>¥12,000</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="menu-item" onclick="showMenuDetail('whitening')">美白・毛穴ケア</a></td>
+                    <td>75分</td>
+                    <td>¥10,000</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="menu-item" onclick="showMenuDetail('basicnail')">ベーシックネイル</a></td>
+                    <td>60分</td>
+                    <td>¥4,500</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="menu-item" onclick="showMenuDetail('gelnail')">ジェルネイル</a></td>
+                    <td>90分</td>
+                    <td>¥6,500</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="menu-item" onclick="showMenuDetail('artnail')">アートネイル</a></td>
+                    <td>120分</td>
+                    <td>¥9,000</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="menu-item" onclick="showMenuDetail('massage')">リラクゼーションマッサージ</a></td>
+                    <td>60分</td>
+                    <td>¥8,000</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="menu-item" onclick="showMenuDetail('bodyshape')">ボディシェイプ</a></td>
+                    <td>90分</td>
+                    <td>¥12,000</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="menu-item" onclick="showMenuDetail('bridal')">ブライダルコース</a></td>
+                    <td>180分</td>
+                    <td>¥25,000</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="menu-item" onclick="showMenuDetail('season')">季節限定コース</a></td>
+                    <td>120分</td>
+                    <td>¥15,000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- メニュー詳細 -->
+        <div id="basic" class="menu-detail">
+            <h3>
+                ベーシックフェイシャル
+                <span style="color: #d4a574;">¥8,000</span>
+                <button class="close-btn" onclick="hideMenuDetail('basic')">×</button>
+            </h3>
+            <div class="menu-info">施術時間: 60分</div>
+            <div class="menu-info">内容: クレンジング、角質ケア、マッサージ、パック、保湿</div>
+            <div class="menu-description">
+                お肌の基本的なケアを丁寧に行い、透明感のある美しい肌へ導きます。初回の方にもおすすめです。
+            </div>
+            <button class="reserve-btn" onclick="reserveMenu('ベーシックフェイシャル', '60分', '¥8,000')">このメニューで予約</button>
+        </div>
+
+        <div id="antiaging" class="menu-detail">
+            <h3>
+                アンチエイジングケア
+                <span style="color: #d4a574;">¥12,000</span>
+                <button class="close-btn" onclick="hideMenuDetail('antiaging')">×</button>
+            </h3>
+            <div class="menu-info">施術時間: 90分</div>
+            <div class="menu-info">内容: 高機能クレンジング、リフトアップマッサージ、美容液導入</div>
+            <div class="menu-description">
+                年齢に応じたお肌のケアで、ハリと弾力を取り戻します。エイジングサインが気になる方に。
+            </div>
+            <button class="reserve-btn" onclick="reserveMenu('アンチエイジングケア', '90分', '¥12,000')">このメニューで予約</button>
+        </div>
+
+        <div id="whitening" class="menu-detail">
+            <h3>
+                美白・毛穴ケア
+                <span style="color: #d4a574;">¥10,000</span>
+                <button class="close-btn" onclick="hideMenuDetail('whitening')">×</button>
+            </h3>
+            <div class="menu-info">施術時間: 75分</div>
+            <div class="menu-info">内容: 毛穴洗浄、美白パック、ビタミンC導入</div>
+            <div class="menu-description">
+                毛穴の黒ずみやくすみを改善し、透明感のある美肌へ導きます。
+            </div>
+            <button class="reserve-btn" onclick="reserveMenu('美白・毛穴ケア', '75分', '¥10,000')">このメニューで予約</button>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 Beauty Salon Luna. All rights reserved.</p>
+        </div>
+
+        <div style="height: 80px;"></div>
+    </div>
+
+    <div class="bottom-nav">
+        <a href="#" class="nav-item">
+            <div class="nav-icon">🏠</div>
+            <span>サービス</span>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">👤</div>
+            <span>スタッフ</span>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">📅</div>
+            <span>予約</span>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">💰</div>
+            <span>料金</span>
+        </a>
+        <a href="#" class="nav-item">
+            <div class="nav-icon">📞</div>
+            <span>電話</span>
+        </a>
+    </div>
+
+    <script>
+        function showMenuDetail(menuId) {
+            // Hide all menu details
+            const details = document.querySelectorAll('.menu-detail');
+            details.forEach(detail => {
+                detail.classList.remove('active');
+            });
+            
+            // Show selected menu detail
+            const selectedDetail = document.getElementById(menuId);
+            if (selectedDetail) {
+                selectedDetail.classList.add('active');
+                selectedDetail.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function hideMenuDetail(menuId) {
+            const detail = document.getElementById(menuId);
+            if (detail) {
+                detail.classList.remove('active');
+            }
+        }
+
+        function reserveMenu(menuName, duration, price) {
+            // Store selected menu info in localStorage
+            localStorage.setItem('selectedMenu', JSON.stringify({
+                name: menuName,
+                duration: duration,
+                price: price
+            }));
+            
+            // Redirect to reservation page
+            window.location.href = 'reservation.html';
+        }
+
+        // Close menu detail when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.menu-detail') && !event.target.closest('.menu-item')) {
+                const details = document.querySelectorAll('.menu-detail');
+                details.forEach(detail => {
+                    detail.classList.remove('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
