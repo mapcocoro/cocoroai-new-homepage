@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>料金プラン - ココロAI</title>
+    
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
+    <link rel="manifest" href="images/site.webmanifest">
+    
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Old+Mincho:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="sticky top-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                 <img src="images/cocoroai_logo.png" alt="ココロAI ロゴ" class="h-12 w-auto">
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html#about" class="text-gray-600 hover:text-cyan-600 transition-colors">私たちについて</a>
+                <a href="index.html#services" class="text-gray-600 hover:text-cyan-600 transition-colors">サービス</a>
+                <a href="index.html#works" class="text-gray-600 hover:text-cyan-600 transition-colors">制作実績</a>
+                <a href="pricing.html" class="text-cyan-600 font-bold">料金案内</a>
+                <a href="index.html#news" class="text-gray-600 hover:text-cyan-600 transition-colors">ニュース</a>
+                <a href="index.html#company" class="text-gray-600 hover:text-cyan-600 transition-colors">会社概要</a>
+                <a href="index.html#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg">お問い合わせ</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
+            <a href="index.html#about" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">私たちについて</a>
+            <a href="index.html#services" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">サービス</a>
+            <a href="index.html#works" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">制作実績</a>
+            <a href="pricing.html" class="block text-cyan-600 font-bold py-2">料金案内</a>
+            <a href="index.html#news" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">ニュース</a>
+            <a href="index.html#company" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">会社概要</a>
+            <a href="index.html#contact" class="block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 text-center mt-2">お問い合わせ</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="text-center py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <h1 class="text-3xl md:text-5xl font-bold text-gray-800 mb-4 fade-in-up">料金プラン</h1>
+                <p class="text-base md:text-lg text-gray-600 max-w-2xl mx-auto fade-in-up">お客様の「やりたいこと」や「お悩み」に合わせた3つのプランをご用意しました。</p>
+            </div>
+        </section>
+
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                    <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col fade-in-up">
+                        <h3 class="text-xl font-bold text-center mb-2">ご自身で制作プラン</h3>
+                        <p class="text-center text-gray-500 mb-6">Webの知識がある方向け</p>
+                        <p class="text-4xl font-bold text-center my-4">¥11,000<span class="text-lg font-normal">（税込）</span></p>
+                        <ul class="space-y-3 text-gray-700 my-6 flex-grow">
+                            <li class="flex items-start"><span class="text-cyan-500 mr-2 mt-1 flex-shrink-0">✓</span><span>ホームページのデザインデータ、一式をお渡しします。</span></li>
+                            <li class="flex items-start"><span class="text-cyan-500 mr-2 mt-1 flex-shrink-0">✓</span><span>全7ページ構成（TOP・業務内容・料金案内・プロフィール・FAQ・お問い合わせフォーム・予約）が含まれます。</span></li>
+                            <li class="flex items-start"><span class="text-cyan-500 mr-2 mt-1 flex-shrink-0">✓</span><span>ご自身や知人のエンジニアの方と、自由に編集・公開していただけます。</span></li>
+                        </ul>
+                        <a href="index.html#contact" class="mt-6 text-center w-full bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-full hover:bg-gray-300 transition-all">お問い合わせ</a>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-2xl flex flex-col border-2 border-cyan-500 relative fade-in-up">
+                        <span class="bg-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full absolute -top-4 left-1/2 -translate-x-1/2">一番人気</span>
+                        <h3 class="text-xl font-bold text-center mb-2">✨ PCが苦手でも安心！丸投げプラン</h3>
+                        <p class="text-center text-gray-500 mb-6">お店の準備で忙しい、お任せしたい方向け</p>
+                        <p class="text-4xl font-bold text-center my-4">¥38,500<span class="text-lg font-normal">（税込）</span></p>
+                        <ul class="space-y-3 text-gray-700 my-6 flex-grow">
+                            <li class="flex items-start"><span class="text-cyan-500 mr-2 mt-1 flex-shrink-0">✓</span><span><strong>写真や文章を送るだけ</strong>で、あなた専用のホームページ（全7ページ）が完成します。</span></li>
+                            <li class="flex items-start"><span class="text-cyan-500 mr-2 mt-1 flex-shrink-0">✓</span><span>お店のロゴやイメージに合わせた<strong>色に変更</strong>します。</span></li>
+                            <li class="flex items-start"><span class="text-cyan-500 mr-2 mt-1 flex-shrink-0">✓</span><span>面倒な<strong>インターネットへの公開作業</strong>もすべて代行します。</span></li>
+                        </ul>
+                        <a href="index.html#contact" class="mt-6 text-center w-full bg-cyan-500 text-white font-bold py-3 px-6 rounded-full hover:bg-cyan-600 transition-all shadow-lg hover:shadow-xl">無料で相談する</a>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-2xl shadow-lg flex flex-col fade-in-up">
+                        <h3 class="text-xl font-bold text-center mb-2">こだわり制作プラン</h3>
+                        <p class="text-center text-gray-500 mb-6">デザインや構成を相談しながら決めたい方向け</p>
+                        <p class="text-4xl font-bold text-center my-4">¥99,000〜<span class="text-lg font-normal">（税込）</span></p>
+                        <ul class="space-y-3 text-gray-700 my-6 flex-grow">
+                            <li class="flex items-start"><span class="text-cyan-500 mr-2 mt-1 flex-shrink-0">✓</span><span>丸投げプランの全内容に加えて、<strong>「もっとこうしたい」</strong>を叶えます。</span></li>
+                            <li class="flex items-start"><span class="text-cyan-500 mr-2 mt-1 flex-shrink-0">✓</span><span><strong>特別なページ</strong>（お知らせ、スタッフ紹介、ブログ、採用情報、SNS連携など）の追加も可能です。</span></li>
+                            <li class="flex items-start"><span class="text-cyan-500 mr-2 mt-1 flex-shrink-0">✓</span><span>ホームページに載せる<strong>文章作り</strong>もお手伝いします。</span></li>
+                        </ul>
+                        <a href="index.html#contact" class="mt-6 text-center w-full bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-full hover:bg-gray-300 transition-all">内容を相談する</a>
+                    </div>
+                </div>
+                <p class="text-center text-gray-500 mt-12">※価格はカスタマイズ内容により変動します。まずはお気軽に無料相談をご利用ください。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                 <a href="index.html" class="flex items-center space-x-2 mb-4 md:mb-0">
+                     <img src="images/cocoroai_logo.png" alt="ココロAI ロゴアイコン" class="h-8 w-auto">
+                </a>
+                <div class="text-center md:text-right">
+                    <nav class="space-x-6 mb-4">
+                        <a href="index.html#about" class="text-gray-300 hover:text-white transition-colors">私たちについて</a>
+                        <a href="index.html#services" class="text-gray-300 hover:text-white transition-colors">サービス</a>
+                        <a href="index.html#works" class="text-gray-300 hover:text-white transition-colors">制作実績</a>
+                        <a href="pricing.html" class="text-cyan-400 hover:text-white transition-colors">料金案内</a>
+                        <a href="index.html#contact" class="text-gray-300 hover:text-white transition-colors">お問い合わせ</a>
+                        <a href="https://sites.google.com/cocoroai.co.jp/privacy-policy/%E3%83%9B%E3%83%BC%E3%83%A0" target="_blank" class="text-gray-300 hover:text-white transition-colors">プライバシーポリシー</a>
+                    </nav>
+                    <p class="text-sm text-gray-400">&copy; 2025 ココロＡＩ合同会社. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Fade-in animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>
