@@ -23,13 +23,11 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* 最初はアニメーション対象を非表示にする */
         .fade-in-up {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        /* is-visibleクラスが付与されたら表示する */
         .fade-in-up.is-visible {
             opacity: 1;
             transform: translateY(0);
@@ -38,37 +36,37 @@
 
 </head>
 <body class="text-gray-800">
-    
-<header class="sticky top-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
-    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-        <a href="#" class="flex items-center">
-             <img src="images/cocoroai_logo.png" alt="ココロAI ロゴ" class="h-12 w-auto">
-        </a>
-        <nav class="hidden md:flex items-center space-x-8">
-            <a href="#about" class="text-gray-600 hover:text-cyan-600 transition-colors">私たちについて</a>
-            <a href="#services" class="text-gray-600 hover:text-cyan-600 transition-colors">サービス</a>
-            <a href="#works" class="text-gray-600 hover:text-cyan-600 transition-colors">制作実績</a>
-            <a href="pricing.html" class="text-gray-600 hover:text-cyan-600 transition-colors">料金案内</a>
-            <a href="#news" class="text-gray-600 hover:text-cyan-600 transition-colors">ニュース</a>
-            <a href="#company" class="text-gray-600 hover:text-cyan-600 transition-colors">会社概要</a>
-            <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg">お問い合わせ</a>
-        </nav>
-        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-        </button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
-        <a href="#about" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">私たちについて</a>
-        <a href="#services" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">サービス</a>
-        <a href="#works" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">制作実績</a>
-        <a href="pricing.html" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">料金案内</a>
-        <a href="#news" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">ニュース</a>
-        <a href="#company" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">会社概要</a>
-        <a href="#contact" class="block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 text-center mt-2">お問い合わせ</a>
-    </div>
-</header>
+
+    <header class="sticky top-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                 <img src="images/cocoroai_logo.png" alt="ココロAI ロゴ" class="h-12 w-auto">
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-gray-600 hover:text-cyan-600 transition-colors">私たちについて</a>
+                <a href="#services" class="text-gray-600 hover:text-cyan-600 transition-colors">サービス</a>
+                <a href="#works" class="text-gray-600 hover:text-cyan-600 transition-colors">制作実績</a>
+                <a href="pricing.html" class="text-gray-600 hover:text-cyan-600 transition-colors">料金案内</a>
+                <a href="faq.html" class="text-gray-600 hover:text-cyan-600 transition-colors">よくある質問</a>
+                <a href="#news" class="text-gray-600 hover:text-cyan-600 transition-colors">ニュース</a>
+                <a href="#company" class="text-gray-600 hover:text-cyan-600 transition-colors">会社概要</a>
+                <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg">お問い合わせ</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
+            <a href="#about" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">私たちについて</a>
+            <a href="#services" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">サービス</a>
+            <a href="#works" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">制作実績</a>
+            <a href="pricing.html" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">料金案内</a>
+            <a href="faq.html" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">よくある質問</a>
+            <a href="#news" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">ニュース</a>
+            <a href="#company" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">会社概要</a>
+            <a href="#contact" class="block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 text-center mt-2">お問い合わせ</a>
+        </div>
+    </header>
 
     <main>
         <section class="relative text-center py-20 md:py-32 bg-white overflow-hidden">
@@ -127,7 +125,6 @@
                             <a href="https://apps.apple.com/us/app/bento-planner/id6748500612?platform=iphone" target="_blank" class="text-cyan-700 text-sm font-semibold hover:underline">App Storeへ &rarr;</a>
                         </div>
                     </div>
-                    
                     <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
                         <div class="bg-yellow-100 p-3 rounded-full mb-3">
                             <img src="images/rice_sommelier_icon.png" alt="お米ソムリエ Icon" class="h-8 md:h-9 w-auto">
@@ -136,7 +133,6 @@
                         <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">あなたにぴったりの美味しいお米を見つけます。お米選びをサポートするAIソムリエです。</p>
                         <a href="https://rice.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">詳しく見る &rarr;</a>
                     </div>
-                    
                     <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
                         <div class="bg-pink-100 p-3 rounded-full mb-3">
                             <img src="images/bihada_icon.png" alt="美肌コンシェルジュ Icon" class="h-8 md:h-9 w-auto">
@@ -145,7 +141,6 @@
                         <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">AIがあなたの肌質を分析し、最適なスキンケア方法や美容医療を提案します。</p>
                         <a href="https://bihadaconcierge.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">詳しく見る &rarr;</a>
                     </div>
-
                     <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
                         <div class="bg-yellow-100 p-3 rounded-full mb-3">
                             <img src="images/kumochan_icon.png" alt="癒しのクモちゃん Icon" class="h-8 md:h-9 w-auto">
@@ -154,7 +149,6 @@
                         <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">忙しい毎日に寄り添う癒やしアプリ。タップで心温まるメッセージを紡ぎ出します。</p>
                          <a href="https://apps.apple.com/us/app/%E7%99%92%E3%81%97%E3%81%AE%E3%82%AF%E3%83%A2%E3%81%AE%E3%81%A1%E3%82%83%E3%82%93/id6746834418?platform=iphone" target="_blank" class="mt-4 text-cyan-700 text-sm font-semibold hover:underline">App Storeへ &rarr;</a>
                     </div>
-                    
                     <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
                         <div class="bg-blue-100 p-3 rounded-full mb-3">
                             <img src="images/nursechan_icon.png" alt="癒しの白衣ちゃん Icon" class="h-8 md:h-9 w-auto">
@@ -163,7 +157,6 @@
                         <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">医療従事者の方へ。白衣の天使があなたを優しくサポート。疲れた心に安らぎを。</p>
                         <a href="https://iyashinurse.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">詳しく見る &rarr;</a>
                     </div>
-
                     <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
                         <div class="bg-orange-100 p-3 rounded-full mb-3">
                             <img src="images/traffic_cone_icon.png" alt="癒しの三角コーンちゃん Icon" class="h-8 md:h-9 w-auto">
@@ -172,7 +165,6 @@
                         <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">現場で働く方々の心に寄り添い、日々の疲れを癒やすAIアプリです。</p>
                         <a href="https://genba.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">詳しく見る &rarr;</a>
                     </div>
-
                     <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
                         <div class="bg-gray-200 p-3 rounded-full mb-3">
                             <img src="images/chalk_icon.png" alt="癒しのチョークちゃん Icon" class="h-8 md:h-9 w-auto">
@@ -181,7 +173,6 @@
                         <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">学校の先生方をサポート。チョークのメッセージが教壇に立つ心を癒やします。</p>
                         <a href="https://iyashiteacher.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">詳しく見る &rarr;</a>
                     </div>
-
                     <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
                         <div class="bg-emerald-100 p-3 rounded-full mb-3">
                             <img src="images/affirmation_icon.png" alt="毎日のアファメーション Icon" class="h-8 md:h-9 w-auto">
@@ -190,7 +181,6 @@
                         <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">AIがあなたにぴったりの言葉を届けます。自己肯定感を高め、理想の自分へ。</p>
                         <a href="https://affirmation.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">詳しく見る &rarr;</a>
                     </div>
-                    
                     <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up">
                         <div class="bg-purple-100 p-3 rounded-full mb-3">
                             <img src="images/fortune_icon.png" alt="ココロAI 占い Icon" class="h-8 md:h-9 w-auto">
@@ -223,34 +213,28 @@
                                 <a href="https://cocoroai.github.io/kanjinbou-gallery/" target="_blank" class="mt-4 text-cyan-600 font-semibold hover:underline">サイトを見る &rarr;</a>
                             </div>
                         </div>
+                        <div class="max-w-3xl mx-auto mt-10">
+                            <div class="bg-white p-8 rounded-2xl shadow-lg relative">
+                                <div class="absolute top-0 left-8 -translate-y-1/2 bg-cyan-500 text-white font-bold px-4 py-1 rounded-full">お客様の声</div>
+                                <p class="text-gray-600 italic">「想像以上にかっこよく仕上げていただき、大変満足しています。自分の作品も、こうして素敵なサイトで見ると一層良く見えて、改めて依頼して本当に良かったと感じています。」</p>
+                                <p class="text-right mt-4 font-semibold text-gray-700">ー 閑人房様</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div id="template-sites" class="fade-in-up">
                          <h3 class="text-2xl font-bold text-gray-800 text-center mb-8">サンプルサイト：エステサロン向けテンプレート</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                             <div class="md:order-1 text-center md:text-left">
-                                <h4 class="text-xl font-bold text-gray-900 mb-4">
-                                    高品質なテンプレートサイト
-                                </h4>
-                                <p class="text-gray-700 mb-4">
-                                    このエステサロン向けテンプレートは、モバイルに最適化されたデザインと、直感的なカレンダー予約システムが特徴です。
-                                </p>
-                                <p class="text-gray-700 mb-6">
-                                    サロンの魅力を最大限に引き出し、お客様が簡単にメニュー選択から日時予約まで完結できる実用的なサイトを、**他の様々な業種（飲食店、クリニック、教室など）にも柔軟に展開・カスタマイズ可能**です。
-                                </p>
-                                <a href="#contact" class="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition duration-300 hover:scale-105">
-                                    カスタマイズのご相談はこちら
-                                </a>
+                                <h4 class="text-xl font-bold text-gray-900 mb-4">高品質なテンプレートサイト</h4>
+                                <p class="text-gray-700 mb-4">このエステサロン向けテンプレートは、モバイルに最適化されたデザインと、直感的なカレンダー予約システムが特徴です。</p>
+                                <p class="text-gray-700 mb-6">サロンの魅力を最大限に引き出し、お客様が簡単にメニュー選択から日時予約まで完結できる実用的なサイトを、**他の様々な業種（飲食店、クリニック、教室など）にも柔軟に展開・カスタマイズ可能**です。</p>
+                                <a href="#contact" class="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition duration-300 hover:scale-105">カスタマイズのご相談はこちら</a>
                             </div>
                             
                             <div class="md:order-2 flex justify-center">
                                 <div class="mobile-frame">
-                                    <iframe
-                                        id="sample-site-iframe"
-                                        data-src="samples/beauty-salon-template.html"
-                                        class="w-full h-full border-none rounded-2xl"
-                                        scrolling="auto">
-                                    </iframe>
+                                    <iframe id="sample-site-iframe" data-src="samples/beauty-salon-template.html" class="w-full h-full border-none rounded-2xl" scrolling="auto"></iframe>
                                     <div class="home-button-mock"></div>
                                 </div>
                             </div>
@@ -260,7 +244,6 @@
                     <div class="fade-in-up">
                         <h3 class="text-2xl font-bold text-gray-800 text-center mb-10">その他のホームページテンプレート</h3>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-                            
                             <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
                                 <div class="bg-teal-100 p-3 rounded-full mb-3">
                                      <img src="images/clinic-icon.png" alt="クリニック向けアイコン" class="h-8 w-8">
@@ -269,7 +252,6 @@
                                 <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">清潔感と信頼性を重視したデザイン。クリニックや医療機関に最適です。</p>
                                 <a href="https://cocoroai.github.io/clinic-website-template/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">デモを見る &rarr;</a>
                             </div>
-
                             <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
                                 <div class="bg-orange-100 p-3 rounded-full mb-3">
                                      <img src="images/pet-icon.png" alt="ペットサロン向けアイコン" class="h-8 w-8">
@@ -278,7 +260,6 @@
                                 <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">温かみのあるデザインで、写真ギャラリーや料金表も含まれています。</p>
                                 <a href="https://cocoroai.github.io/pet-salon-website/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">デモを見る &rarr;</a>
                             </div>
-
                             <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
                                 <div class="bg-indigo-100 p-3 rounded-full mb-3">
                                     <svg class="h-8 w-8 text-indigo-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
@@ -292,7 +273,6 @@
                 </div>
             </div>
         </section>
-
 
         <section id="news" class="py-20 bg-white">
             <div class="container mx-auto px-6 max-w-4xl">
@@ -355,7 +335,7 @@
             </div>
         </section>
 
-         <section id="company" class="py-20 bg-gray-50">
+        <section id="company" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6 max-w-4xl">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl font-bold mb-4 fade-in-up">会社概要</h2>
@@ -393,7 +373,6 @@
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer class="bg-gray-800 text-white">
@@ -426,35 +405,27 @@
                     mobileMenu.classList.toggle('hidden');
                 });
             }
-
-            // Intersection Observerのセットアップ
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.1 // 要素が10%見えたらトリガー
+                threshold: 0.1 
             };
-
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // アニメーション対象の処理
                         if (entry.target.classList.contains('fade-in-up')) {
                             entry.target.classList.add('is-visible');
                         }
-
-                        // iframeの遅延読み込み処理
                         if (entry.target.id === 'sample-site-iframe') {
                             const iframe = entry.target;
                             if (iframe.dataset.src && !iframe.src) {
                                 iframe.src = iframe.dataset.src;
-                                observer.unobserve(iframe); // 読み込んだら監視を停止
+                                observer.unobserve(iframe); 
                             }
                         }
                     }
                 });
             }, observerOptions);
-
-            // 監視対象の要素を取得して監視を開始
             const targets = document.querySelectorAll('.fade-in-up, #sample-site-iframe');
             targets.forEach(target => {
                 observer.observe(target);
