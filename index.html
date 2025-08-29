@@ -32,38 +32,20 @@
     </script>
 
     <style>
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .fade-in-up.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in-up { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-up.is-visible { opacity: 1; transform: translateY(0); }
 
         /* プロダクトのアイコン枠のみ寸法統一（文字サイズは現状維持） */
-        #products .product-card .rounded-full.mb-3 {
-            width: 64px; height: 64px;
-            display: flex; align-items: center; justify-content: center;
-        }
+        #products .product-card .rounded-full.mb-3 { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; }
         #products .product-card img { max-height: 36px; width: auto; }
 
         /* プラットフォーム絞り込みのアクティブ */
-        #platform-chips .pfm-btn.is-active {
-            background: #ECFEFF; border-color: #06B6D4; color: #0E7490;
-        }
+        #platform-chips .pfm-btn.is-active { background:#ECFEFF; border-color:#06B6D4; color:#0E7490; }
 
         /* カテゴリ見出し（薄い字） */
-        #products .category-heading h3 {
-            color: #6B7280; /* text-gray-500 */
-            font-size: .875rem; /* text-sm */
-        }
-        @media (min-width:768px){
-            #products .category-heading h3 { font-size: 1rem; /* md:text-base */ }
-        }
+        #products .category-heading h3 { color:#6B7280; font-size:.875rem; }
+        @media (min-width:768px){ #products .category-heading h3 { font-size:1rem; } }
     </style>
-
 </head>
 <body class="text-gray-800">
 
@@ -380,6 +362,16 @@
                 <h2 class="text-2xl md:text-3xl font-bold mb-10 fade-in-up">ニュース / お知らせ</h2>
                 <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10 fade-in-up">
                     <ul class="space-y-4">
+                        <!-- 商標登録のお知らせ（リンクなし版） -->
+<li class="border-b border-gray-200 pb-4">
+  <div class="block">
+    <time datetime="2025-08-22" class="text-sm text-gray-500">2025.08.22</time>
+    <p class="text-sm md:text-base text-gray-800 font-medium">
+      ［お知らせ］「ココロAI」が登録商標になりました（登録第6960156号／区分42）。
+    </p>
+  </div>
+</li>
+
                         <!-- Post Pal release -->
 <li class="border-b border-gray-200 pb-4">
   <a href="https://apps.apple.com/jp/app/post-pal-ai%E3%81%A7sns%E6%8A%95%E7%A8%BF%E3%82%92%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90/id6749898580"
@@ -475,7 +467,15 @@
                             <p class="font-semibold text-gray-500 text-sm md:text-base">設立</p>
                             <p class="md:col-span-2 text-sm md:text-base">2025年2月25日</p>
                         </div>
-                         <hr>
+                        <hr>
+                        <!-- 商標（追記） -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                            <p class="font-semibold text-gray-500 text-sm md:text-base">商標</p>
+                            <p class="md:col-span-2 text-sm md:text-base">
+                                「ココロAI<sup>®</sup>」 登録第6960156号（区分42）
+                            </p>
+                        </div>
+                        <hr>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
                             <p class="font-semibold text-gray-500 text-sm md:text-base">事業内容</p>
                             <p class="md:col-span-2 text-sm md:text-base">アプリ開発、AIサービス企画・開発、<br>ホームページ制作・運用支援、<br>フライヤー・ポスター制作、各種資料作成、<br>YouTubeコンテンツ制作支援、<br>オーダーメイドのWebサイト・アプリ開発 etc.</p>
@@ -518,12 +518,12 @@
                         <a href="https://sites.google.com/cocoroai.co.jp/privacy-policy/%E3%83%9B%E3%83%BC%E3%83%A0" target="_blank" class="text-gray-300 hover:text-white transition-colors text-sm">プライバシーポリシー</a>
                     </nav>
                     <p class="text-xs text-gray-400">&copy; 2025 ココロＡＩ合同会社. All Rights Reserved.</p>
+                    <p class="text-xs text-gray-400 mt-1">「ココロAI<sup>®</sup>」はココロＡＩ合同会社の登録商標（登録第6960156号／区分42）です。</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- 既存：モバイルメニュー / フェードイン / もっと見る -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -533,37 +533,25 @@
                     mobileMenu.classList.toggle('hidden');
                 });
             }
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1 
-            };
+            const observerOptions = { root:null, rootMargin:'0px', threshold:0.1 };
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        if (entry.target.classList.contains('fade-in-up')) {
-                            entry.target.classList.add('is-visible');
-                        }
+                        if (entry.target.classList.contains('fade-in-up')) entry.target.classList.add('is-visible');
                         if (entry.target.id === 'sample-site-iframe') {
                             const iframe = entry.target;
-                            if (iframe.dataset.src && !iframe.src) {
-                                iframe.src = iframe.dataset.src;
-                                observer.unobserve(iframe); 
-                            }
+                            if (iframe.dataset.src && !iframe.src) { iframe.src = iframe.dataset.src; observer.unobserve(iframe); }
                         }
                     }
                 });
             }, observerOptions);
             const targets = document.querySelectorAll('.fade-in-up, #sample-site-iframe');
-            targets.forEach(target => {
-                observer.observe(target);
-            });
+            targets.forEach(target => observer.observe(target));
+
             const showMoreNewsButton = document.getElementById('show-more-news-button');
             if (showMoreNewsButton) {
                 showMoreNewsButton.addEventListener('click', () => {
-                    document.querySelectorAll('.news-item-hidden').forEach(item => {
-                        item.classList.remove('hidden');
-                    });
+                    document.querySelectorAll('.news-item-hidden').forEach(item => item.classList.remove('hidden'));
                     document.getElementById('show-more-news-container').style.display = 'none';
                 });
             }
