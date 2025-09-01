@@ -153,6 +153,27 @@
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    <!-- かんたん帳票（NEW / Web / 業務効率化） -->
+<div class="product-card bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up"
+     data-category="業務効率化" data-platform="web" data-released="2025-09-01">
+  <div class="bg-sky-100 p-3 rounded-full mb-3">
+    <!-- アイコンは汎用ドキュメントSVG（画像不要） -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-sky-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h10M7 11h10M7 15h6M9 3h6a2 2 0 012 2v14a2 2 0 01-2 2H9a2 2 0 01-2-2V5a2 2 0 012-2z"/>
+    </svg>
+  </div>
+  <h3 class="text-base md:text-lg font-bold mb-2">
+    かんたん帳票
+    <span class="badge-new ml-2 inline-block align-middle px-2 py-0.5 text-[10px] font-semibold rounded-full bg-cyan-100 text-cyan-700">NEW</span>
+  </h3>
+  <p class="text-xs md:text-sm text-gray-600 leading-tight">
+    ブラウザだけで帳票をかんたん作成・出力できるWebアプリ。
+  </p>
+  <div class="flex flex-col mt-4 space-y-1">
+    <a href="https://chouhyo.cocoroai.co.jp/" target="_blank" rel="noopener" class="text-cyan-600 text-sm font-semibold hover:underline">🌐 Webアプリ</a>
+  </div>
+</div>
+
                     <!-- Post Pal (NEW) -->
 <div class="product-card bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center fade-in-up"
      data-category="業務効率化" data-platform="ios" data-released="2025-08-21">
@@ -362,7 +383,37 @@
                 <h2 class="text-2xl md:text-3xl font-bold mb-10 fade-in-up">ニュース / お知らせ</h2>
                 <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10 fade-in-up">
                     <ul class="space-y-4">
-                        <!-- 商標登録のお知らせ（リンクなし版） -->
+                        <!-- ［リリース］かんたん帳票（折りたたみで説明とURL表示） -->
+<li class="border-b border-gray-200 pb-4">
+  <button type="button"
+          class="news-toggle flex items-start w-full text-left hover:opacity-80 transition-opacity"
+          aria-expanded="false"
+          aria-controls="news-detail-chouhyo-20250901">
+    <div class="flex-1">
+      <time datetime="2025-09-01" class="text-sm text-gray-500">2025.09.01</time>
+      <p class="text-sm md:text-base text-gray-800 font-medium">
+        ［リリース］Webアプリ「かんたん帳票」を公開しました。
+      </p>
+    </div>
+    <svg class="chev ml-3 mt-1 h-5 w-5 flex-none transform transition-transform"
+         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+  <div id="news-detail-chouhyo-20250901" class="news-detail hidden mt-2 pl-0">
+    <p class="text-sm md:text-base text-gray-700 mb-1">
+      ブラウザだけで帳票をかんたん作成・出力できるWebアプリです。
+    </p>
+    <p class="text-sm md:text-base">
+      URL：
+      <a href="https://chouhyo.cocoroai.co.jp/" target="_blank" rel="noopener" class="text-cyan-600 hover:underline break-all">
+        https://chouhyo.cocoroai.co.jp/
+      </a>
+    </p>
+  </div>
+</li>
+
+                        <!-- 商標登録のお知らせ（リンクなし） -->
 <li class="border-b border-gray-200 pb-4">
   <div class="block">
     <time datetime="2025-08-22" class="text-sm text-gray-500">2025.08.22</time>
@@ -468,7 +519,7 @@
                             <p class="md:col-span-2 text-sm md:text-base">2025年2月25日</p>
                         </div>
                         <hr>
-                        <!-- 商標（追記） -->
+                        <!-- 商標 -->
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
                             <p class="font-semibold text-gray-500 text-sm md:text-base">商標</p>
                             <p class="md:col-span-2 text-sm md:text-base">
@@ -558,7 +609,7 @@
         });
     </script>
 
-    <!-- 絞り込み＆カテゴリ見出し（カテゴリは小見出しのみ・プラットフォームだけボタン） -->
+    <!-- 絞り込み＆カテゴリ見出し（カテゴリは小見出し・プラットフォームだけボタン） -->
     <script>
     document.addEventListener('DOMContentLoaded', function () {
       const grid   = document.querySelector('#products .grid');
@@ -637,11 +688,26 @@
         const badge = card.querySelector('.badge-new');
         if (!badge) return;
         let released = card.dataset.released;
-        if (!released) {
-          const t = card.querySelector('time')?.getAttribute('datetime');
-          if (t) released = t;
-        }
         if (released && (now - new Date(released) > MS_28D)) badge.remove();
+      });
+    });
+    </script>
+
+    <!-- ニュース項目の折りたたみ制御 -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.news-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('aria-controls');
+          const panel = document.getElementById(id);
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+          if (panel) panel.classList.toggle('hidden', expanded);
+          const chev = btn.querySelector('.chev');
+          if (chev) chev.classList.toggle('rotate-180', !expanded);
+          // 任意：計測
+          // if (window.gtag) gtag('event', 'news_toggle', { item: id, expanded: !expanded });
+        });
       });
     });
     </script>
