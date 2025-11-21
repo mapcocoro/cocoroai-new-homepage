@@ -41,52 +41,52 @@
             touch-action: manipulation;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
-            font-size: 13px; /* モバイル基本フォントサイズ */
+            font-size: 14px; /* モバイル基本フォントサイズ */
             padding-bottom: env(safe-area-inset-bottom);
         }
 
         /* PC用の大きなフォントサイズ */
         @media (min-width: 769px) {
             body {
-                font-size: 18px;
+                font-size: 16px;
                 padding-bottom: 100px; /* PC版でもフローティングナビのための余白 */
             }
-            
+
             h1 {
-                font-size: 2.5rem !important;
+                font-size: 1.8rem !important;
             }
-            
+
             h2 {
-                font-size: 2rem !important;
-            }
-            
-            h3 {
                 font-size: 1.5rem !important;
             }
-            
-            h4 {
-                font-size: 1.2rem !important;
+
+            h3 {
+                font-size: 1.25rem !important;
             }
-            
+
+            h4 {
+                font-size: 1.1rem !important;
+            }
+
             p {
                 font-size: 16px !important;
             }
-            
+
             .hero-content h1 {
-                font-size: 2.5rem !important;
-            }
-            
-            .hero-content p {
-                font-size: 18px !important;
-            }
-            
-            .cta-button {
-                font-size: 18px !important;
-                padding: 20px 40px !important;
-            }
-            
-            .section-title {
                 font-size: 2rem !important;
+            }
+
+            .hero-content p {
+                font-size: 16px !important;
+            }
+
+            .cta-button {
+                font-size: 16px !important;
+                padding: 18px 36px !important;
+            }
+
+            .section-title {
+                font-size: 1.75rem !important;
             }
             
             .service-item h3 {
@@ -254,10 +254,10 @@
             }
         }
 
-        /* スマホ用の元のフォントサイズを維持 */
+        /* スマホ用のフォントサイズ調整 */
         @media (max-width: 768px) {
             body {
-                font-size: 12px;
+                font-size: 14px;
             }
         }
 
@@ -328,7 +328,7 @@
         }
 
         .hero-content h1 {
-            font-size: 22px;
+            font-size: 20px;
             color: #1d1d1f;
             margin-bottom: 8px;
             font-weight: 700;
@@ -336,7 +336,7 @@
         }
 
         .hero-content p {
-            font-size: 13px;
+            font-size: 14px;
             color: #8e8e93;
             margin-bottom: 20px;
             line-height: 1.4;
@@ -371,7 +371,7 @@
         }
 
         .section-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: #1d1d1f;
             text-align: center;
