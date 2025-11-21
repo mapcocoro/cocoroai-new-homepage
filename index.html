@@ -37,12 +37,14 @@
         <img src="images/cocoroai_logo.png" alt="ココロAI ロゴ" class="h-12 w-auto">
       </a>
       <nav class="hidden md:flex items-center space-x-6">
-        <a href="#about" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">私たちについて</a>
-        <a href="#services" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">事業内容</a>
-        <a href="#products" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">プロダクト紹介</a>
+        <a href="#products" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap font-medium">アプリ一覧</a>
+        <span class="text-gray-300">|</span>
+        <a href="#services" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap font-medium">制作・開発</a>
         <a href="#works" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">制作実績</a>
         <a href="pricing.html" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">料金プラン</a>
-        <a href="faq.html" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">よくある質問</a>
+        <span class="text-gray-300">|</span>
+        <a href="#about" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">私たちについて</a>
+        <a href="faq.html" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">FAQ</a>
         <a href="#news" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">ニュース</a>
         <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap">お問い合わせ</a>
       </nav>
@@ -52,12 +54,14 @@
     </div>
 
     <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
-      <a href="#about" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">私たちについて</a>
-      <a href="#services" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">事業内容</a>
-      <a href="#products" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">プロダクト紹介</a>
+      <a href="#products" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2 font-medium">アプリ一覧</a>
+      <div class="border-t border-gray-200 my-2"></div>
+      <a href="#services" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2 font-medium">制作・開発</a>
       <a href="#works" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">制作実績</a>
       <a href="pricing.html" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">料金プラン</a>
-      <a href="faq.html" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">よくある質問</a>
+      <div class="border-t border-gray-200 my-2"></div>
+      <a href="#about" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">私たちについて</a>
+      <a href="faq.html" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">FAQ</a>
       <a href="#news" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">ニュース</a>
       <a href="#contact" class="block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 text-center mt-2">お問い合わせ</a>
     </div>
@@ -72,11 +76,35 @@
           あなたの毎日に、<br class="md:hidden">優しいAIの<span class="text-gradient">魔法</span>を。
         </h1>
         <p class="text-xl md:text-3xl font-semibold text-gradient mb-6 fade-in-up">あなたの「想い」を、確かな「カタチ」に</p>
-        <p class="text-base md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 fade-in-up">
-          欲しい機能を、カタチに。オーダーメイドのアプリ・Web制作。<br>
-          AIの活用提案からデザインまで。小規模事業者様・個人事業主様のITパートナーとして企画からサポートします。
+        <p class="text-base md:text-xl text-gray-600 max-w-3xl mx-auto mb-10 fade-in-up">
+          生活を便利にするAIアプリから、ビジネスを支えるWeb制作・開発まで。<br>
+          AIの力で、個人のお客様も事業者様も、もっと自由に、もっと快適に。
         </p>
-        <a href="#services" class="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 fade-in-up">事業内容を見る</a>
+
+        <!-- B2B/B2C 分岐ボタン -->
+        <div class="flex flex-col md:flex-row gap-6 justify-center items-center max-w-4xl mx-auto mb-4 fade-in-up">
+          <a href="#products" class="group w-full md:w-1/2 bg-white hover:bg-gradient-to-r hover:from-cyan-50 hover:to-blue-50 border-2 border-cyan-500 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+            <div class="flex items-center justify-center mb-4">
+              <svg class="w-12 h-12 text-cyan-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+              </svg>
+            </div>
+            <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-3">個人のお客様</h3>
+            <p class="text-sm md:text-base text-gray-600 mb-4">便利なアプリ・サービスを使いたい</p>
+            <span class="inline-block text-cyan-600 font-semibold group-hover:translate-x-2 transition-transform duration-300">アプリ一覧を見る →</span>
+          </a>
+
+          <a href="#services" class="group w-full md:w-1/2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+            <div class="flex items-center justify-center mb-4">
+              <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+              </svg>
+            </div>
+            <h3 class="text-xl md:text-2xl font-bold text-white mb-3">法人・個人事業主様</h3>
+            <p class="text-sm md:text-base text-white/90 mb-4">Web制作・アプリ開発を依頼したい</p>
+            <span class="inline-block text-white font-semibold group-hover:translate-x-2 transition-transform duration-300">制作・開発サービスを見る →</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -91,8 +119,16 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col text-center fade-in-up">
             <h3 class="text-xl font-bold mb-2">ホームページ制作・運用</h3>
-            <p class="text-gray-600 flex-grow">PCが苦手な方でも安心の「丸投げプラン」から、ご自身で更新できるテンプレート販売まで。企画、デザイン、公開、運用まで一貫してサポートします。</p>
-            <a href="pricing.html" class="mt-4 text-cyan-600 font-semibold hover:underline">料金プランを見る &rarr;</a>
+            <p class="text-gray-600 flex-grow mb-4">PCが苦手な方でも安心の「丸投げプラン」から、ご自身で更新できるテンプレート販売まで。企画、デザイン、公開、運用まで一貫してサポートします。</p>
+            <div class="bg-cyan-50 border border-cyan-200 rounded-lg p-4 mb-4 text-left">
+              <p class="text-sm font-semibold text-cyan-800 mb-2">🤖 AI企業ならではの強み</p>
+              <ul class="text-xs text-gray-700 space-y-1">
+                <li>• AIで文章作成・校正をサポート</li>
+                <li>• AI競合分析でSEO対策を最適化</li>
+                <li>• 高品質×コスパの良さを実現</li>
+              </ul>
+            </div>
+            <a href="pricing.html" class="mt-auto text-cyan-600 font-semibold hover:underline">料金プランを見る &rarr;</a>
           </div>
 
           <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col text-center fade-in-up">
