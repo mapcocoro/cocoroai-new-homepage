@@ -4,24 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>料金プラン - ココロAI</title>
-    
+
     <link rel="shortcut icon" href="images/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
     <link rel="manifest" href="images/site.webmanifest">
-    
+
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="style.css">
-    
+
+    <style>
+        /* アンカーリンクでスクロールした時に、セクションタイトルが見えるように調整 */
+        #web-plan,
+        #dx-plan {
+            scroll-margin-top: 250px;
+        }
+    </style>
+
 </head>
 <body class="bg-gray-50 text-gray-800">
 
@@ -38,7 +46,7 @@
                 <a href="pricing.html" class="text-cyan-600 font-bold whitespace-nowrap">料金プラン</a>
                 <a href="faq.html" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">よくある質問</a>
                 <a href="index.html#news" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">ニュース</a>
-                <a href="index.html#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap">お問い合わせ</a>
+                <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" target="_blank" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap">お問い合わせ</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
@@ -52,98 +60,526 @@
             <a href="pricing.html" class="block text-cyan-600 font-bold py-2">料金プラン</a>
             <a href="faq.html" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">よくある質問</a>
             <a href="index.html#news" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">ニュース</a>
-            <a href="index.html#contact" class="block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 text-center mt-2">お問い合わせ</a>
+            <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" target="_blank" class="block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 text-center mt-2">お問い合わせ</a>
         </div>
     </header>
-    
+
     <main class="container mx-auto px-6 py-10">
-        <div class="text-center mb-8">
-            <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2">料金プラン</h1>
-            <p class="text-gray-600 text-sm">お客様のニーズに合わせたプランをご用意しております。</p>
+        <!-- ヒーローセクション -->
+        <div class="text-center mb-10 max-w-3xl mx-auto">
+            <h1 class="text-xl md:text-2xl font-bold text-gray-800 mb-3">料金プラン</h1>
+            <p class="text-xs md:text-sm text-gray-600 leading-snug">
+                <span class="font-semibold text-cyan-600">プロ品質なのに、早くて安い。</span><br class="hidden md:inline">
+                効率的な開発フローで、従来の半分の期間・コストを実現します。
+            </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 transition-all duration-300 flex flex-col">
-                <h3 class="text-xl font-bold mb-3 text-center">テンプレートプラン</h3>
-                <p class="text-3xl font-bold text-center mb-3">¥88,000〜<span class="text-base font-medium"> (税込)</span></p>
-                <p class="text-gray-600 mb-4 text-center text-xs">お客様ご提供の文章・写真で、テンプレートベースのサイトを構築。短期間・低コストで公開。</p>
-                <ul class="space-y-2 text-gray-700 text-sm flex-grow">
-                    <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>テンプレートデザイン</li>
-                    <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>文章・写真の組み込み・配置</li>
-                    <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>基本的な公開サポート</li>
-                    <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>レスポンシブデザイン対応</li>
-                </ul>
-                <a href="index.html#contact" class="mt-6 w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm">お問い合わせ</a>
-            </div>
+        <!-- 制作プラン -->
+        <div class="mb-10">
+            <h2 class="text-lg md:text-xl font-bold text-center text-gray-800 mb-6">Webサイト制作プラン</h2>
 
-            <div class="bg-white p-6 rounded-2xl shadow-2xl border-2 border-cyan-500 relative flex flex-col">
-                <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full">おすすめ</span>
-                <h3 class="text-xl font-bold mb-3 text-center">丸投げプラン</h3>
-                <p class="text-3xl font-bold text-center mb-3">¥198,000〜<span class="text-base font-medium"> (税込)</span></p>
-                <p class="text-gray-600 mb-4 text-center text-xs">企画・デザイン・文章作成を全てお任せ。ヒアリング内容をもとにサイトを制作します。</p>
-                <ul class="space-y-2 text-gray-700 text-sm flex-grow">
-                    <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>テンプレートデザイン</li>
-                    <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><strong>企画・構成のご提案</strong></li>
-                    <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><strong>ヒアリング内容から文章作成</strong></li>
-                    <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>お客様ご提供の写真を配置・加工</li>
-                    <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>基本的な公開サポート</li>
-                </ul>
-                <a href="index.html#contact" class="mt-6 w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm">お問い合わせ</a>
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- エントリープラン -->
+                <div id="web-plan" class="bg-white p-5 md:p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 transition-all duration-300 flex flex-col">
+                    <!-- 常に表示エリア -->
+                    <div class="mb-2">
+                        <h3 class="text-base md:text-lg font-bold mb-1 text-gray-800">エントリープラン</h3>
+                        <p class="text-xs text-gray-500 mb-2 leading-snug">テンプレートベースで、プロ品質をスピード提供</p>
+                        <p class="text-3xl md:text-4xl font-bold text-cyan-600 mb-0.5">¥120,000<span class="text-base font-medium text-gray-600">〜</span></p>
+                        <p class="text-xs text-gray-500">(税込)</p>
+                    </div>
 
-            <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 transition-all duration-300 flex flex-col">
-                <h3 class="text-xl font-bold mb-3 text-center">オーダーメイドプラン</h3>
-                <p class="text-3xl font-bold text-center mb-3">応相談</p>
-                <p class="text-gray-600 mb-4 text-center text-xs">完全オリジナルのLP・ホームページや、アプリ開発まで、ご要望に合わせて柔軟に対応。</p>
-                <ul class="space-y-2 text-gray-700 text-sm flex-grow">
-                    <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>完全オリジナルデザインのLP・ホームページ</li>
-                    <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>AIを活用したアプリ開発（Web・iOS）</li>
-                    <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>継続的な運用・改善支援</li>
-                    <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>その他、ITに関するご相談全般</li>
-                </ul>
-                <a href="index.html#contact" class="mt-6 w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm">お問い合わせ</a>
-            </div>
-        </div>
+                    <!-- 重要ポイント3点 -->
+                    <div class="mb-3">
+                        <ul class="space-y-1.5 text-xs text-gray-700 leading-snug">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">最適化テンプレートデザイン</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">文章・写真は自社でご準備</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">スピード納品・低コスト</span>
+                            </li>
+                        </ul>
+                    </div>
 
-        <!-- LINE公式アカウント構築プラン -->
-        <div class="mt-12 bg-cyan-50 border-2 border-cyan-200 rounded-xl p-6 max-w-4xl mx-auto">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div class="flex-grow">
-                    <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-2">LINE公式アカウント構築</h3>
-                    <p class="text-sm text-gray-600 mb-2">アカウント開設 / リッチメニューデザイン制作 / 基本設定 / クーポン設定</p>
-                    <p class="text-cyan-700 font-bold text-sm">HP制作と同時申し込みで ¥33,000 (税込)！</p>
+                    <!-- 詳細を見るボタン -->
+                    <button class="accordion-toggle text-left text-xs text-cyan-600 hover:text-cyan-700 font-medium mb-2 flex items-center transition-colors" data-target="entry-detail">
+                        <svg class="w-3.5 h-3.5 mr-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                        <span>詳細・機能リストを見る</span>
+                    </button>
+
+                    <!-- 開閉エリア -->
+                    <div id="entry-detail" class="accordion-content overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 0;">
+                        <div class="pb-3">
+                            <div class="mb-3">
+                                <h4 class="text-xs font-bold text-gray-700 mb-1.5">✨ こんな方におすすめ</h4>
+                                <ul class="text-xs text-gray-600 space-y-1 leading-snug">
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>スピード重視・低コスト</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>スタートアップ・個人事業主</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>LP制作</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>文章・写真の自社準備</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-2">
+                                <h4 class="text-xs font-bold text-gray-700 mb-1.5">📦 詳細な仕様</h4>
+                                <ul class="space-y-1 text-xs text-gray-700 leading-snug">
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>最適化テンプレートデザイン</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>文章・写真の最適配置</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>レスポンシブデザイン対応</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>基本的なSEO対策</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>公開サポート</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="mt-auto w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-xs">お問い合わせ</a>
                 </div>
-                <div class="text-center md:text-right flex-shrink-0">
-                    <p class="text-3xl font-bold text-gray-800 mb-3">¥55,000〜<span class="text-base font-medium"> (税込)</span></p>
-                    <a href="index.html#contact" class="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-6 rounded-full text-sm transition-colors">お問い合わせ</a>
+
+                <!-- スタンダードプラン -->
+                <div class="bg-white p-5 md:p-6 rounded-2xl shadow-2xl border-2 border-cyan-500 relative flex flex-col transform md:-translate-y-2">
+                    <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">🌟 おすすめ</span>
+
+                    <!-- 常に表示エリア -->
+                    <div class="mb-2 mt-2">
+                        <h3 class="text-base md:text-lg font-bold mb-1 text-gray-800">スタンダードプラン</h3>
+                        <p class="text-xs text-gray-500 mb-2 leading-snug">企画からSEO対策まで、Web集客に必要なすべてを効率化</p>
+                        <p class="text-3xl md:text-4xl font-bold text-cyan-600 mb-0.5">¥280,000<span class="text-base font-medium text-gray-600">〜</span></p>
+                        <p class="text-xs text-gray-500">(税込)</p>
+                        <p class="text-xs text-cyan-700 font-semibold mt-0.5">一般的な制作会社なら50〜60万円の内容</p>
+                    </div>
+
+                    <!-- 重要ポイント3点 -->
+                    <div class="mb-3">
+                        <ul class="space-y-1.5 text-xs text-gray-700 leading-snug">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">完全企画構成・サイト設計</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">プロの文章作成（約5,000文字）</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">本格的なSEO対策</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 詳細を見るボタン -->
+                    <button class="accordion-toggle text-left text-xs text-cyan-600 hover:text-cyan-700 font-medium mb-2 flex items-center transition-colors" data-target="standard-detail">
+                        <svg class="w-3.5 h-3.5 mr-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                        <span>詳細・機能リストを見る</span>
+                    </button>
+
+                    <!-- 開閉エリア -->
+                    <div id="standard-detail" class="accordion-content overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 0;">
+                        <div class="pb-3">
+                            <div class="mb-3">
+                                <h4 class="text-xs font-bold text-gray-700 mb-1.5">✨ こんな方におすすめ</h4>
+                                <ul class="text-xs text-gray-600 space-y-1 leading-snug">
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>本格的なWeb集客サイト</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>企画・文章作成も丸投げ</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>中小企業・法人サイト</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>コスパと品質の両立</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-2">
+                                <h4 class="text-xs font-bold text-gray-700 mb-1.5">📦 詳細な仕様</h4>
+                                <ul class="space-y-1 text-xs text-gray-700 leading-snug">
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>エントリープランの全内容</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>企画・サイト構成のご提案</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>AIライティング（約5,000文字）</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>本格的なSEO対策</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>写真の選定・加工サポート</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>アクセス解析設定</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="mt-auto w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2.5 px-4 rounded-full text-center transition-colors text-xs shadow-md">お問い合わせ</a>
+                </div>
+
+                <!-- 業務効率化・LINE活用プラン -->
+                <div id="dx-plan" class="bg-gradient-to-br from-purple-50 to-blue-50 p-5 md:p-6 rounded-2xl shadow-lg border-2 border-purple-200 hover:border-purple-400 transition-all duration-300 flex flex-col relative">
+                    <!-- バッジ -->
+                    <span class="absolute top-0 right-4 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-b-lg">業務改善・DX入門</span>
+
+                    <!-- 常に表示エリア -->
+                    <div class="mb-2 mt-2">
+                        <h3 class="text-base md:text-lg font-bold mb-1 text-gray-800">業務効率化・<br class="md:hidden">LINE活用プラン</h3>
+                        <p class="text-xs text-purple-600 mb-2 leading-snug">LINEや専用ツールで、アナログ業務を『自動化』。脱Excel・脱電話を実現します。</p>
+                        <p class="text-3xl md:text-4xl font-bold text-purple-600 mb-0.5">¥350,000<span class="text-base font-medium text-gray-600">〜</span></p>
+                        <p class="text-xs text-gray-500">(税込・開発費のみ買い切り)</p>
+                    </div>
+
+                    <!-- 重要ポイント3点 -->
+                    <div class="mb-3">
+                        <ul class="space-y-1.5 text-xs text-gray-700 leading-snug">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-purple-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">LINE公式・ミニアプリ構築（予約・会員証）</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-purple-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">業務効率化ツール開発（見積もり・日報）</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-purple-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">月額費不要の「買い切り型」</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 詳細を見るボタン -->
+                    <button class="accordion-toggle text-left text-xs text-purple-600 hover:text-purple-700 font-medium mb-2 flex items-center transition-colors" data-target="dx-detail">
+                        <svg class="w-3.5 h-3.5 mr-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                        <span>詳細・機能リストを見る</span>
+                    </button>
+
+                    <!-- 開閉エリア -->
+                    <div id="dx-detail" class="accordion-content overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 0;">
+                        <div class="pb-3">
+                            <div class="mb-3">
+                                <h4 class="text-xs font-bold text-gray-700 mb-1.5">✨ こんな方におすすめ</h4>
+                                <ul class="text-xs text-gray-600 space-y-1 leading-snug">
+                                    <li class="flex items-start">
+                                        <span class="text-purple-500 mr-2">▸</span>
+                                        <span>電話予約や紙の管理をなくしたい</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple-500 mr-2">▸</span>
+                                        <span>既存のSaaSは高すぎる・使いにくい</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple-500 mr-2">▸</span>
+                                        <span>LINEを使ってリピーターを増やしたい</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-purple-500 mr-2">▸</span>
+                                        <span>自社の業務に合わせた専用道具が欲しい</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h4 class="text-xs font-bold text-gray-700 mb-2">📦 開発・導入例</h4>
+                                <ul class="space-y-1.5 text-xs text-gray-700 leading-relaxed">
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-purple-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>LINEミニアプリ（会員証・ポイントカード）</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-purple-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>スマホ対応・予約システム構築</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-purple-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>見積もりシミュレーター（営業ツール）</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-purple-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>現場日報・報告アプリ（脱Excel）</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-purple-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>※御社の業務に合わせた「特注ツール」を開発します</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="mt-auto w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2.5 px-4 rounded-full text-center transition-colors text-xs">お問い合わせ</a>
                 </div>
             </div>
         </div>
 
-        <div class="mt-12 bg-gray-100 rounded-xl p-6 max-w-4xl mx-auto">
-            <h3 class="text-sm font-bold text-gray-700 mb-3">ご利用にあたっての注意事項</h3>
-            <ul class="text-xs text-gray-600 space-y-2">
+        <!-- フルオーダーメイド開発 -->
+        <div class="mb-10">
+            <div class="max-w-5xl mx-auto bg-gradient-to-br from-slate-900 to-indigo-950 rounded-2xl shadow-2xl overflow-hidden">
+                <div class="p-5 md:p-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <div class="flex-grow text-white">
+                            <div class="inline-block bg-white/10 backdrop-blur-sm px-2.5 py-0.5 rounded-full text-xs font-semibold mb-1.5">
+                                Advanced
+                            </div>
+                            <h2 class="text-lg md:text-xl font-bold mb-2">フルオーダーメイド・アプリ開発</h2>
+                            <p class="text-xs md:text-sm text-gray-300 mb-3 leading-snug">
+                                御社の業務に合わせた、使いやすいオリジナルツールを開発します。
+                            </p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs leading-relaxed">
+                                <div class="flex items-start">
+                                    <svg class="w-4 h-4 text-cyan-400 mr-1.5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <span class="text-gray-200">オリジナル予約システム（既存SaaSを使わない独自仕様）</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <svg class="w-4 h-4 text-cyan-400 mr-1.5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <span class="text-gray-200">業務管理・日報アプリ（Excel管理からの脱却）</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <svg class="w-4 h-4 text-cyan-400 mr-1.5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <span class="text-gray-200">会員限定サイト構築</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <svg class="w-4 h-4 text-cyan-400 mr-1.5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <span class="text-gray-200">診断・シミュレーション作成（見積もりシミュレーションなど）</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex-shrink-0 text-center md:text-right">
+                            <div class="bg-white/5 backdrop-blur-sm rounded-xl p-4 md:min-w-[170px]">
+                                <p class="text-xs text-gray-400 mb-1">価格 / Price</p>
+                                <p class="text-xl md:text-2xl font-bold text-white mb-0.5 tracking-widest">要お見積もり</p>
+                                <p class="text-xs text-gray-400 mb-2">Estimation Required</p>
+                                <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" target="_blank" class="inline-block bg-white hover:bg-gray-100 text-gray-900 font-bold py-2 px-4 rounded-full transition-colors text-xs shadow-lg">
+                                    詳しく相談する
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 backdrop-blur-sm px-5 md:px-6 py-2.5">
+                    <p class="text-xs text-gray-400 leading-snug">
+                        <span class="font-semibold text-gray-300">💡 ご注意：</span>
+                        フルオーダーメイド開発は、ご要望の規模により開発期間・費用が変動いたします。まずはお気軽にご相談ください。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 月額サポートプラン -->
+        <div class="mb-10">
+            <div class="text-center mb-8">
+                <h2 class="text-lg md:text-xl font-bold text-gray-800 mb-2">選べる月額サポート</h2>
+                <p class="text-xs md:text-sm text-gray-600 leading-snug max-w-2xl mx-auto">
+                    「作って終わり」ではなく、成長を伴走。<br class="hidden md:inline">集客を継続支援します。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- ライトプラン -->
+                <div class="bg-white p-5 md:p-6 rounded-2xl shadow-lg border-2 border-gray-200 hover:border-cyan-300 transition-all duration-300">
+                    <!-- 常に表示エリア -->
+                    <div class="mb-2">
+                        <h3 class="text-base md:text-lg font-bold mb-1 text-gray-800">ライトプラン</h3>
+                        <p class="text-xs text-gray-500 mb-2 leading-snug">技術的なことは丸投げして安心。専門知識不要でサイトを安定運用</p>
+                        <p class="text-3xl md:text-4xl font-bold text-gray-800 mb-0.5">¥15,000<span class="text-base font-medium text-gray-600">/月</span></p>
+                        <p class="text-xs text-gray-500">(税込)</p>
+                    </div>
+
+                    <!-- 重要ポイント3点 -->
+                    <div class="mb-3">
+                        <ul class="space-y-1.5 text-xs text-gray-700 leading-snug">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">サーバー・ドメイン管理</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">軽微な修正対応（月2回まで）</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">安心の保守サポート</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 詳細を見るボタン -->
+                    <button class="accordion-toggle text-left text-xs text-cyan-600 hover:text-cyan-700 font-medium mb-2 flex items-center transition-colors" data-target="light-detail">
+                        <svg class="w-3.5 h-3.5 mr-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                        <span>詳細・機能リストを見る</span>
+                    </button>
+
+                    <!-- 開閉エリア -->
+                    <div id="light-detail" class="accordion-content overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 0;">
+                        <div class="pb-3">
+                            <div class="mb-3">
+                                <h4 class="text-xs font-bold text-gray-700 mb-1.5">✨ こんな方におすすめ</h4>
+                                <ul class="text-xs text-gray-600 space-y-1 leading-snug">
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>サーバー・ドメイン管理を任せたい</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>サイト修正・更新を依頼したい</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>安心の保守サポートが欲しい</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h4 class="text-xs font-bold text-gray-700 mb-2">📦 サービス内容</h4>
+                                <ul class="space-y-1.5 text-xs text-gray-700 leading-relaxed">
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>サーバー・ドメイン管理</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>軽微な修正対応（月2回まで）</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Webサイト修正・更新のご依頼</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>バックアップ管理</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-xs block">お問い合わせ</a>
+                </div>
+
+                <!-- スタンダードプラン -->
+                <div class="bg-gradient-to-br from-cyan-50 to-blue-50 p-5 md:p-6 rounded-2xl shadow-xl border-2 border-cyan-400 relative">
+                    <span class="absolute top-0 right-4 bg-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-b-lg">集客強化</span>
+
+                    <!-- 常に表示エリア -->
+                    <div class="mb-2">
+                        <h3 class="text-base md:text-lg font-bold mb-1 text-gray-800">スタンダードプラン</h3>
+                        <p class="text-xs text-cyan-600 mb-2 leading-snug">ライトプラン＋MEO対策＋AIブログ記事で集客を強化</p>
+                        <p class="text-3xl md:text-4xl font-bold text-cyan-600 mb-0.5">¥35,000<span class="text-base font-medium text-gray-600">/月</span></p>
+                        <p class="text-xs text-gray-500">(税込)</p>
+                        <p class="text-xs text-cyan-700 font-semibold mt-0.5">通常なら月10万円以上のSEO対策を破格で</p>
+                    </div>
+
+                    <!-- 重要ポイント3点 -->
+                    <div class="mb-3">
+                        <ul class="space-y-1.5 text-xs text-gray-700 leading-snug">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">Googleマップ（MEO）対策</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">AIブログ記事作成（月1本〜）</span>
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="font-medium">アクセス解析レポート</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 詳細を見るボタン -->
+                    <button class="accordion-toggle text-left text-xs text-cyan-600 hover:text-cyan-700 font-medium mb-2 flex items-center transition-colors" data-target="support-standard-detail">
+                        <svg class="w-3.5 h-3.5 mr-1 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                        </svg>
+                        <span>詳細・機能リストを見る</span>
+                    </button>
+
+                    <!-- 開閉エリア -->
+                    <div id="support-standard-detail" class="accordion-content overflow-hidden transition-all duration-300 ease-in-out" style="max-height: 0;">
+                        <div class="pb-3">
+                            <div class="mb-3">
+                                <h4 class="text-xs font-bold text-gray-700 mb-1.5">✨ こんな方におすすめ</h4>
+                                <ul class="text-xs text-gray-600 space-y-1 leading-snug">
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>地域検索での上位表示</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>ブログ記事作成の外注</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>継続的なSEO対策</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-cyan-500 mr-2">▸</span>
+                                        <span>集客の自動化・効率化</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="mb-3">
+                                <h4 class="text-xs font-bold text-gray-700 mb-2">📦 サービス内容</h4>
+                                <ul class="space-y-1.5 text-xs text-gray-700 leading-relaxed">
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>ライトプランの全内容</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Googleマップ（MEO）対策</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>AIブログ記事作成（月1本〜）</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>アクセス解析レポート</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>キーワード順位チェック</li>
+                                    <li class="flex items-center"><svg class="w-3 h-3 text-cyan-500 mr-1.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>集客改善のご提案</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2.5 px-4 rounded-full text-center transition-colors text-xs block shadow-md">お問い合わせ</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-6 md:p-10 text-center text-white mb-12 shadow-xl">
+            <h2 class="text-xl md:text-2xl font-bold mb-3">まずは無料相談から</h2>
+            <p class="text-xs md:text-sm mb-6 leading-snug opacity-90">
+                最適なプランをご提案します。お気軽にお問い合わせください。
+            </p>
+            <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" target="_blank" class="inline-block bg-white text-cyan-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors shadow-lg text-sm md:text-base">
+                無料で相談する
+            </a>
+        </div>
+
+        <!-- 注意事項 -->
+        <div class="bg-gray-100 rounded-xl p-5 md:p-6 max-w-4xl mx-auto">
+            <h3 class="text-sm md:text-base font-bold text-gray-700 mb-4">ご利用にあたっての注意事項</h3>
+            <ul class="text-xs md:text-sm text-gray-600 space-y-2.5 leading-snug">
                 <li class="flex items-start">
-                    <span class="mr-2">•</span>
-                    <span>ドメイン取得、サーバー契約、SSL証明書等のインフラ費用は別途必要となります。</span>
+                    <span class="mr-2 flex-shrink-0">•</span>
+                    <span>インフラ費用（ドメイン、サーバー、SSL等）は別途必要です（月額1,000〜3,000円程度）。</span>
                 </li>
                 <li class="flex items-start">
-                    <span class="mr-2">•</span>
-                    <span>予約システム、お問い合わせフォーム、などの追加機能をご希望の場合は、別途お見積もりいたします。</span>
+                    <span class="mr-2 flex-shrink-0">•</span>
+                    <span>追加機能（予約システム、決済機能等）は別途お見積もりいたします。</span>
                 </li>
                 <li class="flex items-start">
-                    <span class="mr-2">•</span>
-                    <span>公開後の継続的な保守・サポートをご希望の場合は、月額サブスクリプション型のサポートプランや、都度対応のチケット制プランをご用意しております。詳細はお問い合わせください。</span>
+                    <span class="mr-2 flex-shrink-0">•</span>
+                    <span>スタンダードプランの文章作成は約5,000文字が目安です。超過分は別途お見積もり。</span>
                 </li>
                 <li class="flex items-start">
-                    <span class="mr-2">•</span>
-                    <span>丸投げプランにおける文章作成・構成提案は、A4用紙5枚（約5,000文字）程度を目安としています。これを超える場合は別途お見積もりとなります。</span>
+                    <span class="mr-2 flex-shrink-0">•</span>
+                    <span>月額サポートは6ヶ月以上推奨。短期契約はご相談ください。</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="mr-2 flex-shrink-0">•</span>
+                    <span>商工会・公的機関、実績公開モニターの方は特別価格でご対応可能です。</span>
                 </li>
             </ul>
         </div>
 
     </main>
-    
+
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -156,7 +592,7 @@
                         <a href="index.html#services" class="text-gray-300 hover:text-white transition-colors text-sm">事業内容</a>
                         <a href="pricing.html" class="text-gray-300 hover:text-white transition-colors text-sm">料金プラン</a>
                         <a href="faq.html" class="text-gray-300 hover:text-white transition-colors text-sm">よくある質問</a>
-                        <a href="index.html#contact" class="text-gray-300 hover:text-white transition-colors text-sm">お問い合わせ</a>
+                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="text-gray-300 hover:text-white transition-colors text-sm">お問い合わせ</a>
                         <a href="https://sites.google.com/cocoroai.co.jp/privacy-policy/%E3%83%9B%E3%83%BC%E3%83%A0" target="_blank" class="text-gray-300 hover:text-white transition-colors text-sm">プライバシーポリシー</a>
                         <a href="https://sites.google.com/cocoroai.co.jp/security-policy/%E3%83%9B%E3%83%BC%E3%83%A0" target="_blank" class="text-gray-300 hover:text-white transition-colors text-sm">情報セキュリティ基本方針</a>
                     </nav>
@@ -169,6 +605,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // モバイルメニューの開閉
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             if (mobileMenuButton && mobileMenu) {
@@ -176,6 +613,28 @@
                     mobileMenu.classList.toggle('hidden');
                 });
             }
+
+            // アコーディオンの開閉
+            const accordionToggles = document.querySelectorAll('.accordion-toggle');
+            accordionToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const content = document.getElementById(targetId);
+                    const icon = this.querySelector('svg');
+
+                    if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
+                        // 開く
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(45deg)';
+                        this.querySelector('span').textContent = '詳細を閉じる';
+                    } else {
+                        // 閉じる
+                        content.style.maxHeight = '0px';
+                        icon.style.transform = 'rotate(0deg)';
+                        this.querySelector('span').textContent = '詳細・機能リストを見る';
+                    }
+                });
+            });
         });
     </script>
 </body>
