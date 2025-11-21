@@ -73,16 +73,16 @@
             }
 
             .hero-content h1 {
-                font-size: 2rem !important;
+                font-size: 14px !important;
             }
 
             .hero-content p {
-                font-size: 16px !important;
+                font-size: 20px !important;
             }
 
             .cta-button {
                 font-size: 16px !important;
-                padding: 18px 36px !important;
+                padding: 18px 40px !important;
             }
 
             .section-title {
@@ -305,15 +305,21 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 50px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 40px 30px;
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            max-width: 500px;
             width: 90%;
             margin: 0 auto;
             text-align: center;
+        }
+
+        @media (min-width: 769px) {
+            .hero-content {
+                padding: 50px 40px;
+            }
         }
 
         .logo {
@@ -328,41 +334,57 @@
         }
 
         .hero-content h1 {
-            font-size: 20px;
-            color: #1d1d1f;
-            margin-bottom: 8px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 16px;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
         }
 
         .hero-content p {
-            font-size: 14px;
-            color: #8e8e93;
-            margin-bottom: 20px;
-            line-height: 1.4;
+            font-size: 18px;
+            color: #1d1d1f;
+            margin-bottom: 28px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        @media (min-width: 769px) {
+            .hero-content p {
+                font-size: 20px;
+            }
         }
 
         .cta-button {
-            display: inline-block;
+            display: block;
+            width: 100%;
             background: linear-gradient(135deg, #e8b4cb 0%, #d4a574 100%);
             color: white;
-            padding: 14px 28px;
+            padding: 16px 32px;
             text-decoration: none;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: -0.3px;
+            border-radius: 9999px;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
-            min-height: 44px;
-            display: inline-flex;
+            box-shadow: 0 4px 20px rgba(232, 180, 203, 0.25);
+            min-height: 50px;
+            display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(232, 180, 203, 0.35);
+        }
+
+        @media (min-width: 769px) {
+            .cta-button {
+                font-size: 16px;
+                padding: 18px 40px;
+            }
         }
 
         /* セクション共通 */
