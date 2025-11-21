@@ -9,19 +9,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#e8b4cb">
     <link rel="apple-touch-icon" href="https://placehold.co/180x180/e8b4cb/ffffff?text=L">
-    <link rel="manifest" href="data:application/json,{&quot;name&quot;:&quot;Beauty Salon Luna&quot;,&quot;short_name&quot;:&quot;Luna&quot;,&quot;start_url&quot;:&quot;.&quot;,&quot;display&quot;:&quot;standalone&quot;,&quot;background_color&quot;:&quot;#ffffff&quot;,&quot;theme_color&quot;:&quot;#e8b4cb&quot;,&quot;icons&quot;:[{&quot;src&quot;:&quot;https://placehold.co/192x192/e8b4cb/ffffff?text=L&quot;,&quot;sizes&quot;:&quot;192x192&quot;,&quot;type&quot;:&quot;image/png&quot;}]}">
-    <title>Beauty Salon Luna - 美容サロン (Updated)</title>
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WDZSEFZKY2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-WDZSEFZKY2');
-    </script>
-    
+    <title>Beauty Salon Luna - 美容サロン</title>
     <style>
         * {
             margin: 0;
@@ -41,248 +29,269 @@
             touch-action: manipulation;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
-            font-size: 14px; /* モバイル基本フォントサイズ */
-            padding-bottom: env(safe-area-inset-bottom);
+            font-size: 16px;
+            padding-bottom: 80px;
         }
 
-        /* PC用の大きなフォントサイズ */
+
+        /* 基本的なフォントサイズ階層（モバイルファースト） */
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* PC用のフォントサイズ調整 */
         @media (min-width: 769px) {
             body {
-                font-size: 16px;
-                padding-bottom: 100px; /* PC版でもフローティングナビのための余白 */
+                font-size: 18px;
+                padding-bottom: 100px;
             }
 
             h1 {
-                font-size: 1.8rem !important;
+                font-size: 2.5rem;
             }
 
             h2 {
-                font-size: 1.5rem !important;
+                font-size: 2rem;
             }
 
             h3 {
-                font-size: 1.25rem !important;
+                font-size: 1.5rem;
             }
 
             h4 {
-                font-size: 1.1rem !important;
+                font-size: 1.25rem;
             }
 
             p {
-                font-size: 16px !important;
+                font-size: 1.125rem;
             }
 
             .hero-content h1 {
-                font-size: 14px !important;
+                font-size: 2.5rem;
             }
 
             .hero-content p {
-                font-size: 20px !important;
+                font-size: 1.25rem;
             }
 
             .cta-button {
-                font-size: 16px !important;
-                padding: 18px 40px !important;
+                font-size: 1.125rem;
+                padding: 18px 36px;
             }
 
             .section-title {
-                font-size: 1.75rem !important;
+                font-size: 2rem;
             }
-            
+
             .service-item h3 {
-                font-size: 1.3rem !important;
+                font-size: 1.5rem;
             }
-            
+
             .service-item p {
-                font-size: 16px !important;
+                font-size: 1.125rem;
             }
-            
+
             .price {
-                font-size: 1.5rem !important;
+                font-size: 1.5rem;
             }
-            
+
             .staff-name {
-                font-size: 1.3rem !important;
+                font-size: 1.5rem;
             }
-            
+
             .staff-role {
-                font-size: 16px !important;
+                font-size: 1rem;
             }
-            
+
             .staff-description {
-                font-size: 16px !important;
+                font-size: 1.125rem;
             }
-            
+
             .contact-info {
-                font-size: 16px !important;
+                font-size: 1.125rem;
             }
-            
+
             .booking-form input,
             .booking-form textarea,
             .booking-form select,
             .booking-form button {
-                font-size: 16px !important;
+                font-size: 1rem;
             }
-            
+
             .calendar-month {
-                font-size: 16px !important;
+                font-size: 1.125rem;
             }
-            
+
             .calendar-day {
-                font-size: 14px !important;
+                font-size: 1rem;
             }
-            
+
             .calendar-day-header {
-                font-size: 12px !important;
+                font-size: 0.875rem;
             }
-            
+
             .time-slot {
-                font-size: 14px !important;
+                font-size: 1rem;
             }
-            
+
             .feature-card h3 {
-                font-size: 1.3rem !important;
+                font-size: 1.5rem;
             }
-            
+
             .feature-card p {
-                font-size: 16px !important;
+                font-size: 1.125rem;
             }
-            
+
             .testimonial-text {
-                font-size: 16px !important;
+                font-size: 1.125rem;
             }
-            
+
             .testimonial-author {
-                font-size: 14px !important;
+                font-size: 1rem;
             }
-            
+
             .faq-question {
-                font-size: 16px !important;
+                font-size: 1.125rem;
             }
-            
+
             .faq-answer {
-                font-size: 16px !important;
+                font-size: 1rem;
             }
-            
-            /* PC版でのナビゲーション調整 */
+
             .floating-nav {
                 padding: 15px 0 calc(25px + env(safe-area-inset-bottom));
             }
-            
+
             .nav-item {
-                font-size: 14px !important;
+                font-size: 0.875rem;
                 padding: 8px 6px;
             }
-            
+
             .nav-item svg {
                 width: 20px;
                 height: 20px;
                 margin-bottom: 4px;
             }
-            
+
             .nav-item span {
-                font-size: 12px !important;
+                font-size: 0.75rem;
             }
-            
+
             .booking-btn {
                 background: linear-gradient(135deg, #8b5fbf 0%, #9c6bc7 100%);
-                color: white !important;
+                color: white;
                 border-radius: 25px;
-                padding: 10px 8px !important;
+                padding: 10px 8px;
                 margin: 0 5px;
             }
-            
+
             .booking-btn:hover {
                 transform: translateY(-2px);
                 box-shadow: 0 4px 12px rgba(139, 95, 191, 0.3);
             }
-            
-            /* メニュー選択画面の文字を大きく */
-            .menu-item {
-                padding: 12px !important;
-                min-height: 60px !important;
-            }
-            
-            .menu-item h4 {
-                font-size: 20px !important;
-                margin-bottom: 4px !important;
-            }
-            
-            .menu-description {
-                font-size: 15px !important;
-                margin-bottom: 6px !important;
-            }
-            
-            .menu-duration {
-                font-size: 16px !important;
-            }
-            
-            .menu-price {
-                font-size: 14px !important;
-                font-weight: 600 !important;
-            }
-            
-            .menu-icon {
-                width: 30px !important;
-                height: 30px !important;
-                font-size: 16px !important;
-            }
-            
-            .menu-meta {
-                gap: 8px !important;
-            }
-            
-            .menu-time-icon {
-                width: 16px !important;
-                height: 16px !important;
-            }
-            
-            /* 料金表の文字を大きく */
-            .pricing-table th {
-                font-size: 18px !important;
-                padding: 16px !important;
-            }
-            
-            .pricing-table td {
-                font-size: 16px !important;
-                padding: 16px !important;
-            }
-            
-            .pricing-table .price {
-                font-size: 16px !important;
-                font-weight: 700 !important;
-            }
-        }
 
-        /* スマホ用のフォントサイズ調整 */
-        @media (max-width: 768px) {
-            body {
-                font-size: 14px;
+            .menu-item {
+                padding: 16px;
+                min-height: 70px;
+            }
+
+            .menu-item h4 {
+                font-size: 1.25rem;
+                margin-bottom: 6px;
+            }
+
+            .menu-description {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+
+            .menu-duration {
+                font-size: 1rem;
+            }
+
+            .menu-price {
+                font-size: 1rem;
+                font-weight: 600;
+            }
+
+            .menu-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 1.125rem;
+            }
+
+            .menu-meta {
+                gap: 10px;
+            }
+
+            .menu-time-icon {
+                width: 18px;
+                height: 18px;
+            }
+
+            .pricing-table th {
+                font-size: 1.125rem;
+                padding: 16px;
+            }
+
+            .pricing-table td {
+                font-size: 1rem;
+                padding: 16px;
+            }
+
+            .pricing-table .price {
+                font-size: 1.125rem;
+                font-weight: 700;
             }
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 16px;
+            padding: 0 20px;
         }
 
         /* ヘッダー */
         header {
             position: relative;
-            padding: 80px 0;
+            padding: 3rem 0;
             text-align: center;
             overflow: hidden;
-            min-height: 600px;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
-        @media (max-width: 768px) {
+
+        @media (min-width: 769px) {
             header {
-                min-height: 400px;
-                padding: 40px 0;
+                min-height: 70vh;
+                padding: 5rem 0;
             }
         }
 
@@ -293,6 +302,7 @@
             width: 100%;
             height: 100%;
             z-index: 1;
+            pointer-events: none;
         }
 
         .hero-bg {
@@ -304,13 +314,13 @@
 
         .hero-content {
             position: relative;
-            z-index: 2;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 40px 30px;
-            border-radius: 24px;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-            max-width: 500px;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
             width: 90%;
             margin: 0 auto;
             text-align: center;
@@ -318,12 +328,12 @@
 
         @media (min-width: 769px) {
             .hero-content {
-                padding: 50px 40px;
+                padding: 3rem;
             }
         }
 
         .logo {
-            margin-bottom: 20px;
+            margin-bottom: 1.25rem;
             border-radius: 10px;
             max-width: 200px;
             width: 100%;
@@ -334,81 +344,64 @@
         }
 
         .hero-content h1 {
-            font-size: 13px;
-            color: #6b7280;
-            margin-bottom: 16px;
-            font-weight: 400;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
+            color: #1d1d1f;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
         }
 
         .hero-content p {
-            font-size: 18px;
-            color: #1d1d1f;
-            margin-bottom: 28px;
-            line-height: 1.5;
-            font-weight: 400;
-        }
-
-        @media (min-width: 769px) {
-            .hero-content p {
-                font-size: 20px;
-            }
+            color: #8e8e93;
+            margin-bottom: 1.5rem;
         }
 
         .cta-button {
-            display: block;
-            width: 100%;
+            display: inline-block;
             background: linear-gradient(135deg, #e8b4cb 0%, #d4a574 100%);
             color: white;
-            padding: 16px 32px;
+            padding: 0.875rem 1.75rem;
             text-decoration: none;
-            border-radius: 9999px;
-            font-size: 15px;
-            font-weight: 500;
-            letter-spacing: 0.02em;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(232, 180, 203, 0.25);
-            min-height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+            cursor: pointer;
+            position: relative;
+            z-index: 1001;
         }
 
         .cta-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 24px rgba(232, 180, 203, 0.35);
-        }
-
-        @media (min-width: 769px) {
-            .cta-button {
-                font-size: 16px;
-                padding: 18px 40px;
-            }
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
         }
 
         /* セクション共通 */
         .section {
-            padding: 24px 0;
+            padding: 2rem 0;
+        }
+
+        @media (min-width: 769px) {
+            .section {
+                padding: 3rem 0;
+            }
         }
 
         .section-title {
-            font-size: 18px;
             font-weight: 700;
             color: #1d1d1f;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
             position: relative;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.02em;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -0.75rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 5rem;
             height: 2px;
             background: linear-gradient(135deg, #e8b4cb 0%, #d4a574 100%);
         }
@@ -420,9 +413,23 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        @media (min-width: 600px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .services-grid {
+                gap: 2rem;
+                margin-top: 2rem;
+            }
         }
 
         .service-card {
@@ -444,21 +451,33 @@
             object-fit: cover;
         }
 
+        @media (min-width: 769px) {
+            .service-image {
+                height: 250px;
+            }
+        }
+
         .service-content {
-            padding: 15px;
+            padding: 1.25rem;
             text-align: center;
             position: relative;
         }
 
+        @media (min-width: 769px) {
+            .service-content {
+                padding: 1.5rem;
+            }
+        }
+
         .service-icon {
             background: white;
-            width: 70px;
-            height: 70px;
+            width: 4.5rem;
+            height: 4.5rem;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: -35px auto 20px;
+            margin: -2.25rem auto 1.25rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             position: relative;
             z-index: 2;
@@ -466,8 +485,7 @@
 
         .service-card h3 {
             color: #d4a574;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
+            margin-bottom: 1rem;
         }
 
         .service-card p {
@@ -487,19 +505,18 @@
         .tab-btn {
             display: flex;
             align-items: center;
-            gap: 6px;
-            padding: 10px 14px;
+            gap: 4px;
+            padding: 6px 12px;
             background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 20px;
+            border: 1px solid #f0f0f0;
+            border-radius: 15px;
             color: #666;
-            font-size: 13px;
+            font-size: 0.9375rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
-            min-width: 85px;
-            min-height: 44px;
+            min-width: 80px;
             justify-content: center;
         }
 
@@ -552,15 +569,13 @@
 
         .category-info h3 {
             color: #d4a574;
-            font-size: 15px;
-            margin-bottom: 5px;
-            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 4px;
         }
 
         .category-info p {
             color: #666;
-            font-size: 11px;
-            line-height: 1.4;
+            font-size: 0.875rem;
         }
 
         /* サービスアイテム */
@@ -572,8 +587,8 @@
 
         .service-item {
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             transition: all 0.3s ease;
             cursor: pointer;
@@ -587,7 +602,7 @@
         .item-header {
             display: flex;
             align-items: center;
-            padding: 10px;
+            padding: 12px;
             background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #f3e8ff 100%);
             border-bottom: 1px solid #f0f0f0;
         }
@@ -596,19 +611,19 @@
             flex: 1;
             font-weight: 600;
             color: #333;
-            font-size: 13px;
+            font-size: 1rem;
         }
 
         .item-price {
             color: #e8b4cb;
             font-weight: 700;
-            font-size: 13px;
-            margin-right: 10px;
+            font-size: 1rem;
+            margin-right: 8px;
         }
 
         .toggle-icon {
-            width: 26px;
-            height: 26px;
+            width: 30px;
+            height: 30px;
             background: linear-gradient(135deg, #e8b4cb 0%, #d4a574 100%);
             color: white;
             border-radius: 50%;
@@ -616,7 +631,7 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 1.2rem;
             transition: transform 0.3s ease;
         }
 
@@ -640,8 +655,8 @@
         .item-detail p {
             margin-bottom: 6px;
             color: #666;
-            line-height: 1.5;
-            font-size: 12px;
+            line-height: 1.4;
+            font-size: 0.9375rem;
         }
 
         .item-detail p:last-of-type {
@@ -653,17 +668,15 @@
         .reserve-button {
             background: linear-gradient(135deg, #8b5fbf 0%, #9c6bc7 100%);
             color: white;
-            padding: 10px 16px;
+            padding: 6px 12px;
             border: none;
-            border-radius: 10px;
-            font-size: 13px;
+            border-radius: 6px;
+            font-size: 0.9375rem;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 8px;
             width: 100%;
-            transition: all 0.3s ease;
-            min-height: 44px;
-            box-shadow: 0 2px 8px rgba(139, 95, 191, 0.3);
+            transition: all 0.2s ease;
         }
 
         .reserve-button:hover {
@@ -722,14 +735,14 @@
 
         .feature-compact-content h4 {
             color: #333;
-            font-size: 10px;
+            font-size: 1rem;
             font-weight: 600;
             margin: 0 0 2px 0;
         }
 
         .feature-compact-content p {
             color: #666;
-            font-size: 8px;
+            font-size: 0.875rem;
             margin: 0;
             line-height: 1.2;
         }
@@ -795,7 +808,7 @@
             border-radius: 15px;
             width: 30px;
             height: 30px;
-            font-size: 12px;
+            font-size: 1rem;
             font-weight: 600;
             display: flex;
             align-items: center;
@@ -831,7 +844,7 @@
 
         .modal-header h3 {
             color: #1d1d1f;
-            font-size: 14px;
+            font-size: 1rem;
             font-weight: 700;
             margin: 0;
             letter-spacing: -0.3px;
@@ -841,12 +854,12 @@
             color: #666;
             line-height: 1.4;
             margin-bottom: 12px;
-            font-size: 10px;
+            font-size: 1rem;
         }
 
         .modal-benefits h4 {
             color: #d4a574;
-            font-size: 11px;
+            font-size: 1rem;
             margin-bottom: 8px;
             font-weight: 600;
         }
@@ -862,7 +875,7 @@
             padding: 4px 0 4px 18px;
             position: relative;
             line-height: 1.3;
-            font-size: 9px;
+            font-size: 0.9375rem;
         }
 
         .modal-benefits li::before {
@@ -871,7 +884,7 @@
             left: 0;
             color: #e8b4cb;
             font-weight: bold;
-            font-size: 10px;
+            font-size: 1rem;
         }
 
         .feature-item {
@@ -967,7 +980,7 @@
         }
 
         .staff-compact-name {
-            font-size: 11px;
+            font-size: 1rem;
             font-weight: 600;
             color: #1d1d1f;
             margin: 0 0 1px 0;
@@ -975,7 +988,7 @@
         }
 
         .staff-compact-title {
-            font-size: 9px;
+            font-size: 0.9375rem;
             color: #8e8e93;
             margin: 0;
             font-weight: 500;
@@ -1001,7 +1014,7 @@
 
         .staff-detail p {
             color: #48484a;
-            font-size: 9px;
+            font-size: 0.9375rem;
             line-height: 1.3;
             margin: 0;
             letter-spacing: -0.1px;
@@ -1046,7 +1059,7 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: bold;
             margin: 0 auto 10px;
             animation: bounceIn 0.6s ease;
@@ -1054,7 +1067,7 @@
 
         .success-message h3 {
             color: #1d1d1f;
-            font-size: 12px;
+            font-size: 1rem;
             font-weight: 700;
             margin-bottom: 6px;
             letter-spacing: -0.3px;
@@ -1062,14 +1075,14 @@
 
         .success-message p {
             color: #48484a;
-            font-size: 9px;
+            font-size: 0.9375rem;
             line-height: 1.3;
             margin-bottom: 4px;
         }
 
         .success-note {
             color: #8e8e93 !important;
-            font-size: 8px !important;
+            font-size: 0.875rem !important;
             margin-top: 8px;
         }
 
@@ -1120,7 +1133,7 @@
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
             color: white;
             padding: 20px 16px 16px;
-            font-size: 14px;
+            font-size: 1rem;
             font-weight: 500;
         }
 
@@ -1144,13 +1157,13 @@
             padding: 12px;
             text-align: left;
             font-weight: 600;
-            font-size: 10px;
+            font-size: 1rem;
         }
 
         .pricing-table td {
             padding: 12px;
             border-bottom: 1px solid #f0f0f0;
-            font-size: 10px;
+            font-size: 1rem;
         }
 
         .pricing-table tr:last-child td {
@@ -1161,7 +1174,7 @@
             font-weight: 600;
             color: #d4a574;
             text-align: right;
-            font-size: 10px;
+            font-size: 1rem;
         }
 
         /* お客様の声 */
@@ -1198,7 +1211,7 @@
             color: #666;
             line-height: 1.4;
             margin-bottom: 8px;
-            font-size: 9px;
+            font-size: 0.9375rem;
             padding-left: 20px;
         }
 
@@ -1206,7 +1219,7 @@
             color: #d4a574;
             font-weight: 600;
             text-align: right;
-            font-size: 8px;
+            font-size: 0.875rem;
         }
 
         /* FAQ */
@@ -1224,14 +1237,14 @@
             padding: 12px;
             font-weight: 600;
             cursor: pointer;
-            font-size: 10px;
+            font-size: 1rem;
         }
 
         .faq-answer {
             padding: 12px;
             color: #666;
             line-height: 1.4;
-            font-size: 9px;
+            font-size: 0.9375rem;
         }
 
         /* アクセス */
@@ -1298,7 +1311,7 @@
             margin-bottom: 3px;
             color: #d4a574;
             font-weight: 600;
-            font-size: 9px;
+            font-size: 0.9375rem;
         }
 
         .form-group input,
@@ -1307,7 +1320,7 @@
             padding: 8px;
             border: 1px solid #f0f0f0;
             border-radius: 6px;
-            font-size: 9px;
+            font-size: 0.9375rem;
             transition: border-color 0.3s ease;
         }
 
@@ -1325,10 +1338,10 @@
         .submit-button {
             background: linear-gradient(135deg, #8b5fbf 0%, #9c6bc7 100%);
             color: white;
-            padding: 14px 24px;
+            padding: 10px 16px;
             border: none;
-            border-radius: 12px;
-            font-size: 16px;
+            border-radius: 8px;
+            font-size: 1rem;
             font-weight: 600;
             letter-spacing: -0.3px;
             cursor: pointer;
@@ -1338,7 +1351,6 @@
             max-width: 300px;
             margin: 0 auto;
             display: block;
-            min-height: 50px;
         }
 
         .submit-button:hover {
@@ -1384,7 +1396,7 @@
             flex-direction: column;
             align-items: center;
             background: white;
-            padding: 4px 1px;
+            padding: 4px 2px;
             position: relative;
             z-index: 2;
             flex: 1;
@@ -1402,7 +1414,7 @@
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 10px;
+            font-size: 1rem;
             margin-bottom: 3px;
             transition: all 0.3s ease;
         }
@@ -1413,7 +1425,7 @@
         }
 
         .step-text {
-            font-size: 8px;
+            font-size: 0.875rem;
             color: #8e8e93;
             text-align: center;
             font-weight: 500;
@@ -1438,7 +1450,7 @@
         .booking-step h3 {
             color: #1d1d1f;
             margin-bottom: 8px;
-            font-size: 11px;
+            font-size: 1rem;
             font-weight: 600;
             text-align: center;
             letter-spacing: -0.2px;
@@ -1453,16 +1465,15 @@
 
         .menu-item {
             background: white;
-            padding: 10px;
-            border-radius: 10px;
+            padding: 6px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid #e0e0e0;
+            transition: all 0.15s ease;
+            border: 1px solid #f0f0f0;
             display: flex;
             align-items: center;
-            gap: 8px;
-            min-height: 50px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            gap: 6px;
+            min-height: 35px;
         }
 
         .menu-item:active {
@@ -1483,7 +1494,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
+            font-size: 1rem;
             flex-shrink: 0;
         }
 
@@ -1494,17 +1505,17 @@
 
         .menu-item h4 {
             color: #1d1d1f;
-            margin: 0 0 3px 0;
-            font-size: 14px;
+            margin: 0 0 1px 0;
+            font-size: 1rem;
             font-weight: 600;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.2px;
         }
 
         .menu-description {
             color: #8e8e93;
-            font-size: 11px;
-            line-height: 1.3;
-            margin: 0 0 3px 0;
+            font-size: 0.9375rem;
+            line-height: 1.2;
+            margin: 0 0 2px 0;
         }
 
         .menu-price-section {
@@ -1515,16 +1526,16 @@
 
         .menu-price {
             color: #1d1d1f;
-            font-size: 13px;
+            font-size: 0.9375rem;
             font-weight: 600;
         }
 
         .menu-duration {
             color: #8e8e93;
-            font-size: 10px;
+            font-size: 0.875rem;
             background: #f2f2f7;
-            padding: 2px 6px;
-            border-radius: 4px;
+            padding: 1px 3px;
+            border-radius: 3px;
         }
 
         .menu-meta {
@@ -1563,7 +1574,7 @@
         .time-section h4 {
             color: #d4a574;
             margin-bottom: 10px;
-            font-size: 10px;
+            font-size: 1rem;
         }
 
         .calendar {
@@ -1582,7 +1593,7 @@
         .calendar-nav {
             background: #f2f2f7;
             border: none;
-            font-size: 10px;
+            font-size: 1rem;
             color: #8e8e93;
             cursor: pointer;
             padding: 4px;
@@ -1601,7 +1612,7 @@
         }
 
         .calendar-month {
-            font-size: 10px;
+            font-size: 1rem;
             font-weight: 600;
             color: #1d1d1f;
         }
@@ -1623,27 +1634,26 @@
         .calendar-day-header {
             padding: 6px 4px;
             text-align: center;
-            font-size: 9px;
+            font-size: 0.9375rem;
             color: #8e8e93;
             font-weight: 600;
             background: white;
         }
 
         .calendar-day {
-            padding: 10px 6px;
+            padding: 8px 4px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             background: white;
             border: none;
-            font-size: 15px;
+            font-size: 1rem;
             font-weight: 500;
             color: #1d1d1f;
-            min-height: 44px;
+            min-height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 8px;
         }
 
         .calendar-day:hover:not(.disabled) {
@@ -1681,16 +1691,16 @@
 
         .time-slot {
             background: white;
-            padding: 8px 10px;
-            border-radius: 8px;
+            padding: 4px 6px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             border: 1px solid #e0e0e0;
             text-align: center;
-            font-size: 12px;
+            font-size: 0.875rem;
             font-weight: 500;
             color: #1d1d1f;
-            min-height: 44px;
+            min-height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1721,7 +1731,7 @@
             text-align: center;
             color: #666;
             font-style: italic;
-            font-size: 9px;
+            font-size: 0.9375rem;
         }
 
         /* お客様情報 */
@@ -1752,7 +1762,7 @@
         .summary-section h4 {
             color: #d4a574;
             margin-bottom: 8px;
-            font-size: 10px;
+            font-size: 1rem;
         }
 
         .summary-item {
@@ -1764,7 +1774,7 @@
 
         .summary-total {
             text-align: center;
-            font-size: 11px;
+            font-size: 1rem;
             color: #d4a574;
             margin-top: 10px;
             padding-top: 10px;
@@ -1779,16 +1789,15 @@
         }
 
         .nav-button {
-            padding: 12px 20px;
+            padding: 8px 16px;
             border: none;
-            border-radius: 10px;
-            font-size: 15px;
+            border-radius: 6px;
+            font-size: 1rem;
             font-weight: 600;
             letter-spacing: -0.3px;
             cursor: pointer;
             transition: all 0.3s ease;
-            min-width: 100px;
-            min-height: 44px;
+            min-width: 80px;
         }
 
         .prev-button {
@@ -1845,13 +1854,11 @@
             align-items: center;
             text-decoration: none;
             color: #8e8e93;
-            padding: 6px 4px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            min-width: 50px;
-            min-height: 50px;
+            padding: 4px 3px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            min-width: 40px;
             flex: 1;
-            justify-content: center;
         }
 
         .nav-item:hover,
@@ -1861,12 +1868,12 @@
 
         .nav-item svg {
             margin-bottom: 2px;
-            width: 20px;
-            height: 20px;
+            width: 14px;
+            height: 18px;
         }
 
         .nav-item span {
-            font-size: 10px;
+            font-size: 0.875rem;
             font-weight: 500;
             letter-spacing: -0.2px;
         }
@@ -1875,10 +1882,11 @@
         .nav-item.booking-btn {
             background: linear-gradient(135deg, #8b5fbf 0%, #9c6bc7 100%);
             color: white;
-            border-radius: 16px;
-            margin: 0 2px;
-            padding: 6px 4px;
-            box-shadow: 0 2px 10px rgba(139, 95, 191, 0.3);
+            border-radius: 10px;
+            margin: 0 4px;
+            border-radius: 20px;
+            padding: 8px 10px;
+            box-shadow: 0 2px 10px rgba(232, 180, 203, 0.3);
         }
 
         .nav-item.booking-btn:hover {
@@ -1896,7 +1904,7 @@
 
         footer p {
             margin-bottom: 4px;
-            font-size: 7px;
+            font-size: 0.875rem;
         }
 
         /* 予約システム レスポンシブ */
@@ -1906,17 +1914,17 @@
             }
 
             .booking-steps {
-                flex-wrap: nowrap;
-                gap: 4px;
+                flex-wrap: wrap;
+                gap: 20px;
             }
 
             .step {
                 flex: 1;
-                min-width: 70px;
+                min-width: 120px;
             }
 
             .step-text {
-                font-size: 7px;
+                font-size: 0.875rem;
             }
 
             .menu-grid {
@@ -1934,7 +1942,7 @@
 
             .calendar-day {
                 padding: 4px 2px;
-                font-size: 9px;
+                font-size: 0.9375rem;
             }
 
             .booking-navigation {
@@ -1953,23 +1961,21 @@
 
         @media (max-width: 480px) {
             .booking-steps {
-                justify-content: space-between;
-                flex-wrap: nowrap;
+                justify-content: center;
             }
 
             .step {
-                min-width: 60px;
-                flex: 1;
+                min-width: 80px;
             }
 
             .step-number {
                 width: 20px;
                 height: 20px;
-                font-size: 8px;
+                font-size: 0.875rem;
             }
 
             .step-text {
-                font-size: 6px;
+                font-size: 0.875rem;
             }
 
             .menu-item {
@@ -2000,12 +2006,12 @@
             }
 
             .hero-content h1 {
-                font-size: 12px;
+                font-size: 1rem;
                 line-height: 1.2;
             }
 
             .hero-content p {
-                font-size: 7px;
+                font-size: 0.875rem;
                 line-height: 1.2;
                 margin-bottom: 4px;
             }
@@ -2016,7 +2022,7 @@
             }
 
             .section-title {
-                font-size: 9px;
+                font-size: 0.9375rem;
                 font-weight: 700;
                 margin-bottom: 4px;
             }
@@ -2045,15 +2051,15 @@
             .pricing-table th,
             .pricing-table td {
                 padding: 8px 4px;
-                font-size: 8px;
+                font-size: 0.875rem;
             }
             
             .pricing-table th {
-                font-size: 9px;
+                font-size: 0.9375rem;
             }
             
             .pricing-table .price {
-                font-size: 9px;
+                font-size: 0.9375rem;
                 font-weight: 700;
             }
             
@@ -2080,15 +2086,15 @@
             .cta-button,
             .nav-button,
             .submit-button {
-                min-height: 44px;
-                padding: 12px 20px;
-                font-size: 15px;
+                min-height: 30px;
+                padding: 8px 12px;
+                font-size: 0.9375rem;
             }
 
             .time-slot {
-                min-height: 44px;
-                padding: 8px;
-                font-size: 12px;
+                min-height: 24px;
+                padding: 6px;
+                font-size: 0.875rem;
             }
 
             .calendar-day {
@@ -2105,19 +2111,19 @@
             
             /* 予約確認画面の文字サイズを小さく */
             .summary-section h4 {
-                font-size: 8px;
+                font-size: 0.875rem;
             }
             
             .summary-item {
-                font-size: 9px;
+                font-size: 0.9375rem;
             }
             
             .summary-total {
-                font-size: 9px;
+                font-size: 0.9375rem;
             }
             
             .booking-step h3 {
-                font-size: 9px;
+                font-size: 0.9375rem;
                 margin-bottom: 6px;
             }
             
@@ -2127,19 +2133,19 @@
             
             /* 予約内容確認の大きな見出し */
             .booking-step h2 {
-                font-size: 12px;
+                font-size: 1rem;
                 margin-bottom: 8px;
             }
         }
 
         @media (max-width: 480px) {
             .hero-content h1 {
-                font-size: 20px;
+                font-size: 1.25rem;
                 line-height: 1.2;
             }
 
             .hero-content p {
-                font-size: 13px;
+                font-size: 1rem;
                 margin-bottom: 16px;
             }
 
@@ -2155,18 +2161,18 @@
             }
 
             .booking-step h3 {
-                font-size: 14px;
+                font-size: 1rem;
                 margin-bottom: 16px;
             }
 
             .step-number {
                 width: 24px;
                 height: 24px;
-                font-size: 11px;
+                font-size: 1rem;
             }
 
             .step-text {
-                font-size: 8px;
+                font-size: 0.875rem;
                 line-height: 1.1;
             }
 
@@ -2214,31 +2220,29 @@
 
             .booking-steps {
                 margin-bottom: 12px;
-                padding: 0 2px;
-                gap: 2px;
-                flex-wrap: nowrap;
+                padding: 0 4px;
             }
 
             .step {
-                padding: 4px 0px;
+                padding: 4px 1px;
                 flex: 1;
-                min-width: 0;
+                min-width: 50px;
             }
 
             .step-number {
                 width: 18px;
                 height: 18px;
-                font-size: 9px;
+                font-size: 0.9375rem;
                 margin-bottom: 2px;
             }
 
             .step-text {
-                font-size: 7px;
+                font-size: 0.875rem;
                 line-height: 1.1;
             }
 
             .booking-step h3 {
-                font-size: 11px;
+                font-size: 1rem;
                 margin-bottom: 8px;
             }
 
@@ -2251,23 +2255,23 @@
             .menu-icon {
                 width: 24px;
                 height: 24px;
-                font-size: 12px;
+                font-size: 1rem;
             }
 
             .menu-item h4 {
-                font-size: 10px;
+                font-size: 1rem;
             }
 
             .menu-description {
-                font-size: 8px;
+                font-size: 0.875rem;
             }
 
             .menu-price {
-                font-size: 9px;
+                font-size: 0.9375rem;
             }
 
             .menu-duration {
-                font-size: 7px;
+                font-size: 0.875rem;
             }
 
             .menu-meta {
@@ -2297,7 +2301,7 @@
                 <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200&h=80&fit=crop&q=80" alt="Beauty Salon Luna" class="logo">
                 <h1>Beauty Salon Luna</h1>
                 <p>あなたの美しさを引き出す、心地よい空間でのひとときを</p>
-                <a href="#contact" class="cta-button" onclick="showSection('contact', event)">ご予約はこちら</a>
+                <a href="#contact" class="cta-button" id="hero-cta-button">ご予約はこちら</a>
             </div>
         </div>
     </header>
@@ -3607,6 +3611,12 @@
             menuElement.classList.add('selected');
             selectedMenu = menuElement.dataset.menu;
             console.log('selectedMenu:', selectedMenu);
+
+            // メニュー選択後、自動的に次のステップ（日時選択）に進む
+            setTimeout(() => {
+                currentStep = 2;
+                showStep(2);
+            }, 300);
         }
 
         function nextStep() {
@@ -3923,11 +3933,38 @@
 
         // 初期化 - DOMContentLoaded wrapper removed, called directly
         initializeBookingSystem();
-        
+
         // 初期状態でサービスセクションを表示
-        setTimeout(() => {
-            showSection('services');
-        }, 100);
+        // setTimeout(() => {
+        //     showSection('services');
+        // }, 100);
+
+        // ヒーローセクションの「ご予約はこちら」ボタンのイベントリスナー
+        const heroCtaButton = document.getElementById('hero-cta-button');
+        if (heroCtaButton) {
+            heroCtaButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // contactセクションを表示
+                showSection('contact');
+
+                // 少し待ってからスクロール
+                setTimeout(() => {
+                    const contactSection = document.getElementById('contact');
+                    if (contactSection) {
+                        contactSection.scrollIntoView({behavior: 'smooth', block: 'start'});
+
+                        // さらに待ってから予約システムのステップ1を表示
+                        setTimeout(() => {
+                            if (typeof showStep === 'function') {
+                                showStep(1);
+                            }
+                        }, 300);
+                    }
+                }, 100);
+            }, true); // useCapture = true で確実にイベントをキャッチ
+        }
     </script>
 </body>
 </html>
