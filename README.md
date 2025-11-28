@@ -1,0 +1,63 @@
+# ココロAI コーポレートサイト
+
+ココロAI合同会社の公式Webサイトです。
+
+## サイト構成
+
+| ファイル | 内容 |
+|---------|------|
+| `index.html` | トップページ（事業内容・プロダクト紹介・制作実績・ニュース・会社概要） |
+| `pricing.html` | 料金プランページ（4カテゴリのタブ切り替え式） |
+| `faq.html` | よくある質問ページ |
+| `style.css` | 共通スタイル |
+| `samples/` | 制作サンプル（美容サロンテンプレート等） |
+| `images/` | 画像アセット |
+
+## 料金プランの4カテゴリ
+
+1. **ホームページ制作・LP制作** - エントリー / おまかせ / イベントLP
+2. **LINE公式・ミニアプリ活用** - LINE公式スタート / スタンダード / フルDX
+3. **アプリ開発・業務ツール** (Advanced) - フルオーダーメイド開発
+4. **ブランディング・プロモーション** - ロゴ・デザイン制作
+
+## 技術スタック
+
+- **HTML5** + **Tailwind CSS** (CDN)
+- **JavaScript** (Vanilla)
+- **Google Fonts** (Noto Sans JP)
+- ホスティング: GitHub Pages
+
+## ローカル開発
+
+```bash
+# リポジトリをクローン
+git clone https://github.com/mapcocoro/cocoroai-new-homepage.git
+cd cocoroai-new-homepage
+
+# ローカルサーバーで確認（例: VS Code Live Server または Python）
+python -m http.server 8080
+# http://localhost:8080 でアクセス
+```
+
+## 更新履歴
+
+### 2025-11-28
+- 料金・サービスページの情報アーキテクチャ統一
+- 4カテゴリ名の統一（Services/Pricing間）
+- タブ切り替え式UIに変更、URLハッシュによるタブ切り替え機能
+- 「アプリ開発・AIサービス開発」→「アプリ開発・業務ツール」に変更
+- LINEミニアプリの「買い切り」強調表現をトーンダウン
+- トップページCTAカードの文言変更
+
+### 2025-11-27
+- SEO対策：メタディスクリプション追加
+- ピックアップセクションのプロダクト入れ替え
+- 料金プランページの文言修正
+
+## ライセンス
+
+Copyright 2025 ココロAI合同会社. All Rights Reserved.
+
+---
+
+運営: [ココロAI合同会社](https://cocoroai.co.jp)
