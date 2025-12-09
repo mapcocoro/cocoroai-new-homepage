@@ -125,7 +125,7 @@
 
             <div class="bg-white p-6 rounded-lg shadow-md" x-data="{ open: false }">
                 <button @click="open = !open" class="w-full text-left flex justify-between items-center">
-                    <h3 class="font-semibold text-lg">Stripe や LINE Pay などの決済サービスも、ココロAIが契約してくれますか？</h3>
+                    <h3 class="font-semibold text-lg">Stripe などの決済サービスも、ココロAIが契約してくれますか？</h3>
                     <svg :class="{'rotate-180': open}" class="w-5 h-5 text-cyan-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div x-show="open" x-transition class="mt-4 text-gray-700">
@@ -151,7 +151,7 @@
                         <li><span class="font-medium">お客様側：</span>決済サービスのアカウント申請・審査</li>
                         <li><span class="font-medium">ココロAI側：</span>連携機能の実装・テスト</li>
                     </ul>
-                    <p class="mb-3">特に LINE ミニアプリ＋LINE Pay の組み合わせは、事業者情報の審査や書類提出などで、<span class="font-medium text-cyan-700">数週間〜</span>かかるケースもあります。</p>
+                    <p class="mb-3">特に決済サービスによっては、事業者情報の審査や書類提出などで、<span class="font-medium text-cyan-700">数週間〜</span>かかるケースもあります。</p>
                     <p class="mb-2">最初のご相談の時点で、</p>
                     <ul class="list-disc list-inside mb-3 ml-2 space-y-1">
                         <li>どの決済サービスを使いたいか</li>

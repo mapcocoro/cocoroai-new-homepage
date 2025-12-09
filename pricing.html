@@ -34,68 +34,41 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* タブナビゲーションのスタイル */
-        .tab-card {
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .tab-card:hover {
-            transform: translateY(-2px);
-        }
-        .tab-card.active {
-            border-color: #06b6d4;
-            box-shadow: 0 10px 25px -5px rgba(6, 182, 212, 0.3);
-            transform: translateY(-4px);
-        }
-        .tab-card.active .tab-indicator {
-            opacity: 1;
-        }
-        .tab-indicator {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        /* 詳細エリアのアコーディオン */
-        .tab-content-wrapper {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, opacity 0.3s ease;
-            opacity: 0;
-        }
-        .tab-content-wrapper.open {
-            max-height: none;
-            overflow: visible;
-            opacity: 1;
-            transition: opacity 0.3s ease;
-        }
-        .tab-content {
+        /* アコーディオンスタイル */
+        details summary::-webkit-details-marker {
             display: none;
         }
-        .tab-content.active {
-            display: block;
-        }
-        /* 展開矢印 */
-        .tab-card .expand-arrow {
-            transition: transform 0.3s ease;
-        }
-        .tab-card.active .expand-arrow {
-            transform: rotate(180deg);
-        }
-        /* プラン機能リストのアコーディオン */
-        .plan-features-accordion summary::-webkit-details-marker,
-        .contract-info-accordion summary::-webkit-details-marker {
-            display: none;
-        }
-        .plan-features-accordion summary,
-        .contract-info-accordion summary {
+        details summary {
             list-style: none;
         }
-        .plan-features-accordion summary .accordion-icon::before,
-        .contract-info-accordion summary .accordion-icon::before {
+        details summary .accordion-icon::before {
             content: "＋";
+            margin-right: 0.5rem;
         }
-        .plan-features-accordion[open] summary .accordion-icon::before,
-        .contract-info-accordion[open] summary .accordion-icon::before {
+        details[open] summary .accordion-icon::before {
             content: "−";
+        }
+        /* バッジスタイル */
+        .badge-recommended {
+            background-color: #10B981;
+        }
+        .badge-monitor {
+            background-color: #F59E0B;
+        }
+        .badge-advanced {
+            background-color: #8B5CF6;
+        }
+        /* セクション間余白 */
+        .section-spacing {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        /* 解説カードホバー */
+        .explain-card {
+            transition: box-shadow 0.3s ease;
+        }
+        .explain-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
     </style>
 
@@ -133,643 +106,797 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-10">
-        <!-- 1. ページタイトル＆リード文 -->
-        <div class="text-center mb-10 max-w-3xl mx-auto">
-            <h1 class="text-xl md:text-2xl font-bold text-gray-800 mb-3">料金プラン</h1>
-            <p class="text-xs md:text-sm text-gray-600 leading-snug mb-4">
-                <span class="font-semibold text-cyan-600">プロの品質を、手に取りやすい価格で。</span><br class="hidden md:inline">
-                ホームページ制作を中心に、LINE公式・ミニアプリ活用や業務効率化アプリまでトータルでサポートします。
-            </p>
-            <p class="text-xs text-gray-500 leading-relaxed">
-                小さな事業者さまでも導入しやすいように、<br class="md:hidden">
-                「まずはホームページから」「LINEも活用したい」「業務効率化のアプリを作りたい」など、<br class="hidden md:inline">
-                段階に応じて選べるプランをご用意しています。
-            </p>
-        </div>
+    <main>
 
-        <!-- 2. サービス別料金ナビ（4枚カード） -->
-        <div class="mb-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 max-w-5xl mx-auto">
-                <!-- カード1：ホームページ制作・LP制作 -->
-                <div class="tab-card relative bg-white p-4 md:p-5 rounded-2xl shadow-lg border-2 border-transparent hover:shadow-xl" data-tab="web">
-                    <div class="tab-indicator absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-t-2xl"></div>
-                    <div class="text-center">
-                        <div class="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 md:mb-3 bg-cyan-100 rounded-xl flex items-center justify-center">
-                            <svg class="w-5 h-5 md:w-6 md:h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- 1. 悩み訴求セクション -->
+        <section class="py-12 md:py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto">
+                    <h1 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">料金プラン</h1>
+                    <p class="text-sm md:text-base text-gray-600 leading-relaxed mb-4">
+                        ホームページは放置気味、LINEは手打ち送信…<br>
+                        そんな<span class="font-semibold text-gray-800">「バラバラ管理」</span>に疲れていませんか？
+                    </p>
+                    <p class="text-sm md:text-base text-gray-600 leading-relaxed mb-4">
+                        ココロAIなら、<span class="font-semibold text-emerald-600">ひとつの管理画面</span>で<br>
+                        HP更新もLINE通知もまとめて完了。
+                    </p>
+                    <p class="text-sm md:text-base text-gray-600 leading-relaxed">
+                        「新規集客」も「リピーター育成」も、<br>
+                        <span class="font-semibold text-emerald-600">これひとつで回りはじめます。</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 4つのサービス概要カード -->
+        <section class="py-10 md:py-12" style="background-color: #F9FAFB;">
+            <div class="container mx-auto px-6">
+                <p class="text-center text-sm md:text-base text-gray-600 mb-8">ココロAIでできること</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 max-w-5xl mx-auto">
+
+                    <!-- カード1：ホームページ制作・LP制作 -->
+                    <a href="#single-plans" class="service-overview-card bg-white border border-gray-200 rounded-xl p-4 md:p-5 hover:shadow-lg transition-shadow block">
+                        <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center mb-3">
+                            <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-sm md:text-base font-bold text-gray-800 mb-1">ホームページ制作・<br class="md:hidden">LP制作</h3>
-                        <p class="text-lg md:text-xl font-bold text-cyan-600 mb-1">¥120,000〜</p>
-                        <p class="text-xs md:text-sm text-gray-500 leading-snug mb-2 hidden md:block">名刺代わりのサイトから、本格的な集客サイト、イベントLPまで。</p>
-                    </div>
-                </div>
+                        <h3 class="text-sm font-bold text-gray-800 mb-1">ホームページ制作・LP制作</h3>
+                        <p class="text-base md:text-lg font-bold text-cyan-600 mb-2">¥120,000<span class="text-xs font-medium text-gray-500">〜</span></p>
+                        <p class="text-xs text-gray-600 leading-relaxed">名刺代わりのサイトから、本格的な集客サイト、イベントLPまで。</p>
+                    </a>
 
-                <!-- カード2：LINE公式・ミニアプリ活用（おすすめ） -->
-                <div class="tab-card active relative bg-white p-4 md:p-5 rounded-2xl shadow-lg border-2 border-transparent hover:shadow-xl" data-tab="line">
-                    <div class="tab-indicator absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-t-2xl"></div>
-                    <span class="absolute -top-2 left-1/2 -translate-x-1/2 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow-md">おすすめ</span>
-                    <div class="text-center">
-                        <div class="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 md:mb-3 bg-green-100 rounded-xl flex items-center justify-center">
-                            <svg class="w-5 h-5 md:w-6 md:h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- カード2：LINE公式・ミニアプリ活用 -->
+                    <a href="#single-plans" class="service-overview-card bg-white border border-gray-200 rounded-xl p-4 md:p-5 hover:shadow-lg transition-shadow block relative">
+                        <span class="absolute -top-2 right-2 badge-recommended text-white text-xs font-bold px-2 py-0.5 rounded-full">おすすめ</span>
+                        <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center mb-3">
+                            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-sm md:text-base font-bold text-gray-800 mb-1">LINE公式・<br class="md:hidden">ミニアプリ活用</h3>
-                        <p class="text-lg md:text-xl font-bold text-green-600 mb-1">¥128,000〜</p>
-                        <p class="text-xs md:text-sm text-gray-500 leading-snug mb-2 hidden md:block">予約・会員管理をLINE上で完結できるパッケージプランです。</p>
-                    </div>
-                </div>
+                        <h3 class="text-sm font-bold text-gray-800 mb-1">LINE公式・ミニアプリ活用</h3>
+                        <p class="text-base md:text-lg font-bold text-emerald-600 mb-2">¥128,000<span class="text-xs font-medium text-gray-500">〜</span></p>
+                        <p class="text-xs text-gray-600 leading-relaxed">予約・会員管理をLINE上で完結できるパッケージプランです。</p>
+                    </a>
 
-                <!-- カード3：アプリ開発・AIサービス開発（Advanced） -->
-                <div class="tab-card relative bg-gradient-to-br from-slate-800 to-indigo-900 p-4 md:p-5 rounded-2xl shadow-lg border-2 border-transparent hover:shadow-xl" data-tab="app">
-                    <div class="tab-indicator absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-t-2xl"></div>
-                    <div class="text-center">
-                        <div class="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 md:mb-3 bg-white/10 rounded-xl flex items-center justify-center">
-                            <svg class="w-5 h-5 md:w-6 md:h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- カード3：アプリ開発・業務ツール -->
+                    <a href="#app-development" class="service-overview-card bg-white border border-gray-200 rounded-xl p-4 md:p-5 hover:shadow-lg transition-shadow block relative">
+                        <span class="absolute -top-2 right-2 badge-advanced text-white text-xs font-bold px-2 py-0.5 rounded-full">Advanced</span>
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                             </svg>
                         </div>
-                        <div class="inline-block bg-white/10 px-2 py-0.5 rounded text-xs text-white/80 mb-1">Advanced</div>
-                        <h3 class="text-sm md:text-base font-bold text-white mb-1">アプリ開発・<br>業務ツール</h3>
-                        <p class="text-lg md:text-xl font-bold text-cyan-400 mb-1">¥500,000<span class="text-xs font-medium text-gray-300">〜</span></p>
-                        <p class="text-xs text-gray-400">(税込・規模により変動)</p>
-                        <p class="text-xs md:text-sm text-gray-300 leading-snug mb-2 hidden md:block">業務効率化ツールやオーダーメイドアプリなど、フルオーダー開発。</p>
-                    </div>
-                </div>
+                        <h3 class="text-sm font-bold text-gray-800 mb-1">アプリ開発・業務ツール</h3>
+                        <p class="text-base md:text-lg font-bold text-purple-600 mb-2">¥500,000<span class="text-xs font-medium text-gray-500">〜</span></p>
+                        <p class="text-xs text-gray-600 leading-relaxed">業務効率化ツールやオーダーメイドアプリなど、フルオーダー開発。</p>
+                    </a>
 
-                <!-- カード4：ブランディング・プロモーション -->
-                <div class="tab-card relative bg-white p-4 md:p-5 rounded-2xl shadow-lg border-2 border-transparent hover:shadow-xl" data-tab="promo">
-                    <div class="tab-indicator absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-t-2xl"></div>
-                    <div class="text-center">
-                        <div class="w-10 h-10 md:w-12 md:h-12 mx-auto mb-2 md:mb-3 bg-purple-100 rounded-xl flex items-center justify-center">
-                            <svg class="w-5 h-5 md:w-6 md:h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- カード4：ブランディング・プロモーション -->
+                    <a href="#branding" class="service-overview-card bg-white border border-gray-200 rounded-xl p-4 md:p-5 hover:shadow-lg transition-shadow block">
+                        <div class="w-10 h-10 bg-pink-100 rounded-lg flex items-center justify-center mb-3">
+                            <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
                             </svg>
                         </div>
-                        <h3 class="text-sm md:text-base font-bold text-gray-800 mb-1">ブランディング・<br>プロモーション</h3>
-                        <p class="text-lg md:text-xl font-bold text-purple-600 mb-1">¥150,000<span class="text-xs font-medium text-gray-600">〜</span></p>
-                        <p class="text-xs text-gray-500">(税込・内容により変動)</p>
-                        <p class="text-xs md:text-sm text-gray-500 leading-snug mb-2 hidden md:block">ロゴ・キービジュアル・SNS画像など、世界観づくりのご相談。</p>
-                    </div>
+                        <h3 class="text-sm font-bold text-gray-800 mb-1">ブランディング・プロモーション</h3>
+                        <p class="text-base md:text-lg font-bold text-pink-600 mb-2">¥150,000<span class="text-xs font-medium text-gray-500">〜</span></p>
+                        <p class="text-xs text-gray-600 leading-relaxed">ロゴ・キービジュアル・SNS画像など、世界観づくりのご相談。</p>
+                    </a>
+
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 3. カテゴリ別 詳細エリア（アコーディオン展開） -->
-        <div id="tab-content-wrapper" class="tab-content-wrapper mb-10">
-            <!-- 3-1. LINE公式・ミニアプリ活用 詳細 -->
-            <div id="tab-line" class="tab-content">
-                <div class="text-center mb-6">
-                    <h2 class="text-lg md:text-xl font-bold text-gray-800 mb-2">LINE公式・ミニアプリ活用プラン</h2>
-                    <p class="text-xs md:text-sm text-gray-600 leading-snug max-w-2xl mx-auto">
-                        国内9,600万人が使うLINEを、予約・会員証・ミニアプリで<br class="hidden md:inline">
-                        「売上アップ」と「業務効率化」に変えるプランです。
-                    </p>
-                </div>
+        <!-- 3. セットプラン（メイン） -->
+        <section class="py-10 md:py-12 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-2xl mx-auto">
+                    <div class="rounded-2xl shadow-lg border-2 p-5 md:p-7 relative" style="background-color: #ECFDF5; border-color: #10B981;">
+                        <!-- バッジ -->
+                        <span class="absolute -top-3 left-1/2 -translate-x-1/2 badge-recommended text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">おすすめ</span>
+                        <span class="absolute top-0 right-3 badge-monitor text-white text-xs font-bold px-2 py-0.5 rounded-b-lg">モニター募集中</span>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- LINE公式スタートプラン -->
-                    <div class="bg-white p-5 md:p-6 rounded-2xl shadow-md border-2 border-transparent hover:border-green-400 transition-all duration-300 flex flex-col">
-                        <div class="mb-2">
-                            <h3 class="text-base md:text-lg font-bold mb-1 text-gray-800">LINE公式スタートプラン</h3>
-                            <p class="text-xs text-gray-500 mb-2 leading-snug">まずはLINE公式を整えたい方向け。ミニアプリ導入前の土台づくりをサポートします。</p>
-                            <p class="text-xl md:text-2xl font-bold text-green-600 mb-0.5">¥128,000<span class="text-xs font-medium text-gray-600">〜</span></p>
-                            <p class="text-xs text-gray-500">(税込)</p>
-                        </div>
-                        <details class="mb-3 plan-features-accordion">
-                            <summary class="text-sm text-green-600 cursor-pointer hover:text-green-700 font-medium">
-                                <span class="accordion-icon"></span> 含まれる内容を見る
-                            </summary>
-                            <ul class="mt-3 space-y-1.5 text-xs text-gray-700 leading-snug">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">LINE公式アカウントの開設・初期設定</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">リッチメニュー画像の制作・設置</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">既存ホームページや予約サイトへの導線設計</span></li>
-                            </ul>
-                            <div class="mt-3 space-y-1 bg-gray-50 p-2 rounded-lg text-xs text-gray-500">
-                                <p>・あいさつメッセージ・自動応答メッセージの設定も含まれます。</p>
-                                <p>・「LINE公式を整えたい」方向けのプランです。ミニアプリ開発をご希望の方は、スタンダードプラン以上をご検討ください。</p>
-                                <p>・スタンダードプランへのアップグレード時は、差額精算にて対応可能です。</p>
-                            </div>
-                        </details>
-                        <p class="text-xs text-gray-400 mb-2 leading-snug">※ミニアプリ開発は含みません。</p>
-                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="mt-auto w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-xs">お問い合わせ</a>
-                    </div>
+                        <div class="text-center mt-2 mb-4">
+                            <h2 class="text-lg md:text-xl font-bold text-gray-800 mb-2">HP × LINE 一括管理プラン</h2>
+                            <p class="text-xs text-gray-400 line-through mb-0.5">通常価格 ¥578,000</p>
+                            <p class="text-2xl md:text-3xl font-bold text-emerald-600 mb-0.5">モニター価格 ¥450,000<span class="text-sm font-medium text-gray-500">〜</span></p>
+                            <p class="text-xs text-emerald-600 font-semibold mb-4">¥128,000 お得!</p>
 
-                    <!-- LINEミニアプリ スタンダードプラン（おすすめ） -->
-                    <div class="bg-white p-5 md:p-6 rounded-2xl shadow-2xl border-2 border-green-500 relative flex flex-col transform md:-translate-y-2">
-                        <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">⭐ おすすめ</span>
-                        <span class="absolute top-0 right-4 bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded-b-lg">モニター募集中</span>
-                        <div class="mb-2 mt-2">
-                            <h3 class="text-base md:text-lg font-bold mb-1 text-gray-800">LINEミニアプリ スタンダードプラン</h3>
-                            <p class="text-xs text-green-600 mb-2 leading-snug">小規模店舗向けの「予約〜会員管理」パッケージです。LINEで予約受付からリピート施策まで一元化できます。</p>
-                            <p class="text-sm text-gray-400 line-through mb-0.5">通常価格 ¥398,000〜</p>
-                            <p class="text-xl md:text-2xl font-bold text-green-600 mb-0.5">モニター価格 ¥298,000<span class="text-xs font-medium text-gray-600">〜</span></p>
-                            <p class="text-xs text-gray-500">(税込)</p>
-                        </div>
-                        <details class="mb-3 plan-features-accordion">
-                            <summary class="text-sm text-green-600 cursor-pointer hover:text-green-700 font-medium">
-                                <span class="accordion-icon"></span> 含まれる機能・ボリュームの目安を見る
-                            </summary>
-                            <ul class="mt-3 space-y-1.5 text-xs text-gray-700 leading-snug">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">LINE上での予約フォーム・受付管理</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">予約リマインド・フォローメッセージの自動配信</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">LINE公式のショップカード（スタンプ）設定・運用設計</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">LINE公式のクーポン設定・配信設計</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">会員ページ（LINEプロフィール連携・予約履歴表示）</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">リッチメニューのデザイン・設定</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">Googleスプレッドシートへの予約・顧客データ自動連携機能</span></li>
-                            </ul>
-                            <div class="mt-3 space-y-1.5 bg-gray-50 p-2 rounded-lg text-xs text-gray-500">
-                                <p>・8画面程度／予約メニュー10種類程度／スタッフ5名程度を想定しています。</p>
-                                <p>・スタンプカード、クーポンはLINE公式アカウントの標準機能を活用し、安定性を重視した構成となります。</p>
-                                <p>・予約データ・顧客データはGoogleスプレッドシートで管理できます。</p>
-                                <p>・独自デザインのスタンプカード・クーポン、決済連携、専用管理画面はフルDXプランにて対応します。</p>
-                            </div>
-                        </details>
-                        <p class="text-xs text-orange-600 mb-2 leading-snug">※導入事例としてHP掲載にご協力いただける方限定のモニター価格です</p>
-                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="mt-auto w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2.5 px-4 rounded-full text-center transition-colors text-xs shadow-md">お問い合わせ</a>
-                    </div>
-
-                    <!-- LINEミニアプリ フルDXプラン -->
-                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-5 md:p-6 rounded-2xl shadow-lg border-2 border-green-200 hover:border-green-400 transition-all duration-300 flex flex-col relative">
-                        <span class="absolute top-0 right-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-b-lg">フルDX</span>
-                        <div class="mb-2 mt-2">
-                            <h3 class="text-base md:text-lg font-bold mb-1 text-gray-800">LINEミニアプリ フルDXプラン</h3>
-                            <p class="text-xs text-green-600 mb-2 leading-snug">決済・サブスク課金や、既存システムとの連携など、より高度な仕組みが必要な方向けのプランです。外部サービスとの連携も含めて、最適な構成をご提案します。</p>
-                            <p class="text-sm text-gray-400 line-through mb-0.5">通常価格 ¥600,000〜</p>
-                            <p class="text-xl md:text-2xl font-bold text-green-600 mb-0.5">モニター価格 ¥450,000<span class="text-xs font-medium text-gray-600">〜</span></p>
-                            <p class="text-xs text-gray-500">(税込・内容により変動)</p>
-                        </div>
-                        <details class="mb-3 plan-features-accordion">
-                            <summary class="text-sm text-purple-600 cursor-pointer hover:text-purple-700 font-medium">
-                                <span class="accordion-icon"></span> 含まれる機能・注意事項を見る
-                            </summary>
-                            <ul class="mt-3 space-y-1.5 text-xs text-gray-700 leading-snug">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">スタンダードプランの全機能</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">独自デザインのスタンプカード・クーポン・会員証</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">データベースによる本格的な顧客・予約管理</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">事業者向け専用管理画面の開発</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">Stripe等の外部決済サービスとの連携</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">既存システムとのAPI連携（内容に応じて検討）</span></li>
-                            </ul>
-                            <div class="mt-3 space-y-1.5 bg-white/80 p-2 rounded-lg text-xs text-gray-500">
-                                <p>・スタンダードプランの内容に加え、独自機能の開発やシステム連携を行います。</p>
-                                <p>・Stripe等の外部決済サービスを利用した事前決済・サブスク課金に対応します。</p>
-                                <p>・事業者様専用の管理画面で、予約・顧客・売上を一元管理できます。</p>
-                                <p>・機能数・連携先により開発規模が変動するため、詳細はヒアリング後にお見積もりいたします。</p>
-                            </div>
-                        </details>
-                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="mt-auto w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 px-4 rounded-full text-center transition-colors text-xs">お問い合わせ</a>
-                    </div>
-                </div>
-
-                <!-- デモ体験セクション -->
-                <div class="mt-8 mb-8 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-5 md:p-6 border border-green-200">
-                    <div class="text-center mb-5">
-                        <h3 class="text-base md:text-lg font-bold text-gray-800 mb-2">📱 業種別デモを体験してみる</h3>
-
-                        <!-- アプリ画面プレビュー -->
-                        <div class="mb-6">
-                            <p class="text-sm text-gray-600 text-center mb-4">LINEでこんなアプリが届きます</p>
-                            <div class="grid grid-cols-3 gap-3 md:gap-4 max-w-2xl mx-auto">
-                                <!-- Bistro COCORO -->
-                                <div class="text-center">
-                                    <div class="bg-gray-100 rounded-xl p-1 shadow-sm">
-                                        <img src="images/demo-bistro.png" alt="Bistro COCORO アプリ画面" class="rounded-lg w-full">
-                                    </div>
-                                    <p class="text-xs text-gray-500 mt-1">飲食店</p>
-                                </div>
-                                <!-- Farm COCORO -->
-                                <div class="text-center">
-                                    <div class="bg-gray-100 rounded-xl p-1 shadow-sm">
-                                        <img src="images/demo-farm.png" alt="Farm COCORO アプリ画面" class="rounded-lg w-full">
-                                    </div>
-                                    <p class="text-xs text-gray-500 mt-1">農家・産直</p>
-                                </div>
-                                <!-- COCOROwear -->
-                                <div class="text-center">
-                                    <div class="bg-gray-100 rounded-xl p-1 shadow-sm">
-                                        <img src="images/demo-cocorowear.png" alt="COCOROwear アプリ画面" class="rounded-lg w-full">
-                                    </div>
-                                    <p class="text-xs text-gray-500 mt-1">アパレル・EC</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <p class="text-xs md:text-sm text-gray-600 leading-relaxed mb-2">
-                            実際に動くLINEミニアプリのサンプルを体験できます。
-                        </p>
-                        <p class="text-xs text-gray-500 leading-relaxed">
-                            【PCの方】QRコードをスマートフォンで読み取ってください<br>
-                            【スマートフォンの方】QRコードを長押し → 「LINEで開く」をタップ
-                        </p>
-                    </div>
-
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mb-5">
-                        <!-- デモ1: 飲食店 -->
-                        <div class="bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 text-center">
-                            <div class="w-10 h-10 mx-auto mb-2 bg-orange-50 rounded-full flex items-center justify-center">
-                                <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </div>
-                            <p class="text-xs md:text-sm font-bold text-gray-800 mb-0.5">飲食店</p>
-                            <p class="text-xs text-gray-500 leading-snug mb-2">Bistro COCORO</p>
-                            <img src="https://qr-official.line.me/gs/M_084sbosk_BW.png?oat_content=qr" alt="Bistro COCORO QRコード" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-2">
-                            <p class="text-xs text-green-600 mb-2">予約・テイクアウト・スタンプ</p>
-                            <div class="flex flex-wrap justify-center gap-1">
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">カフェ</span>
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">居酒屋</span>
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">バー</span>
-                            </div>
-                        </div>
-
-                        <!-- デモ2: パン屋 -->
-                        <div class="bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 text-center">
-                            <div class="w-10 h-10 mx-auto mb-2 bg-amber-50 rounded-full flex items-center justify-center">
-                                <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
-                            </div>
-                            <p class="text-xs md:text-sm font-bold text-gray-800 mb-0.5">パン屋・テイクアウト</p>
-                            <p class="text-xs text-gray-500 leading-snug mb-2">ココロのパン屋さん</p>
-                            <img src="https://qr-official.line.me/gs/M_083vwsun_BW.png?oat_content=qr" alt="ココロのパン屋さん QRコード" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-2">
-                            <p class="text-xs text-green-600 mb-2">モバイルオーダー・会員証</p>
-                            <div class="flex flex-wrap justify-center gap-1">
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">キッチンカー</span>
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">テイクアウト</span>
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">弁当屋</span>
-                            </div>
-                        </div>
-
-                        <!-- デモ3: 整骨院 -->
-                        <div class="bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 text-center">
-                            <div class="w-10 h-10 mx-auto mb-2 bg-pink-50 rounded-full flex items-center justify-center">
-                                <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                            </div>
-                            <p class="text-xs md:text-sm font-bold text-gray-800 mb-0.5">整骨院・サロン</p>
-                            <p class="text-xs text-gray-500 leading-snug mb-2">こころ整骨院</p>
-                            <img src="https://qr-official.line.me/gs/M_670rusdt_BW.png?oat_content=qr" alt="こころ整骨院 QRコード" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-2">
-                            <p class="text-xs text-green-600 mb-2">予約・問診票・回数券</p>
-                            <div class="flex flex-wrap justify-center gap-1">
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">エステ</span>
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">美容室</span>
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">鍼灸</span>
-                            </div>
-                        </div>
-
-                        <!-- デモ4: 士業 -->
-                        <div class="bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 text-center">
-                            <div class="w-10 h-10 mx-auto mb-2 bg-blue-50 rounded-full flex items-center justify-center">
-                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                            </div>
-                            <p class="text-xs md:text-sm font-bold text-gray-800 mb-0.5">士業・コンサル</p>
-                            <p class="text-xs text-gray-500 leading-snug mb-2">こころ税務サポート</p>
-                            <img src="https://qr-official.line.me/gs/M_100aovld_BW.png?oat_content=qr" alt="こころ税務サポート QRコード" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-2">
-                            <p class="text-xs text-green-600 mb-2">相談予約・案件進捗</p>
-                            <div class="flex flex-wrap justify-center gap-1">
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">行政書士</span>
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">社労士</span>
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">FP</span>
-                            </div>
-                        </div>
-
-                        <!-- デモ5: 農家 -->
-                        <div class="bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 text-center">
-                            <div class="w-10 h-10 mx-auto mb-2 bg-green-50 rounded-full flex items-center justify-center">
-                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </div>
-                            <p class="text-xs md:text-sm font-bold text-gray-800 mb-0.5">農家・産直・体験系</p>
-                            <p class="text-xs text-gray-500 leading-snug mb-2">Farm COCORO</p>
-                            <img src="https://qr-official.line.me/gs/M_800jxdsf_BW.png?oat_content=qr" alt="Farm COCORO QRコード" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-2">
-                            <p class="text-xs text-green-600 mb-2">EC・定期便・体験予約</p>
-                            <div class="flex flex-wrap justify-center gap-1">
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">直売所</span>
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">酒蔵</span>
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">牧場</span>
-                            </div>
-                        </div>
-
-                        <!-- デモ6: アパレル -->
-                        <div class="bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 text-center">
-                            <div class="w-10 h-10 mx-auto mb-2 bg-purple-50 rounded-full flex items-center justify-center">
-                                <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                            </div>
-                            <p class="text-xs md:text-sm font-bold text-gray-800 mb-0.5">アパレル・EC</p>
-                            <p class="text-xs text-gray-500 leading-snug mb-2">COCOROwear</p>
-                            <img src="https://qr-official.line.me/gs/M_683pqgok_BW.png?oat_content=qr" alt="COCOROwear QRコード" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-2">
-                            <p class="text-xs text-green-600 mb-2">EC購入・試着予約</p>
-                            <div class="flex flex-wrap justify-center gap-1">
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">雑貨店</span>
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">コスメ</span>
-                                <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">家具</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 他業種対応の案内 -->
-                    <div class="bg-white/70 rounded-xl p-4 mb-4">
-                        <p class="text-sm font-bold text-gray-700 text-center mb-2">💡 その他の業種もご相談ください</p>
-                        <p class="text-xs text-gray-600 text-center leading-relaxed">
-                            ジム・スクール・クリニック・不動産・宿泊施設・イベント運営など<br>
-                            <span class="text-green-600 font-medium">予約・会員管理・リピート施策が必要な業種</span>などにもおすすめです。
-                        </p>
-                    </div>
-
-                    <p class="text-xs text-gray-400 text-center leading-relaxed">
-                        ※デモ版のため一部機能は簡略化しています。実際の納品時は正式なLINEミニアプリとして開発します。<br>
-                        ※デモでは拡張機能も含めて体験できます。プランにより対応範囲が異なります。<br>
-                        ※デモ版では実際の決済・課金は発生しません。入力された情報は保存されませんので、安心してお試しください。
-                    </p>
-                </div>
-
-                <!-- LINE比較ボックス -->
-                <div class="mt-8 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-5 md:p-6 border border-green-200">
-                    <h3 class="text-sm md:text-base font-bold text-gray-700 mb-3">💡「月1万円のSaaS」か、「一生使える自社アプリ」か</h3>
-                    <p class="text-xs md:text-sm text-gray-700 leading-relaxed mb-3">
-                        予約・会員管理・配信ツールを別々に契約すると、月数万円 × 数年で<strong>100万円規模</strong>に。<br>
-                        スタンダードプランなら、<strong class="text-green-600">初期費用¥298,000〜</strong>で解約しても消えない自社専用アプリに。
-                    </p>
-                    <details class="mb-3 plan-features-accordion">
-                        <summary class="text-sm text-green-600 cursor-pointer hover:text-green-700 font-medium">
-                            <span class="accordion-icon"></span> 詳しく見る
-                        </summary>
-                        <div class="mt-3 text-xs md:text-sm text-gray-600 leading-relaxed space-y-2">
-                            <p>事業者向けにLINEミニアプリを個別開発すると、機能を絞ったシンプルなものでも、<strong class="text-gray-700">300〜500万円台</strong>のご予算になるケースが少なくありません。</p>
-                            <p>一方で、予約システム・会員管理・配信ツールなどを「月1万円前後のSaaS」でそれぞれ契約すると、ひとつひとつは手頃でも、合計で月に数万円の固定費になり、数年間で<strong class="text-gray-700">数十万〜100万円規模</strong>の投資になることもあります。</p>
-                            <p>ココロAIの「LINEミニアプリ スタンダードプラン」は、これらの機能をひとつのミニアプリにまとめて <strong class="text-green-600">モニター価格 ¥298,000〜（税込・初期費用のみ）</strong>。3年間使うと考えると、月1万円弱のツールと同じくらいの負担感で、解約しても消えない自社専用ミニアプリをお持ちいただけます。</p>
-                            <p class="text-xs text-gray-400">※LINE公式アカウント等の利用料は別途実費がかかります。</p>
-                        </div>
-                    </details>
-                    <p class="text-xs text-orange-600 font-medium">
-                        📢 現在、導入事例を募集中のため特別価格でご提供しています。モニター募集は予告なく終了する場合があります。
-                    </p>
-                </div>
-            </div>
-
-            <!-- 3-2. ホームページ制作・LP制作 詳細 -->
-            <div id="tab-web" class="tab-content">
-                <div class="text-center mb-6">
-                    <h2 class="text-lg md:text-xl font-bold text-gray-800 mb-2">ホームページ制作・LP制作プラン</h2>
-                    <p class="text-xs md:text-sm text-gray-600 leading-snug max-w-2xl mx-auto">
-                        事業の顔となるホームページから、イベント専用のLPまで。<br class="hidden md:inline">
-                        テンプレートを活かした低コストプランから、構成・文章まで任せたい方向けのプランまでご用意しています。
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- エントリープラン -->
-                    <div class="bg-white p-5 md:p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 transition-all duration-300 flex flex-col">
-                        <div class="mb-2">
-                            <h3 class="text-base md:text-lg font-bold mb-1 text-gray-800">エントリープラン</h3>
-                            <p class="text-xs text-gray-500 mb-2 leading-snug">テンプレートベースで、名刺代わりのサイトをスピード制作。</p>
-                            <p class="text-xl md:text-2xl font-bold text-cyan-600 mb-0.5">¥120,000<span class="text-xs font-medium text-gray-600">〜</span></p>
-                            <p class="text-xs text-gray-500">(税込)</p>
-                        </div>
-                        <div class="mb-3">
-                            <ul class="space-y-1.5 text-xs text-gray-700 leading-snug">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">スマホ対応テンプレートデザイン（1〜3ページ）</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">基本的なSEO設定＋お問い合わせフォーム</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">テキスト・写真はお客様ご用意</span></li>
-                            </ul>
-                        </div>
-                        <p class="text-xs text-gray-400 mb-2 leading-snug">※企画・文章作成は含まれません。</p>
-                        <details class="mb-3 text-xs text-gray-500">
-                            <summary class="cursor-pointer text-cyan-600 hover:text-cyan-700 underline decoration-dotted">詳しい内容を見る</summary>
-                            <div class="mt-2 space-y-1 bg-gray-50 p-2 rounded-lg">
-                                <p>・テンプレートをベースに、お客様の情報を流し込んで制作します。</p>
-                                <p>・取材・インタビュー・本格的なSEOコンサルは含まれません。</p>
-                                <p>・構成や文章を一緒に考えたい方は「おまかせプラン」をご検討ください。</p>
-                                <p>・デザイン確定後の修正は2回まで。3回目以降は別途費用となります。</p>
-                            </div>
-                        </details>
-                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="mt-auto w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-xs">お問い合わせ</a>
-                    </div>
-
-                    <!-- おまかせプラン（おすすめ） -->
-                    <div class="bg-white p-5 md:p-6 rounded-2xl shadow-2xl border-2 border-cyan-500 relative flex flex-col transform md:-translate-y-2">
-                        <span class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">⭐ おすすめ</span>
-                        <span class="absolute top-0 right-4 bg-orange-500 text-white text-xs font-bold px-2 py-0.5 rounded-b-lg">モニター募集中</span>
-                        <div class="mb-2 mt-2">
-                            <h3 class="text-base md:text-lg font-bold mb-1 text-gray-800">おまかせプラン</h3>
-                            <p class="text-xs text-cyan-600 mb-2 leading-snug">構成・文章・SEOまで"まるごとお任せ"できる本格プラン。</p>
-                            <p class="text-sm text-gray-400 line-through mb-0.5">通常価格 ¥380,000〜</p>
-                            <p class="text-xl md:text-2xl font-bold text-cyan-600 mb-0.5">モニター価格 ¥280,000<span class="text-xs font-medium text-gray-600">〜</span></p>
-                            <p class="text-xs text-gray-500">(税込)</p>
-                        </div>
-                        <div class="mb-3">
-                            <ul class="space-y-1.5 text-xs text-gray-700 leading-snug">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">サイト構成設計＋原稿作成（5〜7ページ目安）</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">キーワード設計を含む基本的なSEO設計</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">必要ページの提案と制作</span></li>
-                            </ul>
-                        </div>
-                        <p class="text-xs text-gray-400 mb-2 leading-snug">※ページ追加・大量の文章は別途お見積もり。</p>
-                        <details class="mb-3 text-xs text-gray-500">
-                            <summary class="cursor-pointer text-cyan-600 hover:text-cyan-700 underline decoration-dotted">詳しいボリューム・料金の目安を見る</summary>
-                            <div class="mt-2 space-y-1.5 bg-gray-50 p-2 rounded-lg">
-                                <p>・原稿は〜5,000文字程度を想定しています。</p>
-                                <p>・8ページ目以降は1ページあたり¥20,000〜、5,000文字を大きく超える場合は別途お見積もりとなります。</p>
-                                <p>・サービス紹介・料金・FAQなど、必要なページ構成をご提案します。</p>
-                                <p>・デザイン確定後の修正は2回まで。3回目以降は別途費用となります。</p>
-                            </div>
-                        </details>
-                        <p class="text-xs text-orange-600 mb-2 leading-snug">※導入事例としてHP掲載にご協力いただける方限定のモニター価格です</p>
-                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="mt-auto w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2.5 px-4 rounded-full text-center transition-colors text-xs shadow-md">お問い合わせ</a>
-                    </div>
-
-                    <!-- イベント・キャンペーンLP制作プラン -->
-                    <div class="bg-white p-5 md:p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-cyan-500 transition-all duration-300 flex flex-col">
-                        <div class="mb-2">
-                            <h3 class="text-base md:text-lg font-bold mb-1 text-gray-800">イベント・キャンペーンLP制作プラン</h3>
-                            <p class="text-xs text-gray-500 mb-2 leading-snug">地域イベントやキャンペーンなど、期間限定プロジェクト専用の1ページLP。</p>
-                            <p class="text-xl md:text-2xl font-bold text-cyan-600 mb-0.5">¥150,000<span class="text-xs font-medium text-gray-600">〜</span></p>
-                            <p class="text-xs text-gray-500">(税込)</p>
-                        </div>
-                        <div class="mb-3">
-                            <ul class="space-y-1.5 text-xs text-gray-700 leading-snug">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">1ページ構成のLP制作（スマホ対応）</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">内容・スケジュールの整理と簡易ライティング</span></li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-cyan-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="font-medium">申込フォーム＋メインビジュアル1点</span></li>
-                            </ul>
-                        </div>
-                        <p class="text-xs text-gray-400 mb-2 leading-snug">※ポスター・SNS画像等は別途お見積もり。</p>
-                        <details class="mb-3 text-xs text-gray-500">
-                            <summary class="cursor-pointer text-cyan-600 hover:text-cyan-700 underline decoration-dotted">詳しい内容を見る</summary>
-                            <div class="mt-2 space-y-1 bg-gray-50 p-2 rounded-lg">
-                                <p>・自治体・商店街・団体などのイベント告知に最適です。</p>
-                                <p>・外部予約サービスへの導線設計にも対応します。</p>
-                                <p>・ポスター・簡単なグッズ案・SNS画像などのプロモーション制作も、別途お見積もりにて承ります。</p>
-                                <p>・デザイン確定後の修正は2回まで。3回目以降は別途費用となります。</p>
-                            </div>
-                        </details>
-                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="mt-auto w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-xs">お問い合わせ</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3-3. ブランディング・プロモーション 詳細 -->
-            <div id="tab-promo" class="tab-content">
-                <div class="max-w-4xl mx-auto">
-                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 md:p-8 rounded-2xl shadow-lg border border-purple-200">
-                        <div class="text-center mb-6">
-                            <h2 class="text-lg md:text-xl font-bold text-gray-800 mb-2">ブランディング・プロモーション</h2>
-                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed max-w-2xl mx-auto">
-                                ロゴやキービジュアルの制作から、資料・SNS画像・簡単なグッズ案まで。<br class="hidden md:inline">
-                                ブランドの世界観づくりと、「どう見せるか」の整理をお手伝いします。
+                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed mb-4">
+                                ホームページとLINEミニアプリをセットで制作。<br>
+                                お知らせを1回更新するだけで、HPに反映＆LINEで自動通知。<br>
+                                <span class="font-medium text-gray-700">更新のたびに連絡する手間がなくなります。</span>
                             </p>
                         </div>
 
-                        <div class="bg-white/80 p-4 rounded-xl mb-6 max-w-md mx-auto">
-                            <ul class="space-y-2 text-sm text-gray-700">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-purple-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>ロゴ・キービジュアルの制作</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-purple-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>チラシ・SNS画像・バナー制作</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-purple-500 mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>簡単なノベルティ・グッズ案の提案</li>
+                        <!-- セット内容 -->
+                        <div class="bg-white/80 rounded-lg p-4 mb-4">
+                            <p class="text-xs font-bold text-gray-700 mb-3 text-center">セット内容</p>
+                            <ul class="space-y-2 max-w-md mx-auto">
+                                <li class="flex items-center text-xs text-gray-700">
+                                    <svg class="w-4 h-4 text-emerald-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span>ホームページ制作（おまかせプラン相当）</span>
+                                </li>
+                                <li class="flex items-center text-xs text-gray-700">
+                                    <svg class="w-4 h-4 text-emerald-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span>LINEミニアプリ制作（スタンダードプラン相当）</span>
+                                </li>
+                                <li class="flex items-center text-xs text-gray-700">
+                                    <svg class="w-4 h-4 text-emerald-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span>一括管理機能</span>
+                                </li>
+                                <li class="flex items-center text-xs text-gray-700">
+                                    <svg class="w-4 h-4 text-emerald-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    <span>お知らせ更新 → HP反映 + LINE自動通知</span>
+                                </li>
                             </ul>
                         </div>
 
                         <div class="text-center">
-                            <p class="text-xl md:text-2xl font-bold text-purple-600 mb-2">¥150,000〜 / 応相談</p>
-                            <p class="text-xs text-gray-500 mb-4">※内容により変動します</p>
-                            <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="inline-block bg-purple-500 hover:bg-purple-600 text-white font-bold py-2.5 px-6 rounded-full transition-colors text-sm shadow-md">お問い合わせ</a>
+                            <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="inline-block bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-8 rounded-full transition-colors text-sm shadow-md">お問い合わせ</a>
                         </div>
+
+                        <p class="text-xs text-orange-600 text-center mt-3">※導入事例としてHP掲載にご協力いただける方限定のモニター価格です</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- 3-4. アプリ開発・業務ツール（Advanced） 詳細 -->
-            <div id="tab-app" class="tab-content">
-                <div class="max-w-5xl mx-auto">
-                    <div class="bg-gradient-to-br from-slate-900 to-indigo-950 rounded-2xl shadow-2xl overflow-hidden">
-                        <div class="p-6 md:p-8">
-                            <div class="text-center mb-6">
-                                <div class="inline-block bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-white/80 mb-3">Advanced</div>
-                                <h2 class="text-lg md:text-xl font-bold text-white mb-2">アプリ開発・業務ツール</h2>
-                                <p class="text-xs md:text-sm text-gray-300 leading-relaxed max-w-2xl mx-auto">
-                                    既存のSaaSではフィットしない業務や、独自サービスをゼロから形にしたい企業さま向けの完全オーダーメイドプランです。
-                                </p>
+        <!-- 4. 解説カード2枚 -->
+        <section class="py-10 md:py-12 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+                    <!-- カード1：LINEミニアプリって何？ -->
+                    <div class="explain-card bg-white border border-gray-200 rounded-2xl p-5 md:p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center mr-3">
+                                <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                </svg>
                             </div>
+                            <div>
+                                <h3 class="text-base font-bold text-gray-800">LINEミニアプリって何？</h3>
+                                <p class="text-xs text-gray-500">HPとの違いは？</p>
+                            </div>
+                        </div>
+                        <details>
+                            <summary class="text-sm text-emerald-600 cursor-pointer hover:text-emerald-700 font-medium py-2">
+                                <span class="accordion-icon"></span>詳しく見る
+                            </summary>
+                            <div class="mt-4 text-sm text-gray-600 leading-relaxed space-y-4">
+                                <p class="font-semibold text-gray-700">ダウンロード不要！<br>LINEの中ですぐ使える「お店専用アプリ」です。</p>
 
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                                <div class="bg-white/5 backdrop-blur-sm p-4 rounded-xl">
-                                    <ul class="space-y-2 text-sm text-gray-200">
-                                        <li class="flex items-start"><svg class="w-5 h-5 text-cyan-400 mr-2.5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>オリジナル予約システム・社内向け業務ツール（日報アプリ・見積もりシミュレーター等）の開発</li>
-                                        <li class="flex items-start"><svg class="w-5 h-5 text-cyan-400 mr-2.5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Webアプリ・iOSアプリ・管理画面を組み合わせたシステム設計</li>
+                                <div class="bg-cyan-50 rounded-lg p-3">
+                                    <p class="font-bold text-cyan-700 text-xs mb-1">【HPの役割】</p>
+                                    <ul class="text-xs text-gray-600 space-y-0.5">
+                                        <li>・新規のお客様が見つける「看板」</li>
+                                        <li>・検索で発見 → 情報収集</li>
                                     </ul>
                                 </div>
-                                <div class="bg-white/5 backdrop-blur-sm p-4 rounded-xl">
-                                    <ul class="space-y-2 text-sm text-gray-200">
-                                        <li class="flex items-start"><svg class="w-5 h-5 text-cyan-400 mr-2.5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>既存ツールや外部サービスとの連携（API連携など）</li>
-                                        <li class="flex items-start"><svg class="w-5 h-5 text-cyan-400 mr-2.5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>要件定義〜プロトタイプ〜本実装〜運用開始までの伴走サポート</li>
+
+                                <div class="bg-emerald-50 rounded-lg p-3">
+                                    <p class="font-bold text-emerald-700 text-xs mb-1">【LINEミニアプリの役割】</p>
+                                    <ul class="text-xs text-gray-600 space-y-0.5">
+                                        <li>・お客様と繋がり続ける「会員証」</li>
+                                        <li>・予約・クーポン・プッシュ通知で再来店</li>
                                     </ul>
                                 </div>
-                            </div>
 
+                                <p class="text-xs text-gray-500 border-t border-gray-100 pt-3">「新規」はHPで、「リピーター」はLINEで。<br>両方あると集客の仕組みが回りはじめます。</p>
+                            </div>
+                        </details>
+                    </div>
+
+                    <!-- カード2：実は高くない？ -->
+                    <div class="explain-card bg-white border border-gray-200 rounded-2xl p-5 md:p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center mr-3">
+                                <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-base font-bold text-gray-800">実は高くない？</h3>
+                                <p class="text-xs text-gray-500">他サービスと比較すると…</p>
+                            </div>
+                        </div>
+                        <details>
+                            <summary class="text-sm text-amber-600 cursor-pointer hover:text-amber-700 font-medium py-2">
+                                <span class="accordion-icon"></span>詳しく見る
+                            </summary>
+                            <div class="mt-4 text-sm text-gray-600 leading-relaxed space-y-4">
+                                <p>予約システム、会員管理、LINE配信ツール…<br>別々に契約すると、月額数万円。<br>数年使えば<span class="font-semibold text-gray-700">100万円規模</span>に。</p>
+
+                                <div class="bg-red-50 rounded-lg p-3">
+                                    <p class="font-bold text-red-700 text-xs mb-1">【SaaSを複数契約した場合】</p>
+                                    <p class="text-xs text-gray-600">月2〜3万円 × 3年 = <span class="font-bold">約100万円</span></p>
+                                    <p class="text-xs text-gray-400">※解約したら使えなくなる</p>
+                                </div>
+
+                                <div class="bg-emerald-50 rounded-lg p-3">
+                                    <p class="font-bold text-emerald-700 text-xs mb-1">【ココロAIなら】</p>
+                                    <p class="text-xs text-gray-600">初期費用 <span class="font-bold">¥298,000〜</span></p>
+                                    <ul class="text-xs text-gray-600 mt-1 space-y-0.5">
+                                        <li>・解約しても消えない</li>
+                                        <li>・自社専用アプリがずっと残る</li>
+                                    </ul>
+                                </div>
+
+                                <p class="text-xs text-gray-500 border-t border-gray-100 pt-3">「月額課金し続ける」より<br>「一度作って資産にする」という選択肢。</p>
+                            </div>
+                        </details>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 単品プラン詳細 -->
+        <section id="single-plans" class="section-spacing" style="background-color: #F9FAFB;">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-10">
+                    <p class="text-base md:text-lg text-gray-600">「HPだけ」「LINEだけ」もご用意しています</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+                    <!-- 左カード：ホームページ制作 -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm">
+                        <div class="mb-4">
+                            <div class="flex items-center mb-2">
+                                <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center mr-3">
+                                    <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-base md:text-lg font-bold text-gray-800">ホームページ制作・LP制作</h3>
+                            </div>
+                            <p class="text-xl font-bold text-cyan-600 mb-2">¥120,000<span class="text-sm font-medium text-gray-500">〜</span></p>
+                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
+                                名刺代わりのサイトから本格的な集客サイト、イベント専用LPまで。<br>
+                                お店の個性を引き出すオリジナルデザイン。
+                            </p>
+                        </div>
+
+                        <details class="group">
+                            <summary class="text-sm text-cyan-600 cursor-pointer hover:text-cyan-700 font-medium py-2">
+                                <span class="accordion-icon"></span>プランの詳細を見る
+                            </summary>
+                            <div class="mt-4 space-y-4">
+
+                                <!-- エントリープラン -->
+                                <div class="bg-gray-50 rounded-xl p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="text-sm font-bold text-gray-800">エントリープラン</h4>
+                                        <span class="text-sm font-bold text-cyan-600">¥120,000</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mb-2">名刺代わりの5ページ構成</p>
+                                    <details class="text-xs mb-3">
+                                        <summary class="text-cyan-600 cursor-pointer hover:text-cyan-700">
+                                            <span class="accordion-icon"></span>含まれる内容を見る
+                                        </summary>
+                                        <ul class="mt-2 space-y-1 text-gray-600 pl-4">
+                                            <li>・トップページ</li>
+                                            <li>・サービス紹介</li>
+                                            <li>・会社/店舗概要</li>
+                                            <li>・アクセス</li>
+                                            <li>・お問い合わせフォーム</li>
+                                            <li>・スマホ対応</li>
+                                            <li>・SEO基本設定</li>
+                                            <li>・公開後の修正1回</li>
+                                        </ul>
+                                    </details>
+                                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-full text-center transition-colors text-xs">お問い合わせ</a>
+                                </div>
+
+                                <!-- おまかせプラン -->
+                                <div class="bg-cyan-50 rounded-xl p-4 border border-cyan-200">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <div class="flex items-center gap-2">
+                                            <h4 class="text-sm font-bold text-gray-800">おまかせプラン</h4>
+                                            <span class="badge-monitor text-white text-xs px-1.5 py-0.5 rounded">モニター</span>
+                                        </div>
+                                        <span class="text-sm font-bold text-cyan-600">¥280,000〜</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 line-through mb-1">通常価格 ¥380,000</p>
+                                    <p class="text-xs text-gray-500 mb-2">本格的な集客サイト</p>
+                                    <details class="text-xs mb-3">
+                                        <summary class="text-cyan-600 cursor-pointer hover:text-cyan-700">
+                                            <span class="accordion-icon"></span>含まれる内容を見る
+                                        </summary>
+                                        <ul class="mt-2 space-y-1 text-gray-600 pl-4">
+                                            <li>・ページ数：ご要望に応じて</li>
+                                            <li>・オリジナルデザイン</li>
+                                            <li>・プロによるライティング</li>
+                                            <li>・写真選定・簡易レタッチ</li>
+                                            <li>・お問い合わせフォーム</li>
+                                            <li>・Googleマップ埋め込み</li>
+                                            <li>・SNS連携</li>
+                                            <li>・スマホ対応</li>
+                                            <li>・SEO基本設定</li>
+                                            <li>・アクセス解析設置</li>
+                                            <li>・公開後の修正2回</li>
+                                        </ul>
+                                        <p class="mt-2 text-orange-600">※導入事例としてHP掲載にご協力いただける方限定</p>
+                                    </details>
+                                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full text-center transition-colors text-xs">お問い合わせ</a>
+                                </div>
+
+                                <!-- イベントLP -->
+                                <div class="bg-gray-50 rounded-xl p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="text-sm font-bold text-gray-800">イベントLP</h4>
+                                        <span class="text-sm font-bold text-cyan-600">¥150,000</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mb-2">期間限定のキャンペーン・イベント用</p>
+                                    <details class="text-xs mb-3">
+                                        <summary class="text-cyan-600 cursor-pointer hover:text-cyan-700">
+                                            <span class="accordion-icon"></span>含まれる内容を見る
+                                        </summary>
+                                        <ul class="mt-2 space-y-1 text-gray-600 pl-4">
+                                            <li>・1ページ完結</li>
+                                            <li>・訴求力のあるデザイン</li>
+                                            <li>・申込フォーム</li>
+                                            <li>・スマホ対応</li>
+                                            <li>・SNSシェア設定</li>
+                                        </ul>
+                                    </details>
+                                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-full text-center transition-colors text-xs">お問い合わせ</a>
+                                </div>
+
+                            </div>
+                        </details>
+                    </div>
+
+                    <!-- 右カード：LINE公式・ミニアプリ -->
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm">
+                        <div class="mb-4">
+                            <div class="flex items-center mb-2">
+                                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-base md:text-lg font-bold text-gray-800">LINE公式・ミニアプリ活用</h3>
+                            </div>
+                            <p class="text-xl font-bold text-green-600 mb-2">¥128,000<span class="text-sm font-medium text-gray-500">〜</span></p>
+                            <p class="text-xs md:text-sm text-gray-600 leading-relaxed">
+                                予約・会員証・EC機能をLINE内に構築。<br>
+                                リピーターを自動で育てます。
+                            </p>
+                        </div>
+
+                        <details class="group">
+                            <summary class="text-sm text-green-600 cursor-pointer hover:text-green-700 font-medium py-2">
+                                <span class="accordion-icon"></span>プランの詳細を見る
+                            </summary>
+                            <div class="mt-4 space-y-4">
+
+                                <!-- LINE公式スタートプラン -->
+                                <div class="bg-gray-50 rounded-xl p-4">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="text-sm font-bold text-gray-800">LINE公式スタートプラン</h4>
+                                        <span class="text-sm font-bold text-green-600">¥128,000〜</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mb-2">まずはLINE公式を整えたい方向け</p>
+                                    <details class="text-xs mb-3">
+                                        <summary class="text-green-600 cursor-pointer hover:text-green-700">
+                                            <span class="accordion-icon"></span>含まれる内容を見る
+                                        </summary>
+                                        <ul class="mt-2 space-y-1 text-gray-600 pl-4">
+                                            <li>・LINE公式アカウント設計</li>
+                                            <li>・リッチメニュー作成</li>
+                                            <li>・あいさつメッセージ設定</li>
+                                            <li>・基本的な自動応答設定</li>
+                                        </ul>
+                                        <p class="mt-2 text-gray-400">※ミニアプリ開発は含みません</p>
+                                    </details>
+                                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-full text-center transition-colors text-xs">お問い合わせ</a>
+                                </div>
+
+                                <!-- LINEミニアプリ スタンダードプラン -->
+                                <div class="bg-green-50 rounded-xl p-4 border border-green-200">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <div class="flex items-center gap-2 flex-wrap">
+                                            <h4 class="text-sm font-bold text-gray-800">スタンダードプラン</h4>
+                                            <span class="badge-recommended text-white text-xs px-1.5 py-0.5 rounded">おすすめ</span>
+                                            <span class="badge-monitor text-white text-xs px-1.5 py-0.5 rounded">モニター</span>
+                                        </div>
+                                        <span class="text-sm font-bold text-green-600">¥298,000〜</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 line-through mb-1">通常価格 ¥398,000</p>
+                                    <p class="text-xs text-gray-500 mb-2">小規模店舗向けの「予約〜会員管理」パッケージ</p>
+                                    <details class="text-xs mb-3">
+                                        <summary class="text-green-600 cursor-pointer hover:text-green-700">
+                                            <span class="accordion-icon"></span>含まれる機能を見る
+                                        </summary>
+                                        <ul class="mt-2 space-y-1 text-gray-600 pl-4">
+                                            <li>・LINEミニアプリ開発</li>
+                                            <li>・予約機能</li>
+                                            <li>・会員証・ポイント管理</li>
+                                            <li>・クーポン配信</li>
+                                            <li>・お知らせ配信</li>
+                                            <li>・管理画面</li>
+                                            <li>・リッチメニュー作成</li>
+                                        </ul>
+                                        <p class="mt-2 text-orange-600">※導入事例としてHP掲載にご協力いただける方限定</p>
+                                    </details>
+                                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full text-center transition-colors text-xs">お問い合わせ</a>
+                                </div>
+
+                                <!-- LINEミニアプリ フルDXプラン -->
+                                <div class="bg-gray-50 rounded-xl p-4">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <div class="flex items-center gap-2">
+                                            <h4 class="text-sm font-bold text-gray-800">フルDXプラン</h4>
+                                            <span class="badge-advanced text-white text-xs px-1.5 py-0.5 rounded">フルDX</span>
+                                        </div>
+                                        <span class="text-sm font-bold text-green-600">¥450,000〜</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400 line-through mb-1">通常価格 ¥600,000</p>
+                                    <p class="text-xs text-gray-500 mb-2">決済・サブスク課金や外部サービス連携が必要な方向け</p>
+                                    <details class="text-xs mb-3">
+                                        <summary class="text-green-600 cursor-pointer hover:text-green-700">
+                                            <span class="accordion-icon"></span>含まれる機能を見る
+                                        </summary>
+                                        <ul class="mt-2 space-y-1 text-gray-600 pl-4">
+                                            <li>・スタンダードプランの全機能</li>
+                                            <li>・決済機能</li>
+                                            <li>・サブスク課金</li>
+                                            <li>・外部API連携</li>
+                                            <li>・データベース構築</li>
+                                            <li>・管理画面（専用）</li>
+                                        </ul>
+                                    </details>
+                                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-full text-center transition-colors text-xs">お問い合わせ</a>
+                                </div>
+
+                            </div>
+                        </details>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 業種別デモセクション -->
+        <section id="demo" class="section-spacing bg-gradient-to-br from-green-50 to-emerald-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-8">
+                    <h3 class="text-lg md:text-xl font-bold text-gray-800 mb-2">業種別デモを体験してみる</h3>
+
+                    <!-- アプリ画面プレビュー -->
+                    <div class="mb-6">
+                        <p class="text-sm text-gray-600 text-center mb-4">LINEでこんなアプリが届きます</p>
+                        <div class="grid grid-cols-3 gap-3 md:gap-4 max-w-2xl mx-auto">
+                            <!-- Bistro COCORO -->
                             <div class="text-center">
-                                <p class="text-xl md:text-2xl font-bold text-white mb-2">¥500,000<span class="text-sm font-medium text-gray-300">〜</span></p>
-                                <p class="text-xs text-gray-400 mb-4">(税込・規模により変動）<br>※機能数・連携先によって必要なご予算が変動するため、詳細はヒアリングのうえお見積もりいたします。</p>
-                                <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="inline-block bg-white hover:bg-gray-100 text-gray-900 font-bold py-2.5 px-6 rounded-full transition-colors text-sm shadow-lg">詳しく相談する</a>
+                                <div class="bg-gray-100 rounded-xl p-1 shadow-sm">
+                                    <img src="images/demo-bistro.png" alt="Bistro COCORO アプリ画面" class="rounded-lg w-full">
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">飲食店</p>
+                            </div>
+                            <!-- Farm COCORO -->
+                            <div class="text-center">
+                                <div class="bg-gray-100 rounded-xl p-1 shadow-sm">
+                                    <img src="images/demo-farm.png" alt="Farm COCORO アプリ画面" class="rounded-lg w-full">
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">農家・産直</p>
+                            </div>
+                            <!-- COCOROwear -->
+                            <div class="text-center">
+                                <div class="bg-gray-100 rounded-xl p-1 shadow-sm">
+                                    <img src="images/demo-cocorowear.png" alt="COCOROwear アプリ画面" class="rounded-lg w-full">
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">アパレル・EC</p>
                             </div>
                         </div>
                     </div>
+
+                    <p class="text-xs md:text-sm text-gray-600 leading-relaxed mb-2">
+                        実際に動くLINEミニアプリのサンプルを体験できます。
+                    </p>
+                    <p class="text-xs text-gray-500 leading-relaxed">
+                        【PCの方】QRコードをスマートフォンで読み取ってください<br>
+                        【スマートフォンの方】QRコードを長押し → 「LINEで開く」をタップ
+                    </p>
                 </div>
-            </div>
 
-        </div><!-- /tab-content-wrapper -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mb-6 max-w-4xl mx-auto">
+                    <!-- デモ1: 飲食店 -->
+                    <div class="bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                        <div class="w-10 h-10 mx-auto mb-2 bg-orange-50 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <p class="text-xs md:text-sm font-bold text-gray-800 mb-0.5">飲食店</p>
+                        <p class="text-xs text-gray-500 leading-snug mb-2">Bistro COCORO</p>
+                        <img src="https://qr-official.line.me/gs/M_084sbosk_BW.png?oat_content=qr" alt="Bistro COCORO QRコード" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-2">
+                        <p class="text-xs text-green-600 mb-2">予約・テイクアウト・スタンプ</p>
+                        <div class="flex flex-wrap justify-center gap-1">
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">カフェ</span>
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">居酒屋</span>
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">バー</span>
+                        </div>
+                    </div>
 
-        <!-- 4. 運用・保守サポートプラン（2カード） -->
-        <div class="mb-10">
-            <div class="text-center mb-6">
-                <h2 class="text-base md:text-lg font-bold text-gray-800 mb-1">運用・保守サポートプラン（任意）</h2>
-                <p class="text-xs text-gray-600 leading-snug max-w-xl mx-auto">
-                    作って終わりではなく、「守り」と「攻め」の両面から継続運用をサポートします。<br>
-                    どのプランも任意加入です。必要な方だけご利用ください。<br>
-                    <span class="text-gray-500">※最低契約期間：3ヶ月〜 ／ 解約は1ヶ月前までにご連絡ください</span>
+                    <!-- デモ2: パン屋 -->
+                    <div class="bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                        <div class="w-10 h-10 mx-auto mb-2 bg-amber-50 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        </div>
+                        <p class="text-xs md:text-sm font-bold text-gray-800 mb-0.5">パン屋・テイクアウト</p>
+                        <p class="text-xs text-gray-500 leading-snug mb-2">ココロのパン屋さん</p>
+                        <img src="https://qr-official.line.me/gs/M_083vwsun_BW.png?oat_content=qr" alt="ココロのパン屋さん QRコード" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-2">
+                        <p class="text-xs text-green-600 mb-2">モバイルオーダー・会員証</p>
+                        <div class="flex flex-wrap justify-center gap-1">
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">キッチンカー</span>
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">テイクアウト</span>
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">弁当屋</span>
+                        </div>
+                    </div>
+
+                    <!-- デモ3: 整骨院 -->
+                    <div class="bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                        <div class="w-10 h-10 mx-auto mb-2 bg-pink-50 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        </div>
+                        <p class="text-xs md:text-sm font-bold text-gray-800 mb-0.5">整骨院・サロン</p>
+                        <p class="text-xs text-gray-500 leading-snug mb-2">こころ整骨院</p>
+                        <img src="https://qr-official.line.me/gs/M_670rusdt_BW.png?oat_content=qr" alt="こころ整骨院 QRコード" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-2">
+                        <p class="text-xs text-green-600 mb-2">予約・問診票・回数券</p>
+                        <div class="flex flex-wrap justify-center gap-1">
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">エステ</span>
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">美容室</span>
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">鍼灸</span>
+                        </div>
+                    </div>
+
+                    <!-- デモ4: 士業 -->
+                    <div class="bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                        <div class="w-10 h-10 mx-auto mb-2 bg-blue-50 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        </div>
+                        <p class="text-xs md:text-sm font-bold text-gray-800 mb-0.5">士業・コンサル</p>
+                        <p class="text-xs text-gray-500 leading-snug mb-2">こころ税務サポート</p>
+                        <img src="https://qr-official.line.me/gs/M_100aovld_BW.png?oat_content=qr" alt="こころ税務サポート QRコード" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-2">
+                        <p class="text-xs text-green-600 mb-2">相談予約・案件進捗</p>
+                        <div class="flex flex-wrap justify-center gap-1">
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">行政書士</span>
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">社労士</span>
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">FP</span>
+                        </div>
+                    </div>
+
+                    <!-- デモ5: 農家 -->
+                    <div class="bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                        <div class="w-10 h-10 mx-auto mb-2 bg-green-50 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <p class="text-xs md:text-sm font-bold text-gray-800 mb-0.5">農家・産直・体験系</p>
+                        <p class="text-xs text-gray-500 leading-snug mb-2">Farm COCORO</p>
+                        <img src="https://qr-official.line.me/gs/M_800jxdsf_BW.png?oat_content=qr" alt="Farm COCORO QRコード" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-2">
+                        <p class="text-xs text-green-600 mb-2">EC・定期便・体験予約</p>
+                        <div class="flex flex-wrap justify-center gap-1">
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">直売所</span>
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">酒蔵</span>
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">牧場</span>
+                        </div>
+                    </div>
+
+                    <!-- デモ6: アパレル -->
+                    <div class="bg-white p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                        <div class="w-10 h-10 mx-auto mb-2 bg-purple-50 rounded-full flex items-center justify-center">
+                            <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <p class="text-xs md:text-sm font-bold text-gray-800 mb-0.5">アパレル・EC</p>
+                        <p class="text-xs text-gray-500 leading-snug mb-2">COCOROwear</p>
+                        <img src="https://qr-official.line.me/gs/M_683pqgok_BW.png?oat_content=qr" alt="COCOROwear QRコード" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-2">
+                        <p class="text-xs text-green-600 mb-2">EC購入・試着予約</p>
+                        <div class="flex flex-wrap justify-center gap-1">
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">雑貨店</span>
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">コスメ</span>
+                            <span class="text-xs bg-gray-100 text-gray-500 px-1.5 py-0.5 rounded">家具</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 他業種対応の案内 -->
+                <div class="bg-white/70 rounded-xl p-4 mb-4 max-w-2xl mx-auto">
+                    <p class="text-sm font-bold text-gray-700 text-center mb-2">その他の業種もご相談ください</p>
+                    <p class="text-xs text-gray-600 text-center leading-relaxed">
+                        ジム・スクール・クリニック・不動産・宿泊施設・イベント運営など<br>
+                        <span class="text-green-600 font-medium">予約・会員管理・リピート施策が必要な業種</span>などにもおすすめです。
+                    </p>
+                </div>
+
+                <p class="text-xs text-gray-400 text-center leading-relaxed">
+                    ※デモ版のため一部機能は簡略化しています。実際の納品時は正式なLINEミニアプリとして開発します。<br>
+                    ※デモでは拡張機能も含めて体験できます。プランにより対応範囲が異なります。<br>
+                    ※デモ版では実際の決済・課金は発生しません。入力された情報は保存されませんので、安心してお試しください。
                 </p>
             </div>
+        </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <!-- ライトプラン -->
-                <div class="bg-white p-4 md:p-5 rounded-xl shadow-md border border-gray-200 hover:border-cyan-300 transition-all duration-300 flex flex-col">
-                    <div class="mb-2">
-                        <h3 class="text-sm md:text-base font-bold mb-1 text-gray-800">ライトプラン</h3>
-                        <p class="text-xs text-gray-500 mb-1 leading-snug">サーバーやLINE仕様変更など、技術的な「守り」を丸ごとお任せ。</p>
-                        <p class="text-xl md:text-2xl font-bold text-gray-800 mb-0.5">¥15,000<span class="text-xs font-medium text-gray-600">/月</span></p>
-                        <p class="text-xs text-gray-500">(税込)</p>
-                    </div>
-                    <details class="mb-3 plan-features-accordion">
-                        <summary class="text-sm text-cyan-600 cursor-pointer hover:text-cyan-700 font-medium">
-                            <span class="accordion-icon"></span> 含まれる内容を見る
-                        </summary>
-                        <ul class="mt-3 space-y-1 text-xs text-gray-700 leading-snug">
-                            <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>サーバー・ドメイン等の維持管理</span></li>
-                            <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>SSL更新・セキュリティ対策・定期バックアップ</span></li>
-                            <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>LINE公式・ミニアプリの仕様変更時の軽微な修正対応</span></li>
-                            <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>テキスト・画像の軽微な修正（月2回・1回3箇所まで）</span></li>
-                        </ul>
-                    </details>
-                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="mt-auto w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-full text-center transition-colors text-xs block">お問い合わせ</a>
+        <!-- 7. 運用・保守サポートプラン -->
+        <section id="support-plans" class="section-spacing bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-8">
+                    <h2 class="text-lg md:text-xl font-bold text-gray-800 mb-3">運用・保守サポートプラン（任意）</h2>
+                    <p class="text-xs md:text-sm text-gray-600 leading-relaxed max-w-xl mx-auto">
+                        作って終わりではなく、「守り」と「攻め」の両面から継続運用をサポートします。<br>
+                        どのプランも任意加入です。必要な方だけご利用ください。
+                    </p>
+                    <p class="text-xs text-gray-500 mt-2">※最低契約期間：3ヶ月〜 ／ 解約は1ヶ月前までにご連絡ください</p>
                 </div>
 
-                <!-- 運用サポートプラン -->
-                <div class="bg-gradient-to-br from-cyan-50 to-blue-50 p-4 md:p-5 rounded-xl shadow-md border border-cyan-400 relative flex flex-col">
-                    <span class="absolute top-0 right-3 bg-cyan-500 text-white text-xs font-bold px-2 py-0.5 rounded-b-md">おすすめ</span>
-                    <div class="mb-2">
-                        <h3 class="text-sm md:text-base font-bold mb-1 text-gray-800">運用サポートプラン</h3>
-                        <p class="text-xs text-cyan-600 mb-1 leading-snug">MEO・ブログ・LINE配信など、継続的な運用改善をサポートするプラン。</p>
-                        <p class="text-xl md:text-2xl font-bold text-cyan-600 mb-0.5">¥35,000<span class="text-xs font-medium text-gray-600">/月</span></p>
-                        <p class="text-xs text-gray-500">(税込)</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+                    <!-- ライトプラン -->
+                    <div class="bg-gray-50 border border-gray-200 rounded-2xl p-5 md:p-6">
+                        <h3 class="text-base font-bold text-gray-800 mb-1">ライトプラン</h3>
+                        <p class="text-xl font-bold text-gray-800 mb-2">¥15,000<span class="text-sm font-medium text-gray-500">/月</span></p>
+                        <p class="text-xs md:text-sm text-gray-600 mb-4">サーバーやLINE仕様変更など、技術的な「守り」を丸ごとお任せ。</p>
+                        <details class="mb-4">
+                            <summary class="text-sm text-cyan-600 cursor-pointer hover:text-cyan-700 font-medium">
+                                <span class="accordion-icon"></span>含まれる内容を見る
+                            </summary>
+                            <ul class="mt-3 space-y-1.5 text-xs text-gray-600 pl-4">
+                                <li>・サーバー・ドメイン等の維持管理</li>
+                                <li>・SSL更新・セキュリティ対策</li>
+                                <li>・定期バックアップ</li>
+                                <li>・LINE仕様変更対応</li>
+                                <li>・軽微な修正（月2回・1回3箇所まで）</li>
+                            </ul>
+                        </details>
+                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm">お問い合わせ</a>
                     </div>
-                    <details class="mb-3 plan-features-accordion">
-                        <summary class="text-sm text-cyan-600 cursor-pointer hover:text-cyan-700 font-medium">
-                            <span class="accordion-icon"></span> 含まれる内容を見る
-                        </summary>
-                        <ul class="mt-3 space-y-1 text-xs text-gray-700 leading-snug">
-                            <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>ライトプランの全内容</span></li>
-                            <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Googleマップ（MEO）基本対策・情報整備</span></li>
-                            <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>AIブログ記事作成（月1本）または LINE配信文の作成・配信代行（月1回）</span></li>
-                            <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>リッチメニュー画像の更新（月1回）</span></li>
-                            <li class="flex items-center"><svg class="w-4 h-4 text-cyan-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>アクセス／ブロック率などの簡易レポート</span></li>
-                        </ul>
-                    </details>
-                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="mt-auto w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full text-center transition-colors text-xs block shadow-md">お問い合わせ</a>
+
+                    <!-- 運用サポートプラン -->
+                    <div class="bg-cyan-50 border-2 border-cyan-400 rounded-2xl p-5 md:p-6 relative">
+                        <span class="absolute -top-3 right-4 badge-recommended text-white text-xs font-bold px-3 py-1 rounded-full">おすすめ</span>
+                        <h3 class="text-base font-bold text-gray-800 mb-1">運用サポートプラン</h3>
+                        <p class="text-xl font-bold text-cyan-600 mb-2">¥35,000<span class="text-sm font-medium text-gray-500">/月</span></p>
+                        <p class="text-xs md:text-sm text-gray-600 mb-4">HP・LINE一括管理機能つき。ブログ作成・レポートなど攻めの運用も。</p>
+                        <details class="mb-4">
+                            <summary class="text-sm text-cyan-600 cursor-pointer hover:text-cyan-700 font-medium">
+                                <span class="accordion-icon"></span>含まれる内容を見る
+                            </summary>
+                            <ul class="mt-3 space-y-1.5 text-xs text-gray-600 pl-4">
+                                <li>・ライトプランの全内容</li>
+                                <li>・HP・LINE一括管理機能</li>
+                                <li>・お知らせ更新 → HP反映 + LINE自動通知</li>
+                                <li>・ブログ記事作成（月1本）</li>
+                                <li>・簡易アクセスレポート（月1回）</li>
+                            </ul>
+                        </details>
+                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm shadow-md">お問い合わせ</a>
+                    </div>
+
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- 5. ご契約前にご確認ください -->
-        <div class="max-w-3xl mx-auto mb-10 bg-gray-50 rounded-xl p-5 md:p-6 border border-gray-200">
-            <h3 class="text-base md:text-lg font-bold text-gray-800 mb-4">📋 ご契約前にご確認ください</h3>
+        <!-- 8-9. アプリ開発・ブランディング -->
+        <section class="section-spacing" style="background-color: #F9FAFB;">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
 
-            <!-- 納品後の修正・更新について -->
-            <details class="mb-3 bg-white rounded-lg border border-gray-200 contract-info-accordion">
-                <summary class="text-sm text-gray-700 cursor-pointer hover:text-cyan-600 font-medium p-3">
-                    <span class="accordion-icon"></span> 納品後の修正・更新について
-                </summary>
-                <div class="px-4 pb-4 text-xs md:text-sm text-gray-600 leading-relaxed space-y-2">
-                    <p>納品後の軽微な修正は、<strong class="text-gray-700">スポット対応（1回 5,000円〜／3箇所まで）</strong>にて承ります。</p>
-                    <p class="text-xs text-gray-500">例：テキスト修正、画像差し替え、軽微なレイアウト調整など</p>
-                    <p>機能追加・大幅なデザイン変更などは別途お見積もりとなります。</p>
-                    <p>継続的な改善や集客強化をご希望の場合は、運用・保守サポートプランもご検討ください。</p>
+                    <!-- カード1：アプリ開発・業務ツール -->
+                    <div id="app-development" class="bg-gradient-to-br from-slate-800 to-indigo-900 rounded-2xl p-5 md:p-6 text-white relative flex flex-col">
+                        <span class="absolute -top-2 right-4 badge-advanced text-white text-xs font-bold px-2 py-1 rounded-full">Advanced</span>
+                        <h3 class="text-base md:text-lg font-bold mb-2 mt-1">アプリ開発・業務ツール</h3>
+                        <p class="text-xs md:text-sm text-gray-300 mb-4 leading-relaxed">
+                            既存のSaaSではフィットしない業務や、独自サービスをゼロから形にしたい企業さま向けの完全オーダーメイドプランです。
+                        </p>
+
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-start">
+                                <svg class="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-xs text-gray-300">オリジナル予約システム・社内向け業務ツールの開発</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-xs text-gray-300">Webアプリ・iOSアプリ・管理画面を組み合わせたシステム設計</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-xs text-gray-300">既存ツールや外部サービスとの連携（API連携など）</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-xs text-gray-300">要件定義〜プロトタイプ〜本実装〜運用開始までの伴走サポート</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="text-xl font-bold text-white">¥500,000<span class="text-sm font-medium text-gray-400">〜</span></p>
+                            <p class="text-xs text-gray-400">（税込・規模により変動）</p>
+                            <p class="text-xs text-gray-400 mt-1">※機能数・連携先により変動</p>
+                        </div>
+
+                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-white hover:bg-gray-100 text-gray-900 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm mt-auto">詳しく相談する</a>
+                    </div>
+
+                    <!-- カード2：ブランディング・プロモーション -->
+                    <div id="branding" class="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-2xl p-5 md:p-6 relative flex flex-col">
+                        <h3 class="text-base md:text-lg font-bold text-gray-800 mb-2">ブランディング・プロモーション</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mb-4 leading-relaxed">
+                            ロゴやキービジュアルの制作から、資料・SNS画像・簡単なグッズ案まで。ブランドの世界観づくりをお手伝いします。
+                        </p>
+
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-start">
+                                <svg class="w-4 h-4 text-purple-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-xs text-gray-700">ロゴ・キービジュアルの制作</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-4 h-4 text-purple-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-xs text-gray-700">チラシ・SNS画像・バナー制作</span>
+                            </div>
+                            <div class="flex items-start">
+                                <svg class="w-4 h-4 text-purple-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span class="text-xs text-gray-700">簡単なノベルティ・グッズ案の提案</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="text-xl font-bold text-purple-600">¥150,000<span class="text-sm font-medium text-gray-500">〜</span> <span class="text-sm font-medium text-gray-500">/ 応相談</span></p>
+                            <p class="text-xs text-gray-500 mt-1">※内容により変動します</p>
+                        </div>
+
+                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm mt-auto">お問い合わせ</a>
+                    </div>
+
                 </div>
-            </details>
+            </div>
+        </section>
 
-            <!-- 別途かかる実費について -->
-            <details class="bg-white rounded-lg border border-gray-200 contract-info-accordion">
-                <summary class="text-sm text-gray-700 cursor-pointer hover:text-cyan-600 font-medium p-3">
-                    <span class="accordion-icon"></span> 別途かかる実費について
-                </summary>
-                <div class="px-4 pb-4 text-xs md:text-sm text-gray-600 leading-relaxed space-y-2">
-                    <p>LINE公式アカウントの月額利用料やサーバー費用、決済手数料などは、ご利用状況に応じて各サービス提供会社へお支払いいただく実費となります。概算の目安はお打ち合わせ時にご説明いたします。</p>
-                    <p>ドメイン・サーバーの取得代行も承っております。運用・保守プランご契約の場合は、管理費用込みでお任せいただけます。</p>
+        <!-- 10. ご契約前にご確認ください -->
+        <section class="section-spacing bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-3xl mx-auto bg-gray-50 rounded-xl p-5 md:p-6 border border-gray-200">
+                    <h3 class="text-base md:text-lg font-bold text-gray-800 mb-4">ご契約前にご確認ください</h3>
+
+                    <!-- 納品後の修正・更新について -->
+                    <details class="mb-3 bg-white rounded-lg border border-gray-200">
+                        <summary class="text-sm text-gray-700 cursor-pointer hover:text-cyan-600 font-medium p-3">
+                            <span class="accordion-icon"></span>納品後の修正・更新について
+                        </summary>
+                        <div class="px-4 pb-4 text-xs md:text-sm text-gray-600 leading-relaxed space-y-2">
+                            <p>納品後の軽微な修正は、<strong class="text-gray-700">スポット対応（1回 5,000円〜／3箇所まで）</strong>にて承ります。</p>
+                            <p class="text-xs text-gray-500">例：テキスト修正、画像差し替え、軽微なレイアウト調整など</p>
+                            <p>機能追加・大幅なデザイン変更などは別途お見積もりとなります。</p>
+                            <p>継続的な改善や集客強化をご希望の場合は、運用・保守サポートプランもご検討ください。</p>
+                        </div>
+                    </details>
+
+                    <!-- 別途かかる実費について -->
+                    <details class="bg-white rounded-lg border border-gray-200">
+                        <summary class="text-sm text-gray-700 cursor-pointer hover:text-cyan-600 font-medium p-3">
+                            <span class="accordion-icon"></span>別途かかる実費について
+                        </summary>
+                        <div class="px-4 pb-4 text-xs md:text-sm text-gray-600 leading-relaxed space-y-2">
+                            <p>LINE公式アカウントの月額利用料やサーバー費用、決済手数料などは、ご利用状況に応じて各サービス提供会社へお支払いいただく実費となります。概算の目安はお打ち合わせ時にご説明いたします。</p>
+                            <p>ドメイン・サーバーの取得代行も承っております。運用・保守プランご契約の場合は、管理費用込みでお任せいただけます。</p>
+                        </div>
+                    </details>
                 </div>
-            </details>
-        </div>
+            </div>
+        </section>
 
-        <!-- CTA -->
-        <div class="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-6 md:p-10 text-center text-white mb-12 shadow-xl">
-            <h2 class="text-xl md:text-2xl font-bold mb-3">まずは無料相談から</h2>
-            <p class="text-xs md:text-sm mb-6 leading-snug opacity-90">最適なプランをご提案します。お気軽にお問い合わせください。</p>
-            <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" target="_blank" class="inline-block bg-white text-cyan-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors shadow-lg text-sm md:text-base">無料で相談する</a>
-        </div>
+        <!-- 11. CTAセクション -->
+        <section class="py-12 md:py-16" style="background-color: #F9FAFB;">
+            <div class="container mx-auto px-6">
+                <div class="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-6 md:p-10 text-center text-white shadow-xl">
+                    <h2 class="text-xl md:text-2xl font-bold mb-3">まずは無料相談から</h2>
+                    <p class="text-xs md:text-sm mb-6 leading-snug opacity-90">最適なプランをご提案します。お気軽にお問い合わせください。</p>
+                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" target="_blank" class="inline-block bg-white text-cyan-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors shadow-lg text-sm md:text-base">無料で相談する</a>
+                </div>
+            </div>
+        </section>
 
     </main>
 
@@ -806,77 +933,6 @@
                     mobileMenu.classList.toggle('hidden');
                 });
             }
-
-            // タブ切り替え機能（常時表示、初期はLINEタブ）
-            const tabCards = document.querySelectorAll('.tab-card');
-            const tabContents = document.querySelectorAll('.tab-content');
-            const tabWrapper = document.getElementById('tab-content-wrapper');
-            let currentTab = 'line';
-
-            // URLハッシュからタブを判定する関数
-            function getTabFromHash() {
-                const hash = window.location.hash;
-                if (hash === '#web-plan') return 'web';
-                if (hash === '#line-plan' || hash === '#dx-plan') return 'line';
-                if (hash === '#promo-plan') return 'promo';
-                if (hash === '#app-plan') return 'app';
-                return 'line'; // デフォルト
-            }
-
-            // タブを切り替える関数
-            function switchTab(tabName) {
-                const targetCard = document.querySelector(`.tab-card[data-tab="${tabName}"]`);
-                const targetContent = document.getElementById('tab-' + tabName);
-
-                // すべてのカードからactiveクラスを削除
-                tabCards.forEach(c => c.classList.remove('active'));
-                // 対象カードにactiveクラスを追加
-                if (targetCard) targetCard.classList.add('active');
-
-                // すべてのタブコンテンツからactiveクラスを削除
-                tabContents.forEach(content => content.classList.remove('active'));
-                // 対応するタブコンテンツにactiveクラスを追加
-                if (targetContent) targetContent.classList.add('active');
-
-                currentTab = tabName;
-            }
-
-            // 初期状態：URLハッシュに応じたタブを表示
-            tabWrapper.classList.add('open');
-            const initialTab = getTabFromHash();
-            switchTab(initialTab);
-
-            tabCards.forEach(card => {
-                card.addEventListener('click', function() {
-                    const targetTab = this.getAttribute('data-tab');
-                    const targetContent = document.getElementById('tab-' + targetTab);
-
-                    // すべてのカードからactiveクラスを削除
-                    tabCards.forEach(c => c.classList.remove('active'));
-                    // クリックしたカードにactiveクラスを追加
-                    this.classList.add('active');
-
-                    // すべてのタブコンテンツからactiveクラスを削除
-                    tabContents.forEach(content => content.classList.remove('active'));
-
-                    // 対応するタブコンテンツにactiveクラスを追加
-                    if (targetContent) {
-                        targetContent.classList.add('active');
-                    }
-
-                    currentTab = targetTab;
-
-                    // スムーズスクロール（詳細エリアが見えるように）
-                    setTimeout(() => {
-                        const wrapperTop = tabWrapper.getBoundingClientRect().top + window.scrollY;
-                        const offset = 120; // ヘッダー分 + 余白
-                        window.scrollTo({
-                            top: wrapperTop - offset,
-                            behavior: 'smooth'
-                        });
-                    }, 150);
-                });
-            });
         });
     </script>
 </body>
