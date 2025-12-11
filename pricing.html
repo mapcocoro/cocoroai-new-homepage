@@ -731,14 +731,14 @@
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto items-stretch">
 
                     <!-- セルフ運用プラン -->
-                    <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6">
+                    <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6 flex flex-col">
                         <h3 class="text-base font-bold text-gray-800 mb-1">セルフ運用</h3>
                         <p class="text-xs text-gray-500 mb-2">自分で管理したい方向け</p>
                         <p class="text-2xl font-bold text-gray-800 mb-3">¥0<span class="text-sm font-medium text-gray-500">/月</span></p>
-                        <ul class="space-y-2 text-xs text-gray-600 mb-4">
+                        <ul class="space-y-2 text-xs text-gray-600 mb-4 flex-grow">
                             <li class="flex items-start">
                                 <span class="text-gray-400 mr-2">・</span>
                                 <span>運用サポートなし</span>
@@ -753,18 +753,18 @@
                             </li>
                         </ul>
                         <p class="text-xs text-gray-400 mb-4 leading-relaxed">※サーバー障害・システム仕様変更時は別途費用がかかる場合があります</p>
-                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm">お問い合わせ</a>
+                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm mt-auto">お問い合わせ</a>
                     </div>
 
                     <!-- ライトプラン -->
-                    <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6">
+                    <div class="bg-gray-50 border border-gray-200 rounded-2xl p-5 md:p-6 flex flex-col">
                         <h3 class="text-base font-bold text-gray-800 mb-1">ライト</h3>
                         <p class="text-xs text-gray-500 mb-2">自分で更新したい方向け</p>
                         <div class="mb-3">
-                            <p class="text-xs text-gray-400 line-through">通常価格 ¥15,000</p>
+                            <p class="text-sm text-gray-400 line-through">通常価格 ¥15,000</p>
                             <p class="text-2xl font-bold text-gray-800">¥10,000<span class="text-sm font-medium text-gray-500">/月</span></p>
                         </div>
-                        <ul class="space-y-2 text-xs text-gray-600 mb-4">
+                        <ul class="space-y-2 text-xs text-gray-600 mb-4 flex-grow">
                             <li class="flex items-start">
                                 <svg class="w-4 h-4 text-cyan-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 <span>サーバー・ドメインの維持管理</span>
@@ -783,29 +783,37 @@
                             </li>
                             <li class="flex items-start">
                                 <svg class="w-4 h-4 text-cyan-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span>管理画面からお知らせ更新可能<br><span class="text-gray-400 text-xs">（HPとLINEに自動反映）</span></span>
+                                <span>管理画面からお知らせ更新可能<br><span class="text-gray-400 text-xs">（HPに自動反映）</span></span>
                             </li>
                             <li class="flex items-start">
                                 <svg class="w-4 h-4 text-cyan-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 <span>軽微な修正対応<br><span class="text-gray-400 text-xs">（月1回・3箇所まで）</span></span>
                             </li>
                         </ul>
-                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm">お問い合わせ</a>
+                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm mt-auto">お問い合わせ</a>
                     </div>
 
                     <!-- スタンダードプラン -->
-                    <div class="bg-cyan-50 border-2 border-cyan-400 rounded-2xl p-5 md:p-6 relative">
+                    <div class="bg-cyan-50 border-2 border-cyan-400 rounded-2xl p-5 md:p-6 relative flex flex-col">
                         <span class="absolute -top-3 right-4 badge-recommended text-white text-xs font-bold px-3 py-1 rounded-full">おすすめ</span>
                         <h3 class="text-base font-bold text-gray-800 mb-1">スタンダード</h3>
                         <p class="text-xs text-gray-500 mb-2">更新もまるっとお任せしたい方向け</p>
                         <div class="mb-3">
-                            <p class="text-xs text-gray-400 line-through">通常価格 ¥35,000</p>
+                            <p class="text-sm text-gray-400 line-through">通常価格 ¥35,000</p>
                             <p class="text-2xl font-bold text-cyan-600">¥23,000<span class="text-sm font-medium text-gray-500">/月</span></p>
                         </div>
-                        <ul class="space-y-2 text-xs text-gray-600 mb-4">
+                        <ul class="space-y-2 text-xs text-gray-600 mb-4 flex-grow">
                             <li class="flex items-start">
                                 <svg class="w-4 h-4 text-cyan-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 <span>ライトプランの全内容</span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 text-cyan-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>管理画面から更新可能<br><span class="text-gray-400 text-xs">（お知らせ以外も対応）</span></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 text-cyan-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>HP更新がLINEにも自動通知<span class="text-gray-400 text-xs">※</span></span>
                             </li>
                             <li class="flex items-start">
                                 <svg class="w-4 h-4 text-cyan-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -817,10 +825,15 @@
                             </li>
                             <li class="flex items-start">
                                 <svg class="w-4 h-4 text-cyan-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>アイキャッチ・バナー画像の作成<br><span class="text-gray-400 text-xs">（月1枚）</span></span>
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-4 h-4 text-cyan-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 <span>簡易アクセスレポート<br><span class="text-gray-400 text-xs">（月1回）</span></span>
                             </li>
                         </ul>
-                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm shadow-md">お問い合わせ</a>
+                        <p class="text-xs text-gray-400 mb-4">※ HP×LINEセットプランをご利用の場合</p>
+                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm shadow-md mt-auto">お問い合わせ</a>
                     </div>
 
                 </div>
