@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ココロAI - あなたの毎日に、優しいAIの魔法を。</title>
+
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
+  <link rel="manifest" href="images/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Old+Mincho:wght@700&display=swap" rel="stylesheet">
+
+  <!-- 元の色味は style.css を使用（text-gradient を上書きしません） -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .fade-in-up{opacity:0;transform:translateY(20px);transition:opacity .8s ease-out,transform .8s ease-out}
+    .fade-in-up.is-visible{opacity:1;transform:translateY(0)}
+    .mobile-frame{width:360px;height:640px;border:12px solid #111;border-radius:30px;padding:8px;position:relative;background:#fff}
+    .home-button-mock{position:absolute;bottom:-36px;left:50%;transform:translateX(-50%);width:60px;height:6px;background:#bbb;border-radius:9999px}
+  </style>
+</head>
+
+<body class="text-gray-800">
+
+  <!-- header -->
+  <header class="sticky top-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="index.html" class="flex items-center">
+        <img src="images/cocoroai_logo.png" alt="ココロAI ロゴ" class="h-12 w-auto">
+      </a>
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#about" class="text-gray-600 hover:text-cyan-600 transition-colors">私たちについて</a>
+        <a href="#services" class="text-gray-600 hover:text-cyan-600 transition-colors">事業内容</a>
+        <a href="#products" class="text-gray-600 hover:text-cyan-600 transition-colors">プロダクト紹介</a>
+        <a href="#works" class="text-gray-600 hover:text-cyan-600 transition-colors">制作実績</a>
+        <a href="pricing.html" class="text-gray-600 hover:text-cyan-600 transition-colors">料金プラン</a>
+        <a href="faq.html" class="text-gray-600 hover:text-cyan-600 transition-colors">よくある質問</a>
+        <a href="#news" class="text-gray-600 hover:text-cyan-600 transition-colors">ニュース</a>
+        <a href="#contact" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg">お問い合わせ</a>
+      </nav>
+      <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100" aria-label="open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
+      <a href="#about" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">私たちについて</a>
+      <a href="#services" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">事業内容</a>
+      <a href="#products" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">プロダクト紹介</a>
+      <a href="#works" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">制作実績</a>
+      <a href="pricing.html" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">料金プラン</a>
+      <a href="faq.html" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">よくある質問</a>
+      <a href="#news" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">ニュース</a>
+      <a href="#contact" class="block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 text-center mt-2">お問い合わせ</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- hero -->
+    <section class="relative text-center py-20 md:py-32 bg-white overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-full bg-grid-gray-100/50 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      <div class="container mx-auto px-6 relative z-10">
+        <h1 class="text-3xl md:text-6xl font-bold text-gray-800 mb-4 leading-tight fade-in-up">
+          あなたの毎日に、<br class="md:hidden">優しいAIの<span class="text-gradient">魔法</span>を。
+        </h1>
+        <p class="text-xl md:text-3xl font-semibold text-gradient mb-6 fade-in-up">あなたの「想い」を、確かな「カタチ」に</p>
+        <p class="text-base md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 fade-in-up">
+          アプリ開発とホームページ制作で、あなたのビジネスを「カタチ」に。<br>
+          AIの活用提案からデザインまで。小規模事業者様・個人事業主様のITパートナーとして企画からサポートします。
+        </p>
+        <a href="#services" class="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 fade-in-up">事業内容を見る</a>
+      </div>
+    </section>
+
+    <!-- services -->
+    <section id="services" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl md:text-3xl font-bold mb-2 fade-in-up">事業内容 / Services</h2>
+          <p class="text-sm md:text-base text-gray-600 fade-in-up">お客様のビジネスを、AIとデザインの力でサポートします。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col text-center fade-in-up">
+            <h3 class="text-xl font-bold mb-2">ホームページ制作・運用</h3>
+            <p class="text-gray-600 flex-grow">PCが苦手な方でも安心の「丸投げプラン」から、ご自身で更新できるテンプレート販売まで。企画、デザイン、公開、運用まで一貫してサポートします。</p>
+            <a href="pricing.html" class="mt-4 text-cyan-600 font-semibold hover:underline">料金プランを見る &rarr;</a>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col text-center fade-in-up">
+            <h3 class="text-xl font-bold mb-2">アプリ開発・AIサービス開発</h3>
+            <p class="text-gray-600 flex-grow">自社プロダクト開発の知見を活かし、アプリやAIサービスの企画・開発を承ります。</p>
+            <a href="#contact" class="mt-4 text-cyan-600 font-semibold hover:underline">ご相談はこちら &rarr;</a>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col text-center fade-in-up">
+            <h3 class="text-xl font-bold mb-2">デザイン・資料作成</h3>
+            <p class="text-gray-600 flex-grow">印刷物デザイン、プレゼン資料、YouTubeコンテンツ制作支援まで幅広く対応します。</p>
+            <a href="#contact" class="mt-4 text-cyan-600 font-semibold hover:underline">ご相談はこちら &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- about -->
+    <section id="about" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-8 fade-in-up">テクノロジーは、もっと人の心に寄り添える。</h2>
+        <div class="max-w-4xl mx-auto text-left md:text-center text-gray-700 leading-relaxed space-y-6 fade-in-up text-sm md:text-base">
+          <p>テクノロジーは人の「こころ」にも作用する、新しい価値の担い手。ココロAIは、直感的で親しみやすく、人にやさしいAIを目指しています。</p>
+          <p>“やさしさ”の視点を加え、人とAIの自然で信頼できる関係性をデザインします。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- products -->
+    <section id="products" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-10 fade-in-up">
+          <h2 class="text-2xl md:text-3xl font-bold mb-2">プロダクト紹介</h2>
+          <p class="text-sm md:text-base text-gray-600">心を豊かにするAIサービスを開発・提供しています。</p>
+        </div>
+
+        <div class="flex justify-center items-center space-x-2 md:space-x-4 mb-12 fade-in-up">
+          <p class="text-sm font-bold text-gray-500">プラットフォーム:</p>
+          <div class="flex space-x-2">
+            <button class="bg-cyan-500 text-white font-bold py-2 px-4 rounded-full text-sm">All</button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-full text-sm">iOS</button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-full text-sm">Web</button>
+            <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-full text-sm">macOS</button>
+          </div>
+        </div>
+
+        <div class="space-y-16">
+          <!-- 業務効率化 -->
+          <div class="fade-in-up">
+            <h3 class="text-lg font-bold border-b pb-2 mb-6">業務効率化</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+              <!-- かんたん帳票 -->
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-teal-100 p-3 rounded-full mb-3">
+                  <svg class="w-8 h-8 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                  <h3 class="text-lg font-bold">かんたん帳票</h3>
+                  <span class="bg-cyan-100 text-cyan-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">NEW</span>
+                </div>
+                <p class="text-sm text-gray-600 flex-grow mt-2">ブラウザだけで帳票をかんたん作成・出力できるWebアプリ。</p>
+                <a href="https://chouhyo.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">🌐 Webアプリ</a>
+              </div>
+
+              <!-- Post Pal -->
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-indigo-100 p-3 rounded-full mb-3">
+                  <img src="images/post_pal_icon.png" alt="Post Pal Icon" class="w-8 h-8">
+                </div>
+                <h3 class="text-lg font-bold">Post Pal</h3>
+                <p class="text-sm text-gray-600 flex-grow mt-2">SNS投稿をAIで自動作成。下書きから画像提案まで、毎日の発信をラクにします。</p>
+                <a href="https://apps.apple.com/jp/app/post-pal-ai%E3%81%A7sns%E6%8A%95%E7%A8%BF%E3%82%92%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90/id6749898580" target="_blank" class="mt-4 text-cyan-700 text-sm font-semibold hover:underline"> App Store</a>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ライフスタイル -->
+          <div class="fade-in-up">
+            <h3 class="text-lg font-bold border-b pb-2 mb-6">ライフスタイル</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-rose-100 p-3 rounded-full mb-3">
+                  <img src="images/bento_planner_icon.png" alt="Bento Planner Icon" class="h-8 w-8">
+                </div>
+                <h3 class="text-lg font-bold">Bento Planner</h3>
+                <p class="text-sm text-gray-600 flex-grow mt-2">毎日の献立作りをAIがサポート。栄養バランスも彩りも考えたお弁当プランナーです。</p>
+                <div class="flex justify-center mt-4 space-x-4">
+                  <a href="https://bento.cocoroai.co.jp" target="_blank" class="text-cyan-600 text-sm font-semibold hover:underline">🌐 Webアプリ</a>
+                  <a href="https://apps.apple.com/us/app/bento-planner/id6748500612?platform=iphone" target="_blank" class="text-cyan-700 text-sm font-semibold hover:underline"> App Store</a>
+                </div>
+              </div>
+
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-yellow-100 p-3 rounded-full mb-3">
+                  <img src="images/rice_sommelier_icon.png" alt="お米ソムリエ Icon" class="h-8 w-8">
+                </div>
+                <h3 class="text-lg font-bold">日本の美味しいお米ソムリエ</h3>
+                <p class="text-sm text-gray-600 flex-grow mt-2">チャート診断で好みに合わせたお米を提案。お米選びのパートナーAIです。</p>
+                <div class="flex justify-center mt-4 space-x-4">
+                  <a href="https://rice.cocoroai.co.jp/" target="_blank" class="text-cyan-600 text-sm font-semibold hover:underline">🌐 Webアプリ</a>
+                  <a href="https://apps.apple.com/jp/app/%E6%97%A5%E6%9C%AC%E3%81%AE%E7%BE%8E%E5%91%B3%E3%81%97%E3%81%84-%E3%81%8A%E7%B1%B3%E3%82%BD%E3%83%A0%E3%83%AA%E3%82%A8/id6749472378" target="_blank" class="text-cyan-700 text-sm font-semibold hover:underline"> App Store</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 美容 -->
+          <div class="fade-in-up">
+            <h3 class="text-lg font-bold border-b pb-2 mb-6">美容</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-pink-100 p-3 rounded-full mb-3">
+                  <img src="images/bihada_icon.png" alt="美肌コンシェルジュ Icon" class="h-8 w-8">
+                </div>
+                <h3 class="text-lg font-bold">美肌コンシェルジュ</h3>
+                <p class="text-sm text-gray-600 flex-grow mt-2">AIが肌質を分析し、最適なスキンケア方法や美容医療を提案します。</p>
+                <div class="flex justify-center mt-4 space-x-4">
+                  <a href="https://bihadaconcierge.cocoroai.co.jp/" target="_blank" class="text-cyan-600 text-sm font-semibold hover:underline">🌐 Webアプリ</a>
+                  <a href="https://apps.apple.com/jp/app/%E7%BE%8E%E8%82%8C%E3%82%B3%E3%83%B3%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B8%E3%83%A5/id6749561640" target="_blank" class="text-cyan-700 text-sm font-semibold hover:underline"> App Store</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 学習・教育（NEW バッジ追加） -->
+          <div class="fade-in-up">
+            <h3 class="text-lg font-bold border-b pb-2 mb-6">学習・教育</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-sky-100 p-3 rounded-full mb-3">
+                  <svg class="w-8 h-8 text-sky-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 3 1.5 8.25 12 13.5 20.25 9.375V16.5h1.5V8.25L12 3Zm0 12L6 12v4.5c0 2.071 3.429 3 6 3s6-.929 6-3V12l-6 3Z"/>
+                  </svg>
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                  <h3 class="text-lg font-bold">サクッと復習!中学生</h3>
+                  <span class="bg-cyan-100 text-cyan-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">NEW</span>
+                </div>
+                <p class="text-sm text-gray-600 flex-grow mt-2">
+                  AIが毎回ちがう問題を自動生成する“単元別ドリル”アプリ。授業で習った範囲だけを5分で確認し、テストに強い学びをサクッと積み重ねられます。
+                </p>
+                <a href="https://apps.apple.com/us/app/%E3%82%B5%E3%82%AF%E3%83%83%E3%81%A8%E5%BE%A9%E7%BF%92-%E4%B8%AD%E5%AD%A6%E7%94%9F/id6752938393?platform=iphone"
+                   target="_blank"
+                   class="mt-4 text-cyan-700 text-sm font-semibold hover:underline"> App Store</a>
+              </div>
+
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-green-100 p-3 rounded-full mb-3">
+                  <img src="images/fp3_pocket_icon.png" alt="FP3級 Pocket Icon" class="h-8 w-8">
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                  <h3 class="text-lg font-bold">FP3級 Pocket</h3>
+                  <span class="bg-cyan-100 text-cyan-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">NEW</span>
+                </div>
+                <p class="text-sm text-gray-600 flex-grow mt-2">
+                  FP3級試験対策をスキマ時間で。重要ポイントを効率的に学習できるアプリです。
+                </p>
+                <a href="https://apps.apple.com/app/fp3-pocket/id6753855233"
+                   target="_blank"
+                   class="mt-4 text-cyan-700 text-sm font-semibold hover:underline"> App Store</a>
+              </div>
+
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-blue-100 p-3 rounded-full mb-3">
+                  <img src="images/fp2_pocket_icon.png" alt="FP2級 Pocket Icon" class="h-8 w-8">
+                </div>
+                <div class="flex items-center justify-center gap-2">
+                  <h3 class="text-lg font-bold">FP2級 Pocket</h3>
+                  <span class="bg-cyan-100 text-cyan-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">NEW</span>
+                </div>
+                <p class="text-sm text-gray-600 flex-grow mt-2">
+                  FP2級試験対策をスキマ時間で。重要ポイントを効率的に学習できるアプリです。
+                </p>
+                <a href="https://apps.apple.com/us/app/fp2%E7%B4%9Apocket/id6753967720"
+                   target="_blank"
+                   class="mt-4 text-cyan-700 text-sm font-semibold hover:underline"> App Store</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 癒し・占い -->
+          <div class="fade-in-up">
+            <h3 class="text-lg font-bold border-b pb-2 mb-6">癒し・占い</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-yellow-100 p-3 rounded-full mb-3">
+                  <img src="images/kumochan_icon.png" alt="癒しのクモちゃん Icon" class="h-8 w-8">
+                </div>
+                <h3 class="text-lg font-bold">癒しのクモちゃん</h3>
+                <p class="text-sm text-gray-600 flex-grow mt-2">忙しい毎日に寄り添う癒やしアプリ。タップで心温まるメッセージを紡ぎ出します。</p>
+                <a href="https://apps.apple.com/us/app/%E7%99%92%E3%81%97%E3%81%AE%E3%82%AF%E3%83%A2%E3%81%AE%E3%81%A1%E3%82%83%E3%82%93/id6746834418?platform=iphone" target="_blank" class="mt-4 text-cyan-700 text-sm font-semibold hover:underline"> App Store</a>
+              </div>
+
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-blue-100 p-3 rounded-full mb-3">
+                  <img src="images/nursechan_icon.png" alt="癒しの白衣ちゃん Icon" class="h-8 w-8">
+                </div>
+                <h3 class="text-lg font-bold">癒しの白衣ちゃん</h3>
+                <p class="text-sm text-gray-600 flex-grow mt-2">医療従事者の方へ。白衣の天使があなたを優しくサポート。</p>
+                <a href="https://iyashinurse.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">🌐 Webアプリ</a>
+              </div>
+
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-orange-100 p-3 rounded-full mb-3">
+                  <img src="images/traffic_cone_icon.png" alt="癒しの三角コーンちゃん Icon" class="h-8 w-8">
+                </div>
+                <h3 class="text-lg font-bold">癒しの三角コーン</h3>
+                <p class="text-sm text-gray-600 flex-grow mt-2">現場で働く方々の心に寄り添い、日々の疲れを癒やすAIアプリです。</p>
+                <a href="https://genba.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">🌐 Webアプリ</a>
+              </div>
+
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text中心 text-center">
+                <div class="bg-gray-200 p-3 rounded-full mb-3">
+                  <img src="images/chalk_icon.png" alt="癒しのチョークちゃん Icon" class="h-8 w-8">
+                </div>
+                <h3 class="text-lg font-bold">癒しのチョーク</h3>
+                <p class="text-sm text-gray-600 flex-grow mt-2">学校の先生方をサポート。チョークのメッセージが教壇に立つ心を癒やします。</p>
+                <a href="https://iyashiteacher.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">🌐 Webアプリ</a>
+              </div>
+
+              <!-- 一時的に非表示
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-emerald-100 p-3 rounded-full mb-3">
+                  <img src="images/affirmation_icon.png" alt="毎日のアファメーション Icon" class="h-8 w-8">
+                </div>
+                <h3 class="text-lg font-bold">毎日のアファメーション</h3>
+                <p class="text-sm text-gray-600 flex-grow mt-2">AIがあなたにぴったりの言葉を届けます。</p>
+                <a href="https://affirmation.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">🌐 Webアプリ</a>
+              </div>
+
+              <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-purple-100 p-3 rounded-full mb-3">
+                  <img src="images/fortune_icon.png" alt="ココロAI 占い Icon" class="h-8 w-8">
+                </div>
+                <h3 class="text-lg font-bold">ココロAI 占い</h3>
+                <p class="text-sm text-gray-600 flex-grow mt-2">AIが運勢を占います。毎日をポジティブに過ごすヒントに。</p>
+                <a href="https://fortune.cocoroai.co.jp/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">🌐 Webアプリ</a>
+              </div>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- works -->
+    <section id="works" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="text-2xl md:text-3xl font-bold mb-2 fade-in-up">制作実績 / Works</h2>
+          <p class="text-sm md:text-base text-gray-600 fade-in-up">手掛けたプロジェクトと、制作可能なサイトサンプルです。</p>
+        </div>
+
+        <div class="space-y-20">
+          <!-- アプリ制作 -->
+          <div class="fade-in-up">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center mb-8">アプリ制作</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+
+              <!-- 落書Key（中央寄せ） -->
+              <div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 relative text-center">
+                  <span class="absolute top-0 left-6 -translate-y-1/2 bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full">受託制作</span>
+                  <div class="flex items-center justify-center gap-4 mt-2">
+                    <div class="flex-shrink-0 bg-gray-100 p-2 rounded-full">
+                      <img src="images/rakugakey-icon.png" alt="落書Key アイコン" class="w-8 h-8">
+                    </div>
+                    <div>
+                      <h4 class="text-lg font-bold">落書Key (macOS)</h4>
+                      <p class="text-sm text-gray-600 mt-1">クライアントのご依頼に基づき開発。</p>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-700 mt-4">PDFやスライド上に直接マーキングしてスクショ。プレゼンや画面共有を分かりやすくする注釈ツールです。</p>
+                  <a href="https://apps.apple.com/app/%E8%90%BD%E6%9B%B8key/id6749606946" target="_blank" class="inline-block mt-4 text-cyan-700 text-sm font-semibold hover:underline"> Mac App Store</a>
+                </div>
+
+                <div class="max-w-md mx-auto mt-6">
+                  <div class="bg-white p-6 rounded-2xl shadow-lg relative">
+                    <div class="absolute top-0 left-6 -translate-y-1/2 bg-blue-100 text-blue-800 font-bold px-4 py-1 rounded-full text-sm">お客様の声</div>
+                    <p class="text-sm text-gray-600 italic mt-2">「オンラインでのプレゼンテーションが非常に便利になりました。」</p>
+                    <p class="text-right mt-3 font-semibold text-gray-700 text-xs">ークライアント様</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- よさこい鳴子（中央寄せ） -->
+              <div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 relative text-center">
+                  <span class="absolute top-0 left-6 -translate-y-1/2 bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full">受託制作</span>
+                  <div class="flex items-center justify-center gap-4 mt-2">
+                    <div class="flex-shrink-0 bg-red-100 p-2 rounded-full">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-red-500"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"/></svg>
+                    </div>
+                    <div>
+                      <h4 class="text-lg font-bold">よさこい鳴子 シャンシャン (iOS)</h4>
+                      <p class="text-sm text-gray-600 mt-1">クライアントのご依頼に基づき開発。</p>
+                    </div>
+                  </div>
+                  <p class="text-sm text-gray-700 mt-4">よさこいの鳴子サウンドをスマホで再現。スマホを振って“シャンシャン”を楽しめます。</p>
+                  <a href="https://apps.apple.com/app/%E3%82%88%E3%81%95%E3%81%93%E3%81%84%E9%B3%B4%E5%AD%90-%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B7%E3%83%A3%E3%83%B3/id6749756550" target="_blank" class="inline-block mt-4 text-cyan-700 text-sm font-semibold hover:underline"> App Store</a>
+                </div>
+
+                <div class="max-w-md mx-auto mt-6">
+                  <div class="bg-white p-6 rounded-2xl shadow-lg relative">
+                    <div class="absolute top-0 left-6 -translate-y-1/2 bg-blue-100 text-blue-800 font-bold px-4 py-1 rounded-full text-sm">お客様の声</div>
+                    <p class="text-sm text-gray-600 italic mt-2">「地域のよさこいイベントで楽しく使わせてもらっています！」</p>
+                    <p class="text-right mt-3 font-semibold text-gray-700 text-xs">ークライアント様</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 閑人房サイト -->
+          <div class="fade-in-up">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center mb-8">閑人房様 ギャラリーサイト</h3>
+            <div class="max-w-4xl mx-auto">
+              <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-blue-100 p-4 rounded-full mb-4">
+                  <img src="images/kanjinbou_logo.png" alt="閑人房ギャラリーサイト ロゴ" class="h-8 w-auto">
+                </div>
+                <h4 class="text-lg md:text-xl font-bold mb-2">閑人房様ギャラリーサイト</h4>
+                <p class="text-sm md:text-base text-gray-600 flex-grow">特定のニーズに応えるウェブギャラリーサイトを開発。使いやすさを追求しました。</p>
+                <a href="https://cocoroai.github.io/kanjinbou-gallery/" target="_blank" class="mt-4 text-cyan-600 font-semibold hover:underline">サイトを見る &rarr;</a>
+              </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto mt-10">
+              <div class="bg-white p-8 rounded-2xl shadow-lg relative">
+                <div class="absolute top-0 left-8 -translate-y-1/2 bg-cyan-500 text-white font-bold px-4 py-1 rounded-full text-sm">お客様の声</div>
+                <p class="text-sm md:text-base text-gray-600 italic">「想像以上にかっこよく仕上げていただき、大変満足しています。」</p>
+                <p class="text-right mt-4 font-semibold text-gray-700 text-sm">ー 閑人房様</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- その他テンプレ -->
+          <div id="template-sites" class="fade-in-up">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center mb-8">サンプルサイト：エステサロン向けテンプレート</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div class="md:order-1 text-center md:text-left">
+                <h4 class="text-lg md:text-xl font-bold text-gray-900 mb-4">高品質なテンプレートサイト</h4>
+                <p class="text-sm md:text-base text-gray-700 mb-4">モバイル最適化・直感的なカレンダー予約システムが特徴です。</p>
+                <p class="text-sm md:text-base text-gray-700 mb-6">他業種（飲食店、クリニック、教室など）にも柔軟に展開可能。</p>
+                <a href="#contact" class="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition duration-300 hover:scale-105">カスタマイズのご相談はこちら</a>
+              </div>
+
+              <div class="md:order-2 flex justify-center">
+                <div class="mobile-frame">
+                  <iframe id="sample-site-iframe" data-src="samples/beauty-salon-template.html" class="w-full h-full border-none rounded-2xl" scrolling="auto"></iframe>
+                  <div class="home-button-mock"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fade-in-up">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center mb-10">その他のホームページテンプレート</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+              <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-teal-100 p-3 rounded-full mb-3">
+                  <img src="images/clinic-icon.png" alt="クリニック向けアイコン" class="h-8 w-8">
+                </div>
+                <h4 class="text-base md:text-lg font-bold mb-2">クリニック向け</h4>
+                <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">清潔感と信頼性を重視したデザイン。</p>
+                <a href="https://cocoroai.github.io/clinic-website-template/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">デモを見る &rarr;</a>
+              </div>
+
+              <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-orange-100 p-3 rounded-full mb-3">
+                  <img src="images/pet-icon.png" alt="ペットサロン向けアイコン" class="h-8 w-8">
+                </div>
+                <h4 class="text-base md:text-lg font-bold mb-2">ペットサロン向け</h4>
+                <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">温かみのあるデザインで、写真ギャラリーや料金表付き。</p>
+                <a href="https://cocoroai.github.io/pet-salon-website/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">デモを見る &rarr;</a>
+              </div>
+
+              <div class="bg-white p-4 md:p-5 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                <div class="bg-indigo-100 p-3 rounded-full mb-3">
+                  <svg class="h-8 w-8 text-indigo-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                </div>
+                <h4 class="text-base md:text-lg font-bold mb-2">士業事務所向け</h4>
+                <p class="text-xs md:text-sm text-gray-600 flex-grow leading-tight">信頼感のあるデザインと予約システム。</p>
+                <a href="https://cocoroai.github.io/profession-office-template/" target="_blank" class="mt-4 text-cyan-600 text-sm font-semibold hover:underline">デモを見る &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- news -->
+    <section id="news" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6 max-w-4xl">
+        <h2 class="text-2xl md:text-3xl font-bold mb-10 fade-in-up">ニュース / お知らせ</h2>
+        <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10 fade-in-up">
+          <ul id="news-list" class="space-y-4">
+
+            <!-- 追加：FP2級 Pocket -->
+            <li class="border-b border-gray-200 pb-4">
+              <a href="https://apps.apple.com/us/app/fp2%E7%B4%9Apocket/id6753967720" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-10-16" class="text-sm text-gray-500">2025.10.16</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">［リリース］iOSアプリ「FP2級 Pocket」を公開しました。FP2級試験対策をスキマ時間で学習できるアプリです。</p>
+              </a>
+            </li>
+
+            <!-- 追加：FP3級 Pocket -->
+            <li class="border-b border-gray-200 pb-4">
+              <a href="https://apps.apple.com/app/fp3-pocket/id6753855233" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-10-16" class="text-sm text-gray-500">2025.10.16</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">［リリース］iOSアプリ「FP3級 Pocket」を公開しました。FP3級試験対策をスキマ時間で学習できるアプリです。</p>
+              </a>
+            </li>
+
+            <!-- 追加：サクッと復習!中学生 -->
+            <li class="border-b border-gray-200 pb-4">
+              <a href="https://apps.apple.com/us/app/%E3%82%B5%E3%82%AF%E3%83%83%E3%81%A8%E5%BE%A9%E7%BF%92-%E4%B8%AD%E5%AD%A6%E7%94%9F/id6752938393?platform=iphone" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-09-29" class="text-sm text-gray-500">2025.09.29</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">［リリース］iOSアプリ「サクッと復習!中学生」を公開しました。AIが毎回ちがう問題を生成する“単元別ドリル”アプリです。</p>
+              </a>
+            </li>
+
+            <li class="border-b border-gray-200 pb-4">
+              <a href="https://apps.apple.com/app/%E3%82%88%E3%81%95%E3%81%93%E3%81%84%E9%B3%B4%E5%AD%90-%E3%82%B7%E3%83%A3%E3%83%B3%E3%82%B7%E3%83%A3%E3%83%B3/id6749756550" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-09-20" class="text-sm text-gray-500">2025.09.20</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">［実績｜受託制作］iOSアプリ「よさこい鳴子 シャンシャン」を制作実績として追加しました。</p>
+              </a>
+            </li>
+
+            <li class="border-b border-gray-200 pb-4">
+              <a href="https://chouhyo.cocoroai.co.jp/" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-09-01" class="text-sm text-gray-500">2025.09.01</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">［リリース］Webアプリ「かんたん帳票」を公開しました。保存なし・その場で印刷／PDF、URL共有にも対応。個人事業主や小規模事業向けの超シンプル帳票ツールです。</p>
+              </a>
+            </li>
+
+            <li class="border-b border-gray-200 pb-4">
+              <a href="#" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-08-22" class="text-sm text-gray-500">2025.08.22</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">［実績］「ココロAI」が登録商標になりました（登録第6960156号／区分42）。</p>
+              </a>
+            </li>
+
+            <li class="border-b border-gray-200 pb-4">
+              <a href="https://apps.apple.com/jp/app/post-pal-ai%E3%81%A7sns%E6%8A%95%E7%A8%BF%E3%82%92%E8%87%AA%E5%8B%95%E4%BD%9C%E6%88%90/id6749898580" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-08-21" class="text-sm text-gray-500">2025.08.21</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">［リリース］iOSアプリ「Post Pal - AIでSNS投稿を自動作成」を公開しました。</p>
+              </a>
+            </li>
+
+            <!-- ここから下は「もっと見る」で展開 -->
+            <li class="border-b border-gray-200 pb-4">
+              <a href="https://apps.apple.com/app/%E8%90%BD%E6%9B%B8key/id6749606946" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-08-12" class="text-sm text-gray-500">2025.08.12</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">［実績｜受託制作］macOSアプリ「落書Key」を公開しました。</p>
+              </a>
+            </li>
+            <li class="border-b border-gray-200 pb-4">
+              <a href="#" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-08-07" class="text-sm text-gray-500">2025.08.07</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">［リリース］「美肌コンシェルジュ」のiOSアプリを公開しました。</p>
+              </a>
+            </li>
+            <li class="border-b border-gray-200 pb-4">
+              <a href="#" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-08-07" class="text-sm text-gray-500">2025.08.07</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">［リリース］「日本の美味しいお米ソムリエ」のiOSアプリを公開しました。</p>
+              </a>
+            </li>
+            <li class="border-b border-gray-200 pb-4">
+              <a href="https://cocoroai.github.io/clinic-website-template/" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-07-25" class="text-sm text-gray-500">2025.07.25</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">［実績］「クリニック向けホームページテンプレート」を制作実績として公開しました。</p>
+              </a>
+            </li>
+            <li class="border-b border-gray-200 pb-4">
+              <a href="https://cocoroai.github.io/pet-salon-website/" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-07-24" class="text-sm text-gray-500">2025.07.24</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">［実績］「ペットサロン向けホームページテンプレート」を制作実績として公開しました。</p>
+              </a>
+            </li>
+            <li class="border-b border-gray-200 pb-4">
+              <a href="https://cocoroai.github.io/profession-office-template/" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-07-23" class="text-sm text-gray-500">2025.07.23</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">「士業事務所向けホームページテンプレート」を制作実績として公開しました。</p>
+              </a>
+            </li>
+            <li class="border-b border-gray-200 pb-4">
+              <a href="https://rice.cocoroai.co.jp/" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-07-15" class="text-sm text-gray-500">2025.07.15</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">「日本の美味しいお米ソムリエ」をリリースしました。</p>
+              </a>
+            </li>
+            <li class="border-b border-gray-200 pb-4">
+              <a href="https://apps.apple.com/us/app/bento-planner/id6748500612?platform=iphone" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-07-14" class="text-sm text-gray-500">2025.07.14</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">Bento Planner iOSアプリをリリースしました！</p>
+              </a>
+            </li>
+            <li class="border-b border-gray-200 pb-4">
+              <a href="samples/beauty-salon-template.html" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-07-09" class="text-sm text-gray-500">2025.07.09</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">エステサロン向けサンプルサイトを公開しました。</p>
+              </a>
+            </li>
+            <li class="border-b border-gray-200 pb-4">
+              <a href="https://cocoroai.github.io/kanjinbou-gallery/" target="_blank" class="block hover:opacity-80 transition-opacity">
+                <time datetime="2025-07-05" class="text-sm text-gray-500">2025.07.05</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">「閑人房様ギャラリーサイト」を実績として公開しました。</p>
+              </a>
+            </li>
+            <li class="border-b-0 pb-0">
+              <a href="/" class="block hover:opacity-80 transition-opacity pt-4">
+                <time datetime="2025-06-20" class="text-sm text-gray-500">2025.06.20</time>
+                <p class="text-sm md:text-base text-gray-800 font-medium">ココロAI合同会社のウェブサイトをリニューアルしました。</p>
+              </a>
+            </li>
+          </ul>
+
+          <div id="show-more-news-container" class="text-center mt-8">
+            <button id="show-more-news-button" class="text-cyan-600 font-semibold hover:underline text-sm">もっと見る &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- company -->
+    <section id="company" class="py-20 bg-white">
+      <div class="container mx-auto px-6 max-w-4xl">
+        <div class="text-center mb-10">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4 fade-in-up">会社概要</h2>
+          <p class="text-base md:text-lg text-gray-700 fade-in-up">AIのチカラで、暮らしとビジネスに“ココロの余裕”を。</p>
+        </div>
+        <div class="bg-gray-50 rounded-2xl shadow-lg p-8 md:p-10 fade-in-up">
+          <div class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+              <p class="font-semibold text-gray-500 text-sm md:text-base">会社名</p>
+              <p class="md:col-span-2 text-sm md:text-base">ココロＡＩ合同会社</p>
+            </div>
+            <hr>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+              <p class="font-semibold text-gray-500 text-sm md:text-base">設立</p>
+              <p class="md:col-span-2 text-sm md:text-base">2025年2月25日</p>
+            </div>
+            <hr>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+              <p class="font-semibold text-gray-500 text-sm md:text-base">事業内容</p>
+              <p class="md:col-span-2 text-sm md:text-base">アプリ開発、AIサービス企画・開発、ホームページ制作・運用支援、各種資料作成、YouTube制作支援 など</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section id="contact" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 fade-in-up">お問い合わせ</h2>
+        <p class="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto fade-in-up">サービスに関するご質問、協業のご相談など、お気軽にお問い合わせください。</p>
+        <div class="max-w-3xl mx-auto fade-in-up">
+          <a href="https://forms.gle/1jZ6qbexahYAxzAx9" target="_blank" class="inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">お問い合わせフォームへ</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer class="bg-gray-800 text-white">
+    <div class="container mx-auto px-6 py-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <a href="index.html" class="flex items-center space-x-2 mb-4 md:mb-0">
+          <img src="images/cocoroai_logo.png" alt="ココロAI ロゴアイコン" class="h-8 w-auto">
+        </a>
+        <div class="text-center md:text-right">
+          <nav class="space-x-6 mb-4">
+            <a href="#about" class="text-gray-300 hover:text-white transition-colors text-sm">私たちについて</a>
+            <a href="#services" class="text-gray-300 hover:text-white transition-colors text-sm">事業内容</a>
+            <a href="pricing.html" class="text-gray-300 hover:text-white transition-colors text-sm">料金プラン</a>
+            <a href="faq.html" class="text-gray-300 hover:text-white transition-colors text-sm">よくある質問</a>
+            <a href="#contact" class="text-gray-300 hover:text-white transition-colors text-sm">お問い合わせ</a>
+            <a href="https://sites.google.com/cocoroai.co.jp/privacy-policy/%E3%83%9B%E3%83%BC%E3%83%A0" target="_blank" class="text-gray-300 hover:text-white transition-colors text-sm">プライバシーポリシー</a>
+            <a href="https://sites.google.com/cocoroai.co.jp/security-policy/%E3%83%9B%E3%83%BC%E3%83%A0" target="_blank" class="text-gray-300 hover:text-white transition-colors text-sm">情報セキュリティ基本方針</a>
+          </nav>
+          <p class="text-xs text-gray-400">&copy; 2025 ココロＡＩ合同会社. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // ハンバーガー
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      }
+
+      // フェードイン & iframe遅延読込
+      const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          if (entry.target.classList.contains('fade-in-up')) entry.target.classList.add('is-visible');
+          if (entry.target.id === 'sample-site-iframe') {
+            const iframe = entry.target;
+            if (iframe.dataset.src && !iframe.src) {
+              iframe.src = iframe.dataset.src;
+              observer.unobserve(iframe);
+            }
+          }
+        });
+      }, observerOptions);
+      document.querySelectorAll('.fade-in-up, #sample-site-iframe').forEach(t => observer.observe(t));
+
+      // ニュース：最初の5件のみ表示、もっと見るで展開
+      const newsList = document.getElementById('news-list');
+      const wrap = document.getElementById('show-more-news-container');
+      const btn = document.getElementById('show-more-news-button');
+
+      const items = Array.from(newsList.querySelectorAll('li'));
+      const LIMIT = 5;
+      let hidden = 0;
+      items.forEach((li, i) => { if (i >= LIMIT) { li.classList.add('hidden'); hidden++; } });
+      if (hidden === 0) wrap.style.display = 'none';
+
+      btn.addEventListener('click', () => {
+        items.forEach(li => li.classList.remove('hidden'));
+        wrap.style.display = 'none';
+      });
+    });
+  </script>
+
+</body>
+</html>

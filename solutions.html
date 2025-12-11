@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お悩み別ソリューション - ココロAI</title>
+    <meta name="description" content="電話予約の対応が大変、見積書作成に時間がかかる、リピートしてもらえない...そんなお悩みを解決するソリューションとデモをご紹介します。">
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/android-chrome-192x192.png">
+    <link rel="manifest" href="images/site.webmanifest">
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ココロAI合同会社",
+      "url": "https://www.cocoroai.co.jp",
+      "logo": "https://www.cocoroai.co.jp/images/cocoroai_logo.png"
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .fade-in-up{opacity:0;transform:translateY(20px);transition:opacity .8s ease-out,transform .8s ease-out}
+        .fade-in-up.is-visible{opacity:1;transform:translateY(0)}
+        .solution-card {
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .solution-card:hover {
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- header -->
+    <header class="sticky top-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <img src="images/cocoroai_logo.png" alt="ココロAI ロゴ" class="h-12 w-auto">
+            </a>
+            <nav class="hidden lg:flex items-center space-x-6">
+                <a href="index.html#products" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap font-medium">アプリ一覧</a>
+                <span class="text-gray-300">|</span>
+                <a href="index.html#services" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap font-medium">制作・開発</a>
+                <a href="index.html#works" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">制作実績</a>
+                <a href="pricing.html" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">料金プラン</a>
+                <a href="solutions.html" class="text-cyan-600 font-bold whitespace-nowrap">お悩み別で探す</a>
+                <span class="text-gray-300">|</span>
+                <a href="index.html#about" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">私たちについて</a>
+                <a href="faq.html" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">FAQ</a>
+                <a href="index.html#news" class="text-gray-600 hover:text-cyan-600 transition-colors whitespace-nowrap">ニュース</a>
+                <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" target="_blank" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap">お問い合わせ</a>
+            </nav>
+            <button id="mobile-menu-button" class="lg:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100" aria-label="open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden px-6 pt-2 pb-4 space-y-2">
+            <a href="index.html#products" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2 font-medium">アプリ一覧</a>
+            <div class="border-t border-gray-200 my-2"></div>
+            <a href="index.html#services" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2 font-medium">制作・開発</a>
+            <a href="index.html#works" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">制作実績</a>
+            <a href="pricing.html" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">料金プラン</a>
+            <a href="solutions.html" class="block text-cyan-600 font-bold py-2">お悩み別で探す</a>
+            <div class="border-t border-gray-200 my-2"></div>
+            <a href="index.html#about" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">私たちについて</a>
+            <a href="faq.html" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">FAQ</a>
+            <a href="index.html#news" class="block text-gray-600 hover:text-cyan-600 transition-colors py-2">ニュース</a>
+            <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" target="_blank" class="block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 text-center mt-2">お問い合わせ</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- ヒーローセクション -->
+        <section class="py-12 md:py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-2xl md:text-4xl font-bold text-gray-800 mb-4 fade-in-up">こんなお悩みありませんか？</h1>
+                <p class="text-base md:text-lg text-gray-600 fade-in-up">お悩み別に、解決策とデモをご紹介します。</p>
+            </div>
+        </section>
+
+        <!-- お悩み1: 電話予約の対応が大変 -->
+        <section id="solution-reservation" class="py-16 md:py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <!-- お悩み文 -->
+                    <div class="text-center mb-10 fade-in-up">
+                        <p class="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+                            「電話予約の対応が大変...」<br class="md:hidden">「営業時間外の予約を取りこぼしている」
+                        </p>
+                        <div class="inline-block bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm md:text-base font-medium">
+                            LINE予約システムで24時間自動受付。電話対応の手間を削減。
+                        </div>
+                    </div>
+
+                    <!-- デモ一覧 -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8 fade-in-up">
+                        <!-- 飲食店 -->
+                        <div class="solution-card bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                            <div class="w-10 h-10 mx-auto mb-2 bg-orange-50 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <p class="text-sm font-bold text-gray-800 mb-1">飲食店</p>
+                            <p class="text-xs text-gray-500 mb-2">Bistro COCORO</p>
+                            <img src="https://qr-official.line.me/gs/M_084sbosk_BW.png?oat_content=qr" alt="Bistro COCORO QR" class="w-20 h-20 mx-auto mb-2">
+                            <p class="text-xs text-emerald-600">予約・テイクアウト・スタンプ</p>
+                        </div>
+
+                        <!-- パン屋 -->
+                        <div class="solution-card bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                            <div class="w-10 h-10 mx-auto mb-2 bg-amber-50 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                            </div>
+                            <p class="text-sm font-bold text-gray-800 mb-1">パン屋</p>
+                            <p class="text-xs text-gray-500 mb-2">ココロのパン屋さん</p>
+                            <img src="https://qr-official.line.me/gs/M_083vwsun_BW.png?oat_content=qr" alt="ココロのパン屋さん QR" class="w-20 h-20 mx-auto mb-2">
+                            <p class="text-xs text-emerald-600">モバイルオーダー・会員証</p>
+                        </div>
+
+                        <!-- 整骨院・サロン -->
+                        <div class="solution-card bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                            <div class="w-10 h-10 mx-auto mb-2 bg-pink-50 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                            </div>
+                            <p class="text-sm font-bold text-gray-800 mb-1">整骨院・サロン</p>
+                            <p class="text-xs text-gray-500 mb-2">こころ整骨院</p>
+                            <img src="https://qr-official.line.me/gs/M_670rusdt_BW.png?oat_content=qr" alt="こころ整骨院 QR" class="w-20 h-20 mx-auto mb-2">
+                            <p class="text-xs text-emerald-600">予約・問診票・回数券</p>
+                        </div>
+
+                        <!-- 士業・コンサル -->
+                        <div class="solution-card bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                            <div class="w-10 h-10 mx-auto mb-2 bg-blue-50 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            </div>
+                            <p class="text-sm font-bold text-gray-800 mb-1">士業・コンサル</p>
+                            <p class="text-xs text-gray-500 mb-2">こころ税務サポート</p>
+                            <img src="https://qr-official.line.me/gs/M_100aovld_BW.png?oat_content=qr" alt="こころ税務サポート QR" class="w-20 h-20 mx-auto mb-2">
+                            <p class="text-xs text-emerald-600">相談予約・案件進捗</p>
+                        </div>
+
+                        <!-- ゴルフスクール -->
+                        <div class="solution-card bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                            <div class="w-10 h-10 mx-auto mb-2 bg-green-50 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <p class="text-sm font-bold text-gray-800 mb-1">ゴルフスクール</p>
+                            <p class="text-xs text-gray-500 mb-2">COCORO Golf</p>
+                            <img src="https://qr-official.line.me/gs/M_649cfavr_GW.png?oat_content=qr" alt="ゴルフスクール QR" class="w-20 h-20 mx-auto mb-2">
+                            <p class="text-xs text-emerald-600">レッスン予約・会員証</p>
+                        </div>
+                    </div>
+
+                    <!-- 注釈 -->
+                    <div class="bg-gray-100 rounded-lg p-4 text-center fade-in-up">
+                        <p class="text-sm text-gray-600">スクール・ジム・クリニック・美容室など、予約が必要なビジネスに最適です</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- お悩み2: HP更新とLINE配信がバラバラで面倒 -->
+        <section id="solution-cms" class="py-16 md:py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <!-- お悩み文 -->
+                    <div class="text-center mb-10 fade-in-up">
+                        <p class="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+                            「HP更新とLINE配信、バラバラで面倒...」<br class="md:hidden">「更新し忘れることがある」
+                        </p>
+                        <div class="inline-block bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm md:text-base font-medium">
+                            1つの管理画面（CMS）から入力するだけで、HPもLINEも同時に更新。
+                        </div>
+                    </div>
+
+                    <!-- サンプル -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8 fade-in-up border border-gray-200">
+                        <div class="text-center mb-6">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">ゴルフスクール HP + LINE連携</h3>
+                            <p class="text-sm text-gray-600">CMSでお知らせを入力 → HPに反映 & LINEに自動通知</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                            <!-- HP -->
+                            <div class="text-center">
+                                <div class="bg-blue-50 rounded-xl p-4 mb-3">
+                                    <div class="w-12 h-12 mx-auto mb-2 bg-blue-100 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                    </div>
+                                    <p class="text-sm font-bold text-gray-800 mb-2">ホームページ</p>
+                                    <a href="https://golf-hp.vercel.app/" target="_blank" class="text-blue-600 text-sm font-medium hover:underline">サンプルを見る →</a>
+                                </div>
+                            </div>
+
+                            <!-- LINE -->
+                            <div class="text-center">
+                                <div class="bg-green-50 rounded-xl p-4 mb-3">
+                                    <div class="w-12 h-12 mx-auto mb-2 bg-green-100 rounded-lg flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                    </div>
+                                    <p class="text-sm font-bold text-gray-800 mb-2">LINEミニアプリ</p>
+                                    <img src="https://qr-official.line.me/gs/M_649cfavr_GW.png?oat_content=qr" alt="ゴルフスクール LINE QR" class="w-24 h-24 mx-auto">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 動画プレースホルダー -->
+                        <div class="mt-8 bg-gray-100 rounded-xl p-8 text-center">
+                            <div class="w-16 h-16 mx-auto mb-4 bg-gray-200 rounded-full flex items-center justify-center">
+                                <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <p class="text-sm text-gray-500">使い方の動画（準備中）</p>
+                        </div>
+                    </div>
+
+                    <!-- 注釈 -->
+                    <div class="bg-gray-100 rounded-lg p-4 text-center mb-6 fade-in-up">
+                        <p class="text-sm text-gray-600">予約のあるビジネス（飲食店・美容室・クリニック・スクールなど）に最適です</p>
+                    </div>
+
+                    <!-- プラン誘導 -->
+                    <div class="text-center fade-in-up">
+                        <a href="pricing.html#set-plan" class="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-bold py-3 px-6 rounded-full hover:from-emerald-600 hover:to-cyan-600 transition-all duration-300 shadow-lg">
+                            <span>HP×LINE一括管理プランを見る</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- お悩み3: 見積書作成に時間がかかる -->
+        <section id="solution-estimate" class="py-16 md:py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <!-- お悩み文 -->
+                    <div class="text-center mb-10 fade-in-up">
+                        <p class="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+                            「見積書作成に時間がかかる...」<br class="md:hidden">「現場ですぐに見積もりを出したい」
+                        </p>
+                        <div class="inline-block bg-cyan-100 text-cyan-800 px-4 py-2 rounded-full text-sm md:text-base font-medium">
+                            その場で入力 → 即PDF出力。手書きや事務所に戻る手間を削減。
+                        </div>
+                    </div>
+
+                    <!-- デモ一覧 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 fade-in-up">
+                        <!-- かんたん帳票 -->
+                        <a href="https://chouhyo.cocoroai.co.jp/" target="_blank" class="solution-card bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-cyan-300 block">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-base font-bold text-gray-800 mb-1">かんたん帳票</h3>
+                                    <p class="text-sm text-gray-600 mb-2">請求書・見積書・納品書をブラウザで作成。保存なし・その場で印刷/PDF</p>
+                                    <span class="text-cyan-600 text-sm font-medium">サイトを見る →</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- 現場帳 -->
+                        <a href="https://kensetsu-estimate-app.vercel.app" target="_blank" class="solution-card bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:border-cyan-300 block">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-cyan-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-base font-bold text-gray-800 mb-1">現場帳（建設業向け見積もりアプリ）</h3>
+                                    <p class="text-sm text-gray-600 mb-2">建設・リフォーム・工事業向け。現場で入力 → 即PDF → 共有</p>
+                                    <span class="text-cyan-600 text-sm font-medium">サンプルを見る →</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- 注釈 -->
+                    <div class="bg-gray-100 rounded-lg p-4 text-center fade-in-up">
+                        <p class="text-sm text-gray-600 mb-2">建設業・工事業・リフォーム業・出張サービス業などにおすすめです</p>
+                        <p class="text-sm text-cyan-700 font-medium">お客様の業務フローに合わせたオーダーメイドツールの開発も承ります</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- お悩み3: リピートしてもらえない -->
+        <section id="solution-repeat" class="py-16 md:py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <!-- お悩み文 -->
+                    <div class="text-center mb-10 fade-in-up">
+                        <p class="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+                            「一度来たお客さんがリピートしない...」<br class="md:hidden">「顧客管理ができていない」
+                        </p>
+                        <div class="inline-block bg-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm md:text-base font-medium">
+                            LINE会員証・ポイント・クーポンで自動的にリピーターを育成。
+                        </div>
+                    </div>
+
+                    <!-- デモ一覧 -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 fade-in-up">
+                        <!-- パン屋 -->
+                        <div class="solution-card bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                            <div class="w-10 h-10 mx-auto mb-2 bg-amber-50 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                            </div>
+                            <p class="text-sm font-bold text-gray-800 mb-1">パン屋</p>
+                            <p class="text-xs text-gray-500 mb-2">ココロのパン屋さん</p>
+                            <img src="https://qr-official.line.me/gs/M_083vwsun_BW.png?oat_content=qr" alt="ココロのパン屋さん QR" class="w-20 h-20 mx-auto mb-2">
+                            <p class="text-xs text-emerald-600">スタンプカード・会員証</p>
+                        </div>
+
+                        <!-- 農家・産直 -->
+                        <div class="solution-card bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                            <div class="w-10 h-10 mx-auto mb-2 bg-green-50 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <p class="text-sm font-bold text-gray-800 mb-1">農家・産直</p>
+                            <p class="text-xs text-gray-500 mb-2">Farm COCORO</p>
+                            <img src="https://qr-official.line.me/gs/M_800jxdsf_BW.png?oat_content=qr" alt="Farm COCORO QR" class="w-20 h-20 mx-auto mb-2">
+                            <p class="text-xs text-emerald-600">EC・定期便・ポイント</p>
+                        </div>
+
+                        <!-- アパレル・EC -->
+                        <div class="solution-card bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
+                            <div class="w-10 h-10 mx-auto mb-2 bg-purple-50 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                            </div>
+                            <p class="text-sm font-bold text-gray-800 mb-1">アパレル・EC</p>
+                            <p class="text-xs text-gray-500 mb-2">COCOROwear</p>
+                            <img src="https://qr-official.line.me/gs/M_683pqgok_BW.png?oat_content=qr" alt="COCOROwear QR" class="w-20 h-20 mx-auto mb-2">
+                            <p class="text-xs text-emerald-600">EC購入・クーポン・会員証</p>
+                        </div>
+                    </div>
+
+                    <!-- 注釈 -->
+                    <div class="bg-gray-100 rounded-lg p-4 text-center fade-in-up">
+                        <p class="text-sm text-gray-600">飲食店・小売店・サロンなど、リピーターが大切なビジネスに最適です</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- お悩み4: ホームページがない/古い -->
+        <section id="solution-homepage" class="py-16 md:py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <!-- お悩み文 -->
+                    <div class="text-center mb-10 fade-in-up">
+                        <p class="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+                            「ホームページがない...」<br class="md:hidden">「あるけど古くて恥ずかしい」
+                        </p>
+                        <div class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm md:text-base font-medium">
+                            スマホ対応・SEO対策済みのホームページを制作。名刺代わりから集客サイトまで。
+                        </div>
+                    </div>
+
+                    <!-- デモ一覧 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 fade-in-up">
+                        <!-- ゴルフスクール -->
+                        <a href="https://golf-hp.vercel.app/" target="_blank" class="solution-card bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:border-blue-300 block">
+                            <div class="w-10 h-10 mb-3 bg-green-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <h3 class="text-sm font-bold text-gray-800 mb-1">ゴルフスクール</h3>
+                            <p class="text-xs text-gray-600 mb-2">レッスン予約・コーチ紹介・料金案内</p>
+                            <span class="text-blue-600 text-xs font-medium">サンプルを見る →</span>
+                        </a>
+
+                        <!-- エステサロン -->
+                        <a href="samples/beauty-salon-template.html" target="_blank" class="solution-card bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:border-blue-300 block">
+                            <div class="w-10 h-10 mb-3 bg-pink-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                            </div>
+                            <h3 class="text-sm font-bold text-gray-800 mb-1">エステサロン</h3>
+                            <p class="text-xs text-gray-600 mb-2">予約導線・メニュー紹介・アクセス</p>
+                            <span class="text-blue-600 text-xs font-medium">サンプルを見る →</span>
+                        </a>
+
+                        <!-- クリニック -->
+                        <a href="https://cocoroai.github.io/clinic-website-template/" target="_blank" class="solution-card bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:border-blue-300 block">
+                            <div class="w-10 h-10 mb-3 bg-teal-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                            </div>
+                            <h3 class="text-sm font-bold text-gray-800 mb-1">クリニック</h3>
+                            <p class="text-xs text-gray-600 mb-2">清潔感・信頼性重視のデザイン</p>
+                            <span class="text-blue-600 text-xs font-medium">サンプルを見る →</span>
+                        </a>
+
+                        <!-- ペットサロン -->
+                        <a href="https://cocoroai.github.io/pet-salon-website/" target="_blank" class="solution-card bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:border-blue-300 block">
+                            <div class="w-10 h-10 mb-3 bg-orange-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <h3 class="text-sm font-bold text-gray-800 mb-1">ペットサロン</h3>
+                            <p class="text-xs text-gray-600 mb-2">温かみのあるデザイン</p>
+                            <span class="text-blue-600 text-xs font-medium">サンプルを見る →</span>
+                        </a>
+
+                        <!-- 士業事務所 -->
+                        <a href="https://cocoroai.github.io/profession-office-template/" target="_blank" class="solution-card bg-white p-5 rounded-xl shadow-sm border border-gray-200 hover:border-blue-300 block">
+                            <div class="w-10 h-10 mb-3 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            </div>
+                            <h3 class="text-sm font-bold text-gray-800 mb-1">士業事務所</h3>
+                            <p class="text-xs text-gray-600 mb-2">信頼感あるデザイン</p>
+                            <span class="text-blue-600 text-xs font-medium">サンプルを見る →</span>
+                        </a>
+                    </div>
+
+                    <!-- 注釈 -->
+                    <div class="bg-gray-100 rounded-lg p-4 text-center fade-in-up">
+                        <p class="text-sm text-gray-600">その他の業種もご相談ください。ご要望に合わせてオリジナルで制作します</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTAセクション -->
+        <section class="py-16 md:py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-8 md:p-12 text-center text-white shadow-xl max-w-3xl mx-auto fade-in-up">
+                    <h2 class="text-xl md:text-2xl font-bold mb-4">お悩みに合わせて、最適なプランをご提案します</h2>
+                    <p class="text-sm md:text-base mb-6 opacity-90">まずはお気軽にご相談ください。無料でお見積もりいたします。</p>
+                    <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" target="_blank" class="inline-block bg-white text-cyan-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors shadow-lg text-sm md:text-base">無料で相談する</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <a href="index.html" class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <img src="images/cocoroai_logo.png" alt="ココロAI ロゴアイコン" class="h-8 w-auto">
+                </a>
+                <div class="text-center md:text-right">
+                    <nav class="space-x-6 mb-4">
+                        <a href="index.html#about" class="text-gray-300 hover:text-white transition-colors text-sm">私たちについて</a>
+                        <a href="index.html#services" class="text-gray-300 hover:text-white transition-colors text-sm">事業内容</a>
+                        <a href="pricing.html" class="text-gray-300 hover:text-white transition-colors text-sm">料金プラン</a>
+                        <a href="solutions.html" class="text-gray-300 hover:text-white transition-colors text-sm">お悩み別で探す</a>
+                        <a href="faq.html" class="text-gray-300 hover:text-white transition-colors text-sm">よくある質問</a>
+                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" target="_blank" class="text-gray-300 hover:text-white transition-colors text-sm">お問い合わせ</a>
+                        <a href="https://sites.google.com/cocoroai.co.jp/privacy-policy/%E3%83%9B%E3%83%BC%E3%83%A0" target="_blank" class="text-gray-300 hover:text-white transition-colors text-sm">プライバシーポリシー</a>
+                        <a href="https://sites.google.com/cocoroai.co.jp/security-policy/%E3%83%9B%E3%83%BC%E3%83%A0" target="_blank" class="text-gray-300 hover:text-white transition-colors text-sm">情報セキュリティ基本方針</a>
+                    </nav>
+                    <p class="text-xs text-gray-400">&copy; 2025 ココロＡＩ合同会社. All Rights Reserved.</p>
+                    <p class="text-xs text-gray-400 mt-1">「ココロＡＩ」はココロＡＩ合同会社の登録商標です。</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ハンバーガー
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            }
+
+            // フェードイン
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    if (entry.target.classList.contains('fade-in-up')) entry.target.classList.add('is-visible');
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-up').forEach(t => observer.observe(t));
+        });
+    </script>
+
+</body>
+</html>
