@@ -169,7 +169,7 @@
                             </svg>
                         </div>
                         <h3 class="text-sm font-bold text-gray-800 mb-1">アプリ開発・業務ツール</h3>
-                        <p class="text-base md:text-lg font-bold text-purple-600 mb-2">¥500,000<span class="text-xs font-medium text-gray-500">〜</span></p>
+                        <p class="text-base md:text-lg font-bold text-purple-600 mb-2">¥200,000<span class="text-xs font-medium text-gray-500">〜</span></p>
                         <p class="text-xs text-gray-600 leading-relaxed">業務効率化ツールやオーダーメイドアプリなど、フルオーダー開発。</p>
                     </a>
 
@@ -878,39 +878,53 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
 
                     <!-- カード1：アプリ開発・業務ツール -->
-                    <div id="app-development" class="bg-gradient-to-br from-slate-800 to-indigo-900 rounded-2xl p-5 md:p-6 text-white relative flex flex-col">
-                        <span class="absolute -top-2 right-4 badge-advanced text-white text-xs font-bold px-2 py-1 rounded-full">Advanced</span>
-                        <h3 class="text-base md:text-lg font-bold mb-2 mt-1">アプリ開発・業務ツール</h3>
-                        <p class="text-xs md:text-sm text-gray-300 mb-4 leading-relaxed">
+                    <div id="app-development" class="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-2xl p-5 md:p-8 text-white relative overflow-hidden flex flex-col">
+                        <span class="absolute top-4 right-4 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full">Advanced</span>
+                        <h3 class="text-base md:text-xl font-bold mb-3">アプリ開発・業務ツール</h3>
+                        <p class="text-gray-300 text-xs md:text-sm mb-4 leading-relaxed">
                             既存のSaaSではフィットしない業務や、独自サービスをゼロから形にしたい企業さま向けの完全オーダーメイドプランです。
                         </p>
 
-                        <div class="space-y-2 mb-4">
-                            <div class="flex items-start">
-                                <svg class="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span class="text-xs text-gray-300">オリジナル予約システム・社内向け業務ツールの開発</span>
-                            </div>
-                            <div class="flex items-start">
-                                <svg class="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span class="text-xs text-gray-300">Webアプリ・iOSアプリ・管理画面を組み合わせたシステム設計</span>
-                            </div>
-                            <div class="flex items-start">
-                                <svg class="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span class="text-xs text-gray-300">既存ツールや外部サービスとの連携（API連携など）</span>
-                            </div>
-                            <div class="flex items-start">
-                                <svg class="w-4 h-4 text-purple-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span class="text-xs text-gray-300">要件定義〜プロトタイプ〜本実装〜運用開始までの伴走サポート</span>
-                            </div>
-                        </div>
+                        <ul class="text-xs md:text-sm space-y-2 mb-6">
+                            <li class="flex items-start gap-2"><span class="text-purple-300">✓</span>オリジナル予約システム・社内向け業務ツールの開発</li>
+                            <li class="flex items-start gap-2"><span class="text-purple-300">✓</span>Webアプリ・iOSアプリ・管理画面を組み合わせたシステム設計</li>
+                            <li class="flex items-start gap-2"><span class="text-purple-300">✓</span>既存ツールや外部サービスとの連携（API連携など）</li>
+                            <li class="flex items-start gap-2"><span class="text-purple-300">✓</span>要件定義〜プロトタイプ〜本実装〜運用開始までの伴走サポート</li>
+                        </ul>
 
-                        <div class="mb-4">
-                            <p class="text-xl font-bold text-white">¥500,000<span class="text-sm font-medium text-gray-400">〜</span></p>
-                            <p class="text-xs text-gray-400">（税込・規模により変動）</p>
-                            <p class="text-xs text-gray-400 mt-1">※機能数・連携先により変動</p>
-                        </div>
+                        <!-- アコーディオン -->
+                        <details class="mb-6">
+                            <summary class="cursor-pointer text-sm text-purple-300 hover:text-white transition-colors flex items-center gap-2">
+                                <span>▼</span> 料金プランを見る
+                            </summary>
+                            <div class="grid md:grid-cols-2 gap-4 mt-4">
+                                <!-- 買い切り -->
+                                <div class="bg-white/10 rounded-xl p-4">
+                                    <h4 class="text-sm font-bold text-purple-300 mb-2">買い切り</h4>
+                                    <p class="text-2xl font-bold mb-1">¥500,000<span class="text-base font-normal">〜</span></p>
+                                    <ul class="text-xs text-gray-300 space-y-1">
+                                        <li>・御社専用にカスタマイズ</li>
+                                        <li>・ソースコードお渡し</li>
+                                        <li>・納品後は御社の資産</li>
+                                        <li>・保守は別途相談</li>
+                                    </ul>
+                                </div>
+                                <!-- サブスク -->
+                                <div class="bg-white/10 rounded-xl p-4">
+                                    <h4 class="text-sm font-bold text-cyan-300 mb-2">サブスク</h4>
+                                    <p class="text-lg font-bold mb-1">初期 ¥200,000<span class="text-base font-normal">〜</span></p>
+                                    <p class="text-2xl font-bold mb-1">月額 ¥30,000<span class="text-base font-normal">〜</span></p>
+                                    <ul class="text-xs text-gray-300 space-y-1">
+                                        <li>・アップデート・保守込み</li>
+                                        <li>・サーバー管理込み</li>
+                                        <li>・最低契約：12ヶ月〜</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </details>
 
-                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" class="block w-full bg-white hover:bg-gray-100 text-gray-900 font-bold py-2.5 px-4 rounded-full text-center transition-colors text-sm mt-auto">詳しく相談する</a>
+                        <p class="text-xs text-gray-400 mb-4">※機能数・連携先・ユーザー数により変動</p>
+                        <a href="https://forms.gle/qJsdx7EuRWKHFBC3A" target="_blank" class="block w-full bg-white text-indigo-900 font-bold py-3 px-6 rounded-full text-center hover:bg-gray-100 transition-colors text-sm mt-auto">詳しく相談する</a>
                     </div>
 
                     <!-- カード2：ブランディング・プロモーション -->
