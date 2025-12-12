@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WDZSEFZKY2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WDZSEFZKY2');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Beauty Salon - あなたの美しさを引き出す</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1a1a1a;
+            --color-secondary: #c9a87c;
+            --color-accent: #8b7355;
+            --color-light: #f8f6f3;
+            --color-white: #ffffff;
+            --color-gray: #666666;
+            --color-gray-light: #e8e4df;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Noto Sans JP', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-weight: 300;
+            color: var(--color-primary);
+            line-height: 1.8;
+            background-color: var(--color-white);
+            overflow-x: hidden;
+        }
+
+        /* ===== Navigation ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--color-white);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            transition: color 0.4s ease;
+        }
+
+        .nav.scrolled .nav-logo {
+            color: var(--color-primary);
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+
+        .nav.scrolled .nav-links a {
+            color: var(--color-primary);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-secondary);
+        }
+
+        .nav-cta {
+            padding: 0.6rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--color-white);
+            color: var(--color-white);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled .nav-cta {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .nav-cta:hover {
+            background: var(--color-secondary);
+            border-color: var(--color-secondary);
+            color: var(--color-white);
+        }
+
+        .nav-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--color-white);
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled .nav-toggle span {
+            background: var(--color-primary);
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            .nav-toggle {
+                display: none;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--color-primary);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            transition: right 0.4s ease;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            letter-spacing: 0.15em;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(26, 26, 26, 0.4) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: var(--color-white);
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            letter-spacing: 0.3em;
+            margin-bottom: 1.5rem;
+            color: var(--color-secondary);
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 0.95rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--color-secondary);
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-white);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        .hero-scroll::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: var(--color-white);
+            opacity: 0.5;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ===== Section Common ===== */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: 8rem 4rem;
+            }
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        /* ===== Concept Section ===== */
+        .concept {
+            background: var(--color-light);
+        }
+
+        .concept-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .concept-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 5rem;
+            }
+        }
+
+        .concept-image {
+            position: relative;
+        }
+
+        .concept-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .concept-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--color-secondary);
+            z-index: -1;
+        }
+
+        .concept-text h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .concept-text p {
+            color: var(--color-gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* ===== Services Section ===== */
+        .services {
+            background: var(--color-white);
+        }
+
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 600px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .service-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: var(--color-white);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-card-overlay {
+            padding-bottom: 3rem;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .service-card-price {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--color-secondary);
+            margin-top: 0.5rem;
+        }
+
+        /* ===== Menu Section ===== */
+        .menu {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .menu .section-title {
+            color: var(--color-white);
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-tab {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--color-gray);
+            color: var(--color-white);
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-tab:hover,
+        .menu-tab.active {
+            background: var(--color-secondary);
+            border-color: var(--color-secondary);
+        }
+
+        .menu-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .menu-category {
+            display: none;
+        }
+
+        .menu-category.active {
+            display: block;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item-info h4 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-item-info p {
+            font-size: 0.85rem;
+            color: var(--color-gray);
+        }
+
+        .menu-item-price {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--color-secondary);
+            white-space: nowrap;
+            margin-left: 2rem;
+        }
+
+        /* ===== Staff Section ===== */
+        .staff {
+            background: var(--color-light);
+        }
+
+        .staff-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 600px) {
+            .staff-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 900px) {
+            .staff-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .staff-card {
+            background: var(--color-white);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .staff-card img {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+        }
+
+        .staff-card-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .staff-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+        }
+
+        .staff-card-role {
+            font-size: 0.8rem;
+            color: var(--color-secondary);
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .staff-card p {
+            font-size: 0.85rem;
+            color: var(--color-gray);
+        }
+
+        /* ===== Gallery Section ===== */
+        .gallery {
+            padding: 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* ===== Testimonials Section ===== */
+        .testimonials {
+            background: var(--color-white);
+        }
+
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .testimonial {
+            display: none;
+        }
+
+        .testimonial.active {
+            display: block;
+        }
+
+        .testimonial-text {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 2;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--color-secondary);
+            opacity: 0.3;
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .testimonial-author {
+            font-size: 0.9rem;
+            color: var(--color-gray);
+        }
+
+        .testimonials-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .testimonials-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--color-gray-light);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .testimonials-dot.active {
+            background: var(--color-secondary);
+        }
+
+        /* ===== Access Section ===== */
+        .access {
+            background: var(--color-light);
+        }
+
+        .access-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .access-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .access-map {
+            aspect-ratio: 16/12;
+            background: var(--color-gray-light);
+            overflow: hidden;
+        }
+
+        .access-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .access-info h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .access-info-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .access-info-item dt {
+            font-size: 0.8rem;
+            color: var(--color-secondary);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.3rem;
+        }
+
+        .access-info-item dd {
+            font-size: 0.95rem;
+            color: var(--color-gray);
+        }
+
+        /* ===== Contact Section ===== */
+        .contact {
+            background: var(--color-primary);
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: var(--color-white);
+        }
+
+        .contact-description {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            color: var(--color-gray);
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 600px) {
+            .contact-buttons {
+                flex-direction: row;
+                max-width: 600px;
+            }
+        }
+
+        .contact-btn {
+            flex: 1;
+            padding: 1.2rem 2rem;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .contact-btn-primary {
+            background: var(--color-secondary);
+            color: var(--color-white);
+        }
+
+        .contact-btn-primary:hover {
+            background: var(--color-accent);
+        }
+
+        .contact-btn-secondary {
+            background: transparent;
+            border: 1px solid var(--color-white);
+            color: var(--color-white);
+        }
+
+        .contact-btn-secondary:hover {
+            background: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: #111;
+            color: var(--color-white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            font-size: 0.85rem;
+            color: var(--color-gray);
+            line-height: 1.8;
+        }
+
+        .footer-title {
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--color-gray);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-copyright {
+            font-size: 0.75rem;
+            color: var(--color-gray);
+        }
+
+        /* ===== Floating CTA ===== */
+        .floating-cta {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 100;
+        }
+
+        .floating-cta a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: var(--color-secondary);
+            color: var(--color-white);
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(201, 168, 124, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .floating-cta a:hover {
+            transform: scale(1.1);
+            background: var(--color-accent);
+        }
+
+        .floating-cta svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .floating-cta {
+                bottom: 2rem;
+                right: 2rem;
+            }
+            .floating-cta a {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        /* ===== FAQ Section ===== */
+        .faq {
+            background: var(--color-white);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--color-gray-light);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 0;
+            background: none;
+            border: none;
+            text-align: left;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--color-secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        .faq-answer p {
+            padding-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--color-gray);
+        }
+
+        /* ===== Utility ===== */
+        .text-center { text-align: center; }
+        .mb-0 { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-logo">LUNA</a>
+        <ul class="nav-links">
+            <li><a href="#concept">CONCEPT</a></li>
+            <li><a href="#services">SERVICE</a></li>
+            <li><a href="#menu">MENU</a></li>
+            <li><a href="#staff">STAFF</a></li>
+            <li><a href="#access">ACCESS</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">RESERVE</a>
+        <div class="nav-toggle" id="navToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#concept">CONCEPT</a>
+        <a href="#services">SERVICE</a>
+        <a href="#menu">MENU</a>
+        <a href="#staff">STAFF</a>
+        <a href="#access">ACCESS</a>
+        <a href="#contact">RESERVE</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920&q=80" alt="Beauty Salon">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle">BEAUTY SALON</span>
+            <h1 class="hero-title">Your Beauty,<br>Our Passion</h1>
+            <p class="hero-description">あなたの美しさを最大限に引き出す<br>完全プライベートサロン</p>
+            <a href="#contact" class="hero-cta">RESERVATION</a>
+        </div>
+        <div class="hero-scroll">SCROLL</div>
+    </section>
+
+    <!-- Concept Section -->
+    <section class="section concept" id="concept">
+        <div class="section-header">
+            <span class="section-label">CONCEPT</span>
+            <h2 class="section-title">私たちのこだわり</h2>
+        </div>
+        <div class="concept-content">
+            <div class="concept-image">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&q=80" alt="Salon Concept">
+            </div>
+            <div class="concept-text">
+                <h3>一人ひとりの美しさに<br>寄り添うサロン</h3>
+                <p>Luna Beauty Salonは、お客様一人ひとりの個性と魅力を最大限に引き出すことを大切にしています。</p>
+                <p>完全予約制のプライベート空間で、ゆったりとした時間の中で丁寧なカウンセリングと施術をお約束いたします。</p>
+                <p>最新の技術とトレンドを取り入れながらも、あなたらしさを大切にしたスタイルをご提案します。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="section-header">
+            <span class="section-label">SERVICE</span>
+            <h2 class="section-title">サービス</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600&q=80" alt="Cut">
+                <div class="service-card-overlay">
+                    <h3>Cut</h3>
+                    <p>カット</p>
+                    <div class="service-card-price">¥6,600〜</div>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=600&q=80" alt="Color">
+                <div class="service-card-overlay">
+                    <h3>Color</h3>
+                    <p>カラーリング</p>
+                    <div class="service-card-price">¥8,800〜</div>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600&q=80" alt="Treatment">
+                <div class="service-card-overlay">
+                    <h3>Treatment</h3>
+                    <p>トリートメント</p>
+                    <div class="service-card-price">¥5,500〜</div>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80" alt="Head Spa">
+                <div class="service-card-overlay">
+                    <h3>Head Spa</h3>
+                    <p>ヘッドスパ</p>
+                    <div class="service-card-price">¥4,400〜</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section menu" id="menu">
+        <div class="section-header">
+            <span class="section-label">MENU</span>
+            <h2 class="section-title">料金メニュー</h2>
+        </div>
+        <div class="menu-tabs">
+            <button class="menu-tab active" data-tab="cut">CUT</button>
+            <button class="menu-tab" data-tab="color">COLOR</button>
+            <button class="menu-tab" data-tab="perm">PERM</button>
+            <button class="menu-tab" data-tab="treatment">TREATMENT</button>
+            <button class="menu-tab" data-tab="spa">HEAD SPA</button>
+        </div>
+        <div class="menu-content">
+            <!-- Cut Menu -->
+            <div class="menu-category active" data-category="cut">
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>カット</h4>
+                        <p>シャンプー・ブロー込み</p>
+                    </div>
+                    <div class="menu-item-price">¥6,600</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>前髪カット</h4>
+                        <p>前髪のみのカット</p>
+                    </div>
+                    <div class="menu-item-price">¥1,100</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>キッズカット</h4>
+                        <p>小学生以下</p>
+                    </div>
+                    <div class="menu-item-price">¥3,300</div>
+                </div>
+            </div>
+
+            <!-- Color Menu -->
+            <div class="menu-category" data-category="color">
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>ワンカラー</h4>
+                        <p>全体染め</p>
+                    </div>
+                    <div class="menu-item-price">¥8,800〜</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>リタッチカラー</h4>
+                        <p>根元3cm以内</p>
+                    </div>
+                    <div class="menu-item-price">¥6,600</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>ハイライト</h4>
+                        <p>10枚〜</p>
+                    </div>
+                    <div class="menu-item-price">¥5,500〜</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>ブリーチ</h4>
+                        <p>1回</p>
+                    </div>
+                    <div class="menu-item-price">¥8,800</div>
+                </div>
+            </div>
+
+            <!-- Perm Menu -->
+            <div class="menu-category" data-category="perm">
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>パーマ</h4>
+                        <p>カット込み</p>
+                    </div>
+                    <div class="menu-item-price">¥13,200〜</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>デジタルパーマ</h4>
+                        <p>カット込み</p>
+                    </div>
+                    <div class="menu-item-price">¥16,500〜</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>縮毛矯正</h4>
+                        <p>カット込み</p>
+                    </div>
+                    <div class="menu-item-price">¥22,000〜</div>
+                </div>
+            </div>
+
+            <!-- Treatment Menu -->
+            <div class="menu-category" data-category="treatment">
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>クイックトリートメント</h4>
+                        <p>手軽にうるおい補給</p>
+                    </div>
+                    <div class="menu-item-price">¥2,200</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>プレミアムトリートメント</h4>
+                        <p>3ステップの集中ケア</p>
+                    </div>
+                    <div class="menu-item-price">¥5,500</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>髪質改善トリートメント</h4>
+                        <p>酸熱トリートメント</p>
+                    </div>
+                    <div class="menu-item-price">¥11,000</div>
+                </div>
+            </div>
+
+            <!-- Head Spa Menu -->
+            <div class="menu-category" data-category="spa">
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>クイックスパ</h4>
+                        <p>15分コース</p>
+                    </div>
+                    <div class="menu-item-price">¥2,200</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>リラックススパ</h4>
+                        <p>30分コース</p>
+                    </div>
+                    <div class="menu-item-price">¥4,400</div>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <h4>プレミアムスパ</h4>
+                        <p>45分コース・オイル使用</p>
+                    </div>
+                    <div class="menu-item-price">¥6,600</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section class="section staff" id="staff">
+        <div class="section-header">
+            <span class="section-label">STAFF</span>
+            <h2 class="section-title">スタッフ紹介</h2>
+        </div>
+        <div class="staff-grid">
+            <div class="staff-card">
+                <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=80" alt="Yuki Tanaka">
+                <div class="staff-card-content">
+                    <h3>田中 ゆき</h3>
+                    <p class="staff-card-role">OWNER / STYLIST</p>
+                    <p>トレンドを取り入れながら、お客様の魅力を引き出すスタイルをご提案します。</p>
+                </div>
+            </div>
+            <div class="staff-card">
+                <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&q=80" alt="Mika Suzuki">
+                <div class="staff-card-content">
+                    <h3>鈴木 美香</h3>
+                    <p class="staff-card-role">STYLIST</p>
+                    <p>カラーリングが得意です。あなただけの似合わせカラーを見つけます。</p>
+                </div>
+            </div>
+            <div class="staff-card">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80" alt="Rina Yamamoto">
+                <div class="staff-card-content">
+                    <h3>山本 里奈</h3>
+                    <p class="staff-card-role">STYLIST</p>
+                    <p>ヘッドスパとトリートメントのスペシャリスト。癒しの時間をお届けします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80" alt="Gallery 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=80" alt="Gallery 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=400&q=80" alt="Gallery 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?w=400&q=80" alt="Gallery 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&q=80" alt="Gallery 5">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=400&q=80" alt="Gallery 6">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=80" alt="Gallery 7">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&q=80" alt="Gallery 8">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="section-header">
+            <span class="section-label">VOICE</span>
+            <h2 class="section-title">お客様の声</h2>
+        </div>
+        <div class="testimonials-slider">
+            <div class="testimonial active">
+                <p class="testimonial-text">初めて伺いましたが、丁寧なカウンセリングで安心してお任せできました。仕上がりも大満足です！</p>
+                <p class="testimonial-author">M.K様 / 30代</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">ヘッドスパが最高でした。頭皮がすっきりして、とてもリラックスできました。定期的に通いたいです。</p>
+                <p class="testimonial-author">Y.S様 / 40代</p>
+            </div>
+            <div class="testimonial">
+                <p class="testimonial-text">カラーの提案が素晴らしく、自分では選ばない色でしたが、とても気に入っています。</p>
+                <p class="testimonial-author">A.T様 / 20代</p>
+            </div>
+        </div>
+        <div class="testimonials-dots">
+            <span class="testimonials-dot active" data-index="0"></span>
+            <span class="testimonials-dot" data-index="1"></span>
+            <span class="testimonials-dot" data-index="2"></span>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq" id="faq">
+        <div class="section-header">
+            <span class="section-label">FAQ</span>
+            <h2 class="section-title">よくあるご質問</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question">予約は必要ですか？</button>
+                <div class="faq-answer">
+                    <p>当サロンは完全予約制となっております。お電話またはオンラインからご予約ください。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">駐車場はありますか？</button>
+                <div class="faq-answer">
+                    <p>サロン前に2台分の駐車スペースをご用意しております。満車の場合は近隣のコインパーキングをご利用ください。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">クレジットカードは使えますか？</button>
+                <div class="faq-answer">
+                    <p>VISA、MasterCard、JCB、AMEX等の各種クレジットカード、電子マネー、QRコード決済に対応しております。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">キャンセルはいつまで可能ですか？</button>
+                <div class="faq-answer">
+                    <p>前日の18時までにご連絡ください。当日のキャンセルはキャンセル料が発生する場合がございます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section class="section access" id="access">
+        <div class="section-header">
+            <span class="section-label">ACCESS</span>
+            <h2 class="section-title">アクセス</h2>
+        </div>
+        <div class="access-content">
+            <div class="access-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.828030555053!2d139.76454931525882!3d35.68123618019432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1680000000000!5m2!1sja!2sjp" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="access-info">
+                <h3>Luna Beauty Salon</h3>
+                <dl>
+                    <div class="access-info-item">
+                        <dt>ADDRESS</dt>
+                        <dd>〒100-0001<br>東京都千代田区千代田1-1-1<br>ルナビル 2F</dd>
+                    </div>
+                    <div class="access-info-item">
+                        <dt>TEL</dt>
+                        <dd>03-1234-5678</dd>
+                    </div>
+                    <div class="access-info-item">
+                        <dt>OPEN</dt>
+                        <dd>10:00 - 20:00（最終受付 19:00）</dd>
+                    </div>
+                    <div class="access-info-item">
+                        <dt>CLOSED</dt>
+                        <dd>毎週月曜日・第3火曜日</dd>
+                    </div>
+                    <div class="access-info-item">
+                        <dt>ACCESS</dt>
+                        <dd>東京駅 丸の内口より徒歩5分</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="section-header">
+            <span class="section-label">CONTACT</span>
+            <h2 class="section-title">ご予約・お問い合わせ</h2>
+        </div>
+        <p class="contact-description">ご予約はお電話またはオンラインから承っております。<br>ご不明な点がございましたらお気軽にお問い合わせください。</p>
+        <div class="contact-buttons">
+            <a href="tel:0312345678" class="contact-btn contact-btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                電話予約
+            </a>
+            <a href="beauty-salon-booking.html" class="contact-btn contact-btn-secondary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                オンライン予約
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">LUNA</div>
+                <p class="footer-description">一人ひとりの美しさを引き出す<br>完全プライベートサロン</p>
+            </div>
+            <div>
+                <h4 class="footer-title">MENU</h4>
+                <ul class="footer-links">
+                    <li><a href="#concept">Concept</a></li>
+                    <li><a href="#services">Service</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#staff">Staff</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">INFO</h4>
+                <ul class="footer-links">
+                    <li><a href="#access">Access</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2024 Luna Beauty Salon. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta">
+        <a href="tel:0312345678" aria-label="電話予約">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+        </a>
+    </div>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('navToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        navToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Menu tabs
+        const menuTabs = document.querySelectorAll('.menu-tab');
+        const menuCategories = document.querySelectorAll('.menu-category');
+
+        menuTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetCategory = tab.dataset.tab;
+
+                menuTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                menuCategories.forEach(category => {
+                    if (category.dataset.category === targetCategory) {
+                        category.classList.add('active');
+                    } else {
+                        category.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Testimonials slider
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.testimonials-dot');
+        let currentTestimonial = 0;
+
+        function showTestimonial(index) {
+            testimonials.forEach((t, i) => {
+                t.classList.toggle('active', i === index);
+            });
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === index);
+            });
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentTestimonial = parseInt(dot.dataset.index);
+                showTestimonial(currentTestimonial);
+            });
+        });
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -25,6 +25,7 @@
 - **HTML5** + **Tailwind CSS** (CDN)
 - **JavaScript** (Vanilla)
 - **Google Fonts** (Noto Sans JP)
+- **Google Analytics 4** (測定ID: G-WDZSEFZKY2)
 - ホスティング: GitHub Pages
 
 ## ローカル開発
@@ -40,6 +41,11 @@ python -m http.server 8080
 ```
 
 ## 更新履歴
+
+### 2025-12-12
+- Google Analytics 4 を全ページに設置（測定ID: G-WDZSEFZKY2）
+  - メインサイト: index.html, solutions.html, faq.html, pricing.html
+  - サンプルページ: samples/配下の5ファイル
 
 ### 2025-12-05
 - 料金ページ大幅リニューアル
