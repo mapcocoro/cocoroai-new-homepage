@@ -124,6 +124,19 @@
 
             <div class="bg-white p-6 rounded-lg shadow-md" x-data="{ open: false }">
                 <button @click="open = !open" class="w-full text-left flex justify-between items-center">
+                    <h3 class="font-semibold text-lg">制作費以外にかかる費用はありますか？</h3>
+                    <svg :class="{'rotate-180': open}" class="w-5 h-5 text-cyan-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="mt-4 text-gray-700">
+                    <p class="mb-2">公開後の運用保守プランを別途ご用意しています。</p>
+                    <p class="mb-2">月額<span class="font-medium text-cyan-700">¥0〜¥23,000</span>で、更新サポートやレポート作成などをお選びいただけます。</p>
+                    <p class="text-sm text-gray-600 mb-3">詳しくはお問い合わせ時にご案内します。</p>
+                    <p class="text-xs text-gray-500">※分割払いは制作費を分けてお支払いいただく方法です。運用サポートをご希望の場合は別途お申し込みください。</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md" x-data="{ open: false }">
+                <button @click="open = !open" class="w-full text-left flex justify-between items-center">
                     <h3 class="font-semibold text-lg">サイト公開後の修正や更新はお願いできますか？</h3>
                     <svg :class="{'rotate-180': open}" class="w-5 h-5 text-cyan-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
