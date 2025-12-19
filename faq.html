@@ -118,7 +118,12 @@
                     <svg :class="{'rotate-180': open}" class="w-5 h-5 text-cyan-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div x-show="open" x-transition class="mt-4 text-gray-700">
-                    <p>銀行振込に対応しております。基本的には一括前払いとなりますが、ご希望に応じて着手金50%・完了後50%の分割払いも承ります。詳細はお見積もりの際にご相談ください。</p>
+                    <p class="mb-2">以下のお支払い方法に対応しております。</p>
+                    <ul class="list-disc list-inside mb-2 space-y-1">
+                        <li>一括払い（銀行振込 / クレジットカード）</li>
+                        <li>分割払い（クレジットカード）── 6回・12回払いに対応</li>
+                    </ul>
+                    <p class="text-sm text-gray-600">※分割払いをご希望の場合はお問い合わせ時にお知らせください</p>
                 </div>
             </div>
 
