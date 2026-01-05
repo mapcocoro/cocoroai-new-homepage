@@ -1,5 +1,13 @@
 # Beauty Salon Luna - サンプルサイト
 
+## リンク情報
+
+| 項目 | URL |
+|------|-----|
+| 公開サイト | https://www.cocoroai.co.jp/samples/beauty-salon-template.html |
+| GitHub | https://github.com/mapcocoro/beauty-salon-template |
+| ローカル | `/Users/runa/projects/cocoroai-website/samples/` |
+
 ## 概要
 女性向け美容サロン（エステ・ネイル）のモダンなWebサイトテンプレートです。スマートフォンでの閲覧に最適化されており、iOSアプリのような直感的なユーザーインターフェースを実現。サロンの魅力的な紹介に加えて、ホットペッパービューティー風のカレンダー予約システムを搭載し、お客様が簡単にメニュー選択から日時予約まで完結できる実用的なWebサイトです。
 
