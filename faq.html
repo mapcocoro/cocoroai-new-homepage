@@ -122,6 +122,17 @@
 
             <div class="bg-white p-6 rounded-lg shadow-md" x-data="{ open: false }">
                 <button @click="open = !open" class="w-full text-left flex justify-between items-center">
+                    <h3 class="font-semibold text-lg">補助金は使えますか？</h3>
+                    <svg :class="{'rotate-180': open}" class="w-5 h-5 text-cyan-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="open" x-transition class="mt-4 text-gray-700">
+                    <p class="mb-2">LINEミニアプリ等の業務効率化に関するサービスは、<span class="font-medium text-cyan-700">中小企業省力化投資補助金（一般型）</span>の対象となる可能性があります。</p>
+                    <p class="text-sm text-gray-600">※詳しくは商工会または認定支援機関にてご確認ください</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md" x-data="{ open: false }">
+                <button @click="open = !open" class="w-full text-left flex justify-between items-center">
                     <h3 class="font-semibold text-lg">料金の支払い方法について教えてください。</h3>
                     <svg :class="{'rotate-180': open}" class="w-5 h-5 text-cyan-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>

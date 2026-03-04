@@ -87,7 +87,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Old+Mincho:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Old+Mincho:wght@700&display=swap" rel="stylesheet">
 
   <!-- 元の色味は style.css を使用（text-gradient を上書きしません） -->
   <link rel="stylesheet" href="style.css">
@@ -95,10 +95,135 @@
   <style>
     .fade-in-up{opacity:0;transform:translateY(20px);transition:opacity .8s ease-out,transform .8s ease-out}
     .fade-in-up.is-visible{opacity:1;transform:translateY(0)}
+
+    /* オープニングアニメーション */
+    #opening-wrapper {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #fff;
+    }
+    #opening-wrapper.fade-out {
+      animation: openingFadeOut 0.8s ease forwards;
+    }
+    #opening-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/loader-forest-bg3.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-color: #fff;
+      opacity: 0;
+      animation: openingBgIn 1.0s ease forwards 0.3s;
+    }
+    #opening-overlay {
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      animation: openingWhiteFade 0.4s ease forwards 0.2s;
+      z-index: 5;
+      pointer-events: none;
+    }
+    #opening-robo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%;
+      max-width: 700px;
+      min-width: 280px;
+      -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 20%, transparent 80%);
+      mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 20%, transparent 80%);
+    }
+    #opening-text {
+      position: absolute;
+      top: calc(50% + 160px);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      font-family: 'Quicksand', sans-serif;
+      font-size: clamp(18px, 3vw, 32px);
+      font-weight: 600;
+      color: #3a99a8;
+      text-shadow:
+        0 0 8px rgba(80,180,200,0.6),
+        0 0 24px rgba(60,160,190,0.35),
+        0 0 48px rgba(40,140,170,0.2);
+      letter-spacing: 0.2em;
+      white-space: nowrap;
+      opacity: 0;
+      animation: openingTextIn 1.2s ease-out forwards 1.5s;
+      z-index: 2;
+    }
+    #opening-skip {
+      position: absolute;
+      bottom: 24px;
+      right: 24px;
+      color: rgba(80,80,80,0.6);
+      font-size: 13px;
+      font-family: 'Quicksand', sans-serif;
+      cursor: pointer;
+      border: 1px solid rgba(80,80,80,0.3);
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.5);
+      transition: opacity 0.3s;
+      z-index: 10;
+    }
+    #opening-skip:hover { opacity: 0.6; }
+
+    @media (max-aspect-ratio: 3/4) {
+      #opening-bg {
+        background-image: url('images/loader-forest-bg.jpg');
+        background-size: cover;
+        background-position: center center;
+      }
+      #opening-robo {
+        top: 38%;
+        width: 40%;
+      }
+      #opening-text {
+        top: calc(38% + 120px);
+      }
+    }
+
+    @keyframes openingBgIn { to { opacity: 1; } }
+    @keyframes openingWhiteFade { to { opacity: 0; } }
+    @keyframes openingTextIn { to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+    @keyframes openingFadeOut { to { opacity: 0; pointer-events: none; } }
   </style>
 </head>
 
 <body class="text-gray-800">
+
+  <!-- オープニングアニメーション（セッションで一度だけ表示） -->
+  <div id="opening-wrapper" style="display:none;">
+    <div id="opening-bg"></div>
+    <div id="opening-overlay"></div>
+    <video id="opening-robo" autoplay muted playsinline>
+      <source src="videos/robo_hokou_transparent.webm" type="video/webm">
+      <source src="videos/robo_hokou_cropped.mp4" type="video/mp4">
+    </video>
+    <div id="opening-text">Welcome to COCORO AI</div>
+    <div id="opening-skip" onclick="skipOpening()">スキップ</div>
+  </div>
+  <script>
+    (function() {
+      if (sessionStorage.getItem('openingSeen')) return;
+      var w = document.getElementById('opening-wrapper');
+      w.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      function endOpening() {
+        w.classList.add('fade-out');
+        w.addEventListener('animationend', function() {
+          w.style.display = 'none';
+          document.body.style.overflow = '';
+        });
+        sessionStorage.setItem('openingSeen', '1');
+      }
+      window.skipOpening = endOpening;
+      setTimeout(endOpening, 5000);
+    })();
+  </script>
 
   <!-- header -->
   <header class="sticky top-0 bg-white/80 backdrop-blur-md z-50 shadow-sm">
