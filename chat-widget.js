@@ -4,7 +4,7 @@
   const CONTACT_URL = 'https://cocoroai-contact.map-cocoro.workers.dev';
   const SOLUTIONS_URL = '/solutions.html';
   const API_URL = '/api/chat';
-  const INITIAL_MESSAGE = 'こんにちは！ここロAI合同会社のアシスタント、ここロボちゃんです🤖\n\nホームページ・LINE・アプリなど、Web周りのことで気になることがあれば、どうぞお気軽にご相談ください。\n\nまず、何からご覧になりますか？';
+  const INITIAL_MESSAGE = 'こんにちは！ココロAI合同会社のアシスタント、ココロボちゃんです🤖\n\nホームページ・LINE・アプリなど、Web周りのことで気になることがあれば、どうぞお気軽にご相談ください。\n\nまず、何からご覧になりますか？';
 
   // クイックリプライ選択肢
   const QUICK_REPLIES = [
@@ -287,7 +287,7 @@
   // ── DOM構築 ───────────────────────────────────────────────────────
   const btn = document.createElement('button');
   btn.id = 'cocoro-widget-btn';
-  btn.setAttribute('aria-label', 'ここロボちゃんに相談する');
+  btn.setAttribute('aria-label', 'ココロボちゃんに相談する');
   btn.innerHTML = '🤖<span class="cocoro-badge"></span>';
 
   const panel = document.createElement('div');
@@ -297,8 +297,8 @@
     <div id="cocoro-chat-header">
       <div class="cocoro-avatar">🤖</div>
       <div class="cocoro-info">
-        <div class="cocoro-name">ここロボちゃん</div>
-        <div class="cocoro-status">ここロAI合同会社のアシスタント</div>
+        <div class="cocoro-name">ココロボちゃん</div>
+        <div class="cocoro-status">ココロAI合同会社のアシスタント</div>
       </div>
       <button id="cocoro-chat-close" aria-label="閉じる">✕</button>
     </div>
