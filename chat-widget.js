@@ -3,7 +3,7 @@
 
   const CONTACT_URL = 'https://cocoroai-contact.map-cocoro.workers.dev';
   const API_URL = '/api/chat';
-  const INITIAL_MESSAGE = 'こんにちは！ここロAI合同会社のAIアシスタント、ここロボちゃんです🤖\n\nホームページ・LINE・アプリなど、Web周りのことで気になることがあれば、どうぞお気軽にお声がけください。\n\nどのようなお仕事をされていますか？';
+  const INITIAL_MESSAGE = 'こんにちは！ココロAI合同会社のアシスタント、ココロボちゃんです🤖\n\nホームページ・LINE・アプリなど、Web周りのことで気になることがあれば、どうぞお気軽にお声がけください。\n\nどのようなお仕事をされていますか？';
 
   // ── スタイル注入 ──────────────────────────────────────────────────
   const style = document.createElement('style');
@@ -152,8 +152,7 @@
       font-size: 13px;
       line-height: 1.6;
       word-break: break-word;
-      white-space: pre-wrap;
-    }
+      }
     .cocoro-bot .cocoro-bubble {
       background: white;
       color: #1e293b;
@@ -331,7 +330,7 @@
 
     const bubble = document.createElement('div');
     bubble.className = 'cocoro-bubble';
-    bubble.textContent = text;
+    bubble.innerHTML = text.replace(/\n/g, '<br>');
     wrapper.appendChild(bubble);
 
     if (showCta) {
@@ -364,11 +363,11 @@
     inputEl.disabled = val;
   }
 
-  // CTA表示判定（「お問い合わせ」「相談」「連絡」キーワードまたは3往復以降）
+  // CTA表示判定（「お問い合わせ」「相談」「連絡」キーワードまたは2往復以降）
   function shouldShowCta(text, turnCount) {
-    const keywords = ['お問い合わせ', '無料相談', '相談', '連絡'];
+    const keywords = ['お問い合わせ', '無料相談', '相談', '連絡', 'ご相談'];
     const hasKeyword = keywords.some(k => text.includes(k));
-    return hasKeyword || turnCount >= 3;
+    return hasKeyword || turnCount >= 2;
   }
 
   // ── API呼び出し ───────────────────────────────────────────────────
