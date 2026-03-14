@@ -296,7 +296,7 @@
     </div>
     <div id="cocoro-messages"></div>
     <div id="cocoro-input-area">
-      <textarea id="cocoro-input" placeholder="メッセージを入力..." rows="1"></textarea>
+      <textarea id="cocoro-input" placeholder="メッセージを入力（Shift+Enterで送信）" rows="1"></textarea>
       <button id="cocoro-send" aria-label="送信" disabled>
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -453,7 +453,7 @@
   sendBtn.addEventListener('click', handleSend);
 
   inputEl.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === 'Enter' && e.shiftKey) {
       e.preventDefault();
       handleSend();
     }
