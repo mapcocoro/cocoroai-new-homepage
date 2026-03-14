@@ -76,7 +76,7 @@ export default async function handler(req, res) {
         },
         contents: geminiContents,
         generationConfig: {
-          maxOutputTokens: 400,
+          maxOutputTokens: 8192,
           temperature: 0.9,
         },
       }),
@@ -89,10 +89,12 @@ export default async function handler(req, res) {
     }
 
     const data = await response.json();
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    // gemini-2.5-pro は思考モデル。thoughtパートをスキップして本文のみ取得
+    const parts = data.candidates?.[0]?.content?.parts || [];
+    const text = parts.filter((p) => !p.thought).map((p) => p.text).join('');
 
     if (!text) {
-      return res.status(500).json({ error: 'Empty response' });
+      return res.status(500).json({ error: 'Empty response', debug: JSON.stringify(data).slice(0, 300) });
     }
 
     return res.status(200).json({ content: text });
