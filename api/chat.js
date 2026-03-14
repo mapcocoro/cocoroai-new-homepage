@@ -85,7 +85,7 @@ export default async function handler(req, res) {
     if (!response.ok) {
       const err = await response.text();
       console.error('Gemini API error:', err);
-      return res.status(500).json({ error: 'API error', detail: err });
+      return res.status(500).json({ error: 'API error' });
     }
 
     const data = await response.json();
@@ -94,7 +94,7 @@ export default async function handler(req, res) {
     const text = parts.filter((p) => !p.thought).map((p) => p.text).join('');
 
     if (!text) {
-      return res.status(500).json({ error: 'Empty response', debug: JSON.stringify(data).slice(0, 300) });
+      return res.status(500).json({ error: 'Empty response' });
     }
 
     return res.status(200).json({ content: text });
