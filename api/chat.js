@@ -79,9 +79,6 @@ export default async function handler(req, res) {
         generationConfig: {
           maxOutputTokens: 2048,
           temperature: 0.9,
-          thinkingConfig: {
-            thinkingBudget: 0,
-          },
         },
       }),
     });
@@ -89,7 +86,7 @@ export default async function handler(req, res) {
     if (!response.ok) {
       const err = await response.text();
       console.error('Gemini API error:', err);
-      return res.status(500).json({ error: 'API error' });
+      return res.status(500).json({ error: 'API error', detail: err });
     }
 
     const data = await response.json();
