@@ -2,8 +2,18 @@
   'use strict';
 
   const CONTACT_URL = 'https://cocoroai-contact.map-cocoro.workers.dev';
+  const SOLUTIONS_URL = '/solutions.html';
   const API_URL = '/api/chat';
-  const INITIAL_MESSAGE = 'こんにちは！ココロAI合同会社のアシスタント、ココロボちゃんです🤖\n\nホームページ・LINE・アプリなど、Web周りのことで気になることがあれば、どうぞお気軽にお声がけください。\n\nどのようなお仕事をされていますか？';
+  const INITIAL_MESSAGE = 'こんにちは！ここロAI合同会社のアシスタント、ここロボちゃんです🤖\n\nホームページ・LINE・アプリなど、Web周りのことで気になることがあれば、どうぞお気軽にご相談ください。\n\nまず、何からご覧になりますか？';
+
+  // クイックリプライ選択肢
+  const QUICK_REPLIES = [
+    { label: '🌐 ホームページを作りたい',       type: 'send', value: 'ホームページを作りたいです' },
+    { label: '💬 LINE・ミニアプリを相談したい', type: 'send', value: 'LINE公式アカウントやミニアプリについて相談したいです' },
+    { label: '⚙️ アプリ・業務ツールを相談したい', type: 'send', value: 'アプリや業務ツールについて相談したいです' },
+    { label: '📋 お悩み別ページを見る',          type: 'link', value: SOLUTIONS_URL },
+    { label: '📩 まずは無料相談したい',           type: 'link', value: CONTACT_URL },
+  ];
 
   // ── スタイル注入 ──────────────────────────────────────────────────
   const style = document.createElement('style');
@@ -47,7 +57,7 @@
       right: 24px;
       width: 340px;
       max-width: calc(100vw - 48px);
-      height: 480px;
+      height: 520px;
       max-height: calc(100vh - 120px);
       background: white;
       border-radius: 20px;
@@ -84,9 +94,7 @@
       font-size: 22px;
       flex-shrink: 0;
     }
-    #cocoro-chat-header .cocoro-info {
-      flex: 1;
-    }
+    #cocoro-chat-header .cocoro-info { flex: 1; }
     #cocoro-chat-header .cocoro-name {
       color: white;
       font-weight: 700;
@@ -123,36 +131,23 @@
       gap: 12px;
       background: #f8fafc;
     }
-    #cocoro-messages::-webkit-scrollbar {
-      width: 4px;
-    }
-    #cocoro-messages::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    #cocoro-messages::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
-      border-radius: 2px;
-    }
+    #cocoro-messages::-webkit-scrollbar { width: 4px; }
+    #cocoro-messages::-webkit-scrollbar-track { background: transparent; }
+    #cocoro-messages::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
     .cocoro-msg {
       display: flex;
       flex-direction: column;
       max-width: 82%;
     }
-    .cocoro-msg.cocoro-bot {
-      align-self: flex-start;
-      align-items: flex-start;
-    }
-    .cocoro-msg.cocoro-user {
-      align-self: flex-end;
-      align-items: flex-end;
-    }
+    .cocoro-msg.cocoro-bot  { align-self: flex-start; align-items: flex-start; }
+    .cocoro-msg.cocoro-user { align-self: flex-end;   align-items: flex-end; }
     .cocoro-bubble {
       padding: 10px 13px;
       border-radius: 16px;
       font-size: 13px;
       line-height: 1.6;
       word-break: break-word;
-      }
+    }
     .cocoro-bot .cocoro-bubble {
       background: white;
       color: #1e293b;
@@ -204,6 +199,35 @@
       transform: scale(1.04);
       box-shadow: 0 4px 14px rgba(16,185,129,0.45);
     }
+    /* ── クイックリプライチップ ── */
+    .cocoro-chips {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      align-self: flex-start;
+      max-width: 100%;
+    }
+    .cocoro-chip {
+      display: inline-block;
+      padding: 8px 14px;
+      background: white;
+      border: 1.5px solid #06b6d4;
+      color: #0891b2;
+      font-size: 12.5px;
+      font-weight: 600;
+      border-radius: 20px;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.15s, color 0.15s, transform 0.1s;
+      text-decoration: none;
+      font-family: inherit;
+    }
+    .cocoro-chip:hover {
+      background: #06b6d4;
+      color: white;
+      transform: scale(1.02);
+    }
+    /* ── 入力エリア ── */
     #cocoro-input-area {
       padding: 10px 12px;
       border-top: 1px solid #e2e8f0;
@@ -232,9 +256,7 @@
       border-color: #06b6d4;
       background: white;
     }
-    #cocoro-input::placeholder {
-      color: #94a3b8;
-    }
+    #cocoro-input::placeholder { color: #94a3b8; }
     #cocoro-send {
       width: 38px;
       height: 38px;
@@ -248,40 +270,26 @@
       flex-shrink: 0;
       transition: transform 0.15s, opacity 0.15s;
     }
-    #cocoro-send:hover:not(:disabled) {
-      transform: scale(1.08);
-    }
-    #cocoro-send:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    #cocoro-send svg {
-      width: 16px;
-      height: 16px;
-      fill: white;
-    }
+    #cocoro-send:hover:not(:disabled) { transform: scale(1.08); }
+    #cocoro-send:disabled { opacity: 0.5; cursor: not-allowed; }
+    #cocoro-send svg { width: 16px; height: 16px; fill: white; }
     @media (max-width: 400px) {
       #cocoro-chat-panel {
         right: 12px;
         bottom: 88px;
         width: calc(100vw - 24px);
       }
-      #cocoro-widget-btn {
-        right: 16px;
-        bottom: 16px;
-      }
+      #cocoro-widget-btn { right: 16px; bottom: 16px; }
     }
   `;
   document.head.appendChild(style);
 
   // ── DOM構築 ───────────────────────────────────────────────────────
-  // 起動ボタン
   const btn = document.createElement('button');
   btn.id = 'cocoro-widget-btn';
-  btn.setAttribute('aria-label', 'ココロボちゃんに相談する');
+  btn.setAttribute('aria-label', 'ここロボちゃんに相談する');
   btn.innerHTML = '🤖<span class="cocoro-badge"></span>';
 
-  // チャットパネル
   const panel = document.createElement('div');
   panel.id = 'cocoro-chat-panel';
   panel.classList.add('cocoro-hidden');
@@ -289,8 +297,8 @@
     <div id="cocoro-chat-header">
       <div class="cocoro-avatar">🤖</div>
       <div class="cocoro-info">
-        <div class="cocoro-name">ココロボちゃん</div>
-        <div class="cocoro-status">ココロAI合同会社のAIアシスタント</div>
+        <div class="cocoro-name">ここロボちゃん</div>
+        <div class="cocoro-status">ここロAI合同会社のアシスタント</div>
       </div>
       <button id="cocoro-chat-close" aria-label="閉じる">✕</button>
     </div>
@@ -310,18 +318,26 @@
 
   // ── 状態管理 ──────────────────────────────────────────────────────
   const messagesEl = panel.querySelector('#cocoro-messages');
-  const inputEl = panel.querySelector('#cocoro-input');
-  const sendBtn = panel.querySelector('#cocoro-send');
-  const closeBtn = panel.querySelector('#cocoro-chat-close');
+  const inputEl    = panel.querySelector('#cocoro-input');
+  const sendBtn    = panel.querySelector('#cocoro-send');
+  const closeBtn   = panel.querySelector('#cocoro-chat-close');
 
   let isOpen = false;
   let isLoading = false;
-  let history = []; // { role: 'user'|'assistant', content: string }
+  let history = [];
   let initialized = false;
+  let chipsEl = null; // クイックリプライチップのDOM参照
 
   // ── ヘルパー ──────────────────────────────────────────────────────
   function scrollToBottom() {
     messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function dismissChips() {
+    if (chipsEl) {
+      chipsEl.remove();
+      chipsEl = null;
+    }
   }
 
   function addMessage(role, text, showCta) {
@@ -348,10 +364,38 @@
     return wrapper;
   }
 
+  function addQuickReplies() {
+    chipsEl = document.createElement('div');
+    chipsEl.className = 'cocoro-chips';
+
+    QUICK_REPLIES.forEach(function (item) {
+      var chip;
+      if (item.type === 'link') {
+        chip = document.createElement('a');
+        chip.href = item.value;
+        chip.target = '_blank';
+        chip.rel = 'noopener noreferrer';
+      } else {
+        chip = document.createElement('button');
+        chip.addEventListener('click', function () {
+          dismissChips();
+          addMessage('user', item.value, false);
+          sendToApi(item.value);
+        });
+      }
+      chip.className = 'cocoro-chip';
+      chip.textContent = item.label;
+      chipsEl.appendChild(chip);
+    });
+
+    messagesEl.appendChild(chipsEl);
+    scrollToBottom();
+  }
+
   function addTyping() {
     const wrapper = document.createElement('div');
     wrapper.className = 'cocoro-msg cocoro-bot';
-    wrapper.innerHTML = `<div class="cocoro-typing"><span></span><span></span><span></span></div>`;
+    wrapper.innerHTML = '<div class="cocoro-typing"><span></span><span></span><span></span></div>';
     messagesEl.appendChild(wrapper);
     scrollToBottom();
     return wrapper;
@@ -363,10 +407,10 @@
     inputEl.disabled = val;
   }
 
-  // CTA表示判定（「お問い合わせ」「相談」「連絡」キーワードまたは2往復以降）
+  // CTA表示判定（キーワードまたは2往復以降）
   function shouldShowCta(text, turnCount) {
     const keywords = ['お問い合わせ', '無料相談', '相談', '連絡', 'ご相談'];
-    const hasKeyword = keywords.some(k => text.includes(k));
+    const hasKeyword = keywords.some(function (k) { return text.includes(k); });
     return hasKeyword || turnCount >= 2;
   }
 
@@ -387,7 +431,7 @@
       if (!res.ok) throw new Error('API error');
 
       const data = await res.json();
-      const reply = data.content || 'ごめんね、ちょっとうまく答えられなかったよ😢 もう一度試してみてね！';
+      const reply = data.content || 'うまく回答できませんでした。もう一度お試しいただけますか？🙏';
 
       history.push({ role: 'assistant', content: reply });
 
@@ -398,7 +442,7 @@
       addMessage('assistant', reply, showCta);
     } catch (e) {
       typingEl.remove();
-      addMessage('assistant', 'ごめんね、今ちょっと調子が悪いみたい😢\nもう少ししてからまた試してみてね！', false);
+      addMessage('assistant', '申し訳ありません、現在うまくつながれない状態です😢\nしばらくしてからまたお試しください。', false);
     } finally {
       setLoading(false);
     }
@@ -410,10 +454,11 @@
     initialized = true;
 
     const typingEl = addTyping();
-    setTimeout(() => {
+    setTimeout(function () {
       typingEl.remove();
       history.push({ role: 'assistant', content: INITIAL_MESSAGE });
       addMessage('assistant', INITIAL_MESSAGE, false);
+      addQuickReplies();
     }, 800);
   }
 
@@ -423,7 +468,7 @@
     panel.classList.remove('cocoro-hidden');
     btn.querySelector('.cocoro-badge').style.display = 'none';
     init();
-    setTimeout(() => inputEl.focus(), 250);
+    setTimeout(function () { inputEl.focus(); }, 250);
   }
 
   function closePanel() {
@@ -431,18 +476,18 @@
     panel.classList.add('cocoro-hidden');
   }
 
-  btn.addEventListener('click', () => {
+  btn.addEventListener('click', function () {
     if (isOpen) closePanel();
     else openPanel();
   });
 
   closeBtn.addEventListener('click', closePanel);
 
-  // 送信処理
   async function handleSend() {
     const text = inputEl.value.trim();
     if (!text || isLoading) return;
 
+    dismissChips(); // チップを消す
     inputEl.value = '';
     inputEl.style.height = 'auto';
     sendBtn.disabled = true;
@@ -452,23 +497,17 @@
 
   sendBtn.addEventListener('click', handleSend);
 
-  inputEl.addEventListener('keydown', (e) => {
+  inputEl.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' && e.shiftKey) {
       e.preventDefault();
       handleSend();
     }
   });
 
-  inputEl.addEventListener('input', () => {
+  inputEl.addEventListener('input', function () {
     sendBtn.disabled = inputEl.value.trim() === '' || isLoading;
-    // 自動高さ調整
     inputEl.style.height = 'auto';
     inputEl.style.height = Math.min(inputEl.scrollHeight, 80) + 'px';
   });
-
-  // パネル外クリックで閉じる（オプション：UX好みで外してもOK）
-  // document.addEventListener('click', (e) => {
-  //   if (isOpen && !panel.contains(e.target) && e.target !== btn) closePanel();
-  // });
 
 })();
