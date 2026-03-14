@@ -3,11 +3,7 @@
 
   const CONTACT_URL = 'https://cocoroai-contact.map-cocoro.workers.dev';
   const API_URL = '/api/chat';
-  const INITIAL_MESSAGE = 'こんにちは！ここロAI合同会社のAIアシスタント、ここロボちゃんです🤖
-
-ホームページ・LINE・アプリなど、Web周りのことで気になることがあれば、どうぞお気軽にお声がけください。
-
-どのようなお仕事をされていますか？';
+  const INITIAL_MESSAGE = 'こんにちは！ここロAI合同会社のAIアシスタント、ここロボちゃんです🤖\n\nホームページ・LINE・アプリなど、Web周りのことで気になることがあれば、どうぞお気軽にお声がけください。\n\nどのようなお仕事をされていますか？';
 
   // ── スタイル注入 ──────────────────────────────────────────────────
   const style = document.createElement('style');
