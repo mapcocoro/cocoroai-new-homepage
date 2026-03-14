@@ -3,7 +3,7 @@
 
   const CONTACT_URL = 'https://cocoroai-contact.map-cocoro.workers.dev';
   const API_URL = '/api/chat';
-  const INITIAL_MESSAGE = 'こんにちは！ぼくここロボちゃん🤖 ここロロAI合同会社のAIアシスタントだよ！\n\nホームページ・LINE・アプリなど、Web周りのことなら何でも気軽に聞いてね！\n\nどんなお仕事をされていますか？✨';
+  const INITIAL_MESSAGE = 'こんにちは！ぼくココロボちゃん🤖 ココロAI合同会社のAIアシスタントだよ！\n\nホームページ・LINE・アプリなど、Web周りのことなら何でも気軽に聞いてね！\n\nどんなお仕事をされていますか？✨';
 
   // ── スタイル注入 ──────────────────────────────────────────────────
   const style = document.createElement('style');
@@ -279,7 +279,7 @@
   // 起動ボタン
   const btn = document.createElement('button');
   btn.id = 'cocoro-widget-btn';
-  btn.setAttribute('aria-label', 'ここロボちゃんに相談する');
+  btn.setAttribute('aria-label', 'ココロボちゃんに相談する');
   btn.innerHTML = '🤖<span class="cocoro-badge"></span>';
 
   // チャットパネル
@@ -290,8 +290,8 @@
     <div id="cocoro-chat-header">
       <div class="cocoro-avatar">🤖</div>
       <div class="cocoro-info">
-        <div class="cocoro-name">ここロボちゃん</div>
-        <div class="cocoro-status">ここロロAI合同会社のAIアシスタント</div>
+        <div class="cocoro-name">ココロボちゃん</div>
+        <div class="cocoro-status">ココロAI合同会社のAIアシスタント</div>
       </div>
       <button id="cocoro-chat-close" aria-label="閉じる">✕</button>
     </div>
