@@ -459,6 +459,8 @@
       history.push({ role: 'assistant', content: INITIAL_MESSAGE });
       addMessage('assistant', INITIAL_MESSAGE, false);
       addQuickReplies();
+      // 初期表示は先頭から見せる
+      messagesEl.scrollTop = 0;
     }, 800);
   }
 
