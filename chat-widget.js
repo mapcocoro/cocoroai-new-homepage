@@ -428,8 +428,9 @@
         body: JSON.stringify({ messages: history }),
       });
 
+      if (!res.ok) throw new Error('API error');
+
       const data = await res.json();
-      if (!res.ok) throw new Error(data.detail || data.error || 'API error');
 
       const reply = data.content || 'うまく回答できませんでした。もう一度お試しいただけますか？🙏';
 
@@ -442,7 +443,7 @@
       addMessage('assistant', reply, showCta);
     } catch (e) {
       typingEl.remove();
-      addMessage('assistant', '【DEBUGエラー】' + e.message, false);
+      addMessage('assistant', '申し訳ありません、現在うまくつながれない状態です😢\nしばらくしてからまたお試しください。', false);
     } finally {
       setLoading(false);
     }
