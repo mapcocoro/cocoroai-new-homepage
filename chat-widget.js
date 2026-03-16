@@ -329,6 +329,10 @@
   let chipsEl = null; // クイックリプライチップのDOM参照
 
   // ── ヘルパー ──────────────────────────────────────────────────────
+  function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
   function scrollToBottom() {
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
@@ -346,7 +350,7 @@
 
     const bubble = document.createElement('div');
     bubble.className = 'cocoro-bubble';
-    bubble.innerHTML = text.replace(/\n/g, '<br>');
+    bubble.innerHTML = escapeHtml(text).replace(/\n/g, '<br>');
     wrapper.appendChild(bubble);
 
     if (showCta) {
