@@ -22,8 +22,8 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      width: 96px;
-      height: 96px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       background: linear-gradient(135deg, #06b6d4, #0891b2);
       border: none;
