@@ -288,7 +288,7 @@
   const btn = document.createElement('button');
   btn.id = 'cocoro-widget-btn';
   btn.setAttribute('aria-label', 'ココロボちゃんに相談する');
-  btn.innerHTML = '<img src="/images/cocorobot.png" alt="ここロボちゃん" style="width:44px;height:44px;object-fit:contain;"><span class="cocoro-badge"></span>';
+  btn.innerHTML = '<img src="/images/cocorobot.png" alt="ここロボちゃん" style="width:54px;height:54px;object-fit:contain;"><span class="cocoro-badge"></span>';
 
   const panel = document.createElement('div');
   panel.id = 'cocoro-chat-panel';
