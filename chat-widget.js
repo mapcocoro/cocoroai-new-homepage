@@ -3,7 +3,7 @@
 
   const CONTACT_URL = 'https://cocoroai-contact.map-cocoro.workers.dev';
   const SOLUTIONS_URL = '/solutions.html';
-  const API_URL = '/api/chat';
+  const API_URL = 'https://cocoro-chat-api.super-night-76d8.workers.dev';
   const INITIAL_MESSAGE = 'こんにちは！ココロAI合同会社のアシスタント、ココロボちゃんです🤖\n\nホームページ・LINE・アプリなど、Web周りのことで気になることがあれば、どうぞお気軽にご相談ください。\n\nまず、何からご覧になりますか？';
 
   // クイックリプライ選択肢
