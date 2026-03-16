@@ -22,8 +22,8 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      width: 60px;
-      height: 60px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       background: linear-gradient(135deg, #06b6d4, #0891b2);
       border: none;
@@ -288,7 +288,7 @@
   const btn = document.createElement('button');
   btn.id = 'cocoro-widget-btn';
   btn.setAttribute('aria-label', 'ココロボちゃんに相談する');
-  btn.innerHTML = '<img src="/images/cocorobot.png" alt="ここロボちゃん" style="width:54px;height:54px;object-fit:contain;"><span class="cocoro-badge"></span>';
+  btn.innerHTML = '<img src="/images/cocorobot.png" alt="ここロボちゃん" style="width:64px;height:64px;object-fit:contain;"><span class="cocoro-badge"></span>';
 
   const panel = document.createElement('div');
   panel.id = 'cocoro-chat-panel';
