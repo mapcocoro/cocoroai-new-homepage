@@ -295,7 +295,7 @@
   panel.classList.add('cocoro-hidden');
   panel.innerHTML = `
     <div id="cocoro-chat-header">
-      <div class="cocoro-avatar"><img src="/images/cocorobot.png" alt="ここロボちゃん" style="width:32px;height:32px;object-fit:contain;"></div>
+      <div class="cocoro-avatar"><img src="/images/cocorobot.png" alt="ここロボちゃん" style="width:46px;height:46px;object-fit:contain;"></div>
       <div class="cocoro-info">
         <div class="cocoro-name">ココロボちゃん</div>
         <div class="cocoro-status">ココロAI合同会社のアシスタント</div>
