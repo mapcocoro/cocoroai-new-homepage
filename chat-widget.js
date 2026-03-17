@@ -8,11 +8,11 @@
 
   // クイックリプライ選択肢
   const QUICK_REPLIES = [
-    { label: '🌐 ホームページを作りたい',       type: 'send', value: 'ホームページを作りたいです' },
-    { label: '💬 LINE・ミニアプリを相談したい', type: 'send', value: 'LINE公式アカウントやミニアプリについて相談したいです' },
-    { label: '⚙️ アプリ・業務ツールを相談したい', type: 'send', value: 'アプリや業務ツールについて相談したいです' },
-    { label: '📋 お悩み別ページを見る',          type: 'link', value: SOLUTIONS_URL },
-    { label: '📩 まずは無料相談したい',           type: 'link', value: CONTACT_URL },
+    { label: '🌐 ホームページを作りたい',         type: 'send', value: 'ホームページを作りたいです',                         reply: 'ホームページですね！🌐\nどのようなお仕事をされていますか？目的やイメージがあればぜひ教えてください。' },
+    { label: '💬 LINE・ミニアプリを相談したい',   type: 'send', value: 'LINE公式アカウントやミニアプリについて相談したいです', reply: 'LINEですね！💬\n集客・予約・お知らせ配信など、色々な使い方ができますよ。今どんなお困りごとがありますか？' },
+    { label: '⚙️ アプリ・業務ツールを相談したい', type: 'send', value: 'アプリや業務ツールについて相談したいです',             reply: '業務改善ですね！⚙️\nどんな作業を効率化したいかを教えていただけると、ぴったりの提案ができますよ。' },
+    { label: '📋 お悩み別ページを見る',            type: 'link', value: SOLUTIONS_URL },
+    { label: '📩 まずは無料相談したい',             type: 'link', value: CONTACT_URL },
   ];
 
   // ── スタイル注入 ──────────────────────────────────────────────────
@@ -387,11 +387,17 @@
         chip.rel = 'noopener noreferrer';
       } else {
         chip = document.createElement('button');
-        chip.addEventListener('click', function () {
+        chip.addEventListener('click', (function(i) { return function () {
           dismissChips();
-          addMessage('user', item.value, false);
-          sendToApi(item.value);
-        });
+          addMessage('user', i.value, false);
+          if (i.reply) {
+            history.push({ role: 'user', content: i.value });
+            history.push({ role: 'assistant', content: i.reply });
+            addMessage('assistant', i.reply, false);
+          } else {
+            sendToApi(i.value);
+          }
+        }; })(item));
       }
       chip.className = 'cocoro-chip';
       chip.textContent = item.label;
