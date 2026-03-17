@@ -393,7 +393,13 @@
           if (i.reply) {
             history.push({ role: 'user', content: i.value });
             history.push({ role: 'assistant', content: i.reply });
-            addMessage('assistant', i.reply, false);
+            var typingEl = addTyping();
+            setLoading(true);
+            setTimeout(function() {
+              typingEl.remove();
+              setLoading(false);
+              addMessage('assistant', i.reply, false);
+            }, 800);
           } else {
             sendToApi(i.value);
           }
