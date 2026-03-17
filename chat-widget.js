@@ -333,6 +333,12 @@
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
+  function linkify(str) {
+    return str.replace(/(https?:\/\/[^\s<]+)/g, function(url) {
+      return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" style="color:#0891b2;text-decoration:underline;word-break:break-all;">' + url + '</a>';
+    });
+  }
+
   function scrollToBottom() {
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
@@ -350,7 +356,7 @@
 
     const bubble = document.createElement('div');
     bubble.className = 'cocoro-bubble';
-    bubble.innerHTML = escapeHtml(text).replace(/\n/g, '<br>');
+    bubble.innerHTML = linkify(escapeHtml(text)).replace(/\n/g, '<br>');
     wrapper.appendChild(bubble);
 
     if (showCta) {
