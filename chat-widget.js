@@ -273,6 +273,13 @@
     #cocoro-send:hover:not(:disabled) { transform: scale(1.08); }
     #cocoro-send:disabled { opacity: 0.5; cursor: not-allowed; }
     #cocoro-send svg { width: 16px; height: 16px; fill: white; }
+    #cocoro-privacy-note {
+      font-size: 10px;
+      color: #94a3b8;
+      text-align: center;
+      padding: 4px 12px 8px;
+      background: white;
+    }
     @media (max-width: 400px) {
       #cocoro-chat-panel {
         right: 12px;
@@ -311,6 +318,7 @@
         </svg>
       </button>
     </div>
+    <div id="cocoro-privacy-note">🔒 氏名・電話番号などの個人情報は入力しないでください</div>
   `;
 
   document.body.appendChild(btn);
