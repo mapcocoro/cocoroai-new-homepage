@@ -275,48 +275,45 @@
 
   <main>
     <!-- hero -->
-    <section class="relative text-center py-12 md:py-20 overflow-hidden">
+    <section class="relative text-center py-12 md:py-20 bg-white overflow-hidden">
       <div class="absolute top-0 left-0 w-full h-full bg-grid-gray-100/50 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       <div class="container mx-auto px-6 relative z-10">
         <h1 class="text-2xl md:text-4xl font-medium text-gray-700 mb-6 leading-relaxed fade-in-up max-w-4xl mx-auto">
           あなたの毎日に、<br class="md:hidden">優しいAIの<span class="text-gradient">魔法</span>を。
         </h1>
-        <p class="text-sm md:text-base text-gray-600 max-w-2xl mx-auto mb-8 fade-in-up leading-relaxed">
-          ホームページ・アプリ・LINE活用まで。<br>
-          ITのことは、全部おまかせください。
+        <p class="text-base md:text-lg font-normal text-gray-500 mb-8 fade-in-up max-w-2xl mx-auto">あなたの「想い」を、確かな「カタチ」に</p>
+        <p class="text-sm md:text-base text-gray-600 max-w-3xl mx-auto mb-12 fade-in-up leading-relaxed">
+          欲しい機能を、カタチに。オーダーメイドのアプリ・Web制作。<br>
+          ITのことは、全部おまかせ。<br>
+          小規模事業者様・個人事業主様のITパートナーとして、Web・アプリ・LINE活用までトータルサポートします。
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in-up">
-          <a href="https://cocoroai-contact.map-cocoro.workers.dev" target="_blank" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-sm">まずは無料で相談する</a>
-          <a href="pricing.html" class="text-cyan-600 font-semibold hover:underline text-sm">料金プランを見る →</a>
+        <!-- B2B/B2C 分岐ボタン -->
+        <div class="flex flex-col md:flex-row gap-6 justify-center items-center max-w-4xl mx-auto mb-4 fade-in-up">
+          <a href="#products" class="group w-full md:w-1/2 bg-gradient-to-br from-cyan-50 to-blue-50 hover:from-cyan-100 hover:to-blue-100 border-2 border-cyan-500 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+            <div class="flex items-center justify-center mb-4">
+              <svg class="w-12 h-12 text-cyan-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+              </svg>
+            </div>
+            <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-3">個人のお客様</h3>
+            <p class="text-sm md:text-base text-gray-600 mb-4">便利なアプリ・サービスを使いたい</p>
+            <span class="inline-block text-cyan-600 font-semibold group-hover:translate-x-2 transition-transform duration-300">アプリ一覧を見る →</span>
+          </a>
+
+          <a href="#services" class="group w-full md:w-1/2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+            <div class="flex items-center justify-center mb-4">
+              <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+              </svg>
+            </div>
+            <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Web制作・アプリ開発のご依頼</h3>
+            <p class="text-sm md:text-base text-white/90 mb-4">中小企業・店舗オーナー・個人事業主さま向け</p>
+            <span class="inline-block text-white font-semibold group-hover:translate-x-2 transition-transform duration-300">制作・開発サービスを見る →</span>
+          </a>
         </div>
       </div>
     </section>
-
-    <div class="w-full overflow-hidden" style="margin-top: -2px; margin-bottom: -2px;">
-        <svg viewBox="0 0 1200 60" preserveAspectRatio="none" class="w-full h-8 md:h-12">
-            <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="#f0fdfa" opacity="0.5"/>
-            <path d="M0,35 C200,55 400,10 600,35 C800,55 1000,10 1200,35" fill="none" stroke="#99e6d0" stroke-width="1.5" opacity="0.4"/>
-        </svg>
-    </div>
-
-    <!-- about -->
-    <section id="about" class="py-12 md:py-16">
-      <div class="container mx-auto px-6 text-center max-w-3xl">
-        <h2 class="text-xl md:text-2xl font-bold mb-4 fade-in-up">テクノロジーは、もっと人の心に寄り添える。</h2>
-        <p class="text-sm md:text-base text-gray-600 leading-relaxed fade-in-up">
-          ココロAIは、直感的で親しみやすく、人にやさしいITを目指しています。<br>
-          小規模事業者様・個人事業主様のITパートナーとして、お気軽にご相談ください。
-        </p>
-      </div>
-    </section>
-
-    <div class="w-full overflow-hidden" style="margin-top: -2px; margin-bottom: -2px;">
-        <svg viewBox="0 0 1200 60" preserveAspectRatio="none" class="w-full h-8 md:h-12">
-            <path d="M0,25 C300,50 500,5 750,30 C1000,55 1100,15 1200,25 L1200,60 L0,60 Z" fill="#ecfdf5" opacity="0.4"/>
-            <path d="M0,30 C300,50 500,10 750,35 C1000,55 1100,20 1200,30" fill="none" stroke="#86efac" stroke-width="1.5" opacity="0.3"/>
-        </svg>
-    </div>
 
     <!-- services -->
     <section id="services" class="py-20">
@@ -326,30 +323,77 @@
           <p class="text-sm md:text-base text-gray-600 fade-in-up">お客様のビジネスを、AIとデザインの力でサポートします。</p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
-          <a href="pricing.html" class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center fade-in-up group">
-            <img src="images/icon-website.png" alt="" class="w-14 h-14 mb-3">
-            <h3 class="text-sm font-bold text-gray-800 mb-1 group-hover:text-cyan-600">ホームページ制作</h3>
-            <p class="text-xs text-gray-500">オーダーメイドのデザインで<br>お店の魅力を伝えます</p>
-          </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col text-center fade-in-up">
+            <div class="flex items-center justify-center gap-3 mb-2">
+              <svg class="w-6 h-6 text-cyan-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+              <h3 class="text-xl font-bold text-gray-800">ホームページ制作・LP制作</h3>
+            </div>
+            <p class="text-gray-600 flex-grow mb-4">名刺代わりのサイトから本格的な集客サイト、イベント専用LPまで。企画・デザイン・公開・運用を一貫してサポートします。</p>
+            <div class="bg-cyan-50 border border-cyan-200 rounded-lg p-4 mb-4 text-left">
+              <p class="text-sm font-semibold text-cyan-800 mb-2">🤖 ココロAIならではの強み</p>
+              <ul class="text-xs text-gray-700 space-y-1">
+                <li>• お店の個性を引き出すオリジナルデザイン</li>
+                <li>• 文章作成・校正をサポート</li>
+                <li>• AI競合分析でSEO対策を最適化</li>
+                <li>• 高品質×コスパの良さを実現</li>
+              </ul>
+            </div>
+            <a href="pricing.html#web-plan" class="mt-auto text-cyan-600 font-semibold hover:underline">料金プランを見る &rarr;</a>
+          </div>
 
-          <a href="pricing.html" class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center fade-in-up group">
-            <img src="images/icon-bubble.png" alt="" class="w-14 h-14 mb-3">
-            <h3 class="text-sm font-bold text-gray-800 mb-1 group-hover:text-cyan-600">LINE公式・ミニアプリ</h3>
-            <p class="text-xs text-gray-500">予約・会員証・クーポンを<br>LINEで提供</p>
-          </a>
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col text-center fade-in-up">
+            <div class="flex items-center justify-center gap-3 mb-2">
+              <svg class="w-6 h-6 text-cyan-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+              <h3 class="text-xl font-bold text-gray-800">LINE公式・ミニアプリ活用</h3>
+            </div>
+            <p class="text-gray-600 flex-grow mb-4">国内9,600万人が使うLINEを、最強の集客ツールに。予約・会員証・ECなどを外部連携で実現し、リピーターを自動で育てます。</p>
+            <div class="bg-cyan-50 border border-cyan-200 rounded-lg p-4 mb-4 text-left">
+              <p class="text-sm font-semibold text-cyan-800 mb-2">💬 できること</p>
+              <ul class="text-xs text-gray-700 space-y-1">
+                <li>• リッチメニュー・チャットボット構築</li>
+                <li>• LINE内予約・会員証（外部連携）</li>
+                <li>• ステップ配信による自動営業</li>
+              </ul>
+            </div>
+            <a href="pricing.html#dx-plan" class="mt-auto text-cyan-600 font-semibold hover:underline">料金プランを見る &rarr;</a>
+          </div>
 
-          <a href="pricing.html" class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center fade-in-up group">
-            <img src="images/icon-smartphone.png" alt="" class="w-14 h-14 mb-3">
-            <h3 class="text-sm font-bold text-gray-800 mb-1 group-hover:text-cyan-600">アプリ開発・業務ツール</h3>
-            <p class="text-xs text-gray-500">オーダーメイドの<br>アプリ・ツール開発</p>
-          </a>
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col text-center fade-in-up">
+            <div class="flex items-center justify-center gap-3 mb-2">
+              <svg class="w-6 h-6 text-cyan-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+              <h3 class="text-xl font-bold text-gray-800">アプリ開発・業務ツール</h3>
+              <span class="ml-2 bg-slate-700 text-white text-xs px-2 py-0.5 rounded">Advanced</span>
+            </div>
+            <p class="text-gray-600 flex-grow mb-4">業務効率化ツールやオーダーメイドアプリなど、自社プロダクト開発の知見を活かしたフルオーダー開発を承ります。</p>
+            <div class="bg-cyan-50 border border-cyan-200 rounded-lg p-4 mb-4 text-left">
+              <p class="text-sm font-semibold text-cyan-800 mb-2">📱 開発プロダクト例</p>
+              <ul class="text-xs text-gray-700 space-y-1 mb-2">
+                <li>• かんたん帳票・おてもと名刺帳</li>
+                <li>• FP・ITパスポート学習アプリ</li>
+                <li>• Bento Planner等ライフスタイル系</li>
+              </ul>
+              <a href="#products" class="text-xs text-cyan-600 font-semibold hover:underline">→ プロダクト一覧を見る</a>
+            </div>
+            <a href="pricing.html#app-plan" class="mt-auto text-cyan-600 font-semibold hover:underline">料金プランを見る &rarr;</a>
+          </div>
 
-          <a href="pricing.html" class="bg-white p-6 rounded-2xl shadow hover:shadow-lg transition-shadow duration-300 flex flex-col items-center text-center fade-in-up group">
-            <img src="images/icon-palette.png" alt="" class="w-14 h-14 mb-3">
-            <h3 class="text-sm font-bold text-gray-800 mb-1 group-hover:text-cyan-600">ブランディング</h3>
-            <p class="text-xs text-gray-500">ロゴ・チラシ・SNS画像など<br>世界観づくり</p>
-          </a>
+          <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col text-center fade-in-up">
+            <div class="flex items-center justify-center gap-3 mb-2">
+              <svg class="w-6 h-6 text-cyan-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+              <h3 class="text-xl font-bold text-gray-800">ブランディング・プロモーション</h3>
+            </div>
+            <p class="text-gray-600 flex-grow mb-4">ロゴ・キービジュアルからチラシ・SNS画像・動画まで。ブランドの世界観づくりと「どう見せるか」をトータルサポートします。</p>
+            <div class="bg-cyan-50 border border-cyan-200 rounded-lg p-4 mb-4 text-left">
+              <p class="text-sm font-semibold text-cyan-800 mb-2">🎨 サービス例</p>
+              <ul class="text-xs text-gray-700 space-y-1">
+                <li>• デザインガイドライン策定</li>
+                <li>• ロゴ・キービジュアル・配色提案</li>
+                <li>• 印刷物・プレゼン・動画制作</li>
+              </ul>
+            </div>
+            <a href="pricing.html#promo-plan" class="mt-auto text-cyan-600 font-semibold hover:underline">料金プランを見る &rarr;</a>
+          </div>
         </div>
 
         <!-- AI活用研修 -->
@@ -366,15 +410,24 @@
       </div>
     </section>
 
-    <div class="w-full overflow-hidden" style="margin-top: -2px; margin-bottom: -2px;">
-        <svg viewBox="0 0 1200 60" preserveAspectRatio="none" class="w-full h-8 md:h-12">
-            <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="#f0fdfa" opacity="0.5"/>
-            <path d="M0,35 C200,55 400,10 600,35 C800,55 1000,10 1200,35" fill="none" stroke="#99e6d0" stroke-width="1.5" opacity="0.4"/>
-        </svg>
-    </div>
+    <!-- about -->
+    <section id="about" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-2xl md:text-3xl font-bold mb-8 fade-in-up">テクノロジーは、もっと人の心に寄り添える。</h2>
+        <div class="max-w-4xl mx-auto text-left md:text-center text-gray-700 leading-relaxed space-y-6 fade-in-up text-sm md:text-base">
+          <p>テクノロジーは人の「こころ」にも作用する、新しい価値の担い手。<br>ココロAIは、直感的で親しみやすく、人にやさしいAIを目指しています。</p>
+          <p>"やさしさ"の視点を加え、人とAIの自然で信頼できる関係性をデザインします。</p>
+          <div class="mt-8 inline-flex items-center gap-3 bg-cyan-50 border border-cyan-200 rounded-full py-2 px-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-cyan-500 flex-shrink-0"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+            <span class="text-sm text-gray-600">毎朝最新のAIニュースをお届け</span>
+            <a href="https://forms.gle/UHa9Uf4ezKq27iVg9" target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-cyan-600 hover:text-cyan-700 underline">無料メルマガ登録</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- products -->
-    <section id="products" class="py-20">
+    <section id="products" class="py-20 bg-white">
       <div class="container mx-auto px-6">
         <div class="text-center mb-12 fade-in-up">
           <h2 class="text-xl md:text-2xl font-bold mb-2">プロダクト紹介</h2>
@@ -450,10 +503,10 @@
           </div>
         </div>
 
-        <!-- その他のプロダクト（折りたたみ） -->
-        <details class="fade-in-up">
-          <summary class="text-sm text-cyan-600 cursor-pointer hover:text-cyan-700 font-medium text-center py-4">その他のプロダクトを見る</summary>
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto mt-4">
+        <!-- その他のプロダクト -->
+        <div class="fade-in-up">
+          <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center mb-8">その他のプロダクト</h3>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
 
             <!-- どこでもTAKKEN -->
             <a href="https://apps.apple.com/us/app/%E3%81%A9%E3%81%93%E3%81%A7%E3%82%82takken/id6759184650" target="_blank" class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center group overflow-hidden relative">
@@ -550,20 +603,20 @@
             </a>
 
             <!-- お米ソムリエ -->
-            <div class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center group overflow-hidden">
+            <a href="https://apps.apple.com/jp/app/%E6%97%A5%E6%9C%AC%E3%81%AE%E7%BE%8E%E5%91%B3%E3%81%97%E3%81%84-%E3%81%8A%E7%B1%B3%E3%82%BD%E3%83%A0%E3%83%AA%E3%82%A8/id6749472378" target="_blank" class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center group overflow-hidden">
               <div class="bg-yellow-100 p-2 rounded-lg mb-2">
                 <img src="images/rice_sommelier_icon.png" alt="お米ソムリエ" class="h-10 w-10">
               </div>
-              <h5 class="text-sm font-bold text-gray-800 mb-1">お米ソムリエ</h5>
+              <h5 class="text-sm font-bold text-gray-800 mb-1 group-hover:text-cyan-600 transition-colors">お米ソムリエ</h5>
               <span class="text-xs text-orange-800 bg-orange-100 px-2 py-0.5 rounded-full mb-1">ライフスタイル</span>
               <div class="flex gap-1">
-                <a href="https://rice.cocoroai.co.jp/" target="_blank" class="text-xs text-cyan-600 bg-cyan-50 px-1.5 py-0.5 rounded hover:bg-cyan-100">Web</a>
-                <a href="https://apps.apple.com/jp/app/%E6%97%A5%E6%9C%AC%E3%81%AE%E7%BE%8E%E5%91%B3%E3%81%97%E3%81%84-%E3%81%8A%E7%B1%B3%E3%82%BD%E3%83%A0%E3%83%AA%E3%82%A8/id6749472378" target="_blank" class="text-xs text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded hover:bg-purple-100">iOS</a>
+                <span class="text-xs text-cyan-600 bg-cyan-50 px-1.5 py-0.5 rounded">Web</span>
+                <span class="text-xs text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded">iOS</span>
               </div>
               <div class="hidden md:block max-h-0 opacity-0 overflow-hidden group-hover:max-h-20 group-hover:opacity-100 transition-all duration-300 ease-in-out">
                 <p class="text-xs text-gray-600 mt-2 px-1">日本全国のお米を診断。好みに合った品種を見つけよう。</p>
               </div>
-            </div>
+            </a>
 
             <!-- 癒しのクモちゃん -->
             <a href="https://apps.apple.com/us/app/%E7%99%92%E3%81%97%E3%81%AE%E3%82%AF%E3%83%A2%E3%81%AE%E3%81%A1%E3%82%83%E3%82%93/id6746834418?platform=iphone" target="_blank" class="bg-white p-4 rounded-xl shadow hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center group overflow-hidden">
@@ -618,19 +671,12 @@
             </a>
 
           </div>
-        </details>
+        </div>
       </div>
     </section>
 
-    <div class="w-full overflow-hidden" style="margin-top: -2px; margin-bottom: -2px;">
-        <svg viewBox="0 0 1200 60" preserveAspectRatio="none" class="w-full h-8 md:h-12">
-            <path d="M0,25 C300,50 500,5 750,30 C1000,55 1100,15 1200,25 L1200,60 L0,60 Z" fill="#ecfdf5" opacity="0.4"/>
-            <path d="M0,30 C300,50 500,10 750,35 C1000,55 1100,20 1200,30" fill="none" stroke="#86efac" stroke-width="1.5" opacity="0.3"/>
-        </svg>
-    </div>
-
     <!-- works（一時非表示）
-    <section id="works" class="py-20">
+    <section id="works" class="py-20 bg-gray-50">
       <div class="container mx-auto px-6">
         <div class="text-center mb-12">
           <h2 class="text-xl md:text-2xl font-bold mb-2 fade-in-up">制作実績 / Works</h2>
@@ -730,7 +776,7 @@
     -->
 
     <!-- news -->
-    <section id="news" class="py-20">
+    <section id="news" class="py-20 bg-gray-50">
       <div class="container mx-auto px-6 max-w-4xl">
         <h2 class="text-xl md:text-2xl font-bold mb-10 fade-in-up">ニュース / お知らせ</h2>
         <div class="bg-white rounded-2xl shadow-lg p-8 md:p-10 fade-in-up">
@@ -818,7 +864,7 @@
 
             <!-- 追加：LINE公式・ミニアプリ活用プラン -->
             <li class="border-b border-gray-200 pb-4">
-              <a href="pricing.html" class="block hover:opacity-80 transition-opacity">
+              <a href="pricing.html#single-plans" class="block hover:opacity-80 transition-opacity">
                 <time datetime="2025-12-06" class="text-sm text-gray-500">2025.12.06</time>
                 <p class="text-sm md:text-base text-gray-800 font-medium">［お知らせ］料金プランに「LINE公式・ミニアプリ活用」を追加しました。LINE公式アカウントの開設からミニアプリ開発まで対応します。</p>
               </a>
@@ -982,15 +1028,8 @@
       </div>
     </section>
 
-    <div class="w-full overflow-hidden" style="margin-top: -2px; margin-bottom: -2px;">
-        <svg viewBox="0 0 1200 60" preserveAspectRatio="none" class="w-full h-8 md:h-12">
-            <path d="M0,25 C300,50 500,5 750,30 C1000,55 1100,15 1200,25 L1200,60 L0,60 Z" fill="#ecfdf5" opacity="0.4"/>
-            <path d="M0,30 C300,50 500,10 750,35 C1000,55 1100,20 1200,30" fill="none" stroke="#86efac" stroke-width="1.5" opacity="0.3"/>
-        </svg>
-    </div>
-
     <!-- company -->
-    <section id="company" class="py-20">
+    <section id="company" class="py-20 bg-white">
       <div class="container mx-auto px-6 max-w-4xl">
         <div class="text-center mb-10">
           <h2 class="text-xl md:text-2xl font-bold mb-4 fade-in-up">会社概要</h2>
@@ -1041,15 +1080,8 @@
       </div>
     </section>
 
-    <div class="w-full overflow-hidden" style="margin-top: -2px; margin-bottom: -2px;">
-        <svg viewBox="0 0 1200 60" preserveAspectRatio="none" class="w-full h-8 md:h-12">
-            <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="#f0fdfa" opacity="0.5"/>
-            <path d="M0,35 C200,55 400,10 600,35 C800,55 1000,10 1200,35" fill="none" stroke="#99e6d0" stroke-width="1.5" opacity="0.4"/>
-        </svg>
-    </div>
-
     <!-- contact -->
-    <section id="contact" class="py-20">
+    <section id="contact" class="py-20 bg-gray-50">
       <div class="container mx-auto px-6 text-center">
         <h2 class="text-2xl md:text-3xl font-bold mb-4 fade-in-up">お問い合わせ</h2>
         <p class="text-base md:text-lg text-gray-600 mb-8 max-w-2xl mx-auto fade-in-up">サービスに関するご質問、協業のご相談など、お気軽にお問い合わせください。</p>
@@ -1087,7 +1119,7 @@
               <a href="tokushoho.html" class="text-gray-300 hover:text-white transition-colors text-sm">特定商取引法に基づく表記</a>
             </div>
           </nav>
-          <p class="text-xs text-gray-400">&copy; 2026 ココロＡＩ合同会社. All Rights Reserved.</p>
+          <p class="text-xs text-gray-400">&copy; 2025 ココロＡＩ合同会社. All Rights Reserved.</p>
           <p class="text-xs text-gray-400 mt-1">「ココロＡＩ」はココロＡＩ合同会社の登録商標です。</p>
         </div>
       </div>
