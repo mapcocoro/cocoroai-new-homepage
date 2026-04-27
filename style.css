@@ -197,7 +197,8 @@ h1, h2 {
 }
 @media (min-width: 900px) {
   .hero-mag__headline {
-    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
   }
   .hero-mag__visual {
     gap: 8px;
