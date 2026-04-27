@@ -25,10 +25,10 @@
       width: 72px;
       height: 72px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background: linear-gradient(135deg, #005B7B, #003F57);
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(6,182,212,0.45);
+      box-shadow: 0 4px 16px rgba(0,91,123,0.45);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -38,7 +38,7 @@
     }
     #cocoro-widget-btn:hover {
       transform: scale(1.1);
-      box-shadow: 0 6px 24px rgba(6,182,212,0.55);
+      box-shadow: 0 6px 24px rgba(0,91,123,0.55);
     }
     #cocoro-widget-btn .cocoro-badge {
       position: absolute;
@@ -76,7 +76,7 @@
       pointer-events: none;
     }
     #cocoro-chat-header {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background: linear-gradient(135deg, #005B7B, #003F57);
       padding: 14px 16px;
       display: flex;
       align-items: center;
@@ -155,7 +155,7 @@
       box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
     .cocoro-user .cocoro-bubble {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background: linear-gradient(135deg, #005B7B, #003F57);
       color: white;
       border-bottom-right-radius: 4px;
     }
@@ -211,8 +211,8 @@
       display: inline-block;
       padding: 8px 14px;
       background: white;
-      border: 1.5px solid #06b6d4;
-      color: #0891b2;
+      border: 1.5px solid #005B7B;
+      color: #003F57;
       font-size: 12.5px;
       font-weight: 600;
       border-radius: 20px;
@@ -223,7 +223,7 @@
       font-family: inherit;
     }
     .cocoro-chip:hover {
-      background: #06b6d4;
+      background: #005B7B;
       color: white;
       transform: scale(1.02);
     }
@@ -253,7 +253,7 @@
       transition: border-color 0.15s;
     }
     #cocoro-input:focus {
-      border-color: #06b6d4;
+      border-color: #005B7B;
       background: white;
     }
     #cocoro-input::placeholder { color: #94a3b8; }
@@ -261,7 +261,7 @@
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      background: linear-gradient(135deg, #005B7B, #003F57);
       border: none;
       cursor: pointer;
       display: flex;
@@ -343,7 +343,7 @@
 
   function linkify(str) {
     return str.replace(/(https?:\/\/[^\s<]+)/g, function(url) {
-      return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" style="color:#0891b2;text-decoration:underline;word-break:break-all;">' + url + '</a>';
+      return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" style="color:#003F57;text-decoration:underline;word-break:break-all;">' + url + '</a>';
     });
   }
 
