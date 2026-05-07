@@ -1242,6 +1242,22 @@ a.bento__tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg);
   color: var(--ink-soft);
   line-height: 1.6;
 }
+.work-card { position: relative; }
+.badge-new {
+  position: absolute;
+  top: -6px; right: -6px;
+  display: inline-block;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  background: var(--teal);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 999px;
+  line-height: 1.6;
+  z-index: 1;
+}
 
 .works-more { margin-top: 20px; }
 .more-toggle {
